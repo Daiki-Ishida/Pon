@@ -1,0 +1,15 @@
+.description{
+  background-color: #999999;
+  height: 800px;
+  border-radius: 10px;
+}
+
+.inner{
+  background-color: #FFF;
+  margin:10px;
+  border-radius: 10px;
+}
+
+.abstract{
+  margin:15px;
+}

@@ -1,0 +1,23 @@
+.step{
+  height:400px;
+}
+
+.step--steps{
+  width:30%;
+  float:left;
+  height: 360px;
+  margin-top:20px;
+  margin-bottom: 20px;
+  margin-right:5%;
+  padding:15px;
+  background-color: #F8F17F;
+  border-radius: 15px;
+}
+
+.step3{
+  margin-right:0;
+}
+
+.step--steps h3{
+  text-align: center;
+}

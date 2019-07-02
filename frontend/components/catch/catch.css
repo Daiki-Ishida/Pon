@@ -1,0 +1,9 @@
+.catch{
+  height: 600px;
+}
+
+.catch--top-message{
+  text-align: center;
+  color:white;
+  margin-top:200px;
+}
