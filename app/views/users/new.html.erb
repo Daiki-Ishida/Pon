@@ -1,0 +1,39 @@
+<div class="signup-form">
+  <div class="container">
+    <h1>新規登録</h1>
+    <div class="from-group">
+      <%= form_with url:users_path, model: @user do |form| %>
+       <%= form.label :姓 %>
+       <%= form.text_field :kanji_lastname, placeholder: "姓" %>
+
+       <%= form.label :名 %>
+       <%= form.text_field :kanji_firstname, placeholder: "名" %>
+
+       <%= form.label :セイ %>
+       <%= form.text_field :kana_lastname, placeholder: "セイ" %>
+
+       <%= form.label :メイ %>
+       <%= form.text_field :kana_firstname, placeholder: "メイ" %>
+
+       <%= form.label :生年月日 %>
+       <%= form.date_select :birth_date, start_year: 1940, end_year: Time.current.year, use_month_numbers: true %>
+
+       <%= form.radio_button :gender, 1 %>
+       <%= form.label :男 %>
+       <%= form.radio_button :gender, 2 %>
+       <%= form.label :女 %>
+
+       <%= form.label :郵便番号 %>
+       <%= form.text_field :postal_code %>
+
+       <%= form.label :住所 %>
+       <%= form.text_field :postal_address %>
+
+       <%= form.label :自己紹介 %>
+       <%= form.text_area :indroduction %>
+
+       <%= form.submit "入力内容を確認する" %>
+      <% end %>
+    </div>
+  </div>
+</div>

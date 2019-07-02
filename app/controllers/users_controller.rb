@@ -31,16 +31,12 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:kanji_lastname,
-                                  :kanji_firstname,
-                                  :kana_lastname,
-                                  :kana_firstname,
-                                  :user_name,
-                                  :postal_code,
-                                 :postal_address,
-                                 :phone_number,
-                                 :profile_image,
-                                 :email,
-                                 :password,
-                                 :password_confirmation)
+                                   :kanji_firstname,
+                                   :kana_lastname,
+                                   :kana_firstname,
+                                   :name,
+                                   :postal_code,
+                                   :postal_address,
+                                   :image)
     end
 end

@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_02_072315) do
+ActiveRecord::Schema.define(version: 2019_07_02_114449) do
 
   create_table "ferrets", force: :cascade do |t|
     t.string "name"
-    t.string "age"
     t.string "character"
     t.text "introduction"
     t.text "image"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "birth_date"
+    t.integer "gender"
   end
 
   create_table "users", force: :cascade do |t|
@@ -29,13 +30,14 @@ ActiveRecord::Schema.define(version: 2019_07_02_072315) do
     t.string "kana_lastname"
     t.string "kana_firstname"
     t.string "name"
-    t.string "age"
     t.string "postal_code"
     t.string "postal_address"
     t.text "introduction"
     t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gender"
+    t.date "birth_date"
   end
 
 end
