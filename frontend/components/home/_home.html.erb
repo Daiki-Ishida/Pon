@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="col-md-3">
+    <p>メニューバーの予定</p>
+  </div>
+  <div class="items-list col-md-9">
+    <% objects.each do |object| %>
+      <%= render "components/card/card", object: object %>
+      
+    <% end %>
+  </div>
+</div>

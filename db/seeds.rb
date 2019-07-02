@@ -1,10 +1,10 @@
 Faker::Config.locale = :ja
 
 20.times do
-  user_name = Faker::JapaneseMedia::DragonBall.character
+  name = Faker::Name.last_name
   User.create!(
-    user_name: user_name,
-    age:       Random.new.rand(18..65)
+    name: name,
+    age:  Random.new.rand(18..65)
     )
 end
 

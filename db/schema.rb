@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_07_02_072315) do
     t.string "kanji_firstname"
     t.string "kana_lastname"
     t.string "kana_firstname"
-    t.string "user_name"
+    t.string "name"
     t.string "age"
     t.string "postal_code"
     t.string "postal_address"
