@@ -1,0 +1,2 @@
+class Ferret < ApplicationRecord
+end
