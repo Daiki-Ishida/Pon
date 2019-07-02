@@ -1,0 +1,95 @@
+<div class="form-wrapper">
+  <div class="row  signup-form">
+    <div class="col-md-8 offset-2 signup--title">
+      <h1>新規登録</h1>
+    </div>
+  </div>
+
+  <div class="col-md-8 offset-md-2">
+    <%= form_with url:users_path, model: user do |form| %>
+
+      <div class="row name-form signup-form">
+        <div class="col-md-4 offset-md-2">
+          <div class="from-group">
+            <%= form.label :姓 %>
+            <%= form.text_field :kanji_lastname, placeholder: "姓", class:"form-control" %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="from-group">
+            <%= form.label :名 %>
+            <%= form.text_field :kanji_firstname, placeholder: "名", class:"form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row name-form signup-form">
+        <div class="col-md-4 offset-md-2">
+          <div class="from-group">
+            <%= form.label :セイ %>
+            <%= form.text_field :kana_lastname, placeholder: "セイ", class:"form-control" %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="from-group">
+            <%= form.label :メイ %>
+            <%= form.text_field :kana_firstname, placeholder: "メイ", class:"form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row birth-date signup-form">
+        <div class="col-md-4 offset-md-2">
+          <div class="form-group">
+            <%= form.label :生年月日 %><br/>
+            <%= form.date_select :birth_date, start_year: 1940, end_year: Time.current.year, use_month_numbers: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row gender signup-form">
+        <div class="col-md-4 offset-md-2">
+          <div class="form-check form-check-inline">
+            <%= form.label :男, class:"form-check-label" %>
+            <%= form.radio_button :gender, 1, class:"form-check-input" %>
+            <%= form.label :女, class:"form-check-label" %>
+            <%= form.radio_button :gender, 2, class:"form-check-input" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row postal-code signup-form">
+        <div class="col-md-4 offset-md-2">
+          <div class="from-group">
+            <%= form.label :郵便番号 %>
+            <%= form.text_field :postal_code, class:"form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row postal-address signup-form">
+        <div class="col-md-8 offset-md-2">
+          <div class="from-group">
+            <%= form.label :住所 %>
+            <%= form.text_field :postal_address, class:"form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row indroduction signup-form">
+        <div class="col-md-8 offset-md-2">
+          <div class="from-group">
+            <%= form.label :自己紹介 %>
+            <%= form.text_area :indroduction, class:"form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row submit signup-form">
+        <div class="mx-auto">
+          <%= form.submit "入力内容を確認する", class:"btn btn-success" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
