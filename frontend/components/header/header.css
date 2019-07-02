@@ -4,6 +4,19 @@ header{
   background-color: white;
 }
 
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-left{
+  width: 30%;
+}
+
+.header-right{
+  width: 20%;
+}
+
 .logo{
   line-height: 60px;
 }

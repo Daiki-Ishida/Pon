@@ -1,11 +1,20 @@
-<div class="container">
-  <div class="col-md-3">
-    <p>メニューバーの予定</p>
+<div class="home container">
+  <div class="home--navigation">
+    <p class="home--link-f">フェレット</p>
+    <p class="home--link-u">ユーザー</p>
   </div>
-  <div class="items-list col-md-9">
-    <% objects.each do |object| %>
-      <%= render "components/card/card", object: object %>
-      
-    <% end %>
+  <div class="home--seach-window">
+    <p>絞り込み機能とか</p>
+    <p>検索窓とかつけようかな。</p>
+  </div>
+  <div class="home--main-content">
+    <div class="home--menu-bar">
+      <p>メニューバーの予定</p>
+    </div>
+    <div class="home--items-list">
+      <% objects.each do |object| %>
+        <%= render "components/card/card", object: object %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,0 +1,34 @@
+.home--navigation{
+  display: flex;
+  justify-content: space-around;
+  height: 80px;
+  background-color: yellow;
+}
+
+.home--link-f, .home--link-u{
+  width: 40%;
+  line-height: 80px;
+  color:#FA5C65;
+  text-align: center;
+}
+
+.home--seach-window{
+  display: flex;
+  justify-content: space-around;
+  background-color: grey;
+}
+
+.home--main-content{
+  display: flex;
+  justify-content: space-around;
+}
+
+.home--menu-bar{
+  height:300px;
+  width:20%;
+  background-color: blue;
+}
+
+.home--items-list{
+  width:70%;
+}
