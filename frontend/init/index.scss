@@ -1,3 +1,20 @@
+/************* bootstrapをimport *************/
+@import '~bootstrap/scss/bootstrap';
+
+/************* fontawesomeをimport *************/
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+/************* 全体のフォント設定 *************/
+* {
+  font-family: 'Lato', 'Noto Sans JP', '游ゴシック Medium',
+                '游ゴシック体', 'Yu Gothic Medium', YuGothic,
+                'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN',
+                'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+
+
+/************* 以下nomilize.css *************/
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document

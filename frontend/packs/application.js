@@ -1,1 +1,3 @@
 import "init";
+import '@fortawesome/fontawesome-free/js/all'
+import "components/header/header"
