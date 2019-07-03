@@ -11,7 +11,7 @@ class FerretsController < ApplicationController
     @ferret = Ferret.new(ferret_params)
     if @ferret.save
       if @ferret.image
-        save_image(@ferret, ferret_params, "public/ferret_images/#{@ferret.id}.jpg")
+        save_image(@ferret, ferret_params)
       end
       redirect_to ferrets_path
     else

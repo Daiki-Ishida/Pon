@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       if @user.image
-        save_image(@user, user_params, "public/user_images/#{@user.id}.jpg")
+        save_image(@user, user_params)
       end
       redirect_to ferrets_path
     else

@@ -29,6 +29,9 @@
   background-color: blue;
 }
 
-.home--items-list{
+.home--items{
   width:70%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:space-around;
 }

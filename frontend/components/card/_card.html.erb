@@ -1,4 +1,12 @@
-<div class="card col-md-4">
-  <p><%= object.name %></p>
-  <p>年齢：<%= display_age(object) %></p>
+<div class="item">
+  <div class="item--image-box">
+    <% if object.image %>
+     <%= image_tag "/images/#{object.image}",size: "200x200", align: "center", class:"item--image" %>
+    <% end %>
+  </div>
+  <ul class="item--info">
+    <li><%= display_name(object) %></li>
+    <li><%= display_age(object) %></li>
+    <li></li>
+  </ul>
 </div>
