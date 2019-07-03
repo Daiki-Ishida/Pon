@@ -9,6 +9,15 @@
     <div class="col-md-8 offset-md-2">
       <%= form_with url:ferrets_path, model: ferret do |form| %>
 
+      <div class="row image-form signup-form">
+        <div class="col-md-8  offset-md-2">
+          <div class="form-group">
+            <%= form.label :フェレットの写真 %>
+            <%= form.file_field :image, class:"form-control-file" %>
+          </div>
+        </div>
+      </div>
+
       <div class="row name ferret-form">
         <div class="col-md-4 offset-md-2">
           <div class="form-group">

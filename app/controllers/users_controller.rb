@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       if @user.image
-        save_user_image
+        save_image(@user, user_params, "public/user_images/#{@user.id}.jpg")
       end
       redirect_to ferrets_path
     else
@@ -48,13 +48,6 @@ class UsersController < ApplicationController
                                    :gender,
                                    :postal_code,
                                    :postal_address,
-                                   :introduction,
-                                   )
-    end
-
-    def save_user_image
-      image = user_params[:image]
-      @user.update_attribute(:image, "#{@user.id}.jpg")
-      File.binwrite("public/user_images/#{@user.image}", image.read)
+                                   :introduction)
     end
 end
