@@ -5,6 +5,12 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-8  offset-md-2">
+      <%= render "components/error-messages/error-messages", object: user %>
+    </div>
+  </div>
+
   <div class="col-md-8 offset-md-2">
     <%= form_with url:users_path, model: user, class:"h-adr" do |form| %>
     <span class="p-country-name" style="display:none;">Japan</span>
