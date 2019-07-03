@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params_user)
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to ferrets_path
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -35,6 +40,7 @@ class UsersController < ApplicationController
                                    :kana_lastname,
                                    :kana_firstname,
                                    :name,
+                                   :birth_date,
                                    :postal_code,
                                    :postal_address,
                                    :image)

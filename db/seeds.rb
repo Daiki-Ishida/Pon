@@ -2,17 +2,22 @@ Faker::Config.locale = :ja
 
 20.times do
   name = Faker::Name.last_name
+  birth_date = Faker::Date.birthday(18, 65)
+  gender = Faker::Number.between(1, 2)
   User.create!(
     name: name,
-    age:  Random.new.rand(18..65)
+    gender: gender,
+    birth_date: birth_date
     )
 end
 
 20.times do
   name = Faker::Games::Pokemon.name
-  age = Random.new.rand(0..6).to_s
+  birth_date = Faker::Date.birthday(0, 7)
+  gender = Faker::Number.between(1, 2)
   Ferret.create!(
     name: name,
-    age:  age
+    gender: gender,
+    birth_date: birth_date
   )
 end
