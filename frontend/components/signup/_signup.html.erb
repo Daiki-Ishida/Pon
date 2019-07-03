@@ -9,6 +9,15 @@
     <%= form_with url:users_path, model: user, class:"h-adr" do |form| %>
     <span class="p-country-name" style="display:none;">Japan</span>
 
+      <div class="row image-form signup-form">
+        <div class="col-md-8  offset-md-2">
+          <div class="form-group">
+            <%= form.label :ユーザーアイコン %>
+            <%= form.file_field :image, class:"form-control-file" %>
+          </div>
+        </div>
+      </div>
+
       <div class="row name-form signup-form">
         <div class="col-md-4 offset-md-2">
           <div class="from-group">
@@ -38,6 +47,16 @@
           </div>
         </div>
       </div>
+
+      <div class="row name signup-form">
+        <div class="col-md-4 offset-md-2">
+          <div class="form-group">
+            <%= form.label :ユーザーネーム %>
+            <%= form.text_field :name, placeholder: "このサイトで利用する名前", class:"form-control" %>
+          </div>
+        </div>
+      </div>
+
 
       <div class="row birth-date signup-form">
         <div class="col-md-4 offset-md-2">
@@ -81,7 +100,7 @@
         <div class="col-md-8 offset-md-2">
           <div class="from-group">
             <%= form.label :自己紹介 %>
-            <%= form.text_area :indroduction, class:"form-control" %>
+            <%= form.text_area :introduction, class:"form-control" %>
           </div>
         </div>
       </div>
