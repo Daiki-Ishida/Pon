@@ -44,10 +44,10 @@
       <h5>兄弟・姉妹</h5>
       <div class="ferret-show--sibling">
         <% siblings.each do |s| %>
-        <%= link_to ferret_path(s) do %>
-        <%= image_tag "/images/#{s.image}", size:"120x120", class:"image-icon" %>
-        <p><%= display_name(s) %></p>
-        <% end %>
+          <%= link_to ferret_path(s) do %>
+            <%= image_tag "/images/#{s.image}", size:"120x120", class:"image-icon" %>
+            <p><%= display_name(s) %></p>
+          <% end %>
         <% end %>
       </div>
     </div>

@@ -1,0 +1,11 @@
+.user-show{
+  background-color: #FFF;
+}
+
+.user-show--info-items, .user-show--introduction, .user-show--family{
+  border-bottom: solid 1px rgba(51,51,51,.24);
+}
+
+.user-show--icons{
+  display:flex;
+}

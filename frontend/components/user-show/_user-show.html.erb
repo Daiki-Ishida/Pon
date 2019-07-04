@@ -1,0 +1,41 @@
+<div class="user-show container">
+  <div class="row">
+    <div class="user-show--image">
+      <% if user.image %>
+       <%= image_tag "/images/#{user.image}",size:"200x200" , class:"image-icon" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="user-show--info">
+    <div class="row user-show--name">
+      <h2><%= display_name(user) %></h2>
+    </div>
+    <div class="row user-show--info-items">
+      <p>
+        <%= display_address(user) %>
+        <span>|</span>
+        <%= display_gender(user) %>
+        <span>|</span>
+        <%= display_age(user) %>
+      </p>
+    </div>
+  </div>
+
+  <div class="row user-show--introduction">
+    <p><%= user.introduction %></p>
+  </div>
+
+  <div class="row user-show--family">
+    <% user.ferrets.each do |ferret| %>
+      <%= link_to ferret_path(ferret) do %>
+        <%= image_tag "/images/#{ferret.image}", size:"120x120", class:"image-icon" %>
+        <p><%= display_name(ferret) %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="row user-show--post">
+    <p>TO BE CREATED</p>
+  </div>
+</div>
