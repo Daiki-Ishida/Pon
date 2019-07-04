@@ -9,6 +9,7 @@ class FerretsController < ApplicationController
 
   def create
     @ferret = Ferret.new(ferret_params)
+    @ferret.user_id = 1
     if @ferret.save
       if @ferret.image
         save_image(@ferret, ferret_params)

@@ -1,12 +1,15 @@
-<div class="item">
-  <div class="item--image-box">
+<div class="card">
+  <div class="card--image card-col-1">
     <% if object.image %>
-     <%= image_tag "/images/#{object.image}",size: "200x200", align: "center", class:"item--image" %>
+     <%= image_tag "/images/#{object.image}",size: "200x200", align: "center", class:"card-img-top" %>
     <% end %>
   </div>
-  <ul class="item--info">
-    <li><%= display_name(object) %></li>
-    <li><%= display_age(object) %></li>
-    <li><%= display_address(object) %></li>
-  </ul>
+  <div class="card-body">
+    <h5 class="card-title"><%= display_name(object) %></h5>
+    <p class="card--age card-text"><%= display_age(object) %></p>
+    <p class="card--address card-text"><%= display_address(object) %></p>
+    <div class="card--follow">
+      <a href="#" class="follow-btn">フォロー</a>
+    </div>
+  </div>
 </div>

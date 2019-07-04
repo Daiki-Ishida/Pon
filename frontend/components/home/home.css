@@ -1,37 +1,61 @@
-.home--navigation{
-  display: flex;
-  justify-content: space-around;
-  height: 80px;
-  background-color: yellow;
+.home{
+  border-bottom: solid 1px #4ec4d3;
 }
 
-.home--link-f, .home--link-u{
-  width: 40%;
-  line-height: 80px;
-  color:#FA5C65;
+.home--top-wrapper{
+  background-color: whitesmoke;
+}
+
+.home--navigation{
+  display: flex;
+  justify-content: center;
+  height:50px;
+  border-bottom: solid 1px #4ec4d3;
+}
+
+.home--link-btn{
+  width: 10%;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
   text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  color: #26a69b;
+  padding:5px 10px;
+  border-radius: 20px;
+  font-family: 'Avenir','Arial';
+  transition: .4s;
+}
+
+.home--link-btn:hover {
+  background-color:#FA5C65;
+  color: #FFF;
+  text-decoration: none;
 }
 
 .home--seach-window{
   display: flex;
-  justify-content: space-around;
-  background-color: grey;
+  justify-content: flex-end;
+  border-bottom: solid 1px #4ec4d3;
 }
 
 .home--main-content{
+  background-image: url(../../images/corkboard.jpg);
+  box-shadow: inset 0 0 0 3px rgba(85,46,12,0.7), 0px 5px 5px rgba(0, 0, 0, 0.5);
+  border-radius:10px;
+	border:7px solid rgba(225,225,225,0);
   display: flex;
   justify-content: space-around;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
-.home--menu-bar{
-  height:300px;
-  width:20%;
-  background-color: blue;
-}
-
-.home--items{
-  width:70%;
+.home--cards{
+  width:90%;
   display: flex;
   flex-flow: row wrap;
-  justify-content:space-around;
+  justify-content:space-between;
 }
