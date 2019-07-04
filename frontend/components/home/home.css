@@ -39,7 +39,6 @@
 .home--seach-window{
   display: flex;
   justify-content: flex-end;
-  border-bottom: solid 1px #4ec4d3;
 }
 
 .home--main-content{

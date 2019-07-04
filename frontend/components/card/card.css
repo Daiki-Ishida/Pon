@@ -1,4 +1,5 @@
-.card{
+/* "card"はBootstrapのclassで、他でも使用する可能性があるため名称変更。*/
+.card--{
   width: 30%;
   background-color: #fffde8;
   margin-bottom: 60px;

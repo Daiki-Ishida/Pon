@@ -8,3 +8,5 @@ import "components/home/home";
 
 import "components/signup/signup";
 import "components/ferret-form/ferret-form";
+
+import "components/ferret-show/ferret-show";

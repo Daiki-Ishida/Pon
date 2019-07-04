@@ -1,0 +1,44 @@
+.ferret-show{
+  background-color: #FFF;
+}
+
+.ferret-show--info-items, .ferret-show--introduction, .ferret-show--character, .ferret-show--family{
+  border-bottom: solid 1px rgba(51,51,51,.24);
+}
+
+
+.ferret-show--icons{
+  display:flex;
+}
+
+.ferret-show--parent{
+  width: 20%;
+  border-right: solid 1px rgba(51,51,51,.24);
+}
+
+.parent{
+  padding-left: 30px;
+}
+
+.parent a img{
+  margin:0 auto;
+}
+
+.ferret-show--siblings{
+  padding: 0 30px;
+  width: 80%;
+}
+
+.ferret-show--sibling{
+  width: 20%;
+  display: flex;
+}
+
+.ferret-show--sibling a{
+  margin-right: 20px;
+}
+
+
+.image-icon{
+  border-radius: 50%;
+}

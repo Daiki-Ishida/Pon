@@ -1,0 +1,59 @@
+<div class="ferret-show container">
+  <div class="row">
+    <div class="ferret-show--image">
+      <% if ferret.image %>
+       <%= image_tag "/images/#{ferret.image}",size:"200x200" , class:"image-icon" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="ferret-show--info">
+    <div class="row ferret-show--name">
+      <h2><%= display_name(ferret) %></h2>
+    </div>
+    <div class="row ferret-show--info-items">
+      <p>
+        <%= display_address(ferret) %>
+        <span>|</span>
+        <%= display_gender(ferret) %>
+        <span>|</span>
+        <%= display_age(ferret) %>
+      </p>
+    </div>
+  </div>
+
+  <div class="row ferret-show--introduction">
+    <p><%= ferret.introduction %></p>
+  </div>
+
+  <div class="row ferret-show--character">
+    <p>性格：<%= ferret.character %></p>
+  </div>
+
+  <div class="row ferret-show--family">
+    <div class="ferret-show--parent">
+      <div class="parent">
+        <h5>親</h5>
+        <%= link_to user_path(ferret.user_id) do %>
+          <%= image_tag "/images/#{ferret.user.image}", size:"120x120", class:"image-icon" %>
+          <p><%= display_name(ferret.user) %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="ferret-show--siblings">
+      <h5>兄弟・姉妹</h5>
+      <div class="ferret-show--sibling">
+        <% siblings.each do |s| %>
+        <%= link_to ferret_path(s) do %>
+        <%= image_tag "/images/#{s.image}", size:"120x120", class:"image-icon" %>
+        <p><%= display_name(s) %></p>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ferret-show--post">
+    <p>TO BE CREATED</p>
+  </div>
+</div>

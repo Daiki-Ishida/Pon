@@ -36,6 +36,26 @@ module ApplicationHelper
     end
   end
 
+  # 人間なら男性or女性or非公開、フェレットならオスorメスを表示。
+  def display_gender(object)
+    model = model_checker(object)
+    if model == "user"
+      if object.gender == 1
+        return "男性"
+      elsif object.gender == 2
+        return "女性"
+      else
+        return "非公開"
+      end
+    elsif model == "ferret"
+      if object.gender == 1
+        return "オス"
+      elsif object.gender == 2
+        return "メス"
+      end
+    end
+  end
+
   private
     # 人間かフェレットかチェック。ここでしか使わないのでprivateで定義
     def model_checker(object)
