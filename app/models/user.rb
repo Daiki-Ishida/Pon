@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :ferrets, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   # 性別/画像/自己紹介は無しでも登録できる。
   validates :kanji_lastname, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
