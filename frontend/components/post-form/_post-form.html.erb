@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="form-wrapper">
+    <div class="row  post-form">
+      <div class="col-md-8 offset-2 post-form--title">
+        <h1>投稿フォーム</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8  offset-md-2">
+        <%= render "components/error-messages/error-messages", object: post %>
+      </div>
+    </div>
+
+    <div class="col-md-8 offset-md-2">
+      <%= form_with url:posts_path, model: post do |form| %>
+
+        <div class="row image-form post-form">
+          <div class="col-md-8 offset-md-2">
+            <div class="form-group">
+              <%= form.label :投稿画像 %>
+              <%= form.file_field :image, class:"form-control-file" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row title post-form">
+          <div class="col-md-4 offset-md-2">
+            <div class="form-group">
+              <%= form.label :タイトル %>
+              <%= form.text_field :title, placeholder: "タイトル", class:"form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row content post-form">
+          <div class="col-md-8 offset-md-2">
+            <div class="from-group">
+              <%= form.label :内容 %>
+              <%= form.text_area :content, class:"form-control" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row submit post-form">
+          <div class="mx-auto">
+            <%= form.submit "入力内容を確認する", class:"btn btn-success" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

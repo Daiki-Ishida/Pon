@@ -5,6 +5,15 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    if @post.save
+      # current_user定義後要変更。
+      @post.user_id = 1
+      if @post.image
+        save_image(@post, post_params)
+      end
+    else
+      redirect_to ferrets_path
+    end
   end
 
   def index
