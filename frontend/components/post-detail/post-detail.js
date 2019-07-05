@@ -1,0 +1,1 @@
+import "./post-detail.css";
