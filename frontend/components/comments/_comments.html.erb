@@ -1,0 +1,6 @@
+<% comments.each do |comment| %>
+  <%= comment.content %>
+  <%= comment.user.name %>
+  <%= image_tag "/images/#{comment.user.image}", size:"120x120" , class:"image-icon" %>
+  <%= comment.updated_at %>
+<% end %>

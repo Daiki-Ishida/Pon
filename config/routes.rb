@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :users
   resources :ferrets
   resources :posts
+  resources :comments
 end
