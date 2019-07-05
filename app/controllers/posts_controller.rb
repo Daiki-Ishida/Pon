@@ -5,14 +5,16 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    # current_user定義後要変更。
+    @post.user_id = 1
     if @post.save
-      # current_user定義後要変更。
-      @post.user_id = 1
       if @post.image
         save_image(@post, post_params)
+        flash[:success] = "投稿しました！！"
+        redirect_to post_path(@post)
       end
     else
-      redirect_to ferrets_path
+      render 'new'
     end
   end
 
@@ -39,6 +41,6 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:titel, :content, :image)
+      params.require(:post).permit(:title, :content, :image)
     end
 end
