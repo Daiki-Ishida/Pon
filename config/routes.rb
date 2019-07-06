@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :like, only: [:create, :destroy]
 
   # LINEログイン
-  devise_for :users, controllers: {
-    omniauth_callbacks: "omniauth_callbacks"
-  }
+  # devise_for :users, controllers: {
+  #   omniauth_callbacks: "omniauth_callbacks"
+  # }
 
 end
