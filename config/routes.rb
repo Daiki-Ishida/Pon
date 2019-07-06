@@ -3,9 +3,10 @@ Rails.application.routes.draw do
 
   resources :users
   resources :ferrets
-  resources :posts
+  resources :posts do
+    resource :likes, only: [:create, :destroy]
+  end
   resources :comments
-  resources :like, only: [:create, :destroy]
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
