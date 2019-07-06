@@ -1,5 +1,7 @@
 import "init";
 import '@fortawesome/fontawesome-free/js/all';
+import Rails from 'rails-ujs'
+Rails.start()
 
 
 import "components/header/header";
