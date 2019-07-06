@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :ferrets
   resources :posts
   resources :comments
+  resources :like, only: [:create, :destroy]
+  
 end
