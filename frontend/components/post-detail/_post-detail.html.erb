@@ -2,6 +2,10 @@
   <div class="post-detail--top">
     <%= render "components/post/post", post: post %>
   </div>
+  <!-- いいね機能 -->
+   <div class="post-detail--like">
+     <%= render "components/like/like", post: post %>
+   </div>
   <!-- コメントを以下するボタン。ボタンを押すと表示されるようにしたい。 -->
   <div class="post-detail--comment-form">
     <%= form_with url: comments_path, model: comment do |form| %>
@@ -9,6 +13,7 @@
       <%= form.submit "コメントする" %>
     <% end %>
   </div>
+  <!-- コメント一覧 -->
   <div class="post-detail--comments">
     <%= render "components/comments/comments", comments: comments %>
   </div>
