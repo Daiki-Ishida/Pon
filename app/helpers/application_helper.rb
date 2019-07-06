@@ -56,6 +56,12 @@ module ApplicationHelper
     end
   end
 
+  def current_user
+    if session[:user_id]
+      current_user ||= User.find_by(id: session[:user_id])
+    end
+  end
+
   private
     # 人間かフェレットかチェック。ここでしか使わないのでprivateで定義
     def model_checker(object)

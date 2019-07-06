@@ -5,8 +5,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    # current_user定義後要変更。
-    @post.user_id = 1
+    @post.user_id = current_user.id
     if @post.save
       if @post.image
         save_image(@post, post_params)

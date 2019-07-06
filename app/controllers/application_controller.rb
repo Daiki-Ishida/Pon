@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   prepend_view_path Rails.root.join("frontend")
+  include SessionsHelper
 
 # とりあえず動く。ただし、二重でIDが保存されるので要修正。
   def save_image(object, object_params)
