@@ -1,8 +1,9 @@
 <div class="container">
   <div class="form-wrapper">
     <div class="row  ferret-form">
-      <div class="col-md-8 offset-2 signup--title">
+      <div class="col-md-8 offset-2 form--title">
         <h1>フェレットの登録</h1>
+        <p class="warning"><span class="asterisk">＊</span>：必須項目</p>
       </div>
     </div>
 
@@ -13,12 +14,12 @@
     </div>
 
     <div class="col-md-8 offset-md-2">
-      <%= form_with url:ferrets_path, model: ferret do |form| %>
+      <%= form_with url:ferrets_path, model: ferret, local: true do |form| %>
 
       <div class="row image-form signup-form">
         <div class="col-md-8  offset-md-2">
           <div class="form-group">
-            <%= form.label :フェレットの写真 %>
+            <%= form.label :フェレットの写真 %><span class="asterisk">＊</span>
             <%= form.file_field :image, class:"form-control-file" %>
           </div>
         </div>
@@ -27,7 +28,7 @@
       <div class="row name ferret-form">
         <div class="col-md-4 offset-md-2">
           <div class="form-group">
-            <%= form.label :なまえ %>
+            <%= form.label :なまえ %><span class="asterisk">＊</span>
             <%= form.text_field :name, placeholder: "なまえ", class:"form-control" %>
           </div>
         </div>
@@ -37,7 +38,7 @@
         <div class="row birth-date ferret-form">
           <div class="col-md-4 offset-md-2">
             <div class="form-group">
-              <%= form.label :生年月日 %><br/>
+              <%= form.label :生年月日 %><span class="asterisk">＊</span><br/>
               <%= form.date_select :birth_date, start_year: (Time.current.year - 10) , end_year: Time.current.year, use_month_numbers: true %>
             </div>
           </div>
@@ -46,6 +47,7 @@
         <div class="row gender ferret-form">
           <div class="col-md-4 offset-md-2">
             <div class="form-check form-check-inline">
+              <%= form.label :性別 %><span class="asterisk">＊</span>
               <%= form.label :オス, class:"form-check-label" %>
               <%= form.radio_button :gender, 1, class:"form-check-input" %>
               <%= form.label :メス, class:"form-check-label" %>

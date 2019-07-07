@@ -9,7 +9,7 @@ import "components/header/header";
 import "components/top/top";
 import "components/home/home";
 
-import "components/signup/signup";
+import "components/user-form/user-form";
 import "components/ferret-form/ferret-form";
 import "components/post-form/post-form"
 

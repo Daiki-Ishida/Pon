@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      if @user.image
+      if @user.image != "no_image.jpg"
         save_image(@user, user_params)
       end
       redirect_to ferrets_path

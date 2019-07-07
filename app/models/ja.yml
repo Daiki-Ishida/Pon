@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        kanji_lastname: 姓
+        kanji_firstname: 名
+        kana_lastname: セイ
+        kana_firstname: メイ
+        name: ユーザー名
+        postal_code: 郵便番号
+        postal_address: 住所
