@@ -3,6 +3,7 @@ import '@fortawesome/fontawesome-free/js/all';
 import Rails from 'rails-ujs'
 Rails.start()
 
+import "components/colorful-border/colorful-border";
 
 import "components/header/header";
 import "components/top/top";

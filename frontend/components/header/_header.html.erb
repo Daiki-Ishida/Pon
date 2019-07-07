@@ -1,16 +1,17 @@
 <header>
   <div class="header container">
-      <div class="header-left">
-        <h3 class="logo">PON</h3>
-      </div>
-      <div class="header-right">
-        <% if current_user.nil? %>
-        <!-- link_to "LINE Login", user_line_omniauth_authorize_path -->
-        <%= link_to "ログイン", login_path, class:"btn btn-secondary" %>
-        <button class="btn btn-primary">新規登録</button>
-        <% else %>
-          <p><%= current_user.name %>でログイン中</p>
-        <% end %>
-      </div>
+    <div class="header-left">
+      <h3 class="logo">PON</h3>
+    </div>
+    <div class="header-right">
+      <% if current_user.nil? %>
+      <!-- link_to "LINE Login", user_line_omniauth_authorize_path -->
+      <%= link_to "ログイン", login_path, class:"btn btn-secondary" %>
+      <button class="btn btn-primary">新規登録</button>
+      <% else %>
+        <p><%= current_user.name %>でログイン中</p>
+      <% end %>
+    </div>
   </div>
+  <%= render "components/colorful-border/colorful-border" %>
 </header>
