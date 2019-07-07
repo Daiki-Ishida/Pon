@@ -16,6 +16,10 @@ ja:
         name: ユーザー名
         postal_code: 郵便番号
         postal_address: 住所
+      ferret:
+        name: なまえ
+        birth_date: 生年月日
+        gender: 性別
 
   date:
     abbr_day_names:

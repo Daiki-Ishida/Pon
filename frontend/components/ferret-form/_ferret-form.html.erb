@@ -19,8 +19,7 @@
       <div class="row image-form signup-form">
         <div class="col-md-8  offset-md-2">
           <div class="form-group">
-            <%= form.label :フェレットの写真 %><span class="asterisk">＊</span>
-            <%= form.file_field :image, class:"form-control-file" %>
+            <%= render "components/img-uploader/img-uploader", form: form %>
           </div>
         </div>
       </div>
