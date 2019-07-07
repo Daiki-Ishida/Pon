@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_06_080311) do
+ActiveRecord::Schema.define(version: 2019_07_07_084025) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_07_06_080311) do
     t.string "name"
     t.string "character"
     t.text "introduction"
-    t.text "image"
+    t.text "image", default: "no_image.jpg"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_07_06_080311) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.string "image"
+    t.string "image", default: "no_image.jpg"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2019_07_06_080311) do
     t.string "postal_code"
     t.string "postal_address"
     t.text "introduction"
-    t.text "image"
+    t.text "image", default: "no_image.jpg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "gender"
