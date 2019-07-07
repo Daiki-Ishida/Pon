@@ -1,10 +1,16 @@
 .step{
-  height:400px;
+  width: 100%;
+  height: 100vh;
+  background: url(../../images/steps.jpg);
 }
 
 .step--steps{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.step--step{
   width:30%;
-  float:left;
   height: 360px;
   margin-top:20px;
   margin-bottom: 20px;
@@ -18,6 +24,6 @@
   margin-right:0;
 }
 
-.step--steps h3{
+.step--step h3{
   text-align: center;
 }

@@ -1,9 +1,14 @@
 .catch{
-  height: 600px;
+  width: 100%;
+  height: 100vh;
+  background: url(../../images/catch.jpg);
+  background-size: 100% 100%;
+  background-attachment: fixed;
 }
 
 .catch--top-message{
   text-align: center;
-  color:white;
+  color:#FFF;
+  font-size: 70px;
   margin-top:200px;
 }

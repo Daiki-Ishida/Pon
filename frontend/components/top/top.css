@@ -1,0 +1,36 @@
+.top--navi{
+  position: sticky;
+  z-index: 100;
+  right: 0;
+  top:40%;
+}
+
+
+
+.borders{
+  display: flex;
+}
+
+.b{
+  width: 20%;
+}
+
+.b-1{
+  border-bottom:solid 7px #DB7DFF;
+}
+
+.b-2{
+  border-bottom:solid 7px #78B7F0;
+}
+
+.b-3{
+  border-bottom:solid 7px #7DFF95;
+}
+
+.b-4{
+  border-bottom:solid 7px #EBE7CA;
+}
+
+.b-5{
+  border-bottom:solid 7px #FFB38C;
+}
