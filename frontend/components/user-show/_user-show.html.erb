@@ -1,4 +1,8 @@
 <div class="u-show">
+  <% if current_user?(user) %>
+    <%= render "components/edit-btn/edit-btn", path: edit_ferret_path(user)  %>
+  <% end %>
+
   <div class="u-show--top">
     <%= render "components/show/show", object: user %>
   </div>

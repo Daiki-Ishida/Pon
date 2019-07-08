@@ -20,4 +20,9 @@ module SessionsHelper
     user == current_user
   end
 
+  # 現在のユーザーが登録したフェレットかどうかの確認。
+  def my_ferret?(ferret)
+    ferret.user_id == current_user.id
+  end
+
 end
