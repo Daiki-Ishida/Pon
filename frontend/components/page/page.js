@@ -7,5 +7,5 @@ import "components/post-form/post-form"
 
 import "components/posts/posts"
 
-import "components/ferret-show/ferret-show";
-import "components/user-show/user-show";
+import "components/ferret/ferret";
+import "components/user/user";

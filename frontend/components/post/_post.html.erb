@@ -1,15 +1,60 @@
-<div class="card mb-3">
+<div class="post card mb-3">
   <div class="row no-gutters">
     <div class="col-md-4">
       <%= link_to post_path(post) do %>
-        <%= image_tag "/images/#{post.image}",size:"200x200" %>
+        <%= image_tag "/images/#{post.image}", class:"post--image" %>
       <% end %>
     </div>
     <div class="col-md-8">
+      <div class="post--head">
+        <div class="post--user">
+          <%= link_to user_path(post.user) do %>
+          <div class="post--user-info">
+            <div class="post--user-icon">
+              <%=
+                render partial: "components/img-icon/img-icon",
+                       locals: {
+                         path: post.user.image,
+                         size: "50x50"
+                       }
+              %>
+            </div>
+            <div class="post--user-name">
+              <%= display_name(post.user) %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+
+        <!-- いいね -->
+        <div class="post--like">
+          <%=
+            render partial: "components/like/like",
+                   locals: {post: post}
+          %>
+        </div>
+        <!-- コメント -->
+        <div class="post--comment">
+          <span>
+            <i class="far fa-comments"></i>
+          </span>
+          <%= post.comments.count %>コメント
+        </div>
+      </div>
+
+
       <div class="card-body">
-        <h5 class="card-title"><%= post.title %></h5>
-        <p class="card-text"><%= post.content %></p>
-        <p class="card-text"><small class="text-muted"><%= post.updated_at %></small></p>
+        <h5 class="card-title">
+          <%= post.title %>
+        </h5>
+        <p class="card-text">
+          <%= post.content %>
+        </p>
+        <p class="card-text">
+          <small class="text-muted">
+            <%= post.updated_at %>
+          </small>
+        </p>
       </div>
     </div>
   </div>

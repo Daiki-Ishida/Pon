@@ -1,2 +1,2 @@
-import "./ferret-show.css";
+import "./user.css";
 import "../show-top/show-top";
