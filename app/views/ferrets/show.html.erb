@@ -1,1 +1,8 @@
-<%= render partial: "components/ferret-show/ferret-show", locals: {ferret: @ferret, siblings: @siblings} %>
+<%= render "components/page/page" do %>
+  <%= render partial: "components/ferret-show/ferret-show",
+             locals: {
+               ferret: @ferret,
+               siblings: @siblings
+             }
+  %>
+<% end %>

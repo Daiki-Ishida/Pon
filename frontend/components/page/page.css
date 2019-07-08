@@ -1,0 +1,20 @@
+.page{
+  background-color: #fffcf3;
+  margin-top: 50px;
+  border-radius: 20px;
+  padding-bottom: 30px;
+}
+
+.asterisk{
+  color:red;
+}
+
+.warning{
+  font-size: 10px;
+  font-weight: 10;
+}
+
+.notice{
+  font-size: 10px;
+  color: #707070;
+}

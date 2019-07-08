@@ -1,51 +1,32 @@
-<div class="ferret-show container">
-  <div class="row">
-    <div class="ferret-show--image">
-      <% if ferret.image %>
-       <%= image_tag "/images/#{ferret.image}",size:"200x200" , class:"image-icon" %>
-      <% end %>
-    </div>
+<div class="f-show">
+  <div class="f-show--top">
+    <%= render "components/show/show", object: ferret %>
   </div>
 
-  <div class="ferret-show--info">
-    <div class="row ferret-show--name">
-      <h2><%= display_name(ferret) %></h2>
-    </div>
-    <div class="row ferret-show--info-items">
-      <p>
-        <%= display_address(ferret) %>
-        <span>|</span>
-        <%= display_gender(ferret) %>
-        <span>|</span>
-        <%= display_age(ferret) %>
-      </p>
-    </div>
-  </div>
-
-  <div class="row ferret-show--introduction">
-    <p><%= ferret.introduction %></p>
-  </div>
-
-  <div class="row ferret-show--character">
+  <div class="row f-show--character">
     <p>性格：<%= ferret.character %></p>
   </div>
 
-  <div class="row ferret-show--family">
-    <div class="ferret-show--parent">
-      <div class="parent">
+  <div class="row f-show--family">
+    <div class="f-show--parent">
         <h5>親</h5>
         <%= link_to user_path(ferret.user_id) do %>
-          <%= image_tag "/images/#{ferret.user.image}", size:"120x120", class:"image-icon" %>
+          <%=
+          render partial: "components/img-icon/img-icon",
+                 locals: {path: ferret.user.image, size: "100x100"}
+          %>
           <p><%= display_name(ferret.user) %></p>
         <% end %>
-      </div>
     </div>
-    <div class="ferret-show--siblings">
+    <div class="f-show--siblings">
       <h5>兄弟・姉妹</h5>
-      <div class="ferret-show--sibling">
+      <div class="f-show--sibling">
         <% siblings.each do |s| %>
           <%= link_to ferret_path(s) do %>
-            <%= image_tag "/images/#{s.image}", size:"120x120", class:"image-icon" %>
+            <%=
+            render partial: "components/img-icon/img-icon",
+                   locals: {path: s.image, size: "100x100"}
+            %>
             <p><%= display_name(s) %></p>
           <% end %>
         <% end %>
@@ -53,7 +34,8 @@
     </div>
   </div>
 
-  <div class="row ferret-show--post">
+
+  <div class="row show--post">
     <p>TO BE CREATED</p>
   </div>
 </div>

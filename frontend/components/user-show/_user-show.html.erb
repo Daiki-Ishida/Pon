@@ -1,56 +1,21 @@
-<div class="user-show container">
-  <div class="row">
-    <div class="user-show--image">
-      <% if user.image %>
-       <%= image_tag "/images/#{user.image}",size:"200x200" , class:"image-icon" %>
-      <% end %>
-    </div>
+<div class="u-show container">
+  <div class="u-show--top">
+    <%= render "components/show/show", object: user %>
   </div>
-
-  <div class="user-show--info">
-    <div class="row user-show--name">
-      <h2><%= display_name(user) %></h2>
-    </div>
-    <div class="row user-show--info-items">
-      <p>
-        <%= display_address(user) %>
-        <span>|</span>
-        <%= display_gender(user) %>
-        <span>|</span>
-        <%= display_age(user) %>
-      </p>
-    </div>
-  </div>
-
   <!-- フォローボタン -->
-  <!-- 他の場所にも設置するので後で別コンポーネントに。 -->
-  <div class="follow-btn">
-    <%= form_with url:relationships_path do |f| %>
-      <div><%= hidden_field_tag :followed_id, user.id %></div>
-      <%= f.submit "フォローする", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+  <% if logged_in? %>
+    <%= render "components/follow-btn/follow-btn", user: user %>
+  <% end %>
 
-  <div class="unfollow-btn">
-    <%= form_with url:relationship_path(user.id), method: :delete do |f| %>
-      <%= f.submit "フォローを解除する", class: "btn" %>
-    <% end %>
-  </div>
-
-  <div class="row user-show--introduction">
-    <p><%= user.introduction %></p>
-  </div>
-
-  <div class="row user-show--family">
+  <div class="row u-show--family">
     <% user.ferrets.each do |ferret| %>
       <%= link_to ferret_path(ferret) do %>
-        <%= image_tag "/images/#{ferret.image}", size:"120x120", class:"image-icon" %>
+        <%=
+        render partial: "components/img-icon/img-icon",
+               locals: {path: ferret.image, size: "100x100"}
+        %>
         <p><%= display_name(ferret) %></p>
       <% end %>
     <% end %>
-  </div>
-
-  <div class="row user-show--post">
-    <p>TO BE CREATED</p>
   </div>
 </div>

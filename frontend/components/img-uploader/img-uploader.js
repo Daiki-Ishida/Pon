@@ -23,4 +23,6 @@ const imagePreview = (event)=>{
 }
 
 const attachedImage = document.getElementById("attachedImage");
-attachedImage.onchange = imagePreview;
+if(attachedImage != null){
+  attachedImage.addEventListener('change', imagePreview);
+}

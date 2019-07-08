@@ -21,4 +21,9 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
   validates :postal_code, presence: true, length: { is: 7 }
   validates :postal_address, presence: true
+
+  # 対象のユーザーをフォローしていればtrueを返す。
+  def follows?(other_user)
+    followings.include?(other_user)
+  end
 end
