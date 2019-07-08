@@ -1,4 +1,4 @@
-<div class="u-show container">
+<div class="u-show">
   <div class="u-show--top">
     <%= render "components/show/show", object: user %>
   </div>
@@ -7,15 +7,21 @@
     <%= render "components/follow-btn/follow-btn", user: user %>
   <% end %>
 
-  <div class="row u-show--family">
-    <% user.ferrets.each do |ferret| %>
-      <%= link_to ferret_path(ferret) do %>
-        <%=
-        render partial: "components/img-icon/img-icon",
-               locals: {path: ferret.image, size: "100x100"}
-        %>
-        <p><%= display_name(ferret) %></p>
+  <div class="u-show--family">
+    <h5>家族</h5>
+    <div class="u-show--family-members">
+      <% user.ferrets.each do |ferret| %>
+        <div class="u-show--family-icon">
+          <%= link_to ferret_path(ferret) do %>
+            <%=
+            render partial: "components/img-icon/img-icon",
+                   locals: {path: ferret.image, size: "100x100"}
+            %>
+            <p><%= display_name(ferret) %></p>
+          <% end %>
+        </div>
       <% end %>
-    <% end %>
+
+    </div>
   </div>
 </div>

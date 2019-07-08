@@ -1,1 +1,7 @@
-<%= render "components/user-show/user-show", user: @user %>
+<%= render "components/page/page" do %>
+  <%= render partial: "components/user-show/user-show",
+             locals: {
+               user: @user,
+             }
+  %>
+<% end %>

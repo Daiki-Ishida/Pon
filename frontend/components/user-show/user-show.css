@@ -1,7 +1,15 @@
-.u-show--introduction, .u-show--family{
+.u-show > div {
   border-bottom: solid 1px rgba(51,51,51,.24);
+  padding: 0 15px;
 }
 
-.u-show--icons{
+
+.u-show--family-members{
   display:flex;
+}
+
+.u-show--family-icon{
+  width: 20%;
+  text-align: center;
+  overflow: scroll;
 }

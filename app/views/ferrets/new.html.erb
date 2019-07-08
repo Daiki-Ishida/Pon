@@ -1,3 +1,7 @@
-<div class="container">
-  <%= render "components/ferret-form/ferret-form", ferret: @ferret %>
-</div>
+<%= render "components/page/page" do %>
+  <%= render partial: "components/ferret-form/ferret-form",
+             locals: {
+               ferret: @ferret,
+             }
+  %>
+<% end %>

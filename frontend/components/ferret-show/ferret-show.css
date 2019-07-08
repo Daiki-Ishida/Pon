@@ -1,26 +1,34 @@
-.ferret-show--icons{
-  display:flex;
+.f-show > div {
+  border-bottom: solid 1px rgba(51,51,51,.24);
+  padding: 0 15px;
 }
 
-.ferret-show--parent{
+.f-show--character h5{
+  margin-right: 15px;
+}
+
+.f-show--family{
+  display: flex;
+}
+
+.f-show--owner-icon,
+.f-show--sibling-icon{
+  text-align: center;
+}
+
+.f-show--owner{
   width: 20%;
-  padding-left: 30px;
-}
-
-.parent a img{
-  margin:0 auto;
 }
 
 .f-show--siblings{
-  padding: 0 30px;
   width: 80%;
 }
 
 .f-show--sibling{
-  width: 20%;
   display: flex;
+  overflow: scroll;
 }
 
-.ferret-show--sibling a{
-  margin-right: 20px;
+.f-show--sibling-icon{
+  width: 20%;
 }

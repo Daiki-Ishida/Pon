@@ -3,32 +3,43 @@
     <%= render "components/show/show", object: ferret %>
   </div>
 
-  <div class="row f-show--character">
-    <p>性格：<%= ferret.character %></p>
+  <div class="f-show--character">
+      <h5>性格</h5>
+      <p><%= ferret.character %></p>
   </div>
 
-  <div class="row f-show--family">
-    <div class="f-show--parent">
-        <h5>親</h5>
+  <div class="f-show--family">
+    <div class="f-show--owner">
+      <h5>親</h5>
+      <div class="f-show--owner-icon">
         <%= link_to user_path(ferret.user_id) do %>
           <%=
           render partial: "components/img-icon/img-icon",
-                 locals: {path: ferret.user.image, size: "100x100"}
+                 locals: {
+                   path: ferret.user.image,
+                   size: "100x100"
+                 }
           %>
           <p><%= display_name(ferret.user) %></p>
         <% end %>
+      </div>
     </div>
     <div class="f-show--siblings">
       <h5>兄弟・姉妹</h5>
       <div class="f-show--sibling">
         <% siblings.each do |s| %>
+        <div class="f-show--sibling-icon">
           <%= link_to ferret_path(s) do %>
             <%=
             render partial: "components/img-icon/img-icon",
-                   locals: {path: s.image, size: "100x100"}
+                   locals: {
+                     path: s.image,
+                     size: "100x100"
+                   }
             %>
             <p><%= display_name(s) %></p>
           <% end %>
+        </div>
         <% end %>
       </div>
     </div>
