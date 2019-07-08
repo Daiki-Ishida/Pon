@@ -9,22 +9,6 @@
   box-shadow: 0px 0px 0px 10px #fffde8;
 }
 
-/* フォロー用のボタン。あとで別コンポーネントに分けるかも。 */
-/**************************************************/
-.follow-btn{
-  display: inline-block;
-  color: #26a69b;
-  padding: 5px 7px;
-  border-radius: 3px;
-  transition: .4s;
-}
-
-.follow-btn:hover{
-  background-color:#26a69b;
-  color: whitesmoke;
-}
-/**************************************************/
-
 .card--follow{
   margin-top: 5px;
 }

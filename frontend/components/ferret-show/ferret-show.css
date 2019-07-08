@@ -11,6 +11,10 @@
   display: flex;
 }
 
+.f-show--family-name{
+  font-size: 10px;
+}
+
 .f-show--owner-icon,
 .f-show--sibling-icon{
   text-align: center;

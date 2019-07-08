@@ -3,6 +3,9 @@
   padding: 0 15px;
 }
 
+.u-show--family-name{
+  font-size: 10px;
+}
 
 .u-show--family-members{
   display:flex;

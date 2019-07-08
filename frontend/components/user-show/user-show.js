@@ -1,2 +1,2 @@
 import "./user-show.css";
-import "../show/show";
+import "../show-top/show-top";
