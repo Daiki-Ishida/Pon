@@ -1,16 +1,8 @@
-<% unless current_user?(user) %>
-  <% if current_user.follows?(user) %>
-    <div class="unfollow-btn">
-      <%= form_with url:relationship_path(user.id), method: :delete do |f| %>
-        <%= f.submit "フォローを解除する" %>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="follow-btn">
-      <%= form_with url:relationships_path do |f| %>
-        <%= hidden_field_tag :followed_id, user.id %>
-        <%= f.submit "フォローする" %>
-      <% end %>
-    </div>
-  <% end %>
-<% end %>
+<div class="follow-btn">
+  <div id="followingId" style="display:none;">
+    <%= user.id %>
+  </div>
+  <button type="button" name="button" id="followBtn">
+    フォローする
+  </button>
+</div>

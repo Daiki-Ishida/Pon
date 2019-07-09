@@ -1,14 +1,9 @@
-import "./follow-btn.css";
+import "./unfollow-btn.css";
 
-const follow = (e)=>{
+const unfollow = (e)=>{
   e.preventDefault();
-  const url = 'http://localhost:3000/relationships';
-  const followingId = document.getElementById('followingId').innerHTML;
-  const sendData = {
-    follow: {
-      followed_id: followingId
-    }
-  };
+  const unfollowingId = document.getElementById('unfollowingId').innerHTML;
+  const url = `http://localhost:3000/relationships/${unfollowingId}`;
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -21,15 +16,12 @@ const follow = (e)=>{
     }
   };
   const csfr = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-  xhr.open('POST', url);
+  xhr.open('DELETE', url);
   xhr.setRequestHeader('X-CSRF-Token', csfr);
-  xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-  xhr.send(JSON.stringify(sendData));
+  xhr.send(null);
 }
 
-
-
-const followBtn = document.getElementById('follow');
-if(followBtn != null){
-  followBtn.addEventListener('click', follow);
+const unfollowBtn = document.getElementById('follow');
+if(unfollowBtn != null){
+  unfollowBtn.addEventListener('click', unfollow);
 }

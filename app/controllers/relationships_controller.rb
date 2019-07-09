@@ -2,18 +2,20 @@ class RelationshipsController < ApplicationController
   def create
     follow = Relationship.new(follow_params)
     follow.save!
-    redirect_to user_path(follow.followed_id)
+    user = User.find(follow.followed_id)
+    render partial: "components/unfollow-btn/unfollow-btn", locals: {user: user}
   end
 
   def destroy
     follow = current_user.active_relationships.find_by(followed_id: params[:id])
-    follow.destroy
-    redirect_to users_path
+    follow.destroy!
+    user = User.find(params[:id])
+    render partial: "components/follow-btn/follow-btn", locals: {user: user}
   end
 
   private
 
     def follow_params
-        params.permit(:followed_id).merge(follower_id: current_user.id)
+        params.require(:follow).permit(:followed_id).merge(follower_id: current_user.id)
     end
 end
