@@ -1,1 +1,9 @@
-<%= render partial: "components/post-detail/post-detail", locals: {post: @post, comments: @comments, comment: @comment} %>
+<%= render "components/page/page" do %>
+  <%= render partial: "components/post/post",
+             locals: {
+               post: @post,
+               comments: @comments,
+               comment: @comment
+             }
+  %>
+<% end %>

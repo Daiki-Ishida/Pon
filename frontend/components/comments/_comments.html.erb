@@ -1,12 +1,11 @@
-<% comments.each do |comment| %>
-  <div class="row">
-    <div class="col-md-8">
-      <%= comment.content %>
-      <%= comment.user.name %>
-      <%= image_tag "/images/#{comment.user.image}", size:"120x120" , class:"image-icon" %>
-      <%= comment.updated_at %>
-      <%= link_to "edit", edit_comment_path(comment) %>
-      <%= link_to "delete", comment_path(comment), method: :delete %>
-    </div>
+<div class="comments" id="commentList">
+  <div class="comments--title">
+    <span>
+      <i class="far fa-comments"></i>
+    </span>
+    Comments
   </div>
-<% end %>
+  <% comments.each do |comment| %>
+    <%= render "components/comment/comment", comment: comment %>
+  <% end %>
+</div>

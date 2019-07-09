@@ -1,2 +1,2 @@
 import "./posts.css";
-import "../post/post"
+import "../post-overview/post-overview"

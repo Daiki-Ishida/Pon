@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     comment.user_id = 1
     comment.post_id = 1
     comment.save
+    render partial: "components/comment/comment", locals: {comment: comment}
   end
 
   def edit

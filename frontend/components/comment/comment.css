@@ -1,0 +1,35 @@
+.commnet--head{
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment--info{
+  flex-grow: 10;
+}
+
+.comment--config{
+  line-height: 50px;
+}
+
+
+.comment--content{
+  background: #e2e2e2;
+  padding: 2px 10px;
+  margin: 10px 0 6px 0;
+  border-radius: 10px;
+  position: relative;
+}
+.comment--content::before{
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 50px;
+  border-style: solid;
+  border-color: transparent transparent #e2e2e2 transparent;
+  border-width: 0 20px 20px 0;
+}
+.comment--content p{
+  font-size: 14px;
+  margin: 1em 0;
+  line-height: 1.5em;
+}

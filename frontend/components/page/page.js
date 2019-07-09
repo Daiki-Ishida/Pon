@@ -9,3 +9,4 @@ import "components/posts/posts"
 
 import "components/ferret/ferret";
 import "components/user/user";
+import "components/post/post";
