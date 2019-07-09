@@ -1,13 +1,7 @@
 <div class="comment">
     <div class="commnet--head">
       <div class="commnet--user-icon">
-        <%=
-        render partial: "components/img-icon/img-icon",
-               locals: {
-                 path: comment.user.image,
-                 size: "50x50"
-               }
-        %>
+        <%= image_tag "/images/#{comment.user.image}", size:"50x50", class:"image-icon" %>
       </div>
       <div class="comment--info">
         <div class="commnet--user-name">
@@ -27,6 +21,14 @@
       <% end %>
     </div>
     <div class="comment--content">
-      <p><%= comment.content %></p>
+      <p>
+        <%= comment.content %>
+        <!-- 編集されたコメントはその事実を明示する -->
+        <% unless comment.created_at == comment.updated_at %>
+          <small class="text-muted">
+            <%= "編集済み" %>
+          </small>
+        <% end %>
+      </p>
     </div>
 </div>

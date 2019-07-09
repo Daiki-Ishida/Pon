@@ -11,13 +11,7 @@
           <%= link_to user_path(post.user) do %>
           <div class="post--user-info">
             <div class="post--user-icon">
-              <%=
-                render partial: "components/img-icon/img-icon",
-                       locals: {
-                         path: post.user.image,
-                         size: "50x50"
-                       }
-              %>
+              <%= image_tag "/images/#{post.user.image}", size:"50x50", class:"image-icon" %>
             </div>
             <div class="post--user-name">
               <%= display_name(post.user) %>

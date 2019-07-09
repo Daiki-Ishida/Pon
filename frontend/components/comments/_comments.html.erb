@@ -3,9 +3,9 @@
     <span>
       <i class="far fa-comments"></i>
     </span>
-    Comments
+    コメント
   </div>
-  <% comments.each do |comment| %>
-    <%= render "components/comment/comment", comment: comment %>
-  <% end %>
+  <div class="comments--comments">
+    <%= render partial: "components/comment/comment", collection: comments %>
+  </div>
 </div>

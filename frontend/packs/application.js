@@ -5,8 +5,6 @@ Rails.start()
 
 // ５色のボーダー
 import "components/colorful-border/colorful-border";
-// 丸い画像アイコン
-import "components/img-icon/img-icon";
 import "components/edit-btn/edit-btn";
 import "components/delete-btn/delete-btn";
 import "components/follow-btn/follow-btn";

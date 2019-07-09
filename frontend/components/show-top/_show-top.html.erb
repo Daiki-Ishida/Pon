@@ -1,10 +1,7 @@
 <div class="show">
   <div class="row">
     <div class="show--image">
-      <%=
-      render partial: "components/img-icon/img-icon",
-             locals: {path: object.image, size: "200x200"}
-      %>
+      <%= image_tag "/images/#{object.image}", size:"200x200", class:"image-icon" %>
     </div>
   </div>
 

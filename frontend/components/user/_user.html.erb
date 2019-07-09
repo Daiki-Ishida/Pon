@@ -20,13 +20,7 @@
         <% user.ferrets.each do |ferret| %>
           <div class="u-show--family-icon">
             <%= link_to ferret_path(ferret) do %>
-              <%=
-              render partial: "components/img-icon/img-icon",
-                     locals: {
-                       path: ferret.image,
-                       size: "80x80"
-                     }
-              %>
+              <%= image_tag "/images/#{ferret.image}", size:"80x80", class:"image-icon" %>
               <p class="u-show--family-name">
                 <%= display_name(ferret) %>
               </p>
