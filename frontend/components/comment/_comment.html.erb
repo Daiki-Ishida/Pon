@@ -22,7 +22,7 @@
       <% if current_user?(comment.user) %>
         <div class="comment--config">
           <%= render "components/edit-btn/edit-btn", path: edit_comment_path(comment)  %>
-          <%= link_to "削除", comment_path(comment), method: :delete %>
+          <%= render "components/delete-btn/delete-btn", path: comment_path(comment)  %>
         </div>
       <% end %>
     </div>

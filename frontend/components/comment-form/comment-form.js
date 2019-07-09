@@ -8,9 +8,11 @@ if(sendBtn != null){
     e.preventDefault();
     const commentUrl = 'http://localhost:3000/comments';
     const commentContent = document.getElementById('commentContent').value;
+    const postId = document.getElementById('postId').value;
     const sendData = {
       comment: {
-        content: commentContent
+        content: commentContent,
+        post_id: postId
       }
     };
     const xhr = new XMLHttpRequest();

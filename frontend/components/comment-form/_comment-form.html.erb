@@ -1,4 +1,5 @@
 <%= form_with url: comments_path, model: post.comments, id:"commentForm" do |form| %>
   <%= form.text_field :content, placeholder: "コメント", id:"commentContent" %>
+  <%= form.hidden_field :post_id, value: post.id, id:"postId" %>
   <%= form.submit "コメントする", id:"commentBtn" %>
 <% end %>
