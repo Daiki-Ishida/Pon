@@ -2,8 +2,10 @@ import "./unfollow-btn.css";
 
 const unfollow = (e)=>{
   e.preventDefault();
-  const unfollowingId = document.getElementById('unfollowingId').innerHTML;
   const url = `http://localhost:3000/relationships/${unfollowingId}`;
+  const btn = document.getElementById('unfollowBtn');
+  btn.disabled = true;
+  const unfollowingId = btn.value;
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -13,6 +15,7 @@ const unfollow = (e)=>{
       newBtn.innerHTML = response;
     } else if (this.readyState == 4) {
       alert('ERROR!');
+      btn.disabled = false;
     }
   };
   const csfr = document.querySelector('meta[name="csrf-token"]').getAttribute('content');

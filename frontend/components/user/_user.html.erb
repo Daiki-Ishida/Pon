@@ -4,17 +4,11 @@
 <% end %>
 
 <!-- フォローボタン -->
-<% if logged_in? %>
-  <% unless current_user?(user) %>
-  <div id="follow">
-    <% if current_user.follows?(user) %>
-      <%= render "components/unfollow-btn/unfollow-btn", user: user %>
-    <% else %>
-      <%= render "components/follow-btn/follow-btn", user: user %>
-    <% end %>
-  </div>
+<div class="u-show--follow">
+  <% if logged_in? %>
+    <%= render "components/follow/follow", user: user %>
   <% end %>
-<% end %>
+</div>
 
 
 <div class="u-show col-md-8 offset-md-2">

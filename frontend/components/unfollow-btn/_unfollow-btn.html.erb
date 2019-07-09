@@ -1,8 +1,6 @@
 <div class="unfollow-btn">
-  <div id="unfollowingId" style="display:none;">
-    <%= user.id %>
-  </div>
-  <button type="button" name="button" id="unfollowBtn">
-    フォローを解除する
+  <button type="button" name="button" id="unfollowBtn" value="<%= user.id %>">
+    <span><i class="fas fa-user-minus"></i></span>
+    フォローを解除
   </button>
 </div>

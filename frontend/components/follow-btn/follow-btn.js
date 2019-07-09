@@ -3,7 +3,9 @@ import "./follow-btn.css";
 const follow = (e)=>{
   e.preventDefault();
   const url = 'http://localhost:3000/relationships';
-  const followingId = document.getElementById('followingId').innerHTML;
+  const btn = document.getElementById('followBtn');
+  btn.disabled = true;
+  const followingId = btn.value;
   const sendData = {
     follow: {
       followed_id: followingId
@@ -18,6 +20,7 @@ const follow = (e)=>{
       newBtn.innerHTML = response;
     } else if (this.readyState == 4) {
       alert('ERROR!');
+      btn.disabled = false;
     }
   };
   const csfr = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
