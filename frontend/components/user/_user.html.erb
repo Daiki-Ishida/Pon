@@ -5,9 +5,14 @@
 
 <!-- フォローボタン -->
 <div class="u-show--follow">
-  <% if logged_in? %>
-    <%= render "components/follow/follow", user: user %>
-  <% end %>
+  <div class="u-show--follow-btn">
+    <% if logged_in? %>
+      <%= render "components/follow/follow", user: user %>
+    <% end %>
+  </div>
+  <div class="u-show-follow-stats">
+    フォロー。ふぉろわー。
+  </div>
 </div>
 
 

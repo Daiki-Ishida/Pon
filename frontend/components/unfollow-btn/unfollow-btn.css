@@ -14,6 +14,7 @@
 }
 
 #unfollowBtn:disabled{
+  background: #ffffff;
   color: #707070;
   border: solid 2px #707070;
 }

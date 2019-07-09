@@ -2,10 +2,10 @@ import "./follow-btn.css";
 
 const follow = (e)=>{
   e.preventDefault();
-  const url = 'http://localhost:3000/relationships';
   const btn = document.getElementById('followBtn');
   btn.disabled = true;
   const followingId = btn.value;
+  const url = 'http://localhost:3000/relationships';
   const sendData = {
     follow: {
       followed_id: followingId

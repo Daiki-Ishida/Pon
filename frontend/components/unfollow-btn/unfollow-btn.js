@@ -2,10 +2,10 @@ import "./unfollow-btn.css";
 
 const unfollow = (e)=>{
   e.preventDefault();
-  const url = `http://localhost:3000/relationships/${unfollowingId}`;
   const btn = document.getElementById('unfollowBtn');
   btn.disabled = true;
   const unfollowingId = btn.value;
+  const url = `http://localhost:3000/relationships/${unfollowingId}`;
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
