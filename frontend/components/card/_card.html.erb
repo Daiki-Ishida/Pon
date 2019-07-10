@@ -1,13 +1,37 @@
-<div class="card card--">
-  <div class="card--image card-col-1">
-    <%= image_tag "/images/#{object.image}",size: "200x200", align: "center", class:"card-img-top" %>
+<div class="card--"> <!-- Bootstrap回避 -->
+  <div class="card--image">
+    <%= image_tag "/images/#{object.image}", class:"card-img-top" %>
   </div>
-  <div class="card-body">
-    <h5 class="card-title"><%= display_name(object) %></h5>
-    <p class="card--age card-text"><%= display_age(object) %></p>
-    <p class="card--address card-text"><%= display_address(object) %></p>
-    <div class="card--follow">
-      <a href="#" class="follow-btn">フォロー</a>
+  <div class="card--body">
+    <h5 class="card--title"><%= display_name(object) %></h5>
+    <div class="card--info">
+      <p>
+        <%= display_address(object) %>
+        <span>|</span>
+        <%= display_gender(object) %>
+        <span>|</span>
+        <%= display_age(object) %>
+      </p>
     </div>
+    <div class="card--intro">
+      <p><%= object.introduction %></p>
+    </div>
+  </div>
+  <div class="card--actions">
+    <% if object.model_name.name == "User" %>
+      <div class="card--object">
+        <%= link_to "詳細", user_path(object) %>
+      </div>
+      <div class="card--follow">
+        <%= render "components/follow/follow", user: object %>
+      </div>
+    <% elsif object.model_name.name == "Ferret" %>
+      <div class="card--object">
+        <%= link_to "詳細", ferret_path(object) %>
+      </div>
+      <div class="card--owner">
+        <%= link_to "親の情報を見る", user_path(object.user) %>
+      </div>
+    <% end %>
   </div>
 </div>

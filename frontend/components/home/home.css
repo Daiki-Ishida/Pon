@@ -1,20 +1,5 @@
 .home{
-  width: 100%;
-  height: 100vh;
-  animation: cloud 50s linear infinite;
-  background: url(../../images/cloud.png), linear-gradient(#bbe4fa, hsl(171, 40%, 91%));
-  background-attachment:scroll;
-  background-size: cover;
-  background-repeat: repeat-x;
-}
 
-@keyframes cloud {
-  from {
-    background-position-x: 0;
-  }
-  to {
-    background-position-x: 100%;
-  }
 }
 
 .home--top-wrapper{
@@ -44,12 +29,11 @@
   padding:5px 10px;
   border-radius: 20px;
   font-family: 'Avenir','Arial';
-  transition: .4s;
+  transition: .2s;
 }
 
 .home--link-btn:hover {
-  background-color:#FA5C65;
-  color: #FFF;
+  color: #FA5C65;
   text-decoration: none;
 }
 
@@ -63,20 +47,13 @@
 /* ユーザー・フェレットのカードを収納するメイン部分 */
 
 .home--main-content{
-  background-image: url(../../images/corkboard.jpg);
-  box-shadow: inset 0 0 0 3px rgba(85,46,12,0.7), 0px 5px 5px rgba(0, 0, 0, 0.5);
-  border-radius:10px;
-	border:7px solid rgba(225,225,225,0);
-  display: flex;
-  justify-content: space-around;
   padding-top: 15px;
   padding-bottom: 15px;
   margin-top: 20px;
 }
 
 .home--cards{
-  width:90%;
+  width:100%;
   display: flex;
   flex-flow: row wrap;
-  justify-content:space-between;
 }
