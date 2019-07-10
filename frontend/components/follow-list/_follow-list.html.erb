@@ -1,0 +1,17 @@
+<div class="follow-list">
+  <% users.each do |user| %>
+    <div class="follow-list--user">
+      <div class="follow-list--user-image">
+        <%= image_tag "/images/#{user.image}", size:"80x80", class:"image-icon" %>
+      </div>
+      <div class="follow-list--user-name">
+        <%= display_name(user) %>
+      </div>
+      <div class="follow-list--follow-btn">
+        <% unless current_user?(user) %>
+          <%= render "components/follow/follow", user: user %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

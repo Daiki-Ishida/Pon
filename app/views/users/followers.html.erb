@@ -1,0 +1,7 @@
+<%= render "components/page/page" do %>
+  <%= render partial: "components/follow-list/follow-list",
+             locals: {
+               users: @followers,
+             }
+  %>
+<% end %>

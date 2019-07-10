@@ -1,0 +1,14 @@
+.follow-list--user{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  line-height: 80px;
+}
+
+.follow-list--user-image{
+  margin-right: 20px;
+}
+
+.follow-list--user-name{
+  flex-grow: 10;
+}

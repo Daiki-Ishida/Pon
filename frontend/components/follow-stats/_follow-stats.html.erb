@@ -1,0 +1,11 @@
+<!-- userを受け取っている場合はuser, 受け取っていない場合はcurrent_userが入る。 -->
+<% user ||= current_user %>
+<div class="follow-stats">
+  <%= link_to followings_user_path(user) do %>
+    <%= user.followings.count %>フォロー
+  <% end %>
+  <span>|</span>
+  <%= link_to followers_user_path(user) do %>
+    <%= user.followers.count %>フォロワー
+  <% end %>
+</div>

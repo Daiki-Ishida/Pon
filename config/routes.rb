@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root to: 'pages#top'
 
-  resources :users
+  resources :users do
+    member do
+      get :followings, :followers
+    end
+  end
   resources :ferrets
   resources :posts do
     resource :likes, only: [:create, :destroy]
