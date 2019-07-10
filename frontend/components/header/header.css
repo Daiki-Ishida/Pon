@@ -12,10 +12,13 @@ header{
 
 .header-left{
   width: 30%;
+  display: flex;
 }
 
-.logo{
+.header--title{
   line-height: 60px;
+  font-family: Comic Sans MS;
+  font-size: 30px;
 }
 
 .header-right{
@@ -102,12 +105,17 @@ i.material-icons:hover {
 		background-color: #af88b9;
 }
 
-.logout {
+.header--login, .header--logout {
 		color: #d59acb;
 }
 
-.logout:hover {
+.header--login:hover, .header--logout:hover {
 		background-color: #d59acb;
 }
+
+.header--signup:hover{
+    background-color: #007bff;
+}
+
 
 /************ 　　　　　　　　　 ************/

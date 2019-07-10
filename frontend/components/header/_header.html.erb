@@ -1,14 +1,13 @@
 <header>
   <div class="header container">
     <div class="header-left">
-      <h3 class="logo">PON</h3>
+      <%= link_to root_path do %>
+        <div class="header--logo">
+          <%= image_tag "/images/logo.png", size:"180x50" %>
+        </div>
+      <% end %>
     </div>
     <div class="header-right">
-      <% if current_user.nil? %>
-      <!-- link_to "LINE Login", user_line_omniauth_authorize_path -->
-      <%= link_to "ログイン", login_path, class:"btn btn-secondary" %>
-      <button class="btn btn-primary">新規登録</button>
-      <% else %>
       <div class="header--toolbar">
         <div class="header--tool">
           <i class="material-icons pets">pets</i>
@@ -29,17 +28,33 @@
           <i class="material-icons help">help_outline</i>
         </div>
         <div class="header--tool">
-          <i class="material-icons settings">settings</i>
+            <i class="material-icons settings">settings</i>
         </div>
-        <div class="header--tool">
-          <i class="material-icons logout">exit_to_app</i>
-        </div>
-        <div class="header--tool header--user-icon">
-          <%= image_tag "/images/#{current_user.image}", size:"50x50", class:"image-icon" %>
-        </div>
-
+        <% if current_user.nil? %>
+          <div class="header--tool">
+            <!-- link_to "LINE Login", user_line_omniauth_authorize_path -->
+            <%= link_to login_path do %>
+              <i class="material-icons header--login">account_circle</i>
+            <% end %>
+          </div>
+          <div class="header--tool">
+            <%= link_to new_user_path do %>
+              <i class="material-icons header--signup">person_add</i>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="header--tool">
+            <%= link_to logout_path, method: :delete do %>
+              <i class="material-icons header--logout">exit_to_app</i>
+            <% end %>
+          </div>
+          <div class="header--tool header--user-icon">
+            <%= link_to user_path(current_user) do %>
+              <%= image_tag "/images/#{current_user.image}", size:"50x50", class:"image-icon" %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
   </div>
   <%= render "components/colorful-border/colorful-border" %>
