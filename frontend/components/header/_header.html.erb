@@ -9,7 +9,36 @@
       <%= link_to "ログイン", login_path, class:"btn btn-secondary" %>
       <button class="btn btn-primary">新規登録</button>
       <% else %>
-        <p><%= current_user.name %>でログイン中</p>
+      <div class="header--toolbar">
+        <div class="header--tool">
+          <i class="material-icons pets">pets</i>
+        </div>
+        <div class="header--tool">
+          <i class="material-icons search">search</i>
+        </div>
+        <div class="header--tool">
+          <i class="material-icons message">mail_outline</i>
+        </div>
+        <div class="header--tool">
+          <i class="material-icons timeline">schedule</i>
+        </div>
+        <div class="header--tool">
+          <i class="material-icons nawabari">place</i>
+        </div>
+        <div class="header--tool">
+          <i class="material-icons help">help_outline</i>
+        </div>
+        <div class="header--tool">
+          <i class="material-icons settings">settings</i>
+        </div>
+        <div class="header--tool">
+          <i class="material-icons logout">exit_to_app</i>
+        </div>
+        <div class="header--tool header--user-icon">
+          <%= image_tag "/images/#{current_user.image}", size:"50x50", class:"image-icon" %>
+        </div>
+
+      </div>
       <% end %>
     </div>
   </div>

@@ -14,10 +14,100 @@ header{
   width: 30%;
 }
 
-.header-right{
-  width: 20%;
-}
-
 .logo{
   line-height: 60px;
 }
+
+.header-right{
+  width: 70%;
+}
+
+.header--toolbar{
+  display: flex;
+  justify-content: space-between;
+}
+
+/************ toolbarのアイコン ************/
+i.material-icons {
+		font-size: 36px;
+    vertical-align: middle;
+		position: relative;
+		padding: 6px;
+    border-radius: 50%;
+		transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
+}
+
+i.material-icons:hover {
+    color: #FFF;
+		transform: rotate(360deg);
+		cursor: pointer;
+    border-radius: 50%;
+    border: solid 2px;
+}
+
+.pets {
+		color: #cd8484;
+}
+
+.pets:hover {
+		background-color: #cd8484;
+}
+
+.search{
+		color: #ec9f83;
+}
+
+.search:hover {
+		background-color: #ec9f83;
+}
+
+.message {
+		color: #cdb274;
+}
+
+.message:hover {
+		background-color: #cdb274;
+}
+
+
+.timeline {
+		color: #88b999;
+}
+
+.timeline:hover {
+		background-color: #88b999;
+}
+
+.nawabari {
+		color: #88b2b9;
+}
+
+.nawabari:hover {
+		background-color: #88b2b9;
+}
+
+.help {
+		color: #8897b9;
+}
+
+.help:hover {
+		background-color: #8897b9;
+}
+
+.settings {
+		color: #af88b9;
+}
+
+.settings:hover {
+		background-color: #af88b9;
+}
+
+.logout {
+		color: #d59acb;
+}
+
+.logout:hover {
+		background-color: #d59acb;
+}
+
+/************ 　　　　　　　　　 ************/
