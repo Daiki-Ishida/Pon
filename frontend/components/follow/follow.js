@@ -5,10 +5,10 @@ import "../unfollow-btn/unfollow-btn";
 
 function followSwitch(e){
   e.preventDefault();
-  e.currentTarget.disabled = true;
-  const id = e.target.value;
-  const name = e.target.name;
-  const oldBtn = e.currentTarget;
+  const btn = e.target.closest('button');
+  btn.disabled = true;
+  const id = btn.value;
+  const name = btn.name;
   const elm = document.getElementById(`follow_${id}`)
   let url = '';
   let sendData = '';

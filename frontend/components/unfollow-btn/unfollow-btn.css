@@ -1,4 +1,4 @@
-#unfollowBtn {
+.unfollow-btn--btn {
   display: inline-block;
   padding: 0.3em 1em;
   text-decoration: none;
@@ -8,12 +8,12 @@
   transition: .4s;
 }
 
-#unfollowBtn:hover {
+.unfollow-btn--btn:hover {
   background: #e96b6b;
   color: #ffffff;
 }
 
-#unfollowBtn:disabled{
+.unfollow-btn--btn:disabled{
   background: #ffffff;
   color: #707070;
   border: solid 2px #707070;

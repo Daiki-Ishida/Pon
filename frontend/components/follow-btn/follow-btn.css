@@ -1,4 +1,4 @@
-#followBtn {
+.follow-btn--btn {
   display: inline-block;
   padding: 0.3em 1em;
   text-decoration: none;
@@ -8,12 +8,12 @@
   transition: .4s;
 }
 
-#followBtn:hover {
+.follow-btn--btn:hover {
   background: #83e2c5;
   color: #ffffff;
 }
 
-#followBtn:disabled{
+.follow-btn--btn:disabled{
   background: #ffffff;
   color: #707070;
   border: solid 2px #707070;
