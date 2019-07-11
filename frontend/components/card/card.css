@@ -74,14 +74,14 @@
 
 
 /* ここだけフォローボタンのデザインを上書きする。 */
-.card--action #follow, .card--action #unfollow{
+.card--action .follow{
   width: auto;
   height: auto;
   white-space: nowrap;
 }
 
-.card--action #follow .follow-btn #followBtn,
-.card--action #follow .unfollow-btn #unfollowBtn{
+.card--action .follow .follow-btn .follow-btn--btn,
+.card--action .follow .unfollow-btn .unfollow-btn--btn{
   padding: 0;
   background: none;
   color: #0bd;
@@ -90,19 +90,19 @@
   transition: none;
 }
 
-.card--action #follow .follow-btn #followBtn:hover,
-.card--action #follow .unfollow-btn #unfollowBtn:hover,{
+.card--action .follow .follow-btn .follow-btn--btn:hover,
+.card--action .follow .unfollow-btn .unfollow-btn--btn:hover,{
   background: none;
   color: #0090aa;
 }
 
-.card--action #follow .follow-btn .fa-user-plus,
-.card--action #follow .unfollow-btn .fa-user-minus{
+.card--action .follow .follow-btn .fa-user-plus,
+.card--action .follow .unfollow-btn .fa-user-minus{
   display: none;
 }
 
-.card--action #follow .follow-btn #followBtn:disabled,
-.card--action #follow .unfollow-btn #unfollowBtn:disabled{
+.card--action .follow .follow-btn .follow-btn--btn:disabled,
+.card--action .follow .unfollow-btn .unfollow-btn--btn:disabled{
   background: none;
   color: #707070;
   border: none;
