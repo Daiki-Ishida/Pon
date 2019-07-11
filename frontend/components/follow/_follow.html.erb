@@ -1,5 +1,5 @@
 <% unless current_user?(user) %>
-  <div id="follow">
+  <div class="follow" id="follow_<%= user.id %>">
     <% if current_user.follows?(user) %>
       <%= render "components/unfollow-btn/unfollow-btn", user: user %>
     <% else %>

@@ -53,3 +53,57 @@
   position: absolute;
   bottom: 0;
 }
+
+.card--actions > div{
+  width: 30%;
+}
+
+.card--action{
+  border-radius: 5%;
+  padding: 3px;
+}
+
+.card--action a{
+  text-decoration: none;
+  color: #0bd;
+}
+
+.card--action a:hover{
+  color: #0090aa;
+}
+
+
+/* ここだけフォローボタンのデザインを上書きする。 */
+.card--action #follow, .card--action #unfollow{
+  width: auto;
+  height: auto;
+  white-space: nowrap;
+}
+
+.card--action #follow .follow-btn #followBtn,
+.card--action #follow .unfollow-btn #unfollowBtn{
+  padding: 0;
+  background: none;
+  color: #0bd;
+  border: none;
+  border-radius: none;
+  transition: none;
+}
+
+.card--action #follow .follow-btn #followBtn:hover,
+.card--action #follow .unfollow-btn #unfollowBtn:hover,{
+  background: none;
+  color: #0090aa;
+}
+
+.card--action #follow .follow-btn .fa-user-plus,
+.card--action #follow .unfollow-btn .fa-user-minus{
+  display: none;
+}
+
+.card--action #follow .follow-btn #followBtn:disabled,
+.card--action #follow .unfollow-btn #unfollowBtn:disabled{
+  background: none;
+  color: #707070;
+  border: none;
+}

@@ -19,18 +19,18 @@
   </div>
   <div class="card--actions">
     <% if object.model_name.name == "User" %>
-      <div class="card--object">
+      <div class="card--action">
         <%= link_to "詳細", user_path(object) %>
       </div>
-      <div class="card--follow">
+      <div class="card--action">
         <%= render "components/follow/follow", user: object %>
       </div>
     <% elsif object.model_name.name == "Ferret" %>
-      <div class="card--object">
+      <div class="card--action">
         <%= link_to "詳細", ferret_path(object) %>
       </div>
-      <div class="card--owner">
-        <%= link_to "親の情報を見る", user_path(object.user) %>
+      <div class="card--action">
+        <%= link_to "親の情報", user_path(object.user) %>
       </div>
     <% end %>
   </div>
