@@ -5,6 +5,7 @@
 .message-form--form{
   display: flex;
   align-items: flex-end;
+  justify-content: center;
 }
 
 .message-form--content{
@@ -12,8 +13,29 @@
   height: 30px;
   bottom: 0px;
   line-height: 20px;
+  padding: 3px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #333;
   resize: none;
   outline: none;
   box-sizing: border-box;
-  padding: 5px;
+}
+
+.message-form--btn{
+  height:30px;
+  width: 120px;
+  background-color: #FA5C65;
+  color: #FFF;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #333;
+}
+
+.message-form--btn:hover{
+  background-color: #FFF;
+  color: #FA5C65;
+}
+
+.message-form--btn:disabled{
+  background-color: #ccc;
+  color: #333;
 }
