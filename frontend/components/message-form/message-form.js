@@ -29,4 +29,37 @@ window.onload = function(){
   if(messageFormContent != null){
     messageFormContent.addEventListener('input', resizeForm);
   }
+  // 要リファクタリング
+  const asyncMessage = (event)=>{
+    event.preventDefault();
+    const form = document.getElementById('messageForm');
+    const url = form.action;
+    const content = messageFormContent.value;
+    const sendData = {
+      message: {
+        content: content
+      }
+    };
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log('success!');
+        messageFormContent.value = '';
+        const response = this.response;
+        const messages = document.getElementById('messages');
+        messages.insertAdjacentHTML('beforeend', response);
+      } else if (this.readyState == 4) {
+        alert('ERROR!');
+      }
+    };
+    const csfr = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    xhr.open('POST', url);
+    xhr.setRequestHeader('X-CSRF-Token', csfr);
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xhr.send(JSON.stringify(sendData));
+  }
+
+  if(messageFormBtn != null){
+    messageFormBtn.addEventListener('click', asyncMessage);
+  }
 }

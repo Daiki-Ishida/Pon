@@ -4,8 +4,7 @@ class MessagesController < ApplicationController
     message = room.messages.build(message_param)
     message.sender_id = current_user.id
     if message.save
-      # 非同期にする予定
-      redirect_to room_path(message.room)
+      render partial: "components/message/message", locals: {message: message}
     else
       flash[:warning] = "入力内容に誤りがあります。"
       redirect_to room_path(message.room)
@@ -14,6 +13,6 @@ class MessagesController < ApplicationController
 
   private
     def message_param
-      params.require(:message).permit(:content, :room_id)
+      params.require(:message).permit(:content)
     end
 end

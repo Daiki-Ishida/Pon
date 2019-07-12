@@ -1,5 +1,8 @@
 <div class="message-form">
-  <%= form_with(model: [@room, Message.new], local: true, class:"message-form--form") do |form| %>
+  <%= form_with(model: [@room, Message.new],
+                class:"message-form--form",
+                id:"messageForm"
+                ) do |form| %>
     <%= form.text_area :content,
                         placeholder: "メッセージを入力してください。",
                         class:"message-form--content",
