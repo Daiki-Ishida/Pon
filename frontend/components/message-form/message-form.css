@@ -1,0 +1,19 @@
+.message-form{
+  width: 100%;
+}
+
+.message-form--form{
+  display: flex;
+  align-items: flex-end;
+}
+
+.message-form--content{
+  width: 80%;
+  height: 30px;
+  bottom: 0px;
+  line-height: 20px;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  padding: 5px;
+}
