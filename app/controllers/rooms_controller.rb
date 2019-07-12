@@ -20,10 +20,10 @@ class RoomsController < ApplicationController
 
   private
     def room_param
-      params.require().permit(:guest_id)
+      params.permit(:guest_id)
     end
 
-    # ownerとguestが逆のroomが存在するか確認。
+    # ownerとguestが逆の場合も含めてroomが存在するか確認。
     def room_exist?
       room = Room.find_by(guest_id: current_user.id, owner_id: room_param)
     end

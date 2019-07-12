@@ -12,9 +12,7 @@
 
   <div class="home--main-content container">
     <div class="home--cards">
-      <% objects.each do |object| %>
-        <%= render "components/card/card", object: object %>
-      <% end %>
+      <%= render partial: "components/card/card", collection: objects %>
     </div>
   </div>
 </div>

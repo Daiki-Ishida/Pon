@@ -1,0 +1,10 @@
+<div class="room">
+  <div class="room--messages">
+    <%= render partial: "components/message/message",
+               collection: room.messages
+    %>
+  </div>
+  <div class="room--message-form">
+    <%= render "components/message-form/message-form", room: room %>
+  </div>
+</div>

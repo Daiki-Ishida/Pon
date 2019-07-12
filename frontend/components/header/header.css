@@ -48,60 +48,60 @@ i.material-icons:hover {
     border: solid 2px;
 }
 
-.pets {
+.header--pets {
 		color: #cd8484;
 }
 
-.pets:hover {
+.header--pets:hover {
 		background-color: #cd8484;
 }
 
-.search{
+.header--search{
 		color: #ec9f83;
 }
 
-.search:hover {
+.header--search:hover {
 		background-color: #ec9f83;
 }
 
-.message {
+.header--message {
 		color: #cdb274;
 }
 
-.message:hover {
+.header--message:hover {
 		background-color: #cdb274;
 }
 
 
-.timeline {
+.header--timeline {
 		color: #88b999;
 }
 
-.timeline:hover {
+.header--timeline:hover {
 		background-color: #88b999;
 }
 
-.nawabari {
+.header--nawabari {
 		color: #88b2b9;
 }
 
-.nawabari:hover {
+.header--nawabari:hover {
 		background-color: #88b2b9;
 }
 
-.help {
+.header--help {
 		color: #8897b9;
 }
 
-.help:hover {
+.header--help:hover {
 		background-color: #8897b9;
 }
 
-.settings {
+.header--settings {
 		color: #af88b9;
 }
 
-.settings:hover {
+.header--settings:hover {
 		background-color: #af88b9;
 }
 

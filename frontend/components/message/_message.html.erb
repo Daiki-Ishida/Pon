@@ -1,0 +1,7 @@
+<div class="message">
+  <% unless message.nil? %>
+    <%= message.sender.name %>
+    <%= message.content %>
+    <%= message.created_at %>
+  <% end %>
+</div>

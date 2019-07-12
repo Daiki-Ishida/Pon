@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   def create
-    message = Message.new(message_param)
+    room = Room.find(params[:room_id])
+    message = room.messages.build(message_param)
     message.sender_id = current_user.id
     if message.save
       # 非同期にする予定
@@ -13,6 +14,6 @@ class MessagesController < ApplicationController
 
   private
     def message_param
-      params.require().permit(:room_id)
+      params.require(:message).permit(:content, :room_id)
     end
 end

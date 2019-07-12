@@ -1,0 +1,6 @@
+<div class="message-form">
+  <%= form_with(model: [@room, Message.new], local: true) do |form| %>
+    <%= form.text_area :content %>
+    <%= form.submit "送信" %>
+  <% end %>
+</div>
