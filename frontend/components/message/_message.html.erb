@@ -1,7 +1,20 @@
-<div class="message">
-  <% unless message.nil? %>
-    <%= message.sender.name %>
-    <%= message.content %>
-    <%= message.created_at %>
-  <% end %>
+<% if message.sender == current_user %>
+  <% possessive = "my" %>
+<% else %>
+  <% possessive = "your" %>
+<% end %>
+
+<div class="message <%= possessive %>-message">
+  <div class="message--icon">
+    <%= link_to user_path(message.sender) do %>
+      <%= image_tag "/images/#{message.sender.image}", size:"50x50", class:"image-icon #{possessive}-icon" %>
+    <% end %>
+  </div>
+  <div class="message--content">
+    <%= link_to user_path(message.sender) do %>
+      <p class="message--name"><%= message.sender.name %></p>
+    <% end %>
+    <small class="text-muted"><%= display_time(message.created_at) %></small>
+    <p class="message--content"><%= message.content %></p>
+  </div>
 </div>
