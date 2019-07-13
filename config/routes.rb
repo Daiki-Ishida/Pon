@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     member do
       get :followings, :followers
       get :rooms
+      get :territory
     end
   end
   resources :ferrets
