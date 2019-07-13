@@ -1,0 +1,21 @@
+<div class="territory">
+  <div class="territory--title">
+    <h2>なわばりの設定</h2>
+  </div>
+  <div class="territory--my-territory">
+    <div id="territoryCenter">
+      中心：<%= display_address(user) %>
+    </div>
+    <div id="territoryRadius">
+      範囲：<%= user.territory %> km
+    </div>
+  </div>
+  <input type="hidden" id="center" value="<%= user.postal_address %>">
+  <input type="hidden" id="radius" value="<%= user.territory %>">
+
+  <div class="territory--map" id="map"></div>
+
+  <div class="territory--match">
+    <p>あなたのなわばり範囲内には、<%= ferrets.size %>匹のフェレットがいます。</p>
+  </div>
+</div>

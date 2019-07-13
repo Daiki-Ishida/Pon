@@ -24,6 +24,13 @@ class User < ApplicationRecord
   validates :postal_code, presence: true, length: { is: 7 }
   validates :postal_address, presence: true
 
+  geocoded_by :postal_address
+  after_validation :geocode, if: :postal_address_changed?
+  acts_as_mappable :default_units => :kms,
+                   :lat_column_name => :latitude,
+                   :lng_column_name => :longitude
+
+
   # 対象のユーザーをフォローしていればtrueを返す。
   def follows?(other_user)
     followings.include?(other_user)

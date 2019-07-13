@@ -54,7 +54,10 @@ class UsersController < ApplicationController
   end
 
   def territory
-    user = User.find(params[:id])
+    @user = User.find(params[:id])
+    other_users = User.where.not(id: @user.id)
+    @users_within_territory = users_within_territory(@user, other_users)
+    @ferrets_within_territory = ferrets_within_territory(@user, other_users)
   end
 
   private
@@ -76,5 +79,33 @@ class UsersController < ApplicationController
     def correct_user
       user = User.find(params[:id])
       redirect_to root_path unless user == current_user
+    end
+
+    def users_within_territory(user, other_users)
+      array = []
+      other_users.each do |other_user|
+        lat = other_user.latitude
+        lng = other_user.longitude
+        distance = user.distance_to([lat,lng], units: :kms)
+        if distance <= user.territory
+          array << other_user
+        end
+      end
+      return array
+    end
+
+    def ferrets_within_territory(user, other_users)
+      array = []
+      other_users.each do |other_user|
+        lat = other_user.latitude
+        lng = other_user.longitude
+        distance = user.distance_to([lat,lng], units: :kms)
+        if distance <= user.territory
+          other_user.ferrets.each do |ferret|
+            array << ferret
+          end
+        end
+      end
+      return array
     end
 end
