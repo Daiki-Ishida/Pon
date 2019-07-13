@@ -7,6 +7,7 @@ import "components/post-form/post-form";
 
 import "components/posts/posts";
 import "../follow-list/follow-list";
+import "../my-rooms/my-rooms";
 
 import "components/ferret/ferret";
 import "components/user/user";

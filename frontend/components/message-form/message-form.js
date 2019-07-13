@@ -32,6 +32,7 @@ window.onload = function(){
   // 要リファクタリング
   const asyncMessage = (event)=>{
     event.preventDefault();
+    messageFormBtn.disabled = true;
     const form = document.getElementById('messageForm');
     const url = form.action;
     const content = messageFormContent.value;
@@ -48,8 +49,10 @@ window.onload = function(){
         const response = this.response;
         const messages = document.getElementById('messages');
         messages.insertAdjacentHTML('beforeend', response);
+        messageFormBtn.disabled = false;
       } else if (this.readyState == 4) {
         alert('ERROR!');
+        messageFormBtn.disabled = false;
       }
     };
     const csfr = document.querySelector('meta[name="csrf-token"]').getAttribute('content');

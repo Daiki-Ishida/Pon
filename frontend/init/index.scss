@@ -20,9 +20,19 @@ a{
   text-decoration: none;
 }
 
-a:hover{
+a:link {
+  color: #333;
   text-decoration: none;
-  color: #00F;
+}
+
+a:visited {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #333;
+  text-decoration: none;
 }
 
 ul{

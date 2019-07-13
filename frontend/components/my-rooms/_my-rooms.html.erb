@@ -1,0 +1,24 @@
+<div class="my-rooms">
+  <% rooms.each do |room| %>
+    <div class="my-rooms--room">
+      <div class="my-rooms--opponent-info">
+        <%= link_to user_path(opponent(room)) do %>
+          <div class="my-rooms--opponent--icon">
+            <%= image_tag "/images/#{opponent(room).image}", size: "80x80", class:"image-icon" %>
+          </div>
+          <div class="my-rooms--opponent-name">
+            <%= opponent(room).name %>
+          </div>
+        <% end %>
+      </div>
+      <div class="my-rooms--content">
+        <%= link_to room_path(room) do %>
+          <p><%= room.messages.last.content %></p>
+        <% end %>
+      </div>
+      <div class="my-rooms--date">
+        <%= display_time(room.messages.last.created_at) %>
+      </div>
+    </div>
+  <% end %>
+</div>

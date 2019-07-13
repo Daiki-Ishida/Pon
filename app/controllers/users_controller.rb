@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :correct_user, only: [:rooms, :edit]
+
+
   def new
     @user = User.new
   end
@@ -45,6 +48,11 @@ class UsersController < ApplicationController
     @followers = user.followers
   end
 
+  def rooms
+    user = User.find(params[:id])
+    @rooms = Room.where(guest_id: user.id).or(Room.where(owner_id: user.id))
+  end
+
   private
 
     def user_params
@@ -59,5 +67,10 @@ class UsersController < ApplicationController
                                    :postal_code,
                                    :postal_address,
                                    :introduction)
+    end
+
+    def correct_user
+      user = User.find(params[:id])
+      redirect_to root_path unless user == current_user
     end
 end
