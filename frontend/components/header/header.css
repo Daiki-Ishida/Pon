@@ -37,7 +37,7 @@ i.material-icons {
 		position: relative;
 		padding: 6px;
     border-radius: 50%;
-		transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
+		transition: color 0.2s ease, background-color 0.4s ease, transform 0.4s ease;
 }
 
 i.material-icons:hover {
@@ -81,11 +81,11 @@ i.material-icons:hover {
 		background-color: #88b999;
 }
 
-.header--nawabari {
+.header--territory {
 		color: #88b2b9;
 }
 
-.header--nawabari:hover {
+.header--territory:hover {
 		background-color: #88b2b9;
 }
 
