@@ -60,6 +60,16 @@ class UsersController < ApplicationController
     @ferrets_within_territory = ferrets_within_territory(@user, other_users)
   end
 
+  def update_territory
+    user = User.find(params[:id])
+    if user.update(territory_param)
+      redirect_to territory_user_path(user)
+    else
+      flash[:notice] = "ERROR"
+      render 'territory'
+    end
+  end
+
   private
 
     def user_params
@@ -74,6 +84,10 @@ class UsersController < ApplicationController
                                    :postal_code,
                                    :postal_address,
                                    :introduction)
+    end
+
+    def territory_param
+      params.require(:user).permit(:territory)
     end
 
     def correct_user

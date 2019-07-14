@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get :followings, :followers
       get :rooms
       get :territory
+      patch :update_territory
     end
   end
   resources :ferrets

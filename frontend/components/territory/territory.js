@@ -14,7 +14,8 @@ if(radiusInKms == 5){
   zoom = 10;
 }
 let map = new google.maps.Map(document.getElementById('map'), {
-  zoom: zoom
+  zoom: zoom,
+  disableDefaultUI: true
 });
 const geocoder = new google.maps.Geocoder();
 
@@ -30,7 +31,7 @@ geocoder.geocode({'address': center}, function(results){
     radius: radiusInKms * 1000,
     fillColor: '#83e2c5',
     fillOpacity: 0.5,
-    strokeColor: '#83e2c5',
+    strokeColor: '#4ba9a1',
     strokeOpacity: 1
   });
 });

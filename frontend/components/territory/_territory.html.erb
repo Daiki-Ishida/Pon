@@ -9,10 +9,20 @@
     <div id="territoryRadius">
       範囲：<%= user.territory %> km
     </div>
+    <div class="territory--input">
+      <%= form_with model: user,
+                    url: update_territory_user_path(user),
+                    method: :patch,
+                    local: true do |form| %>
+        <%= form.select :territory, [["半径5km", 5], ["半径10km", 10], ["半径15km", 15], ["半径20km", 20]]  %>
+        <%= form.submit "変更" %>
+      <% end %>
+    </div>
   </div>
   <input type="hidden" id="center" value="<%= user.postal_address %>">
   <input type="hidden" id="radius" value="<%= user.territory %>">
 
+  <!-- google mapnの表示領域 -->
   <div class="territory--map" id="map"></div>
 
   <div class="territory--match">
