@@ -1,5 +1,4 @@
 <div class="posts">
-  <% posts.each do |post| %>
-    <%= render "components/post/post", post: post %>
-  <% end %>
+  <%= render partial: "components/post-overview/post-overview",
+             collection: posts, as: "post" %>
 </div>

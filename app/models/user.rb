@@ -35,4 +35,32 @@ class User < ApplicationRecord
   def follows?(other_user)
     followings.include?(other_user)
   end
+
+  # 対象のユーザー以外の全ユーザーを返す。
+  def other_users
+    User.where.not(id: self.id)
+  end
+
+  def objects_within_territory(objects, other_users)
+    array = []
+    other_users.each do |other_user|
+      lat = other_user.latitude
+      lng = other_user.longitude
+      distance = self.distance_to([lat,lng], units: :kms)
+      if distance <= self.territory
+        if objects == "users"
+          array << other_user
+        elsif objects == "ferrets"
+          other_user.ferrets.each do |ferret|
+            array << ferret
+          end
+        elsif objects == "posts"
+          other_user.posts.each do |post|
+            array << post
+          end
+        end
+      end
+    end
+    return array
+  end
 end

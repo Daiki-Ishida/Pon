@@ -1,7 +1,7 @@
 <%= render "components/page/page" do %>
   <%= render partial: "components/territory/territory",
              locals: {
-               user: @user,
+               user: current_user,
                ferrets: @ferrets_within_territory
              }
   %>

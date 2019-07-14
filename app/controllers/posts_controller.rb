@@ -21,6 +21,10 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def territory
+    @posts_within_territory = current_user.objects_within_territory("posts", current_user.other_users)
+  end
+
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments.includes(:user)

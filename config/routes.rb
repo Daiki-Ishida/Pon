@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :ferrets
   resources :posts do
     resource :likes, only: [:create, :destroy]
+    collection do
+      get 'territory'
+    end
   end
   resources :comments
   resources :relationships, only: [:create, :destroy]

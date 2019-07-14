@@ -1,5 +1,7 @@
 .post--image{
   object-fit: fill;
+  width: 100%;
+  height: auto;
 }
 
 .post--head{
