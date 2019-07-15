@@ -1,18 +1,20 @@
-<% if current_user.present? %>
-  <% if post.likes?(current_user) %>
-    <li>
-    <%= link_to post_likes_path(post), method: :delete do %>
-      <div class="like">
-        <span>
-          <i class="far fa-thumbs-up"></i>
-        </span>
+<% if logged_in? %>
+  <div class="like" id="like_<%= post.id %>" >
+    <% if post.likes?(current_user) %>
+      <button type="button" name="dislike" value="<%= post.id %>" >
+        <span><i class="far fa-thumbs-up"></i></span>
         <%= post.likes.count %> いいね
-      </div>
+      </button>
+    <% else %>
+      <button type="button" name="like" value="<%= post.id %>" >
+        <span><i class="far fa-thumbs-up"></i></span>
+        <%= post.likes.count %> いいね
+      </button>
     <% end %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to post_likes_path(post), method: :post do %>
+  </div>
+<% else %>
+  <li>
+    <%= link_to login_path do %>
       <div class="dislike">
         <span>
           <i class="far fa-thumbs-up"></i>
@@ -20,6 +22,5 @@
         <%= post.likes.count %> いいね
       </div>
     <% end %>
-    </li>
-  <% end %>
+  </li>
 <% end %>

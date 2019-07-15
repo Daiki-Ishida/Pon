@@ -20,14 +20,9 @@
           <% end %>
         </div>
 
-        <!-- いいね -->
         <div class="post--like">
-          <%=
-            render partial: "components/like/like",
-                   locals: {post: post}
-          %>
+          <%= render "components/like/like", post: post %>
         </div>
-        <!-- コメント -->
         <div class="post--comment">
           <span>
             <i class="far fa-comments"></i>
@@ -46,7 +41,7 @@
         </p>
         <p class="card-text">
           <small class="text-muted">
-            <%= post.updated_at %>
+            <%= display_time(post.updated_at) %>
           </small>
         </p>
       </div>

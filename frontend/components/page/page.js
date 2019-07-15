@@ -12,4 +12,4 @@ import "../territory/territory";
 
 import "components/ferret/ferret";
 import "components/user/user";
-import "components/post/post";
+import "components/posts/posts";
