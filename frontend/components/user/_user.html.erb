@@ -4,38 +4,38 @@
 <% end %>
 
 <!-- フォローボタン -->
-<div class="u-show--follow">
-  <div class="u-show--follow-btn">
+<div class="user--follow">
+  <div class="user--follow-btn">
     <% if logged_in? %>
       <%= render "components/follow/follow", user: user %>
     <% end %>
   </div>
-  <div class="u-show-follow-stats">
+  <div class="user-follow-stats">
     <%= render "components/follow-stats/follow-stats", user: user %>
   </div>
 </div>
 
-<div class="u-show--room">
+<div class="user--room">
   <%= link_to "メッセージを送る", rooms_path(guest_id: user.id), method: :post %>
 </div>
 
 
-<div class="u-show col-md-8 offset-md-2">
-  <div class="u-show--top">
+<div class="user col-md-8 offset-md-2">
+  <div class="user--top">
     <%= render "components/show-top/show-top", object: user %>
   </div>
 
-  <div class="u-show--family">
+  <div class="user--family">
     <h5>家族</h5>
-    <div class="u-show--family-members">
+    <div class="user--family-members">
       <% if user.ferrets.empty? %>
         <p>現在はフェレットを飼っていません。</p>
       <% else %>
         <% user.ferrets.each do |ferret| %>
-          <div class="u-show--family-icon">
+          <div class="user--family-icon">
             <%= link_to ferret_path(ferret) do %>
               <%= image_tag "/images/#{ferret.image}", size:"80x80", class:"image-icon" %>
-              <p class="u-show--family-name">
+              <p class="user--family-name">
                 <%= display_name(ferret) %>
               </p>
             <% end %>
@@ -44,4 +44,12 @@
       <% end %>
     </div>
   </div>
+</div>
+
+<div class="user--posts">
+  <div class="col-md-8 offset-md-2">
+    <h5>投稿</h5>
+  </div>
+  <%= render partial:"components/post-overview/post-overview",
+             collection: user.posts, as: "post" %>
 </div>
