@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   resources :posts do
     resource :likes, only: [:create, :destroy]
     collection do
-      get 'territory'
+      get :territory
+      get :followings
+      get :search
     end
   end
   resources :comments

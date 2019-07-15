@@ -22,7 +22,15 @@ class PostsController < ApplicationController
   end
 
   def territory
-    @posts_within_territory = current_user.objects_within_territory("posts", current_user.other_users)
+    @posts = current_user.objects_within_territory("posts", current_user.other_users)
+  end
+
+  def following
+    @posts = current_user.followings_posts
+  end
+
+  def search
+    @posts = Post.search(params[:search])
   end
 
   def show

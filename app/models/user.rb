@@ -41,6 +41,7 @@ class User < ApplicationRecord
     User.where.not(id: self.id)
   end
 
+  # 自身指定の縄張りの範囲内の任意のオブジェクト（第一引数）を返す。
   def objects_within_territory(objects, other_users)
     array = []
     other_users.each do |other_user|
@@ -59,6 +60,17 @@ class User < ApplicationRecord
             array << post
           end
         end
+      end
+    end
+    return array
+  end
+
+  # 自身がフォロー中のユーザーのポストを返す。
+  def folliowngs_posts
+    array = []
+    self.followings.each do |following|
+      following.posts.each do |post|
+        array << post
       end
     end
     return array
