@@ -17,7 +17,11 @@
       <h5>親</h5>
       <div class="f-show--owner-icon">
         <%= link_to user_path(ferret.user_id) do %>
-          <%= image_tag "/images/#{ferret.user.image}", size:"80x80", class:"image-icon" %>
+          <% if ferret.user.image.attached? %>
+            <%= image_tag ferret.user.image, size:"80x80", class:"image-icon" %>
+          <% else %>
+            <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
+          <% end %>
           <p class="f-show--family-name">
             <%= display_name(ferret.user) %>
           </p>
@@ -30,7 +34,11 @@
         <% siblings.each do |s| %>
         <div class="f-show--sibling-icon">
           <%= link_to ferret_path(s) do %>
-            <%= image_tag "/images/#{s.image}", size:"80x80", class:"image-icon" %>
+            <% if s.image.attached? %>
+              <%= image_tag s.image, size:"80x80", class:"image-icon" %>
+            <% else %>
+              <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
+            <% end %>
             <p class="f-show--family-name">
               <%= display_name(s) %>
             </p>

@@ -1,0 +1,7 @@
+<%= render "components/page/page" do %>
+  <%= render partial: "components/user-form/user-form",
+             locals: {
+               user: current_user,
+             }
+  %>
+<% end %>

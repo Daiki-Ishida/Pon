@@ -1,6 +1,14 @@
 <div class="img-uploader">
   <button class="img-uploader--btn">
-    <div id="preview" class="preview"></div>
+    <div id="preview" class="preview">
+      <% if logged_in? %>
+        <% if object.image.attached? %>
+          <%= image_tag object.image, size:"200x200", class:"previewImage" %>
+        <% else %>
+          <%= image_tag "/images/no_image.jpg", size:"200x200", class:"previewImage" %>
+        <% end %>
+      <% end %>
+    </div>
     <i class="fas fa-image img-uploader--icon"></i>
   </button>
   <%= form.file_field :image, class:"img-file", id:"attachedImage" %>

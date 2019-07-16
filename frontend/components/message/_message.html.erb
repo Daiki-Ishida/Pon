@@ -7,7 +7,11 @@
 <div class="message <%= possessive %>-message">
   <div class="message--icon">
     <%= link_to user_path(message.sender) do %>
-      <%= image_tag "/images/#{message.sender.image}", size:"50x50", class:"image-icon #{possessive}-icon" %>
+      <% if message.sender.image.attached? %>
+        <%= image_tag message.sender.image, size:"50x50", class:"image-icon #{possessive}-icon" %>
+      <% else %>
+        <%= image_tag "/images/no_image.jpg", size:"50x50", class:"image-icon #{possessive}-icon" %>
+      <% end %>
     <% end %>
   </div>
   <div class="message--content">

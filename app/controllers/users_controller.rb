@@ -10,9 +10,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.territory = 15
     if @user.save
-      if @user.image != "no_image.jpg"
-        save_image(@user, user_params)
-      end
       redirect_to ferrets_path
     else
       render 'new'
@@ -28,11 +25,15 @@ class UsersController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
+    user = User.find(params[:id])
+    if user.update(user_params)
+      redirect_to user_path(user)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

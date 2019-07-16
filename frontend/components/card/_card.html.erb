@@ -1,6 +1,10 @@
 <div class="card--"> <!-- Bootstrap回避 -->
   <div class="card--image">
-    <%= image_tag "/images/#{object.image}" %>
+    <% if object.image.attached? %>
+      <%= image_tag object.image %>
+    <% else %>
+      <%= image_tag "/images/no_image.jpg" %>
+    <% end %>
   </div>
   <div class="card--body">
     <h5 class="card--title"><%= display_name(object) %></h5>

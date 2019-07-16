@@ -42,7 +42,11 @@
           </div>
           <div class="header--tool header--user-icon">
             <%= link_to user_path(current_user) do %>
-              <%= image_tag "/images/#{current_user.image}", size:"50x50", class:"image-icon" %>
+              <% if current_user.image.attached? %>
+                <%= image_tag current_user.image, size:"50x50", class:"image-icon" %>
+              <% else %>
+                <%= image_tag "/images/no_image.jpg", size:"50x50", class:"image-icon" %>
+              <% end %>
             <% end %>
           </div>
         <% else %>

@@ -20,7 +20,7 @@
   transition: 0.3s ease-out;
 }
 
-#previewImage{
+.previewImage{
   position: absolute;
   object-fit: cover;
   border-radius: 50%;

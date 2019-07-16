@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :messages
   has_many :rooms
 
+  has_one_attached :image
+
   # 性別/画像/自己紹介は無しでも登録できる。
   validates :kanji_lastname, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   validates :kanji_firstname, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }

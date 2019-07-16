@@ -2,7 +2,11 @@
   <div class="row no-gutters">
     <div class="col-md-4">
       <%= link_to post_path(post) do %>
-        <%= image_tag "/images/#{post.image}", class:"post--image" %>
+        <% if post.image.attached? %>
+          <%= image_tag post.image, class:"post--image" %>
+        <% else %>
+          <%= image_tag "/images/no_image.jpg", class:"post--image" %>
+        <% end %>
       <% end %>
     </div>
     <div class="col-md-8">
@@ -11,7 +15,11 @@
           <%= link_to user_path(post.user) do %>
           <div class="post--user-info">
             <div class="post--user-icon">
-              <%= image_tag "/images/#{post.user.image}", size:"50x50", class:"image-icon" %>
+              <% if post.user.image.attached? %>
+                <%= image_tag post.user.image, size:"50x50", class:"image-icon" %>
+              <% else %>
+                <%= image_tag "/images/no_image.jpg", size:"50x50", class:"image-icon" %>
+              <% end %>
             </div>
             <div class="post--user-name">
               <%= display_name(post.user) %>

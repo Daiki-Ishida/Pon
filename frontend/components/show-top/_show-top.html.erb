@@ -1,7 +1,11 @@
 <div class="show">
   <div class="row">
     <div class="show--image">
-      <%= image_tag "/images/#{object.image}", size:"200x200", class:"image-icon" %>
+      <% if object.image.attached? %>
+        <%= image_tag object.image, size:"200x200", class:"image-icon" %>
+      <% else %>
+        <%= image_tag "/images/no_image.jpg", size:"200x200", class:"image-icon" %>
+      <% end %>
     </div>
   </div>
 

@@ -11,9 +11,6 @@ class FerretsController < ApplicationController
     @ferret = Ferret.new(ferret_params)
     @ferret.user_id = current_user.id
     if @ferret.save
-      if @ferret.image != "no_image.jpg"
-        save_image(@ferret, ferret_params)
-      end
       redirect_to ferrets_path
     else
       render 'new'

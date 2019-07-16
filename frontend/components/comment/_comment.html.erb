@@ -1,7 +1,11 @@
 <div class="comment">
     <div class="commnet--head">
       <div class="commnet--user-icon">
-        <%= image_tag "/images/#{comment.user.image}", size:"50x50", class:"image-icon" %>
+        <% if comment.user.image.attached? %>
+          <%= image_tag comment.user.image, size:"50x50", class:"image-icon" %>
+        <% else %>
+          <%= image_tag "/images/no_image.jpg", size:"50x50", class:"image-icon" %>
+        <% end %>
       </div>
       <div class="comment--info">
         <div class="commnet--user-name">

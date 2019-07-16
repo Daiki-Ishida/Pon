@@ -7,11 +7,8 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      if @post.image
-        save_image(@post, post_params)
-        flash[:success] = "投稿しました！！"
-        redirect_to post_path(@post)
-      end
+      flash[:success] = "投稿しました！！"
+      redirect_to post_path(@post)
     else
       render 'new'
     end

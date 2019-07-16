@@ -14,6 +14,7 @@ const imagePreview = (event)=>{
     const img = document.createElement("img");
     img.setAttribute("src", reader.result);
     img.setAttribute("id", "previewImage");
+    img.setAttribute("class", "previewImage");
     img.setAttribute("height", "200");
     img.setAttribute("width", "200");
     preview.appendChild(img);

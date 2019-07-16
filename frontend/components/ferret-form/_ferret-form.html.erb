@@ -22,7 +22,9 @@
             <span class="asterisk">＊</span>
           </div>
           <div class="ferret-form--img-form">
-            <%= render "components/img-uploader/img-uploader", form: form %>
+            <%= render partial:"components/img-uploader/img-uploader",
+                       locals: {form: form, object: ferret}
+            %>
           </div>
         </div>
       </div>

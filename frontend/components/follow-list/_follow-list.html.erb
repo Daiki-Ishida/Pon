@@ -2,7 +2,11 @@
   <% users.each do |user| %>
     <div class="follow-list--user">
       <div class="follow-list--user-image">
-        <%= image_tag "/images/#{user.image}", size:"80x80", class:"image-icon" %>
+        <% if user.image.attached? %>
+          <%= image_tag user.image, size:"80x80", class:"image-icon" %>
+        <% else %>
+          <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
+        <% end %>
       </div>
       <div class="follow-list--user-name">
         <%= display_name(user) %>

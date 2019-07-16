@@ -34,7 +34,11 @@
         <% user.ferrets.each do |ferret| %>
           <div class="user--family-icon">
             <%= link_to ferret_path(ferret) do %>
-              <%= image_tag "/images/#{ferret.image}", size:"80x80", class:"image-icon" %>
+              <% if user.ferrets.image.attached? %>
+                <%= image_tag user.ferrets.image, size:"80x80", class:"image-icon" %>
+              <% else %>
+                <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
+              <% end %>
               <p class="user--family-name">
                 <%= display_name(ferret) %>
               </p>
