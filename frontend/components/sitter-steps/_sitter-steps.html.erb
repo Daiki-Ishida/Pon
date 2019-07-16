@@ -1,0 +1,54 @@
+<div class="sitter-steps">
+  <div class="sitter-steps--top">
+    <h2>ご利用方法　〜フェレットを預かりたい場合〜</h2>
+  </div>
+  <div class="sitter-steps--steps">
+    <div class="col-md-3">
+      <div class="steps--step">
+        <%= render partial: "components/step/step",
+                   locals:{
+                     image: "search.png",
+                     title: "お世話係に応募・立候補",
+                     content: "お世話係に応募したり、気になるにゃんこをフォローしてお世話係に立候補にゃ！
+                               フォローしておくとお世話募集が出たときに通知が届くにゃ。"
+                   }
+         %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="steps--step">
+        <%= render partial: "components/step/step",
+                   locals:{
+                     image: "communicate2.png",
+                     title: "メッセージ",
+                     content: "メッセージ機能でお互いの人となりやお世話内容を確認するにゃ。
+                               また、このタイミングで実際に会って、お互い信頼できるかどうかきちんと確認するにゃ。"
+                   }
+         %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="steps--step">
+        <%= render partial: "components/step/step",
+                   locals:{
+                     image: "request.png",
+                     title: "正式依頼",
+                     content: "飼い主さんから「正式依頼」を受けたら「承認する」か「辞退する」を選んでお返事してくださいにゃ。
+                               承認をしたら、お世話の予定が確定するにゃ。以降もお世話が終了するまでメッセージで随時確認できるにゃ。"
+                   }
+         %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="steps--step">
+        <%= render partial: "components/step/step",
+                   locals:{
+                     image: "report.png",
+                     title: "レポート",
+                     content: "お世話が完了したら、飼い主さんへ「レポート」を送るにゃ。相手のレビューをお互いにしたらお世話完了にゃ。"
+                   }
+         %>
+      </div>
+    </div>
+  </div>
+</div>

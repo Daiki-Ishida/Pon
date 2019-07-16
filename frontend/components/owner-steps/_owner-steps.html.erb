@@ -1,0 +1,55 @@
+<div class="owner-steps">
+  <div class="owner-steps--top">
+    <h2>ご利用方法　〜フェレットを預けたい場合〜</h2>
+  </div>
+  <div class="owner-steps--steps">
+    <div class="col-md-3">
+      <div class="steps--step">
+        <%= render partial: "components/step/step",
+                   locals:{
+                     image: "recruit.png",
+                     title: "お世話してくれる人を募集",
+                     content: "お世話係の募集を出したり、気になるご近所さんへフォローやスカウトでアピールするにゃ！"
+                   }
+         %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="steps--step">
+        <%= render partial: "components/step/step",
+                   locals:{
+                     image: "communicate.png",
+                     title: "メッセージ",
+                     content: "メッセージ機能でお互いの人となりやお世話内容を確認するにゃ。
+                              また、このタイミングで実際に会って、お互い信頼できるかどうかきちんと確認するにゃ。"
+                   }
+         %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="steps--step">
+        <%= render partial: "components/step/step",
+                   locals:{
+                     image: "letter.png",
+                     title: "正式依頼",
+                     content: "「この人なら！」となったらお世話ノートを書いて依頼を出すにゃ。
+                                相手から「承認」を受けたらお世話の予定が確定にゃ。以降もお世話が終了するまで
+                                メッセージで随時確認できるにゃ。"
+                   }
+         %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="steps--step">
+        <%= render partial: "components/step/step",
+                   locals:{
+                     image: "review.png",
+                     title: "レビュー",
+                     content: "お世話が完了したら、お世話係さんから「レポート」が送られてくるにゃ。
+                               確認をして相手のレビューをお互いにしたらお世話完了にゃ。"
+                   }
+         %>
+      </div>
+    </div>
+  </div>
+</div>
