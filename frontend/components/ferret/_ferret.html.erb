@@ -1,5 +1,6 @@
 <% if my_ferret?(ferret) %>
   <%= render "components/edit-btn/edit-btn", path: edit_ferret_path(ferret)  %>
+  <%= render "components/delete-btn/delete-btn", path: ferret_path(ferret)  %>
 <% end %>
 
 <div class="f-show col-md-8 offset-md-2">

@@ -24,7 +24,7 @@
           </div>
           <div class="user-form--img-form">
             <%= render partial:"components/img-uploader/img-uploader",
-                       locals: {form: form, user: user}
+                       locals: {form: form, object: user}
             %>
           </div>
         </div>
@@ -133,8 +133,8 @@
           <span class="bar"></span>
         </div>
         <div class="uesr-form--lat-lng">
-          <%= form.hidden_field :latitude, value:"", id:"lat" %>
-          <%= form.hidden_field :longitude, value:"",id:"lng" %>
+          <%= form.hidden_field :latitude, id:"lat" %>
+          <%= form.hidden_field :longitude, id:"lng" %>
         </div>
       </div>
 
