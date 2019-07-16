@@ -16,9 +16,13 @@
     <%= form_with url:users_path, model: user, class:"h-adr", local: true do |form| %>
     <span class="p-country-name" style="display:none;">Japan</span>
 
-      <div class="row image-form user-form-form">
-        <div class="col-md-8  offset-md-2">
-          <div class="form-group">
+      <div class="user-form--group form-row">
+        <div class="user-form--form col-md-12">
+          <div class="user-form--img-label">
+            <%= form.label :画像, class:"user-form--label" %>
+            <span class="asterisk">＊</span>
+          </div>
+          <div class="user-form--img-form">
             <%= render "components/img-uploader/img-uploader", form: form %>
           </div>
         </div>

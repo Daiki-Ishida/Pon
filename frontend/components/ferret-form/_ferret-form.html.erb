@@ -15,9 +15,13 @@
   <div class="col-md-8 offset-md-2">
     <%= form_with url:ferrets_path, model: ferret, local: true do |form| %>
 
-      <div class="row image-form ferret-form-form">
-        <div class="col-md-8  offset-md-2">
-          <div class="form-group">
+      <div class="ferret-form--group form-row">
+        <div class="ferret-form--form col-md-12">
+          <div class="ferret-form--img-label">
+            <%= form.label :画像, class:"ferret-form--label" %>
+            <span class="asterisk">＊</span>
+          </div>
+          <div class="ferret-form--img-form">
             <%= render "components/img-uploader/img-uploader", form: form %>
           </div>
         </div>

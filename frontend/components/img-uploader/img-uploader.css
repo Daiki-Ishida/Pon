@@ -1,0 +1,38 @@
+.img-uploader{
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.img-uploader--btn{
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #e96b6b;
+}
+
+.img-uploader--icon{
+  font-size: 100px;
+  color: #aaa;
+  line-height: 250px;
+  transition: 0.3s ease-out;
+}
+
+#previewImage{
+  position: absolute;
+  object-fit: cover;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+}
+
+.img-file{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
