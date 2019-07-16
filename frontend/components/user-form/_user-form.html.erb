@@ -122,12 +122,13 @@
           <span class="notice"><small class="text-muted">市区町村まで公開されます。</small></span>
           <%= form.text_field :postal_address,
                               placeholder: "郵便番号から自動入力されます",
-                              class:"form-control user-form--input p-region p-locality p-street-address p-extended-address" %>
+                              class:"form-control user-form--input p-region p-locality p-street-address p-extended-address",
+                              id:"addressInput" %>
           <span class="bar"></span>
         </div>
-        <div class="lat-log-input">
-          <%= form.hidden_field :latitude, id:"inputLatitude" %>
-          <%= form.hidden_field :longitude, id:"inputLongitude" %>
+        <div class="uesr-form--lat-lng">
+          <%= form.hidden_field :latitude, value:"", id:"lat" %>
+          <%= form.hidden_field :longitude, value:"",id:"lng" %>
         </div>
       </div>
 

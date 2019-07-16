@@ -81,7 +81,9 @@ class UsersController < ApplicationController
                                    :gender,
                                    :postal_code,
                                    :postal_address,
-                                   :introduction)
+                                   :introduction,
+                                   :latitude,
+                                   :longitude)
     end
 
     def territory_param
