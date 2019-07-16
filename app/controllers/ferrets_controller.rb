@@ -23,6 +23,20 @@ class FerretsController < ApplicationController
     @siblings = Ferret.where(user_id: @ferret.user_id).where.not(id: @ferret.id)
   end
 
+  def edit
+    @ferret = Ferret.find(params[:id])
+  end
+
+  def update
+    ferret = Ferret.find(params[:id])
+    if ferret.update(ferret_params)
+      flash[:notice] = "更新完了"
+      redirect_to ferret_path(ferret)
+    else
+      render 'edit'
+    end
+  end
+
   private
 
     def ferret_params
