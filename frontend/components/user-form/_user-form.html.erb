@@ -1,6 +1,6 @@
 <div class="form-wrapper container">
-  <div class="row  user-form">
-    <div class="col-md-8 offset-2 form--title">
+  <div class="row">
+    <div class="col-md-8 offset-2 user-form--title">
       <h1>新規登録</h1>
       <p class="warning"><span class="asterisk">＊</span>：必須項目</p>
     </div>
@@ -24,108 +24,118 @@
         </div>
       </div>
 
-      <div class="row name-form user-form--form">
-        <div class="col-md-4 offset-md-2">
-          <div class="from-group">
-            <%= form.label :姓 %>
-            <span class="notice">公開されません。</span>
-            <%= form.text_field :kanji_lastname, placeholder: "姓", class:"form-control" %>
-          </div>
+      <div class="user-form--group form-row">
+        <div class="user-form--form col-md-5">
+          <%= form.label :姓, class:"user-form--label" %>
+          <span class="asterisk">＊</span>
+          <span class="notice"><small class="text-muted">公開されません</small></span>
+          <%= form.text_field :kanji_lastname, placeholder: "姓", class:"form-control user-form--input" %>
+          <span class="bar"></span>
         </div>
-        <div class="col-md-4">
-          <div class="from-group">
-            <%= form.label :名 %>
-            <span class="asterisk">＊</span>
-            <span class="notice">公開されません。</span>
-            <%= form.text_field :kanji_firstname, placeholder: "名", class:"form-control" %>
+        <div class="user-form--form col-md-5 offset-md-1">
+          <%= form.label :名, class:"user-form--label" %>
+          <span class="asterisk">＊</span>
+          <span class="notice"><small class="text-muted">公開されません</small></span>
+          <%= form.text_field :kanji_firstname, placeholder: "名", class:"form-control user-form--input" %>
+          <span class="bar"></span>
+        </div>
+      </div>
+
+      <div class="user-form--group form-row">
+        <div class="user-form--form col-md-5">
+          <%= form.label :セイ, class:"user-form--label" %>
+          <span class="asterisk">＊</span>
+          <span class="notice"><small class="text-muted">公開されません</small></span>
+          <%= form.text_field :kana_lastname, placeholder: "セイ", class:"form-control user-form--input" %>
+          <span class="bar"></span>
+        </div>
+        <div class="user-form--form col-md-5 offset-md-1">
+          <%= form.label :メイ, class:"user-form--label" %>
+          <span class="asterisk">＊</span>
+          <span class="notice"><small class="text-muted">公開されません</small></span>
+          <%= form.text_field :kana_firstname, placeholder: "メイ", class:"form-control user-form--input" %>
+          <span class="bar"></span>
+        </div>
+      </div>
+
+      <div class="user-form--group form-row">
+        <div class="user-form--form col-md-5">
+          <%= form.label :ユーザー名, class:"user-form--label" %>
+          <span class="asterisk">＊</span>
+          <span class="notice"><small class="text-muted">本アプリ上のあなたの名前です。</small></span>
+          <%= form.text_field :name, placeholder: "ユーザーネーム", class:"form-control user-form--input" %>
+          <span class="bar"></span>
+        </div>
+      </div>
+
+      <div class="user-form--group form-row">
+        <div class="user-form--form">
+          <%= form.label :生年月日, class:"user-form--label" %>
+          <span class="asterisk">＊</span>
+          <span class="notice">
+            <small class="text-muted">
+              生年月日や実年齢は公開されず、20代、40代などと表示されます。
+            </small>
+          </span>
+          <div>
+            <%= form.date_select :birth_date,
+                                  {
+                                    start_year: 1940,
+                                    end_year: Time.current.year-18,
+                                    use_month_numbers: true
+                                  },
+                                  {
+                                    class: "form-control user-form--select"
+                                  }
+            %>
           </div>
         </div>
       </div>
 
-      <div class="row name-form user-form--form">
-        <div class="col-md-4 offset-md-2">
-          <div class="from-group">
-            <%= form.label :セイ %>
-            <span class="asterisk">＊</span>
-            <span class="notice">公開されません。</span>
-            <%= form.text_field :kana_lastname, placeholder: "セイ", class:"form-control" %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="from-group">
-            <%= form.label :メイ %>
-            <span class="asterisk">＊</span>
-            <span class="notice">公開されません。</span>
-            <%= form.text_field :kana_firstname, placeholder: "メイ", class:"form-control" %>
+      <div class="user-form--group form-row">
+        <div class="user-form--form col-md-5">
+          <%= form.label :性別, class:"user-form--label" %>
+          <span class="asterisk">＊</span>
+          <div class="user-form--gender">
+            <%= form.radio_button :gender, 1, id:"male", class:"user-form--radio" %>
+            <label class="col-auto user-form--gender-btn male" for="male">男性</label>
+            <%= form.radio_button :gender, 2, id:"female", class:"user-form--radio" %>
+            <label class="col-auto user-form--gender-btn female" for="female">女性</label>
           </div>
         </div>
       </div>
 
-      <div class="row name user-form--form">
-        <div class="col-md-4 offset-md-2">
-          <div class="form-group">
-            <%= form.label :ユーザー名 %>
-            <span class="asterisk">＊</span>
-            <br>
-            <span class="notice">本アプリ上のあなたの名前です。</span>
-            <%= form.text_field :name, placeholder: "ユーザーネーム", class:"form-control" %>
-          </div>
+      <div class="user-form--group form-row">
+        <div class="user-form--form col-md-5">
+          <%= form.label :郵便番号, class:"user-form--label" %>
+          <span class="asterisk">＊</span>
+          <span class="notice"><small class="text-muted">公開されません。</small></span>
+          <%= form.text_field :postal_code, placeholder: "ハイフン無し", class:"form-control user-form--input p-postal-code" %>
+          <span class="bar"></span>
         </div>
       </div>
 
-
-      <div class="row birth-date user-form--form">
-        <div class="col-md-8 offset-md-2">
-          <div class="form-group">
-            <%= form.label :生年月日 %>
-            <span class="asterisk">＊</span>
-            <span class="notice">生年月日や実年齢は公開されず、20代、40代などと表示されます。</span>
-            <br/>
-            <%= form.date_select :birth_date, start_year: 1940, end_year: Time.current.year, use_month_numbers: true %>
-          </div>
+      <div class="user-form--group form-row">
+        <div class="user-form--form col-md-12">
+          <%= form.label :住所, class:"user-form--label" %>
+          <span class="asterisk">＊</span>
+          <span class="notice"><small class="text-muted">市区町村まで公開されます。</small></span>
+          <%= form.text_field :postal_address,
+                              placeholder: "郵便番号から自動入力されます",
+                              class:"form-control user-form--input p-region p-locality p-street-address p-extended-address" %>
+          <span class="bar"></span>
+        </div>
+        <div class="lat-log-input">
+          <%= form.hidden_field :latitude, id:"inputLatitude" %>
+          <%= form.hidden_field :longitude, id:"inputLongitude" %>
         </div>
       </div>
 
-      <div class="row gender user-form--form">
-        <div class="col-md-4 offset-md-2">
-          <div class="form-check form-check-inline">
-            <%= form.label :性別 %><span class="asterisk">＊</span>
-            <%= form.label :男性, class:"form-check-label" %>
-            <%= form.radio_button :gender, 1, class:"form-check-input" %>
-            <%= form.label :女性, class:"form-check-label" %>
-            <%= form.radio_button :gender, 2, class:"form-check-input" %>
-          </div>
-        </div>
-      </div>
-
-      <div class="row postal-code user-form--form">
-        <div class="col-md-4 offset-md-2">
-          <div class="from-group">
-            <%= form.label :郵便番号 %>
-            <span class="asterisk">＊</span>
-            <span class="notice">公開されません。</span>
-            <%= form.text_field :postal_code, class:"form-control p-postal-code" %>
-          </div>
-        </div>
-      </div>
-
-      <div class="row postal-address user-form--form">
-        <div class="col-md-8 offset-md-2">
-          <div class="from-group">
-            <%= form.label :住所 %>
-            <span class="asterisk">＊</span>
-            <span class="notice">市区町村まで公開されます。</span>
-            <%= form.text_field :postal_address, class:"form-control p-region p-locality p-street-address p-extended-address" %>
-          </div>
-        </div>
-      </div>
-
-      <div class="row introduction user-form--form">
-        <div class="col-md-8 offset-md-2">
-          <div class="from-group">
-            <%= form.label :自己紹介 %>
-            <%= form.text_area :introduction, class:"form-control" %>
-          </div>
+      <div class="user-form--group form-row">
+        <div class="user-form--form col-md-12">
+          <%= form.label :自己紹介, class:"user-form--label" %>
+          <%= form.text_area :introduction, placeholder: "自己紹介",class:"form-control user-form--input" %>
+          <span class="bar"></span>
         </div>
       </div>
 
