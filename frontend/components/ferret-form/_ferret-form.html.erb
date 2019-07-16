@@ -1,22 +1,21 @@
-<div class="container">
-  <div class="form-wrapper">
-    <div class="row  ferret-form">
-      <div class="col-md-8 offset-2 form--title">
-        <h1>フェレットの登録</h1>
-        <p class="warning"><span class="asterisk">＊</span>：必須項目</p>
-      </div>
+<div class="form-wrapper container">
+  <div class="row">
+    <div class="col-md-8 offset-2 ferret-form--title">
+      <h1>フェレットの登録</h1>
+      <p class="warning"><span class="asterisk">＊</span>：必須項目</p>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-md-8  offset-md-2">
-        <%= render "components/error-messages/error-messages", object: ferret %>
-      </div>
+  <div class="row">
+    <div class="col-md-8  offset-md-2">
+      <%= render "components/error-messages/error-messages", object: ferret %>
     </div>
+  </div>
 
-    <div class="col-md-8 offset-md-2">
-      <%= form_with url:ferrets_path, model: ferret, local: true do |form| %>
+  <div class="col-md-8 offset-md-2">
+    <%= form_with url:ferrets_path, model: ferret, local: true do |form| %>
 
-      <div class="row image-form signup-form">
+      <div class="row image-form ferret-form-form">
         <div class="col-md-8  offset-md-2">
           <div class="form-group">
             <%= render "components/img-uploader/img-uploader", form: form %>
@@ -24,61 +23,72 @@
         </div>
       </div>
 
-      <div class="row name ferret-form">
-        <div class="col-md-4 offset-md-2">
-          <div class="form-group">
-            <%= form.label :なまえ %><span class="asterisk">＊</span>
-            <%= form.text_field :name, placeholder: "なまえ", class:"form-control" %>
+      <div class="ferret-form--group form-row">
+        <div class="ferret-form--form col-md-5">
+          <%= form.label :なまえ, class:"ferret-form--label"%>
+          <span class="asterisk">＊</span>
+          <%= form.text_field :name, placeholder: "なまえ", class:"form-control ferret-form--input" %>
+          <span class="bar"></span>
+        </div>
+      </div>
+
+      <div class="ferret-form--group form-row">
+        <div class="ferret-form--form">
+          <%= form.label :生年月日, class:"ferret-form--label" %>
+          <span class="asterisk">＊</span>
+          <div>
+            <%= form.date_select :birth_date,
+                                  {
+                                    start_year: Time.current.year - 10,
+                                    end_year: Time.current.year,
+                                    use_month_numbers: true
+                                  },
+                                  {
+                                    class: "form-control ferret-form--select"
+                                  }
+            %>
           </div>
         </div>
       </div>
 
-
-        <div class="row birth-date ferret-form">
-          <div class="col-md-4 offset-md-2">
-            <div class="form-group">
-              <%= form.label :生年月日 %><span class="asterisk">＊</span><br/>
-              <%= form.date_select :birth_date, start_year: (Time.current.year - 10) , end_year: Time.current.year, use_month_numbers: true %>
-            </div>
+      <div class="ferret-form--group form-row">
+        <div class="ferret-form--form col-md-5">
+          <%= form.label :性別, class:"ferret-form--label" %>
+          <span class="asterisk">＊</span>
+          <div class="ferret-form--gender">
+            <%= form.radio_button :gender, 1, id:"male", class:"ferret-form--radio" %>
+            <label class="col-auto ferret-form--gender-btn male" for="male">オス</label>
+            <%= form.radio_button :gender, 2, id:"female", class:"ferret-form--radio" %>
+            <label class="col-auto ferret-form--gender-btn female" for="female">メス</label>
           </div>
         </div>
+      </div>
 
-        <div class="row gender ferret-form">
-          <div class="col-md-4 offset-md-2">
-            <div class="form-check form-check-inline">
-              <%= form.label :性別 %><span class="asterisk">＊</span>
-              <%= form.label :オス, class:"form-check-label" %>
-              <%= form.radio_button :gender, 1, class:"form-check-input" %>
-              <%= form.label :メス, class:"form-check-label" %>
-              <%= form.radio_button :gender, 2, class:"form-check-input" %>
-            </div>
-          </div>
+      <div class="ferret-form--group form-row">
+        <div class="ferret-form--form col-md-12">
+          <%= form.label :性格, class:"ferret-form--label" %>
+          <span class="asterisk">＊</span>
+          <%= form.text_field :character,
+                              placeholder: "性格",
+                              class:"form-control ferret-form--input"
+          %>
+          <span class="bar"></span>
         </div>
+      </div>
 
-        <div class="row character ferret-form">
-          <div class="col-md-4 offset-md-2">
-            <div class="class form-group">
-              <%= form.label :性格 %>
-              <%= form.text_field :character, placeholder: "性格", class:"form-control" %>
-            </div>
-          </div>
+      <div class="ferret-form--group form-row">
+        <div class="ferret-form--form col-md-12">
+          <%= form.label :紹介, class:"ferret-form--label" %>
+          <%= form.text_area :introduction, placeholder: "紹介", class:"form-control ferret-form--input" %>
+          <span class="bar"></span>
         </div>
+      </div>
 
-        <div class="row introduction ferret-form">
-          <div class="col-md-8 offset-md-2">
-            <div class="from-group">
-              <%= form.label :紹介 %>
-              <%= form.text_area :introduction, class:"form-control" %>
-            </div>
-          </div>
+      <div class="row submit ferret-form--form">
+        <div class="mx-auto">
+          <%= form.submit "入力内容を確認する", class:"btn btn-success" %>
         </div>
-
-        <div class="row submit ferret-form">
-          <div class="mx-auto">
-            <%= form.submit "入力内容を確認する", class:"btn btn-success" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
