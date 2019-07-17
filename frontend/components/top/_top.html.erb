@@ -1,37 +1,20 @@
-<div class="top">
-  <!-- <div class="top--navi">
-    <ul>
-      <li class="navi-1">PON</li>
-      <li class="navi-2">About</li>
-      <li class="navi-3">Steps</li>
-      <li class="navi-4">Something</li>
-    </ul>
-  </div> -->
-  <div class="top--item">
-    <%= render "components/catch/catch" %>
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <%= render "components/catch/catch" %>
+    </div>
+    <div class="swiper-slide">
+      <%= render "components/description/description" %>
+    </div>
+    <div class="swiper-slide">
+      <%= render "components/owner-steps/owner-steps" %>
+    </div>
+    <div class="swiper-slide">
+      <%= render "components/sitter-steps/sitter-steps" %>
+    </div>
+    <div class="swiper-slide">
+      新規登録へのページ
+    </div>
   </div>
-
-  <%= render "components/colorful-border/colorful-border" %>
-
-  <div class="top--item">
-    <%= render "components/description/description" %>
-  </div>
-
-  <%= render "components/colorful-border/colorful-border" %>
-
-  <div class="top--item">
-    <%= render "components/owner-steps/owner-steps" %>
-  </div>
-
-  <%= render "components/colorful-border/colorful-border" %>
-
-  <div class="top--item">
-    <%= render "components/sitter-steps/sitter-steps" %>
-  </div>
-
-  <%= render "components/colorful-border/colorful-border" %>
-
-  <div class="top--item">
-    新規登録へのページ
-  </div>
+  <div class="swiper-pagination"></div>
 </div>
