@@ -10,7 +10,11 @@ footer{
   margin-top: auto;
 }
 
-.footer{
+.footer--content{
   display: flex;
   justify-content: space-around;
+}
+
+.footer--bottom{
+  text-align: center;
 }
