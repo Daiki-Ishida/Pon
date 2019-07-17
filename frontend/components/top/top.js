@@ -9,9 +9,10 @@ import "../sitter-steps/sitter-steps";
 
 import Swiper from 'swiper';
 
+
 const mainSlider = new Swiper('.swiper-container',{
   direction: 'vertical',
-  speed: 1000,
+  speed: 600,
   mousewheel: true,
   pagination: {
     el: '.swiper-pagination',
@@ -20,7 +21,7 @@ const mainSlider = new Swiper('.swiper-container',{
       let str = '';
       switch (index){
         case 0:
-          str = 'TOP'
+          str = 'はじめに'
           break;
         case 1:
           str = "PONとは？"

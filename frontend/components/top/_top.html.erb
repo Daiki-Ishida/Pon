@@ -13,7 +13,21 @@
       <%= render "components/sitter-steps/sitter-steps" %>
     </div>
     <div class="swiper-slide">
-      新規登録へのページ
+      <div class="top--last">
+        <div class="top--message">
+          <h2>さっそく始めてみよう！</h2>
+        </div>
+        <%= link_to new_user_path do %>
+          <button type="button" name="button" class="top--signup">
+            早速登録する
+          </button>
+        <% end %>
+        <%= link_to login_path do %>
+          <button type="button" name="button" class="top--login">
+            登録済みの方はこちら
+          </button>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="swiper-pagination"></div>
