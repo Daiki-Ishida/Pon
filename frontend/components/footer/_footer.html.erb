@@ -1,0 +1,40 @@
+<footer>
+  <div class="footer container">
+    <div class="footer--left col-md-6 row">
+      <div class="footer--links col-md-6">
+        <ul>
+          <li><a href="#">PONとは？</a></li>
+          <li><a href="#">Q&A</a></li>
+          <li><a href="#">お問い合わせ</a></li>
+          <li><a href="#">利用規約</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+          <li><a href="#">運営会社</a></li>
+        </ul>
+      </div>
+      <div class="footer--sitemap col-md-6">
+        <ul>
+          <% if logged_in? %>
+            <li><a href="#">預かりたい</a></li>
+            <li><a href="#">メッセージ</a></li>
+            <li><a href="#">縄張り</a></li>
+            <li><a href="#">タイムライン</a></li>
+            <li><a href="#">ヘルプ</a></li>
+            <li><a href="#">各種設定</a></li>
+            <li><a href="#">マイページ</a></li>
+          <% else %>
+            <li><a href="#">新規登録</a></li>
+            <li><a href="#">ログイン</a></li>
+            <li><a href="#">フェレット一覧</a></li>
+            <li><a href="#">ユーザー一覧</a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="footer--right col-md-6">
+      <div class="footer--company">
+        <h5>株式会社PON</h5>
+        <p>神奈川県川崎市●●●区●●●</p>
+      </div>
+    </div>
+  </div>
+</footer>

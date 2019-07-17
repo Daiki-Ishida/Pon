@@ -12,7 +12,6 @@ import Swiper from 'swiper';
 
 const mainSlider = new Swiper('.swiper-container',{
   direction: 'vertical',
-  speed: 600,
   mousewheel: true,
   pagination: {
     el: '.swiper-pagination',

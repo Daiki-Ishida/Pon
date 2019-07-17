@@ -1,0 +1,16 @@
+/* footerを最下部に固定するための設定 */
+body{
+  display: flex;
+  flex-direction:column;
+  min-height: 100vh;
+}
+
+footer{
+  background-color: #f1f1f1;
+  margin-top: auto;
+}
+
+.footer{
+  display: flex;
+  justify-content: space-around;
+}

@@ -13,7 +13,7 @@ import "components/follow/follow"
 
 // ヘッダー・フッター
 import "components/header/header";
-// import "componetns/footer/footer";
+import "components/footer/footer";
 
 // 以下各ページのベースになるページ
 // 1.ランディングページのベース
