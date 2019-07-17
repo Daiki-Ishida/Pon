@@ -1,15 +1,32 @@
 .description{
   width: 100%;
-  height: 100vh;
-  background: url(../../images/des.jpg);
+  height: 100%;
+  background-color: #FFB395;
 }
 
-.description--inner{
+.description--top{
+  padding: 50px;
+  text-align: center;
+}
+
+.description--top h2{
+  color: #FFF;
+}
+
+.description--item{
   background-color: #FFF;
-  margin:10px;
-  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 3%;
 }
 
-.abstract{
-  margin:15px;
+.description--item h5{
+  color: #4c65ff;
+}
+
+.description--first, .description--third{
+  border-radius: 15px 0 0 15px;
+}
+
+.description--second{
+  border-radius: 0 15px 15px 0;
 }
