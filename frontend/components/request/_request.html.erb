@@ -1,0 +1,109 @@
+<div class="request">
+
+  <div class="col-md-8 offset-2 request--title">
+    <h2>依頼内容</h2>
+  </div>
+
+  <div class="col-md-8 offset-2 request--content">
+    <div class="request--user request-row">
+      <h5>飼い主</h5>
+      <div class="request--list">
+        <div class="request--user-image">
+          <%= link_to image_tag(request.owner.image, size:"100x100", class:"image-icon"), user_path(request.owner) %>
+        </div>
+        <div class="request--user-info">
+          <div class="request--user-name">
+            <p><%= display_name(request.owner) %></p>
+          </div>
+          <div class="request--user-details">
+            <p>
+              <%= display_address(request.owner) %>
+              <span>|</span>
+              <%= display_gender(request.owner) %>
+              <span>|</span>
+              <%= display_age(request.owner) %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="request--sitter request-row">
+      <h5>お世話係</h5>
+      <div class="request--list">
+        <div class="request--user-image">
+          <%= link_to image_tag(request.sitter.image, size:"100x100", class:"image-icon"), user_path(request.sitter) %>
+        </div>
+        <div class="request--user-info">
+          <div class="request--user-name">
+            <p><%= display_name(request.sitter) %></p>
+          </div>
+          <div class="request--user-details">
+            <p>
+              <%= display_address(request.sitter) %>
+              <span>|</span>
+              <%= display_gender(request.sitter) %>
+              <span>|</span>
+              <%= display_age(request.sitter) %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="request--ferret request-row">
+      <h5>フェレット</h5>
+      <% request.owner.ferrets.each do |ferret| %>
+      <div class="request--list">
+        <div class="request--ferret-image">
+          <%= link_to image_tag(ferret.image, size:"100x100", class:"image-icon"), ferret_path(ferret) %>
+        </div>
+        <div class="request--ferret-info">
+          <div class="request--ferret-name">
+            <p><%= display_name(ferret) %></p>
+          </div>
+          <div class="request--ferret-character">
+            <p>
+              <%= ferret.character %>
+              <span>|</span>
+              <%= display_gender(ferret) %>
+              <span>|</span>
+              <%= display_age(ferret) %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="request--period request-row">
+      <h5>期間</h5>
+      <p><%= request.start_at %>〜<%= request.end_at %></p>
+      <p><%= display_period(request) %></p>
+    </div>
+
+    <div class="request--fee request-row">
+      <h5>謝礼</h5>
+      <p>総額：<%= request.fee %>円</p>
+    </div>
+
+    <div class="request--memo request-row">
+      <h5>備考・お願い</h5>
+      <p><%= request.memo %></p>
+    </div>
+
+    <div class="request--actions request-row">
+      <% if current_user == request.owner %>
+      <div class="request--edit">
+        <%= render "components/edit-btn/edit-btn", path: request_path(request) %>
+      </div>
+      <div class="request--delete">
+        <%= render "components/delete-btn/delete-btn", path: request_path(request) %>
+      </div>
+      <% elsif current_user == request.sitter %>
+        <%= link_to "依頼を承認する", contract_path, method: :post %>
+        <%= link_to "依頼を否認する", a_path, method: :destroy  %>
+      <% end %>
+    </div>
+  </div>
+</div>

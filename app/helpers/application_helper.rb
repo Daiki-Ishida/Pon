@@ -62,6 +62,12 @@ module ApplicationHelper
     time.strftime("%Y-%m-%d %H:%M")
   end
 
+  # Request or Contractの期間を返す
+  def display_period(object)
+    diff = object.end_at.day - object.start_at.day
+    return "#{diff}泊#{diff + 1}日"
+  end
+
   # トークルームの相手を表示
   def opponent(room)
     if room.owner == current_user
@@ -88,7 +94,7 @@ module ApplicationHelper
   end
 
   private
-    # 人間かフェレットかチェック。ここでしか使わないのでprivateで定義
+    # 人間かフェレットかチェック。
     def model_checker(object)
       if object.model_name.name == "User"
         return "user"

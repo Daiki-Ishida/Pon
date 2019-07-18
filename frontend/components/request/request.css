@@ -1,0 +1,55 @@
+.request--title{
+  border-bottom: solid 3px #78B7F0;
+  margin-bottom: 20px;
+}
+
+.request-row{
+  margin-bottom: 40px;
+}
+
+.request-row h5{
+  color: #4ba9a1;
+}
+
+.request--list{
+  display: flex;
+}
+
+.request--user-image, .request--ferret-image{
+  margin-right: 20px;
+}
+
+.request--actions{
+  display: flex;
+  justify-content: space-around;
+}
+
+.request--edit,.request--delete{
+  width: 200px;
+  border-radius: 10px;
+  background-color: #FFF;
+  text-align: center;
+}
+
+.request--edit button{
+  width: 100%;
+  color: #4ba9a1;
+  border: solid 1px #4ba9a1;
+}
+
+.request--delete button{
+  width: 100%;
+  color: #be4847;
+  border: solid 1px #be4847;
+}
+
+
+.request--edit button:hover{
+  background-color: #4ba9a1;
+  color: #FFF;
+}
+
+.request--delete button:hover{
+  background-color: #be4847;
+  color: #FFF;
+}

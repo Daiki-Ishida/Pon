@@ -10,5 +10,7 @@ import "components/follow-list/follow-list";
 import "components/my-rooms/my-rooms";
 import "components/territory/territory";
 
+import "../request/request";
+
 import "components/ferret/ferret";
 import "components/user/user";

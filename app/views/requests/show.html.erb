@@ -1,1 +1,7 @@
-<h1>成功だよ！</h1>
+<%= render "components/page/page" do %>
+  <%= render partial: "components/request/request",
+             locals: {
+               request: @request
+             }
+  %>
+<% end %>
