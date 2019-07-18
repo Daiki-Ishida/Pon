@@ -1,4 +1,6 @@
 module ApplicationHelper
+  require "uri"
+
   # 人間なら「さん」、フェレットオスなら「くん」、メスなら「ちゃん」を返す。
   def display_name(object)
     model = model_checker(object)
@@ -73,6 +75,16 @@ module ApplicationHelper
     if session[:user_id]
       current_user ||= User.find_by(id: session[:user_id])
     end
+  end
+
+  # 文字列中にURLがあればリンクにする。
+  def text_url_to_link(text)
+    URI.extract(text, ['http', 'https']).uniq.each do |url|
+      sub_text = ""
+      sub_text << "<a href=" << url << " target=\"_blank\">" << url << "</a>"
+      text.gsub!(url, sub_text)
+    end
+    return text
   end
 
   private

@@ -48,7 +48,7 @@
             <%= form.label :終了日時, class:"request-form--label" %>
             <span class="asterisk">＊</span>
             <div>
-              <%= form.date_select :start_at,
+              <%= form.date_select :end_at,
                                     {
                                       start_year: Time.current.year,
                                       end_year: Time.current.year + 1,
@@ -76,6 +76,12 @@
             <%= form.label :備考, class:"request-form--label" %>
             <%= form.text_area :memo, placeholder: "備考", class:"form-control request-form--input" %>
             <span class="bar"></span>
+          </div>
+        </div>
+
+        <div class="row submit request-form--form">
+          <div class="mx-auto">
+            <%= form.submit "入力内容を確認する", class:"btn btn-success" %>
           </div>
         </div>
 
