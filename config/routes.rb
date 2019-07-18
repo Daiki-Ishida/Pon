@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   end
   resources :requests
 
+  # get '/requests/#{sitter_id}/new', to: 'requests#new'
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

@@ -1,9 +1,7 @@
 import "./message-form.css";
 
-const messageFormContent = document.getElementById('messageFormContent');
 
-if(messageFormContent != null){
-  window.onload = function(){
+    const messageFormContent = document.getElementById('messageFormContent');
     const heightOfLine = getComputedStyle(messageFormContent).getPropertyValue('line-height').split('px')[0];
     const intViewportHeight = window.innerHeight;
     const minLineHeight = heightOfLine * 1.5;
@@ -67,5 +65,3 @@ if(messageFormContent != null){
     if(messageFormBtn != null){
       messageFormBtn.addEventListener('click', asyncMessage);
     }
-  }
-}

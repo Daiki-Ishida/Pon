@@ -1,0 +1,8 @@
+<%= render "components/page/page" do %>
+  <%= render partial: "components/request-form/request-form",
+             locals: {
+               request: @request,
+               user: @user
+             }
+  %>
+<% end %>
