@@ -95,7 +95,7 @@
     <div class="request--actions request-row">
       <% if current_user == request.owner %>
         <div class="request--edit">
-          <%= render "components/edit-btn/edit-btn", path: request_path(request) %>
+          <%= render "components/edit-btn/edit-btn", path: edit_request_path(request) %>
         </div>
         <div class="request--delete">
           <%= render "components/delete-btn/delete-btn", path: request_path(request) %>

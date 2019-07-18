@@ -28,11 +28,20 @@ class RequestsController < ApplicationController
   end
 
   def edit
-
+    @request = Request.find(params[:id])
   end
 
   def update
-
+    request = Request.find(params[:id])
+    if request.update(request_params)
+      flash[:success] = "依頼を更新しました。"
+      room = find_room(request)
+      update_notice(request, room)
+      redirect_to request_path(request)
+    else
+      flash[:error] = "入力に誤りがあります。"
+      render 'edit'
+    end
   end
 
   def destroy
@@ -53,6 +62,16 @@ class RequestsController < ApplicationController
         sender_id: current_user.id,
         room_id: room.id,
         content: "#{request.owner.name}さんが正式依頼を出しました!
+                  #{request.sitter.name}さんは次のリンクからご確認をお願いします！
+                  http://localhost:3000/requests/#{request.id}"
+      )
+    end
+
+    def update_notice(request, room)
+      message = Message.create!(
+        sender_id: current_user.id,
+        room_id: room.id,
+        content: "#{request.owner.name}さんが依頼を編集しました!
                   #{request.sitter.name}さんは次のリンクからご確認をお願いします！
                   http://localhost:3000/requests/#{request.id}"
       )
