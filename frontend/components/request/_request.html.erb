@@ -94,15 +94,23 @@
 
     <div class="request--actions request-row">
       <% if current_user == request.owner %>
-      <div class="request--edit">
-        <%= render "components/edit-btn/edit-btn", path: request_path(request) %>
-      </div>
-      <div class="request--delete">
-        <%= render "components/delete-btn/delete-btn", path: request_path(request) %>
-      </div>
+        <div class="request--edit">
+          <%= render "components/edit-btn/edit-btn", path: request_path(request) %>
+        </div>
+        <div class="request--delete">
+          <%= render "components/delete-btn/delete-btn", path: request_path(request) %>
+        </div>
       <% elsif current_user == request.sitter %>
-        <%= link_to "依頼を承認する", contract_path, method: :post %>
-        <%= link_to "依頼を否認する", a_path, method: :destroy  %>
+        <div class="request--accept">
+          <%= link_to contract_path, method: :post do %>
+            <button class="btn"><span><i class="far fa-check-circle"></i></span>承認</button>
+          <% end %>
+        </div>
+        <div class="request--reject">
+          <%= link_to a_path, method: :destroy do %>
+            <button class="btn"><span><i class="fas fa-ban"></i></span>否認</button>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

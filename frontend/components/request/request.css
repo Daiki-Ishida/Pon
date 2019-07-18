@@ -24,32 +24,39 @@
   justify-content: space-around;
 }
 
-.request--edit,.request--delete{
+.request--edit,
+.request--delete,
+.request--accept,
+.request--reject{
   width: 200px;
   border-radius: 10px;
   background-color: #FFF;
   text-align: center;
 }
 
-.request--edit button{
+.request--edit button,
+.request--accept button{
   width: 100%;
   color: #4ba9a1;
   border: solid 1px #4ba9a1;
 }
 
-.request--delete button{
+.request--delete button,
+.request--reject button{
   width: 100%;
   color: #be4847;
   border: solid 1px #be4847;
 }
 
 
-.request--edit button:hover{
+.request--edit button:hover,
+.request--accept button:hover{
   background-color: #4ba9a1;
   color: #FFF;
 }
 
-.request--delete button:hover{
+.request--delete button:hover,
+.request--reject button:hover{
   background-color: #be4847;
   color: #FFF;
 }
