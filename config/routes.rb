@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :rooms, only: [:create, :show] do
     resource :messages, only: [:create]
   end
+  resources :requests
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
