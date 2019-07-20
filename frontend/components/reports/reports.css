@@ -35,5 +35,6 @@
 }
 
 .reports--content{
-  overflow: hidden;
+  height: 175px;
+  overflow: scroll;
 }

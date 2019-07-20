@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
     end
 
     def is_correct_reviewer?
-      contract = Contract.find(params[:id])
+      contract = Contract.find(params[:contract_id])
       unless current_user == contract.owner
         flash[:warning] = "権限がありません。"
         redirect_to root_path

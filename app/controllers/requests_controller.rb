@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :has_ferrets?, only: [:new, :create]
+  before_action :has_ferrets?, except: [:show]
   before_action :has_request?, only: [:new, :create]
 
 
@@ -63,7 +63,6 @@ class RequestsController < ApplicationController
     end
 
     def has_ferrets?
-      request = Request.find(params:id)
       if current_user.ferrets.blank?
         flash[:warning] = "フェレットが登録されていません。まずはフェレットのご登録からお願いします。"
         redirect_to new_ferret_path

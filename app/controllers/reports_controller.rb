@@ -42,11 +42,11 @@ class ReportsController < ApplicationController
 
   private
     def report_params
-      params.require(:report).permit(:date, :content)
+      params.require(:report).permit(:date, :content, :image)
     end
 
     def is_correct_issuer?
-      contract = Contract.find(params[:id])
+      contract = Contract.find(params[:contract_id])
       unless current_user == contract.sitter
         flash[:warning] = "権限がありません。"
         redirect_to root_path
