@@ -7,7 +7,6 @@ class ReportsController < ApplicationController
   def create
     contract = Contract.find(params[:contract_id])
     report = contract.reports.build(report_params)
-    binding.pry
     if report.save
       flash[:seccess] = "レポートを提出しました！"
       message = report.send_notice(current_user, "create", contract_report_url(report.contract, report))
@@ -23,11 +22,11 @@ class ReportsController < ApplicationController
   end
 
   def show
-
+    @report = Report.find(params[:id])
   end
 
   def edit
-
+    @report = Report.find(params[:id])
   end
 
   def update

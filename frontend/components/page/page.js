@@ -13,6 +13,7 @@ import "components/territory/territory";
 
 import "../request/request";
 import "../contract/contract";
+import "../report/report"
 
 import "components/ferret/ferret";
 import "components/user/user";

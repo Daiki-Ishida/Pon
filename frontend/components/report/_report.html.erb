@@ -1,0 +1,32 @@
+<div class="report col-md-10 offset-md-1">
+  <div class="report--title">
+    <h2>レポート</h2>
+  </div>
+  <div class="report--image">
+    <% if report.image.attached? %>
+      <%= image_tag report.image, class:"report--image" %>
+    <% else %>
+      <%= image_tag "/images/no_image.jpg", class:"report--image" %>
+    <% end %>
+  </div>
+  <div class="report--info">
+    <div class="report--issuer">
+      <div class="report--issuer-title">
+        <p>レポート作成者：</p>
+      </div>
+      <div class="report--issuer-icon">
+        <%= image_tag report.contract.sitter.image, size: "50x50",class: "image-icon" %>
+      </div>
+      <div class="report--issuer-name">
+        <%= report.contract.sitter.name %>
+      </div>
+    </div>
+    <div class="report--date">
+      <%= report.date %>のレポート<br>
+      <small class="text-muted">発行日時：<%= display_time(report.created_at) %></small>
+    </div>
+  </div>
+  <div class="report--content">
+    <%= simple_format(report.content) %>
+  </div>
+</div>

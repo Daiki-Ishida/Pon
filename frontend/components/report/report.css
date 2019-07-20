@@ -1,0 +1,41 @@
+.report > div{
+  margin-bottom: 20px;
+}
+
+.report--title{
+  border-bottom: solid 3px #78B7F0;
+}
+
+.report--image{
+  width:100%;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+.report--info{
+  display: flex;
+  justify-content: space-around;
+}
+
+.report--issuer{
+  display: flex;
+}
+
+.report--issuer-icon{
+  margin-right: 20px;
+}
+
+.report--issuer-name,
+.report--issuer-title{
+  line-height: 50px;
+}
+
+.report--issuer-name{
+  width: 150px;
+}
+
+.report--content{
+  background: linear-gradient(#ccc 1px, transparent 1px) #fffbf2;
+  background-size: auto 30px;
+  line-height: 30px;
+}
