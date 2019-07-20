@@ -6,6 +6,7 @@ import "components/ferret-form/ferret-form";
 import "components/post-form/post-form";
 import "../request-form/request-form";
 import "../report-form/report-form";
+import "../review-form/review-form";
 
 import "components/follow-list/follow-list";
 import "components/my-rooms/my-rooms";

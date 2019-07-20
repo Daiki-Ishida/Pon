@@ -1,0 +1,7 @@
+<%= render "components/page/page" do %>
+  <%= render partial: "components/review-form/review-form",
+             locals: {
+               review: @review
+             }
+  %>
+<% end %>

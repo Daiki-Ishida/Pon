@@ -1,6 +1,10 @@
 import "init";
 import '@fortawesome/fontawesome-free/js/all';
-import Rails from 'rails-ujs'
+import 'jquery/dist/jquery.js';
+
+import 'raty-js'
+
+import Rails from 'rails-ujs';
 Rails.start()
 
 // ５色のボーダー
