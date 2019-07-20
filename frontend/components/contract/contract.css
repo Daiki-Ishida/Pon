@@ -24,7 +24,8 @@
   justify-content: space-around;
 }
 
-.contract--report{
+.contract--report,
+.contact--review{
   width: 200px;
   border-radius: 10px;
   background-color: #FFF;
@@ -37,7 +38,18 @@
   border: solid 1px #4ba9a1;
 }
 
+.contact--review button{
+  width: 100%;
+  color: #52b9d1;
+  border: solid 1px #52b9d1;
+}
+
 .contract--report button:hover{
   background-color: #4ba9a1;
+  color: #FFF;
+}
+
+.contact--review button:hover{
+  background-color: #52b9d1;
   color: #FFF;
 }

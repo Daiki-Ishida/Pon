@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   resources :contracts, except: [:create] do
     resources :reports
+    resources :reviews
   end
 
   get    '/login',   to: 'sessions#new'
