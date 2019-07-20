@@ -3,5 +3,5 @@ import "raty-js/lib/jquery.raty.css";
 
 $('#star').raty({
   starType: 'i',
-  scoreName: 'review[star]',
+  scoreName: 'review[rate]',
 });

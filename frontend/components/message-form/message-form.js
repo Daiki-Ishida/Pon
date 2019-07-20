@@ -5,14 +5,14 @@ import "./message-form.css";
 
 
 const messageFormContent = document.getElementById('messageFormContent');
-const heightOfLine = '';
-const intViewportHeight = '';
-const minLineHeight = '';
-const maxLineHeight = '';
-const messageFormBtn = '';
+let heightOfLine = '';
+let intViewportHeight = '';
+let minLineHeight = '';
+let maxLineHeight = '';
+let messageFormBtn = '';
 
 if(messageFormContent != null){
-  heightOfLine = getComputedStyle(messageFormContent).getPropertyValue('line-height').split('px')[0];
+
   intViewportHeight = window.innerHeight;
   minLineHeight = heightOfLine * 1.5;
   maxLineHeight = intViewportHeight * 0.5;
@@ -22,6 +22,7 @@ if(messageFormContent != null){
   }
 
   const resizeForm = ()=>{
+    heightOfLine = window.getComputedStyle(messageFormContent).getPropertyValue('line-height').split('px')[0];
     const lines = (messageFormContent.value + '\n').match(/\n/g).length;
     const num = Math.min(maxLineHeight, Math.max(heightOfLine * lines, minLineHeight));
     messageFormContent.style.height = num + 'px';
