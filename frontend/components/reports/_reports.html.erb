@@ -1,0 +1,33 @@
+<div class="reports">
+  <div class="container">
+    <% reports.each do |report| %>
+      <div class="reports--report">
+        <div class="reports--image col-md-4">
+          <%= link_to contract_report_path(report.contract, report) do %>
+            <% if report.image.attached? %>
+              <%= image_tag report.image, class:"reports--image" %>
+            <% else %>
+              <%= image_tag "/images/no_image.jpg", class:"reports--image" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="reports--details col-md-8">
+          <div class="reports--head">
+            <div class="reports--issuer-icon">
+              <%= image_tag report.contract.sitter.image, size: "50x50",class: "image-icon" %>
+            </div>
+            <div class="reports--issuer-name">
+              <%= report.contract.sitter.name %>
+            </div>
+            <div class="reports--date">
+              <%= report.date %>
+            </div>
+          </div>
+          <div class="reports--content">
+            <%= simple_format(report.content) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

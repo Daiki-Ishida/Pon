@@ -24,3 +24,5 @@ import "components/page/page";
 import "components/home/home";
 // 4.投稿一覧のベース
 import "components/posts/posts";
+// 4.レポート一覧のベース
+import "components/reports/reports"

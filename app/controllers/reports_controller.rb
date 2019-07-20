@@ -18,7 +18,8 @@ class ReportsController < ApplicationController
   end
 
   def index
-
+    contract = Contract.find(params[:contract_id])
+    @reports = contract.reports
   end
 
   def show

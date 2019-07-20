@@ -1,0 +1,39 @@
+.reports{
+  margin-top: 50px;
+}
+
+.reports--report{
+  height: 300px;
+  background-color: #FFF;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.reports--image{
+  max-height: 300px;
+  text-align: center;
+}
+
+.reports--details{
+  padding: 25px;
+}
+
+.reports--head{
+  height: 75px;
+  line-height: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.reports--issuer-icon{
+  margin-right: 30px;
+}
+
+.reports--issuer-name{
+  flex-grow: 10;
+}
+
+.reports--content{
+  overflow: hidden;
+}
