@@ -37,6 +37,10 @@ class Request < ApplicationRecord
                  #{url}"
     when "withdraw"
       content = "#{self.owner.name}さんが依頼を取り下げました。"
+    when "approved"
+      content = "#{self.sitter.name}さんにより依頼が承認されました！
+                 依頼内容は以下のリンクから確認できます。
+                 #{url}"
     end
     return content
   end

@@ -1,4 +1,7 @@
 class RequestsController < ApplicationController
+  before_action :has_ferrets?, except:[:destroy]
+  before_action :has_request?, only:[:new, :create]
+
 
   def new
     @request = Request.new
@@ -57,5 +60,20 @@ class RequestsController < ApplicationController
   private
     def request_params
       params.require(:request).permit(:sitter_id, :start_at, :end_at, :fee, :memo)
+    end
+
+    def has_ferrets?
+      if current_user.ferrets.blank?
+        flash[:warning] = "フェレットが登録されていません。まずはフェレットのご登録からお願いします。"
+        redirect_to new_ferret_path
+      end
+    end
+
+    def has_request?
+      request = Request.find_by(owner_id: current_user.id)
+      if request.present?
+        flash[:warning] = "正式依頼は同時に１つしか提示できません。正式依頼を出し直す場合は、お手数ですが、一度依頼を取り下げてください。"
+        redirect_to edit_request_path(request)
+      end
     end
 end

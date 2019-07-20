@@ -1,0 +1,111 @@
+<div class="contract">
+
+  <div class="col-md-8 offset-2 contract--title">
+    <h2>依頼内容</h2>
+  </div>
+
+  <div class="col-md-8 offset-2 contract--content">
+    <div class="contract--user contract-row">
+      <h5>飼い主</h5>
+      <div class="contract--list">
+        <div class="contract--user-image">
+          <%= link_to image_tag(contract.owner.image, size:"100x100", class:"image-icon"), user_path(contract.owner) %>
+        </div>
+        <div class="contract--user-info">
+          <div class="contract--user-name">
+            <p><%= display_name(contract.owner) %></p>
+          </div>
+          <div class="contract--user-details">
+            <p>
+              <%= display_address(contract.owner) %>
+              <span>|</span>
+              <%= display_gender(contract.owner) %>
+              <span>|</span>
+              <%= display_age(contract.owner) %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contract--sitter contract-row">
+      <h5>お世話係</h5>
+      <div class="contract--list">
+        <div class="contract--user-image">
+          <%= link_to image_tag(contract.sitter.image, size:"100x100", class:"image-icon"), user_path(contract.sitter) %>
+        </div>
+        <div class="contract--user-info">
+          <div class="contract--user-name">
+            <p><%= display_name(contract.sitter) %></p>
+          </div>
+          <div class="contract--user-details">
+            <p>
+              <%= display_address(contract.sitter) %>
+              <span>|</span>
+              <%= display_gender(contract.sitter) %>
+              <span>|</span>
+              <%= display_age(contract.sitter) %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contract--ferret contract-row">
+      <h5>フェレット</h5>
+      <% contract.owner.ferrets.each do |ferret| %>
+      <div class="contract--list">
+        <div class="contract--ferret-image">
+          <%= link_to image_tag(ferret.image, size:"100x100", class:"image-icon"), ferret_path(ferret) %>
+        </div>
+        <div class="contract--ferret-info">
+          <div class="contract--ferret-name">
+            <p><%= display_name(ferret) %></p>
+          </div>
+          <div class="contract--ferret-character">
+            <p>
+              <%= ferret.character %>
+              <span>|</span>
+              <%= display_gender(ferret) %>
+              <span>|</span>
+              <%= display_age(ferret) %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="contract--period contract-row">
+      <h5>期間</h5>
+      <p><%= contract.start_at %>〜<%= contract.end_at %></p>
+      <p><%= display_period(contract) %></p>
+    </div>
+
+    <div class="contract--fee contract-row">
+      <h5>謝礼</h5>
+      <p>総額：<%= contract.fee %>円</p>
+    </div>
+
+    <div class="contract--memo contract-row">
+      <h5>備考・お願い</h5>
+      <p><%= contract.memo %></p>
+    </div>
+
+    <div class="contract--actions contract-row">
+      <% if current_user == contract.owner %>
+        <div class="contract--report">
+          <%= link_to reports_path do %>
+            <button class="btn"><span><i class="fas fa-search"></i></span>レポートを見る</button>
+          <% end %>
+        </div>
+      <% elsif current_user == contract.sitter %>
+        <div class="contract--report">
+          <%= link_to new_report_path do %>
+            <button class="btn"><span><i class="fas fa-file-upload"></i></span>レポートを提出する</button>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

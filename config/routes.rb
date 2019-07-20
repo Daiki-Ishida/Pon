@@ -9,7 +9,9 @@ Rails.application.routes.draw do
       patch :update_territory
     end
   end
+
   resources :ferrets
+
   resources :posts do
     resource :likes, only: [:create, :destroy]
     collection do
@@ -18,15 +20,20 @@ Rails.application.routes.draw do
       get :search
     end
   end
+
   resources :comments
+
   resources :relationships, only: [:create, :destroy]
-  # resources :messages, only: [:create]
+
   resources :rooms, only: [:create, :show] do
     resource :messages, only: [:create]
   end
+
   resources :requests
 
-  # get '/requests/#{sitter_id}/new', to: 'requests#new'
+  resources :contracts do
+    resources :reports
+  end
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

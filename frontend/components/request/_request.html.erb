@@ -102,7 +102,7 @@
         </div>
       <% elsif current_user == request.sitter %>
         <div class="request--accept">
-          <%= link_to contract_path, method: :post do %>
+          <%= link_to contract_path(params: {request_id: request.id}), method: :post do %>
             <button class="btn"><span><i class="far fa-check-circle"></i></span>承認</button>
           <% end %>
         </div>
