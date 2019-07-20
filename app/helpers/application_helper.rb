@@ -68,15 +68,6 @@ module ApplicationHelper
     return "#{diff}泊#{diff + 1}日"
   end
 
-  # トークルームの相手を表示
-  def opponent(room)
-    if room.owner == current_user
-      opponent = room.guest
-    elsif room.guest == current_user
-      opponent = room.owner
-    end
-  end
-
   def current_user
     if session[:user_id]
       current_user ||= User.find_by(id: session[:user_id])

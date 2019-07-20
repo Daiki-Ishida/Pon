@@ -29,9 +29,11 @@ Rails.application.routes.draw do
     resource :messages, only: [:create]
   end
 
-  resources :requests
+  resources :requests do
+    resource :contracts, only: [:create]
+  end
 
-  resources :contracts do
+  resources :contracts, except: [:create] do
     resources :reports
   end
 

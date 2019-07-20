@@ -5,4 +5,15 @@ class Room < ApplicationRecord
 
   validates :owner_id, presence: true
   validates :guest_id, presence: true
+
+  # トークルームの相手を表示
+  def opponent(user)
+    if self.owner == user
+      opponent = self.guest
+    elsif self.guest == user
+      opponent = self.owner
+    end
+    return opponent
+  end
+
 end

@@ -2,16 +2,16 @@
   <% rooms.each do |room| %>
     <div class="my-rooms--room">
       <div class="my-rooms--opponent-info">
-        <%= link_to user_path(opponent(room)) do %>
+        <%= link_to user_path(room.opponent(current_user)) do %>
           <div class="my-rooms--opponent--icon">
-            <% if opponent(room).image.attached? %>
-              <%= image_tag opponent(room).image, size: "80x80", class:"image-icon" %>
+            <% if room.opponent(current_user).image.attached? %>
+              <%= image_tag room.opponent(current_user).image, size: "80x80", class:"image-icon" %>
             <% else %>
               <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
             <% end %>
           </div>
           <div class="my-rooms--opponent-name">
-            <%= opponent(room).name %>
+            <%= room.opponent(current_user).name %>
           </div>
         <% end %>
       </div>
