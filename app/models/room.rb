@@ -16,4 +16,8 @@ class Room < ApplicationRecord
     return opponent
   end
 
+  def self.find_room(p, q)
+    Room.find_by(owner_id: p, guest_id: q) || Room.find_by(owner_id: q, guest_id: p)
+  end
+
 end

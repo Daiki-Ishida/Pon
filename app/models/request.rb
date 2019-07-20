@@ -12,17 +12,12 @@ class Request < ApplicationRecord
 
   def send_notice(sender, type, url)
     content = self.create_content(type, url)
-    room = self.find_room
+    room = Room.find_room(self.owner_id, self.sitter_id)
     Message.create!(
       sender_id: sender.id,
       room_id: room.id,
       content: content
     )
-  end
-
-  def find_room
-    room = Room.find_by(owner_id: self.owner_id, guest_id: self.sitter_id) || Room.find_by(owner_id: self.sitter_id, guest_id: self.owner_id)
-    return room
   end
 
   def create_content(type, url)
