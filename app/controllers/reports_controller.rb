@@ -1,4 +1,6 @@
 class ReportsController < ApplicationController
+  before_action :is_correct_issuer?, except: [:index, :show]
+
   def new
     contract = Contract.find(params[:contract_id])
     @report = contract.reports.build
@@ -39,8 +41,15 @@ class ReportsController < ApplicationController
   end
 
   private
-
     def report_params
       params.require(:report).permit(:date, :content)
+    end
+
+    def is_correct_issuer?
+      contract = Contract.find(params[:id])
+      unless current_user == contract.sitter
+        flash[:warning] = "権限がありません。"
+        redirect_to root_path
+      end
     end
 end

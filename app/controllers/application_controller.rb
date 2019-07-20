@@ -2,12 +2,11 @@ class ApplicationController < ActionController::Base
   prepend_view_path Rails.root.join("frontend")
   include SessionsHelper
 
-# とりあえず動く。ただし、二重でIDが保存されるので要修正。
-  def save_image(object, object_params)
-    image = object_params[:image]
-    initial = object.model_name.name[0]
-    object.update_attribute(:image, "#{initial}_#{object.id}.jpg")
-    File.binwrite("public/images/#{object.image}", image.read)
-  end
-
+  private
+    def logged_in_user
+      unless logged_in?
+        flash[:warning] = "ログインしてください。"
+        redirect_to login_url
+      end
+    end
 end
