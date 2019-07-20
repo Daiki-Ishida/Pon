@@ -14,15 +14,15 @@
     </div>
 
     <div class="col-md-8 offset-md-2">
-      <%= form_with model: report, local: true do |form| %>
+      <%= form_with model: [:contract, report], local: true do |form| %>
 
-        <div class="user-form--group form-row">
-          <div class="user-form--form col-md-12">
-            <div class="user-form--img-label">
-              <%= form.label :画像, class:"user-form--label" %>
+        <div class="report-form--group form-row">
+          <div class="report-form--form col-md-12">
+            <div class="report-form--img-label">
+              <%= form.label :画像, class:"report-form--label" %>
               <span class="asterisk">＊</span>
             </div>
-            <div class="user-form--img-form">
+            <div class="report-form--img-form">
               <%= render partial:"components/img-uploader/img-uploader",
                          locals: {form: form, object: report}
               %>
@@ -35,7 +35,7 @@
           <%= form.label :いつのレポート？, class:"report-form--label" %>
           <span class="asterisk">＊</span>
           <div>
-            <%= form.date_select :start_at,
+            <%= form.date_select :date,
                                   {
                                     start_year: report.contract.start_at.year,
                                     end_year: report.contract.end_at.year,
@@ -51,7 +51,7 @@
         <div class="report-form--group form-row">
           <div class="report-form--form col-md-12">
             <%= form.label :レポート, class:"report-form--label" %>
-            <%= form.text_area :memo, placeholder: "食欲やうんちの状態など", class:"form-control report-form--input" %>
+            <%= form.text_area :content, placeholder: "食欲やうんちの状態など", class:"form-control report-form--input" %>
             <span class="bar"></span>
           </div>
         </div>

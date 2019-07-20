@@ -95,13 +95,13 @@
     <div class="contract--actions contract-row">
       <% if current_user == contract.owner %>
         <div class="contract--report">
-          <%= link_to reports_path do %>
+          <%= link_to contract_reports_path(contract) do %>
             <button class="btn"><span><i class="fas fa-search"></i></span>レポートを見る</button>
           <% end %>
         </div>
       <% elsif current_user == contract.sitter %>
         <div class="contract--report">
-          <%= link_to new_report_path do %>
+          <%= link_to new_contract_report_path(contract) do %>
             <button class="btn"><span><i class="fas fa-file-upload"></i></span>レポートを提出する</button>
           <% end %>
         </div>

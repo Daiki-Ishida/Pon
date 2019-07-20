@@ -103,12 +103,12 @@
       <% elsif current_user == request.sitter %>
         <div class="request--accept">
           <%= link_to request_contracts_path(request), method: :post do %>
-            <button class="btn"><span><i class="far fa-check-circle"></i></span>承認</button>
+            <button><span><i class="far fa-check-circle"></i></span>承認</button>
           <% end %>
         </div>
         <div class="request--reject">
           <%= link_to root_path, method: :destroy do %>
-            <button class="btn"><span><i class="fas fa-ban"></i></span>否認</button>
+            <button><span><i class="fas fa-ban"></i></span>否認</button>
           <% end %>
         </div>
       <% end %>

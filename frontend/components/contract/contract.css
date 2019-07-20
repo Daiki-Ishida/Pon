@@ -1,0 +1,43 @@
+.contract--title{
+  border-bottom: solid 3px #78B7F0;
+  margin-bottom: 20px;
+}
+
+.contract-row{
+  margin-bottom: 40px;
+}
+
+.contract-row h5{
+  color: #4ba9a1;
+}
+
+.contract--list{
+  display: flex;
+}
+
+.contract--user-image, .contract--ferret-image{
+  margin-right: 20px;
+}
+
+.contract--actions{
+  display: flex;
+  justify-content: space-around;
+}
+
+.contract--report{
+  width: 200px;
+  border-radius: 10px;
+  background-color: #FFF;
+  text-align: center;
+}
+
+.contract--report button{
+  width: 100%;
+  color: #4ba9a1;
+  border: solid 1px #4ba9a1;
+}
+
+.contract--report button:hover{
+  background-color: #4ba9a1;
+  color: #FFF;
+}

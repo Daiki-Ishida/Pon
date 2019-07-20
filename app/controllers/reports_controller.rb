@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   def new
-    contract = Contract.find(params[:id])
+    contract = Contract.find(params[:contract_id])
     @report = contract.reports.build
   end
 
@@ -31,6 +31,6 @@ class ReportsController < ApplicationController
   private
 
     def report_params
-
+      
     end
 end
