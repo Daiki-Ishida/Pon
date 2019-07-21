@@ -10,11 +10,11 @@
     <%= form_with url:posts_path, model: post do |form| %>
       <div class="post-form--group form-row">
         <div class="form col-md-12">
-          <div class="post-form--img-label">
+          <div class="img-label">
             <%= form.label :画像, class:"label" %>
             <span class="asterisk">＊</span>
           </div>
-          <div class="post-form--img-form">
+          <div class="img-form">
             <%= render partial:"components/img-uploader/img-uploader",
                        locals: {form: form, object: post}
             %>

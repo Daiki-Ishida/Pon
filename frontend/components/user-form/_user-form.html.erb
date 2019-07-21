@@ -12,11 +12,11 @@
 
       <div class="user-form--group form-row">
         <div class="form col-md-12">
-          <div class="user-form--img-label">
+          <div class="img-label">
             <%= form.label :画像, class:"label" %>
             <span class="asterisk">＊</span>
           </div>
-          <div class="user-form--img-form">
+          <div class="img-form">
             <%= render partial:"components/img-uploader/img-uploader",
                        locals: {form: form, object: user}
             %>
@@ -96,7 +96,7 @@
         <div class="form col-md-5">
           <%= form.label :性別, class:"label" %>
           <span class="asterisk">＊</span>
-          <div class="user-form--gender">
+          <div class="gender">
             <%= form.radio_button :gender, 1, id:"male", class:"radio" %>
             <label class="col-auto gender-btn male" for="male">男性</label>
             <%= form.radio_button :gender, 2, id:"female", class:"radio" %>

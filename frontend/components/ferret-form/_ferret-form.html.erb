@@ -11,11 +11,11 @@
 
       <div class="ferret-form--group form-row">
         <div class="form col-md-12">
-          <div class="ferret-form--img-label">
+          <div class="img-label">
             <%= form.label :画像, class:"label" %>
             <span class="asterisk">＊</span>
           </div>
-          <div class="ferret-form--img-form">
+          <div class="img-form">
             <%= render partial:"components/img-uploader/img-uploader",
                        locals: {form: form, object: ferret}
             %>
@@ -55,7 +55,7 @@
         <div class="form col-md-5">
           <%= form.label :性別, class:"label" %>
           <span class="asterisk">＊</span>
-          <div class="ferret-form--gender">
+          <div class="gender">
             <%= form.radio_button :gender, 1, id:"male", class:"radio" %>
             <label class="col-auto gender-btn male" for="male">オス</label>
             <%= form.radio_button :gender, 2, id:"female", class:"radio" %>

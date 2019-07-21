@@ -10,11 +10,11 @@
 
       <div class="report-form--group form-row">
         <div class="form col-md-12">
-          <div class="report-form--img-label">
+          <div class="img-label">
             <%= form.label :画像, class:"label" %>
             <span class="asterisk">＊</span>
           </div>
-          <div class="report-form--img-form">
+          <div class="img-form">
             <%= render partial:"components/img-uploader/img-uploader",
                        locals: {form: form, object: report}
             %>
