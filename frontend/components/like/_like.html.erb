@@ -1,26 +1,28 @@
 <% if logged_in? %>
   <div class="like" id="like_<%= post.id %>" >
     <% if post.likes?(current_user) %>
-      <button type="button" name="dislike" value="<%= post.id %>" class="like-btn liked" >
-        <span><i class="far fa-thumbs-up"></i></span>
-        <%= post.likes.count %> いいね
-      </button>
+      <%= link_to post_likes_path(post), data: {id: post.id} , method: :delete do %>
+        <button type="button" name="dislike" class="like-btn liked">
+          <span><i class="far fa-thumbs-up"></i></span>
+          <%= post.likes.count %> いいね
+        </button>
+      <% end %>
     <% else %>
-      <button type="button" name="like" value="<%= post.id %>" class="like-btn" >
-        <span><i class="far fa-thumbs-up"></i></span>
-        <%= post.likes.count %> いいね
-      </button>
+      <%= link_to post_likes_path(post), data: {id: post.id}, method: :post do %>
+        <button type="button" name="like" class="like-btn" >
+          <span><i class="far fa-thumbs-up"></i></span>
+          <%= post.likes.count %> いいね
+        </button>
+      <% end %>
     <% end %>
   </div>
 <% else %>
-  <li>
-    <%= link_to login_path, class:"like-btn" do %>
-      <div class="dislike">
-        <span>
-          <i class="far fa-thumbs-up"></i>
-        </span>
-        <%= post.likes.count %> いいね
-      </div>
-    <% end %>
-  </li>
+  <%= link_to login_path, class:"like-btn" do %>
+    <div class="dislike">
+      <span>
+        <i class="far fa-thumbs-up"></i>
+      </span>
+      <%= post.likes.count %> いいね
+    </div>
+  <% end %>
 <% end %>

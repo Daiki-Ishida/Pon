@@ -13,7 +13,8 @@ class RequestsController < ApplicationController
     request.owner_id = current_user.id
     if request.save
       flash[:success] = "依頼を提出しました。"
-      message = request.send_notice(current_user, "create", request_url(request))
+      content = request.create_content("create", request_url(request))
+      message = Message.send_notice(request, content)
       redirect_to room_path(message.room)
     else
       flash[:error] = "入力に誤りがあります。"

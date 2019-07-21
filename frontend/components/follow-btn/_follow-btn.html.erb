@@ -1,6 +1,8 @@
 <div class="follow-btn">
-  <button type="button" name="follow" class="follow-btn--btn" value="<%= user.id %>">
-    <span><i class="fas fa-user-plus"></i></span>
-    フォローする
-  </button>
+  <%= link_to relationships_path, data: {id: user.id} , method: :post do %>
+    <button type="button" name="follow" class="follow-btn--btn">
+      <span><i class="fas fa-user-plus"></i></span>
+      フォローする
+    </button>
+  <% end %>
 </div>

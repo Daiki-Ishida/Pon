@@ -1,6 +1,8 @@
 <div class="unfollow-btn">
-  <button type="button" name="unfollow" class="unfollow-btn--btn" value="<%= user.id %>" >
-    <span><i class="fas fa-user-minus"></i></span>
-    フォローを解除
-  </button>
+  <%= link_to relationship_path(Relationship.find_by(followed_id: user.id)), data: {id: user.id} , method: :delete do %>
+    <button type="button" name="unfollow" class="unfollow-btn--btn">
+      <span><i class="fas fa-user-minus"></i></span>
+      フォローを解除
+    </button>
+  <% end %>
 </div>

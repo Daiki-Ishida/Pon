@@ -7,15 +7,15 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    follow = current_user.active_relationships.find_by(followed_id: params[:id])
+    follow = current_user.active_relationships.find_by(followed_id: params[:relationship][:followed_id])
     follow.destroy!
-    user = User.find(params[:id])
+    user = User.find(params[:relationship][:followed_id])
     render partial: "components/follow-btn/follow-btn", locals: {user: user}
   end
 
   private
 
     def follow_params
-        params.require(:follow).permit(:followed_id).merge(follower_id: current_user.id)
+        params.require(:relationship).permit(:followed_id).merge(follower_id: current_user.id)
     end
 end
