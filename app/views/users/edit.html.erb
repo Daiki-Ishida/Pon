@@ -1,7 +1,3 @@
-<%= render "components/page/page" do %>
-  <%= render partial: "components/user-form/user-form",
-             locals: {
-               user: current_user,
-             }
-  %>
+<%= render "components/page/page", title:"登録情報の修正" do %>
+  <%= render "components/user-form/user-form", user: current_user %>
 <% end %>

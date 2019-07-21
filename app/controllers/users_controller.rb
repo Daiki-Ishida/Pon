@@ -51,8 +51,7 @@ class UsersController < ApplicationController
   end
 
   def rooms
-    user = User.find(params[:id])
-    @rooms = Room.where(guest_id: user.id).or(Room.where(owner_id: user.id))
+    @rooms = Room.where(guest_id: current_user.id).or(Room.where(owner_id: current_user.id))
   end
 
   def territory

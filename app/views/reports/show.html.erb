@@ -1,7 +1,3 @@
-<%= render "components/page/page" do %>
-  <%= render partial: "components/report/report",
-             locals: {
-               report: @report
-             }
-  %>
+<%= render "components/page/page", "レポート" do %>
+  <%= render "components/report/report", report: @report %>
 <% end %>

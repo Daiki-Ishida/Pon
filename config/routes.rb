@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :followings, :followers
+      patch :update_territory
+    end
+    collection do
       get :rooms
       get :territory
-      patch :update_territory
     end
   end
 

@@ -1,7 +1,3 @@
-<%= render "components/page/page" do %>
-  <%= render partial: "components/request/request",
-             locals: {
-               request: @request
-             }
-  %>
+<%= render "components/page/page", title:"依頼内容" do %>
+  <%= render "components/request/request", request: @request %>
 <% end %>

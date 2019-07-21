@@ -1,4 +1,4 @@
-<%= render "components/page/page" do %>
+<%= render "components/page/page", title:"#{display_name(@ferret)}の詳細" do %>
   <%= render partial: "components/ferret/ferret",
              locals: {
                ferret: @ferret,
