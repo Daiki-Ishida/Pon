@@ -1,12 +1,14 @@
 <div class="message-form">
   <%= form_with(model: [@room, Message.new],
                 class:"message-form--form",
-                id:"messageForm"
+                id:"messageForm",
+                local: true
                 ) do |form| %>
     <%= form.text_area :content,
                         placeholder: "メッセージを入力してください。",
                         class:"message-form--content",
-                        id:"messageFormContent"
+                        id:"messageFormContent",
+                        autofocus: true
     %>
     <%= form.submit "送信", class:"message-form--btn", id:"messageFormBtn" %>
   <% end %>

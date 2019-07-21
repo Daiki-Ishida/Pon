@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     message = room.messages.build(message_param)
     message.sender_id = current_user.id
     if message.save
-      render partial: "components/message/message", locals: {message: message}
+      redirect_to room_path(room)
     else
       flash[:warning] = "入力内容に誤りがあります。"
       redirect_to room_path(message.room)
