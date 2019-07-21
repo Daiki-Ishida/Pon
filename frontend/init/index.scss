@@ -12,6 +12,10 @@
                 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 
+/************* 全体のフォント設定END *************/
+
+/************* 初期設定の無効化 *************/
+
 body{
   background-color: #4ba9a1;
 }
@@ -42,6 +46,154 @@ ul{
 li {
 	list-style-type:none;
 }
+/************* 初期設定の無効化 *************/
+
+/************************* テキストフォーム全般の設定TART *************************/
+.form{
+  margin-bottom:20px;
+  position:relative;
+}
+
+.label{
+  font-size:14px;
+  color:#4ba9a1;
+}
+
+.input{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  border:none;
+  border-radius: 0;
+  border-bottom:1px solid #757575;
+}
+
+.input:focus{
+  outline: none;
+  box-shadow: none;
+}
+/************************* テキストフォーム全般の設定END *************************/
+
+/************************* フォーム下のバーSTART *************************/
+.bar{
+  position:relative;
+  display:block;
+  width:100%;
+}
+
+.bar:before, .bar:after{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background:#4ba9a1;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+.bar:before {
+  left:50%;
+}
+
+.bar:after {
+  right:50%;
+}
+
+.input:focus ~ .bar:before,
+.input:focus ~ .bar:after,
+.input:focus ~ .bar:before,
+.input:focus ~ .bar:after{
+  width:50%;
+}
+/************************* フォーム下のバーEND *************************/
+
+/************************* 日付入力欄START *************************/
+.select{
+  width: auto;
+  display: inline-block;
+  background-color: #FFF;
+  font-size:18px;
+  border: none;
+  border-radius: 0;
+}
+/************************* 日付入力欄END *************************/
+
+/************************* 性別入力欄START *************************/
+.radio{
+  display: none;
+}
+
+.gender{
+  display: flex;
+  justify-content: space-around;
+}
+
+.gender-btn{
+  display: block;
+  text-align: center;
+  border-radius: 3px;
+  background-color: #FFF;
+  margin-right: 10px;
+}
+
+.male{
+  border:1px solid #52b9d1;
+  color: #52b9d1;
+}
+
+.female{
+  border:1px solid #e96b6b;
+  color: #e96b6b;
+}
+
+.male:hover, .radio:checked + .male{
+  color: #FFF;
+  background-color: #52b9d1;
+}
+
+.female:hover, .radio:checked + .female{
+  color: #FFF;
+  background-color: #e96b6b;
+}
+/************************* 性別入力欄END *************************/
+
+/************************* アイコンの設定START *************************/
+
+.image-icon{
+  border-radius: 50%;
+  border: 2px solid #e96b6b;
+}
+
+/************************* アイコンの設定END *************************/
+
+/************************* 星START *************************/
+.star-on-png:before{
+  color: #f2a33a;
+}
+
+.star label{
+
+}
+/************************* 星END *************************/
+
+/************************* その他START *************************/
+.asterisk{
+  color:#be4847;
+}
+
+.warning{
+  font-size: 10px;
+  font-weight: 10;
+}
+
+.notice{
+  font-size: 10px;
+  color: #707070;
+}
+
+/************************* その他END *************************/
 
 
 

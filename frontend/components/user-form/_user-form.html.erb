@@ -1,13 +1,7 @@
-<div class="form-wrapper container">
-  <div class="row">
-    <div class="col-md-8 offset-2 user-form--title">
-      <h1>新規登録</h1>
-      <p class="warning"><span class="asterisk">＊</span>：必須項目</p>
-    </div>
-  </div>
-
+<div class="user-form">
   <div class="row">
     <div class="col-md-8  offset-md-2">
+      <p class="warning"><span class="asterisk">＊</span>：必須項目</p>
       <%= render "components/error-messages/error-messages", object: user %>
     </div>
   </div>
@@ -17,9 +11,9 @@
     <span class="p-country-name" style="display:none;">Japan</span>
 
       <div class="user-form--group form-row">
-        <div class="user-form--form col-md-12">
+        <div class="form col-md-12">
           <div class="user-form--img-label">
-            <%= form.label :画像, class:"user-form--label" %>
+            <%= form.label :画像, class:"label" %>
             <span class="asterisk">＊</span>
           </div>
           <div class="user-form--img-form">
@@ -31,52 +25,52 @@
       </div>
 
       <div class="user-form--group form-row">
-        <div class="user-form--form col-md-5">
-          <%= form.label :姓, class:"user-form--label" %>
+        <div class="form col-md-5">
+          <%= form.label :姓, class:"label" %>
           <span class="asterisk">＊</span>
           <span class="notice"><small class="text-muted">公開されません</small></span>
-          <%= form.text_field :kanji_lastname, placeholder: "姓", class:"form-control user-form--input" %>
+          <%= form.text_field :kanji_lastname, placeholder: "姓", class:"form-control input" %>
           <span class="bar"></span>
         </div>
-        <div class="user-form--form col-md-5 offset-md-1">
-          <%= form.label :名, class:"user-form--label" %>
+        <div class="form col-md-5 offset-md-1">
+          <%= form.label :名, class:"label" %>
           <span class="asterisk">＊</span>
           <span class="notice"><small class="text-muted">公開されません</small></span>
-          <%= form.text_field :kanji_firstname, placeholder: "名", class:"form-control user-form--input" %>
-          <span class="bar"></span>
-        </div>
-      </div>
-
-      <div class="user-form--group form-row">
-        <div class="user-form--form col-md-5">
-          <%= form.label :セイ, class:"user-form--label" %>
-          <span class="asterisk">＊</span>
-          <span class="notice"><small class="text-muted">公開されません</small></span>
-          <%= form.text_field :kana_lastname, placeholder: "セイ", class:"form-control user-form--input" %>
-          <span class="bar"></span>
-        </div>
-        <div class="user-form--form col-md-5 offset-md-1">
-          <%= form.label :メイ, class:"user-form--label" %>
-          <span class="asterisk">＊</span>
-          <span class="notice"><small class="text-muted">公開されません</small></span>
-          <%= form.text_field :kana_firstname, placeholder: "メイ", class:"form-control user-form--input" %>
+          <%= form.text_field :kanji_firstname, placeholder: "名", class:"form-control input" %>
           <span class="bar"></span>
         </div>
       </div>
 
       <div class="user-form--group form-row">
-        <div class="user-form--form col-md-5">
-          <%= form.label :ユーザー名, class:"user-form--label" %>
+        <div class="form col-md-5">
+          <%= form.label :セイ, class:"label" %>
+          <span class="asterisk">＊</span>
+          <span class="notice"><small class="text-muted">公開されません</small></span>
+          <%= form.text_field :kana_lastname, placeholder: "セイ", class:"form-control input" %>
+          <span class="bar"></span>
+        </div>
+        <div class="form col-md-5 offset-md-1">
+          <%= form.label :メイ, class:"label" %>
+          <span class="asterisk">＊</span>
+          <span class="notice"><small class="text-muted">公開されません</small></span>
+          <%= form.text_field :kana_firstname, placeholder: "メイ", class:"form-control input" %>
+          <span class="bar"></span>
+        </div>
+      </div>
+
+      <div class="user-form--group form-row">
+        <div class="form col-md-5">
+          <%= form.label :ユーザー名, class:"label" %>
           <span class="asterisk">＊</span>
           <span class="notice"><small class="text-muted">本アプリ上のあなたの名前です。</small></span>
-          <%= form.text_field :name, placeholder: "ユーザーネーム", class:"form-control user-form--input" %>
+          <%= form.text_field :name, placeholder: "ユーザーネーム", class:"form-control input" %>
           <span class="bar"></span>
         </div>
       </div>
 
       <div class="user-form--group form-row">
-        <div class="user-form--form">
-          <%= form.label :生年月日, class:"user-form--label" %>
+        <div class="form">
+          <%= form.label :生年月日, class:"label" %>
           <span class="asterisk">＊</span>
           <span class="notice">
             <small class="text-muted">
@@ -91,7 +85,7 @@
                                     use_month_numbers: true
                                   },
                                   {
-                                    class: "form-control user-form--select"
+                                    class: "form-control select"
                                   }
             %>
           </div>
@@ -99,36 +93,36 @@
       </div>
 
       <div class="user-form--group form-row">
-        <div class="user-form--form col-md-5">
-          <%= form.label :性別, class:"user-form--label" %>
+        <div class="form col-md-5">
+          <%= form.label :性別, class:"label" %>
           <span class="asterisk">＊</span>
           <div class="user-form--gender">
-            <%= form.radio_button :gender, 1, id:"male", class:"user-form--radio" %>
-            <label class="col-auto user-form--gender-btn male" for="male">男性</label>
-            <%= form.radio_button :gender, 2, id:"female", class:"user-form--radio" %>
-            <label class="col-auto user-form--gender-btn female" for="female">女性</label>
+            <%= form.radio_button :gender, 1, id:"male", class:"radio" %>
+            <label class="col-auto gender-btn male" for="male">男性</label>
+            <%= form.radio_button :gender, 2, id:"female", class:"radio" %>
+            <label class="col-auto gender-btn female" for="female">女性</label>
           </div>
         </div>
       </div>
 
       <div class="user-form--group form-row">
-        <div class="user-form--form col-md-5">
-          <%= form.label :郵便番号, class:"user-form--label" %>
+        <div class="form col-md-5">
+          <%= form.label :郵便番号, class:"label" %>
           <span class="asterisk">＊</span>
           <span class="notice"><small class="text-muted">公開されません。</small></span>
-          <%= form.text_field :postal_code, placeholder: "ハイフン無し", class:"form-control user-form--input p-postal-code" %>
+          <%= form.text_field :postal_code, placeholder: "ハイフン無し", class:"form-control input p-postal-code" %>
           <span class="bar"></span>
         </div>
       </div>
 
       <div class="user-form--group form-row">
-        <div class="user-form--form col-md-12">
-          <%= form.label :住所, class:"user-form--label" %>
+        <div class="form col-md-12">
+          <%= form.label :住所, class:"label" %>
           <span class="asterisk">＊</span>
           <span class="notice"><small class="text-muted">市区町村まで公開されます。</small></span>
           <%= form.text_field :postal_address,
                               placeholder: "郵便番号から自動入力されます",
-                              class:"form-control user-form--input p-region p-locality p-street-address p-extended-address",
+                              class:"form-control input p-region p-locality p-street-address p-extended-address",
                               id:"addressInput" %>
           <span class="bar"></span>
         </div>
@@ -139,14 +133,14 @@
       </div>
 
       <div class="user-form--group form-row">
-        <div class="user-form--form col-md-12">
-          <%= form.label :自己紹介, class:"user-form--label" %>
-          <%= form.text_area :introduction, placeholder: "自己紹介",class:"form-control user-form--input" %>
+        <div class="form col-md-12">
+          <%= form.label :自己紹介, class:"label" %>
+          <%= form.text_area :introduction, placeholder: "自己紹介",class:"form-control input" %>
           <span class="bar"></span>
         </div>
       </div>
 
-      <div class="row submit user-form--form">
+      <div class="row submit form">
         <div class="mx-auto">
           <%= form.submit "入力内容を確認する", class:"btn btn-success" %>
         </div>

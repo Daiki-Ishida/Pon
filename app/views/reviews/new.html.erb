@@ -1,7 +1,3 @@
-<%= render "components/page/page" do %>
-  <%= render partial: "components/review-form/review-form",
-             locals: {
-               review: @review
-             }
-  %>
+<%= render "components/page/page", title:"レビューの作成" do %>
+  <%= render "components/review-form/review-form", review: @review %>
 <% end %>

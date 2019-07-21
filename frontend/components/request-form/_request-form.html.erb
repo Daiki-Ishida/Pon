@@ -1,91 +1,81 @@
 <div class="request-form">
-  <div class="form-wrapper">
-    <div class="row">
-      <div class="col-md-8 offset-2 request-form--title">
-        <h1>正式依頼</h1>
-        <p class="warning"><span class="asterisk">＊</span>：必須項目</p>
+  <div class="row">
+    <div class="col-md-8  offset-md-2">
+      <%= render "components/error-messages/error-messages", object: request %>
+    </div>
+  </div>
+
+  <div class="col-md-8 offset-md-2">
+    <%= form_with model: request, local: true do |form| %>
+      <div class="request-form--group form-row">
+        <div class="form">
+          <%= form.label "依頼する相手", class:"label" %>
+          <p>
+            <%= image_tag user.image, size:"100x100", class:"image-icon" %>
+            <%= display_name(user) %>
+          </p>
+          <%= form.hidden_field :sitter_id, value:user.id %>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-8  offset-md-2">
-        <%= render "components/error-messages/error-messages", object: request %>
+      <div class="request-form--group form-row">
+        <div class="form">
+          <%= form.label :開始日時, class:"label" %>
+          <span class="asterisk">＊</span>
+          <div>
+            <%= form.date_select :start_at,
+                                  {
+                                    start_year: Time.current.year,
+                                    end_year: Time.current.year + 1,
+                                    use_month_numbers: true
+                                  },
+                                  {
+                                    class: "form-control select"
+                                  }
+            %>
+          </div>
+        </div>
+
+        <div class="form">
+          <%= form.label :終了日時, class:"label" %>
+          <span class="asterisk">＊</span>
+          <div>
+            <%= form.date_select :end_at,
+                                  {
+                                    start_year: Time.current.year,
+                                    end_year: Time.current.year + 1,
+                                    use_month_numbers: true
+                                  },
+                                  {
+                                    class: "form-control select"
+                                  }
+            %>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="col-md-8 offset-md-2">
-      <%= form_with model: request, local: true do |form| %>
-        <div class="request-form--group form-row">
-          <div class="request-form--form">
-            <%= form.label "依頼する相手", class:"request-form--label" %>
-            <p>
-              <%= image_tag user.image, size:"100x100", class:"image-icon" %>
-              <%= display_name(user) %>
-            </p>
-            <%= form.hidden_field :sitter_id, value:user.id %>
-          </div>
+      <div class="request-form--group form-row">
+        <div class="form col-md-5">
+          <%= form.label :謝礼, class:"label"%>
+          <span class="asterisk">＊</span>
+          <%= form.number_field :fee, placeholder: "金額を提示", class:"form-control input" %>
+          <span class="bar"></span>
         </div>
+      </div>
 
-        <div class="request-form--group form-row">
-          <div class="request-form--form">
-            <%= form.label :開始日時, class:"request-form--label" %>
-            <span class="asterisk">＊</span>
-            <div>
-              <%= form.date_select :start_at,
-                                    {
-                                      start_year: Time.current.year,
-                                      end_year: Time.current.year + 1,
-                                      use_month_numbers: true
-                                    },
-                                    {
-                                      class: "form-control request-form--select"
-                                    }
-              %>
-            </div>
-          </div>
-
-          <div class="request-form--form">
-            <%= form.label :終了日時, class:"request-form--label" %>
-            <span class="asterisk">＊</span>
-            <div>
-              <%= form.date_select :end_at,
-                                    {
-                                      start_year: Time.current.year,
-                                      end_year: Time.current.year + 1,
-                                      use_month_numbers: true
-                                    },
-                                    {
-                                      class: "form-control request-form--select"
-                                    }
-              %>
-            </div>
-          </div>
+      <div class="request-form--group form-row">
+        <div class="form col-md-12">
+          <%= form.label :備考, class:"label" %>
+          <%= form.text_area :memo, placeholder: "備考", class:"form-control input" %>
+          <span class="bar"></span>
         </div>
+      </div>
 
-        <div class="request-form--group form-row">
-          <div class="request-form--form col-md-5">
-            <%= form.label :謝礼, class:"request-form--label"%>
-            <span class="asterisk">＊</span>
-            <%= form.number_field :fee, placeholder: "金額を提示", class:"form-control request-form--input" %>
-            <span class="bar"></span>
-          </div>
+      <div class="row submit form">
+        <div class="mx-auto">
+          <%= form.submit "入力内容を確認する", class:"btn btn-success" %>
         </div>
-
-        <div class="request-form--group form-row">
-          <div class="request-form--form col-md-12">
-            <%= form.label :備考, class:"request-form--label" %>
-            <%= form.text_area :memo, placeholder: "備考", class:"form-control request-form--input" %>
-            <span class="bar"></span>
-          </div>
-        </div>
-
-        <div class="row submit request-form--form">
-          <div class="mx-auto">
-            <%= form.submit "入力内容を確認する", class:"btn btn-success" %>
-          </div>
-        </div>
-
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

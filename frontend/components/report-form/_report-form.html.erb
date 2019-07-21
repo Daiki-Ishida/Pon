@@ -1,68 +1,59 @@
 <div class="report-form">
-  <div class="form-wrapper">
-    <div class="row">
-      <div class="col-md-8 offset-2 report-form--title">
-        <h1>レポート作成</h1>
-        <p class="warning"><span class="asterisk">＊</span>：必須項目</p>
-      </div>
+  <div class="row">
+    <div class="col-md-8  offset-md-2">
+      <%= render "components/error-messages/error-messages", object: report %>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-md-8  offset-md-2">
-        <%= render "components/error-messages/error-messages", object: report %>
-      </div>
-    </div>
+  <div class="col-md-8 offset-md-2">
+    <%= form_with model: [:contract, report], local: true do |form| %>
 
-    <div class="col-md-8 offset-md-2">
-      <%= form_with model: [:contract, report], local: true do |form| %>
-
-        <div class="report-form--group form-row">
-          <div class="report-form--form col-md-12">
-            <div class="report-form--img-label">
-              <%= form.label :画像, class:"report-form--label" %>
-              <span class="asterisk">＊</span>
-            </div>
-            <div class="report-form--img-form">
-              <%= render partial:"components/img-uploader/img-uploader",
-                         locals: {form: form, object: report}
-              %>
-            </div>
+      <div class="report-form--group form-row">
+        <div class="form col-md-12">
+          <div class="report-form--img-label">
+            <%= form.label :画像, class:"label" %>
+            <span class="asterisk">＊</span>
           </div>
-        </div>
-
-
-        <div class="report-form--group form-row">
-          <%= form.label :いつのレポート？, class:"report-form--label" %>
-          <span class="asterisk">＊</span>
-          <div>
-            <%= form.date_select :date,
-                                  {
-                                    start_year: report.contract.start_at.year,
-                                    end_year: report.contract.end_at.year,
-                                    use_month_numbers: true
-                                  },
-                                  {
-                                    class: "form-control report-form--select"
-                                  }
+          <div class="report-form--img-form">
+            <%= render partial:"components/img-uploader/img-uploader",
+                       locals: {form: form, object: report}
             %>
           </div>
         </div>
+      </div>
 
-        <div class="report-form--group form-row">
-          <div class="report-form--form col-md-12">
-            <%= form.label :レポート, class:"report-form--label" %>
-            <%= form.text_area :content, placeholder: "食欲やうんちの状態など", class:"form-control report-form--input" %>
-            <span class="bar"></span>
-          </div>
+
+      <div class="report-form--group form-row">
+        <%= form.label :いつのレポート？, class:"label" %>
+        <span class="asterisk">＊</span>
+        <div>
+          <%= form.date_select :date,
+                                {
+                                  start_year: report.contract.start_at.year,
+                                  end_year: report.contract.end_at.year,
+                                  use_month_numbers: true
+                                },
+                                {
+                                  class: "form-control select"
+                                }
+          %>
         </div>
+      </div>
 
-        <div class="row submit report-form--form">
-          <div class="mx-auto">
-            <%= form.submit "入力内容を確認する", class:"btn btn-success" %>
-          </div>
+      <div class="report-form--group form-row">
+        <div class="form col-md-12">
+          <%= form.label :レポート, class:"label" %>
+          <%= form.text_area :content, placeholder: "食欲やうんちの状態など", class:"form-control input" %>
+          <span class="bar"></span>
         </div>
+      </div>
 
-      <% end %>
-    </div>
+      <div class="row submit form">
+        <div class="mx-auto">
+          <%= form.submit "入力内容を確認する", class:"btn btn-success" %>
+        </div>
+      </div>
+
+    <% end %>
   </div>
 </div>

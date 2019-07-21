@@ -1,44 +1,38 @@
-<div class="container">
-  <div class="form-wrapper">
-    <div class="row  post-form">
-      <div class="col-md-8 offset-2 post-form--title">
-        <h1>投稿フォーム</h1>
+<div class="post-form">
+  <div class="row">
+    <div class="col-md-8  offset-md-2">
+      <p class="warning"><span class="asterisk">＊</span>：必須項目</p>
+      <%= render "components/error-messages/error-messages", object: post %>
+    </div>
+  </div>
+
+  <div class="col-md-8 offset-md-2">
+    <%= form_with url:posts_path, model: post do |form| %>
+      <div class="post-form--group form-row">
+        <div class="form col-md-12">
+          <div class="post-form--img-label">
+            <%= form.label :画像, class:"label" %>
+            <span class="asterisk">＊</span>
+          </div>
+          <div class="post-form--img-form">
+            <%= render partial:"components/img-uploader/img-uploader",
+                       locals: {form: form, object: post}
+            %>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-8  offset-md-2">
-        <%= render "components/error-messages/error-messages", object: post %>
+      <div class="post-form--group form-row">
+        <div class="form col-md-12">
+          <%= form.label :内容, class:"label" %>
+          <%= form.text_area :content, placeholder: "投稿の内容",class:"form-control input" %>
+          <span class="bar"></span>
+        </div>
       </div>
-    </div>
-
-    <div class="col-md-8 offset-md-2">
-      <%= form_with url:posts_path, model: post do |form| %>
-
-        <div class="row image-form post-form">
-          <div class="col-md-8 offset-md-2">
-            <div class="form-group">
-              <%= form.label :投稿画像 %>
-              <%= form.file_field :image, class:"form-control-file" %>
-            </div>
-          </div>
+      <div class="row submit form">
+        <div class="mx-auto">
+          <%= form.submit "入力内容を確認する", class:"btn btn-success" %>
         </div>
-
-        <div class="row content post-form">
-          <div class="col-md-8 offset-md-2">
-            <div class="from-group">
-              <%= form.label :内容 %>
-              <%= form.text_area :content, class:"form-control" %>
-            </div>
-          </div>
-        </div>
-
-        <div class="row submit post-form">
-          <div class="mx-auto">
-            <%= form.submit "入力内容を確認する", class:"btn btn-success" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

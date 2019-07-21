@@ -18,7 +18,7 @@ const async = (method, url, elm, sendData)=>{
 
 const getUrl = (target)=>{
   const link = target.closest('a');
-  const url = link.href
+  const url = link.href;
   const method = link.getAttribute( "data-method" );
   const id = link.getAttribute( "data-id" );
   link.disabled = true;

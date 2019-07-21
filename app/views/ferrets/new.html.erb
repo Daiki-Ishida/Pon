@@ -1,7 +1,3 @@
-<%= render "components/page/page" do %>
-  <%= render partial: "components/ferret-form/ferret-form",
-             locals: {
-               ferret: @ferret,
-             }
-  %>
+<%= render "components/page/page", title: "フェレットの登録" do %>
+  <%= render "components/ferret-form/ferret-form", ferret: @ferret %>
 <% end %>
