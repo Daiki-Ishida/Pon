@@ -5,7 +5,6 @@ const async = (method, url, elm, sendData)=>{
     if (this.readyState == 4 && this.status == 200) {
       console.log('success!');
       const response = this.response;
-      elm.textContent = '';
       elm.insertAdjacentHTML('beforeend', response);
     } else if (this.readyState == 4) {
       alert('ERROR!');

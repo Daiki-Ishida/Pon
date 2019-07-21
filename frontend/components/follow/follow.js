@@ -11,6 +11,7 @@ const followSwitch = (e)=>{
   const elm = document.getElementById(`follow_${id}`)
   const sendData = {followed_id: id};
   async(method, url, elm, sendData);
+  elm.textContent = '';
 }
 
 const follows = document.getElementsByClassName('follow');

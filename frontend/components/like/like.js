@@ -8,6 +8,7 @@ const likeSwitch = (e)=>{
   const elm = document.getElementById(`like_${id}`);
   const sendData = null;
   async(method, url, elm, sendData);
+  elm.textContent = '';
 }
 
 const likes = document.getElementsByClassName('like');

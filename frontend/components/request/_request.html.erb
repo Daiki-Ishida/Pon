@@ -98,7 +98,7 @@
           <%= render "components/edit-btn/edit-btn", path: edit_request_path(request) %>
         </div>
         <div class="request--delete">
-          <%= render partial: "components/delete-btn/delete-btn", locals: {path: request_path(request), method: "delete"} %>
+          <%= render partial: "components/delete-btn/delete-btn", locals: {path: request_path(request)} %>
         </div>
       <% elsif current_user == request.sitter %>
         <div class="request--accept">
