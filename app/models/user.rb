@@ -46,9 +46,9 @@ class User < ApplicationRecord
   end
 
   # 自身指定の縄張りの範囲内の任意のオブジェクト（第一引数）を返す。
-  def objects_within_territory(objects, other_users)
+  def objects_within_territory(objects)
     array = []
-    other_users.each do |other_user|
+    self.other_users.each do |other_user|
       lat = other_user.latitude
       lng = other_user.longitude
       distance = self.distance_to([lat,lng], units: :kms)

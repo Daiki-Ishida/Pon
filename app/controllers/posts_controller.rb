@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def territory
-    @posts = current_user.objects_within_territory("posts", current_user.other_users)
+    @posts = current_user.objects_within_territory("posts")
   end
 
   def following
