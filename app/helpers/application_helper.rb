@@ -108,11 +108,12 @@ module ApplicationHelper
   def display_notification(notification)
     action_user = notification.action_user
     user = link_to(display_name(action_user), user_path(action_user), class:"notification--user")
-    post = link_to("あなたの投稿", post_path(notification.post),  class:"notification--action")
     case notification.action
       when "like"
+        post = link_to("あなたの投稿", post_path(notification.post),  class:"notification--action")
         "#{user}が#{post}にいいね！しました。"
       when "comment"
+        post = link_to("あなたの投稿", post_path(notification.post),  class:"notification--action")
         "#{user}が#{post}にコメントしました。"
       when "message"
         room = notification.message.room
