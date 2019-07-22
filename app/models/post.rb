@@ -18,4 +18,13 @@ class Post < ApplicationRecord
     return Post.all unless search
     Post.where(['content LIKE ?', "%#{search}%"])
   end
+
+  def create_notification(user, action)
+    notification = user.active_notifications.build(
+      post_id: self.id,
+      notified_user_id: self.user.id,
+      action: action
+    )
+    notification.save if notification.valid?
+  end
 end

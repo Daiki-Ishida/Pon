@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :my do
+    resources :notifications, only: [:index]
+  end
+
   resources :ferrets do
     collection do
       get :territory

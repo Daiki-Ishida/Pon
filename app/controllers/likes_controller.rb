@@ -4,6 +4,7 @@ class LikesController < ApplicationController
     post = Post.find(params[:post_id])
     like = current_user.likes.build(post_id: post.id)
     like.save!
+    post.create_notification(current_user, "like")
     render partial: "components/like/like", locals: {post: post}
   end
 

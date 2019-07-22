@@ -4,4 +4,7 @@ class Notification < ApplicationRecord
   belongs_to :post, optional: true
   belongs_to :comment, optional: true
   belongs_to :message, optional: true
+
+  validates :action_user_id, presence: true
+  validates :notified_user_id, presence: true
 end

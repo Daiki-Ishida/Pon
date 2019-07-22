@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :rooms
   has_many :requests, dependent: :destroy
-  has_many :contracts,
+  has_many :contracts
   has_many :active_notifications, class_name: 'Notification',
                                   foreign_key: :action_user_id,
                                   dependent: :destroy
