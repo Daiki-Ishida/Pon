@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_20_080712) do
+ActiveRecord::Schema.define(version: 2019_07_22_072754) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -74,6 +74,18 @@ ActiveRecord::Schema.define(version: 2019_07_20_080712) do
     t.integer "sender_id"
     t.integer "room_id"
     t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "notified_user_id"
+    t.integer "action_user_id"
+    t.string "action"
+    t.integer "post_id"
+    t.integer "comment_id"
+    t.integer "message_id"
+    t.boolean "checked", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
