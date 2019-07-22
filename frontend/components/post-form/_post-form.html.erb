@@ -24,7 +24,10 @@
       <div class="post-form--group form-row">
         <div class="form col-md-12">
           <%= form.label :内容, class:"label" %>
-          <%= form.text_area :content, placeholder: "投稿の内容",class:"form-control input" %>
+          <%= form.text_area :content,
+                              placeholder: "投稿の内容",
+                              class:"form-control input",
+                              id: "textArea" %>
           <span class="bar"></span>
         </div>
       </div>

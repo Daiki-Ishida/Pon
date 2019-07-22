@@ -79,7 +79,10 @@
       <div class="ferret-form--group form-row">
         <div class="form col-md-12">
           <%= form.label :紹介, class:"label" %>
-          <%= form.text_area :introduction, placeholder: "紹介", class:"form-control input" %>
+          <%= form.text_area :introduction,
+                              placeholder: "紹介",
+                              class:"form-control input textarea",
+                              id: "textArea" %>
           <span class="bar"></span>
         </div>
       </div>

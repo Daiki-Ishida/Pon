@@ -5,7 +5,7 @@ const resizeForm = (e)=>{
   const minLineHeight = heightOfLine * 1.5;
   const maxLineHeight = intViewportHeight * 0.5;
 
-  const lines = (messageFormContent.value + '\n').match(/\n/g).length;
+  const lines = (input.value + '\n').match(/\n/g).length;
   const height = Math.min(maxLineHeight, Math.max(heightOfLine * lines, minLineHeight));
 
   input.style.height = height + 'px';

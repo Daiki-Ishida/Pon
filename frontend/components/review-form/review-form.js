@@ -5,3 +5,10 @@ $('#star').raty({
   starType: 'i',
   scoreName: 'review[rate]',
 });
+
+import { resizeForm } from "../../lib/resize-form";
+
+const reviewFormTextArea = document.getElementById('textArea');
+if(reviewFormTextArea){
+  reviewFormTextArea.addEventListener('input', resizeForm);
+}

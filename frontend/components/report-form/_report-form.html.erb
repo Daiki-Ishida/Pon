@@ -43,7 +43,10 @@
       <div class="report-form--group form-row">
         <div class="form col-md-12">
           <%= form.label :レポート, class:"label" %>
-          <%= form.text_area :content, placeholder: "食欲やうんちの状態など", class:"form-control input" %>
+          <%= form.text_area :content,
+                              placeholder: "食欲やうんちの状態など",
+                              class:"form-control input",
+                              id: "textArea" %>
           <span class="bar"></span>
         </div>
       </div>

@@ -72,6 +72,12 @@ li {
   outline: none;
   box-shadow: none;
 }
+
+.textarea{
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+}
 /************************* テキストフォーム全般の設定END *************************/
 
 /************************* フォーム下のバーSTART *************************/

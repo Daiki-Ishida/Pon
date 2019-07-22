@@ -2,6 +2,7 @@ import "./user-form.css";
 import "../error-messages/error-messages";
 import "../img-uploader/img-uploader";
 
+import { resizeForm } from "../../lib/resize-form";
 
 const addressInput = document.getElementById('addressInput');
 let lat = '';
@@ -28,4 +29,10 @@ const getLatLng = ()=>{
 
 if (addressInput != null) {
   addressInput.addEventListener('input', getLatLng);
+}
+
+
+const userFormTextArea = document.getElementById('textArea');
+if(userFormTextArea){
+  userFormTextArea.addEventListener('input', resizeForm);
 }
