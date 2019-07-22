@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
     comment = Comment.new(comment_params)
     comment.user_id = current_user.id
     if comment.save
+      comment.post.create_notification(current_user, "comment")
       render partial: "components/comment/comment", locals: {comment: comment}
     end
   end

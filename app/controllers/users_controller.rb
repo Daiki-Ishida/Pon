@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :correct_user, only: [:rooms, :edit]
+  before_action :correct_user, only: [:edit]
 
 
   def new

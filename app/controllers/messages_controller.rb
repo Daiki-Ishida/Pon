@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
     message = room.messages.build(message_param)
     message.sender_id = current_user.id
     if message.save
+      message.create_notification(current_user, room)
       redirect_to room_path(room)
     else
       flash[:warning] = "入力内容に誤りがあります。"
