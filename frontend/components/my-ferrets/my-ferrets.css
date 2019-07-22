@@ -1,16 +1,31 @@
+.my-ferrets--notice{
+  text-align: center;
+}
+
 .my-ferrets--link{
-  width: 300px;
-  height: 100px;
-  display: inline-block;
-  text-decoration: none;
-  background: #FFF;
-  font-size: 36px;
-  color: #4ba9a1;
-  border-bottom: solid 4px #627295;
+  text-align: center;
+}
+
+.my-ferrets--btn{
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  margin-top: 30px;
   border-radius: 10px;
-  position: absolute;
-  top: 40%;
-  left: 20%;
+  display: inline-block;
+  color: #FFF;
+  background-color: #52b9d1;
+  border-bottom: solid 4px #627295;
+}
+
+.my-ferrets--btn:hover{
+  color :#FFF;
+  text-decoration: none;
+}
+
+.my-ferrets--btn:active{
+  transform: translateY(4px);
+  border-bottom: none;
 }
 
 .my-ferret--icon{
