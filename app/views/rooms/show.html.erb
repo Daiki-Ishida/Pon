@@ -1,3 +1,3 @@
-<%= render "components/page/page", title:"" do %>
+<%= render "components/page/page", title:"#{display_name(@room.opponent(current_user))}とのメッセージ" do %>
   <%= render partial: "components/room/room", locals: {room: @room} %>
 <% end %>
