@@ -16,7 +16,12 @@
             <% end %>
           </div>
           <div class="header--tool">
-            <i class="material-icons header--search">search</i>
+            <%= link_to my_notifications_path do %>
+              <i class="material-icons header--search">notification_important</i>
+              <% if unread_notifications.any? %>
+                <i class="fas fa-circle header--noticications-circle"></i>
+              <% end %>
+            <% end %>
           </div>
           <div class="header--tool">
             <%= link_to my_rooms_path do %>

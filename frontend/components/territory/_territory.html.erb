@@ -8,7 +8,7 @@
     </div>
     <div class="territory--input">
       <%= form_with model: user,
-                    url: my_update_territory,
+                    url: my_update_territory_path,
                     method: :patch,
                     local: true do |form| %>
         <%= form.select :territory, [["半径5km", 5], ["半径10km", 10], ["半径15km", 15], ["半径20km", 20]]  %>

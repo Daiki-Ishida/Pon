@@ -121,6 +121,10 @@ module ApplicationHelper
     end
   end
 
+  def unread_notifications
+    notifications = current_user.passive_notifications.where(checked: false)
+  end
+
   private
     # 人間かフェレットかチェック。
     def model_checker(object)
