@@ -7,24 +7,24 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      # action名がダブってしまうので回避
-      get :followings, to: 'users#following_users'
+      get :followings, to: 'following_users'
       get :followers
-      patch :update_territory
     end
     collection do
-      get :ferrets
-      get :rooms
       get :territory
       get :followings
       get :search
-      get :edit_territory
-      get :settings
     end
   end
 
   namespace :my do
-    resources :notifications, only: [:index]
+    get :ferrets
+    get :rooms
+    get :territory
+    patch :update_territory
+    get :followings
+    get :settings
+    get :notifications
   end
 
   resources :ferrets do

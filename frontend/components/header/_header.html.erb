@@ -11,7 +11,7 @@
       <div class="header--toolbar">
         <% if logged_in? %>
           <div class="header--tool">
-            <%= link_to ferrets_users_path do %>
+            <%= link_to my_ferrets_path do %>
               <i class="material-icons header--pets">pets</i>
             <% end %>
           </div>
@@ -19,15 +19,17 @@
             <i class="material-icons header--search">search</i>
           </div>
           <div class="header--tool">
-            <%= link_to rooms_users_path do %>
+            <%= link_to my_rooms_path do %>
               <i class="material-icons header--message">mail_outline</i>
             <% end %>
           </div>
           <div class="header--tool">
-            <i class="material-icons header--timeline">schedule</i>
+            <%= link_to my_notifications_path do %>
+              <i class="material-icons header--timeline">schedule</i>
+            <% end %>
           </div>
           <div class="header--tool">
-            <%= link_to edit_territory_users_path do %>
+            <%= link_to my_territory_path do %>
               <i class="material-icons header--territory">place</i>
             <% end %>
           </div>
@@ -35,7 +37,7 @@
             <i class="material-icons header--help">help_outline</i>
           </div>
           <div class="header--tool">
-            <%= link_to settings_users_path do %>
+            <%= link_to my_settings_path do %>
               <i class="material-icons header--settings">settings</i>
             <% end %>
           </div>

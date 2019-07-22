@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
   end
 
-  def followings_users
+  def followings
     user = User.find(params[:id])
     @followings = user.followings
   end
@@ -50,16 +50,8 @@ class UsersController < ApplicationController
     @followers = user.followers
   end
 
-  def rooms
-    @rooms = Room.where(guest_id: current_user.id).or(Room.where(owner_id: current_user.id))
-  end
-
   def territory
     @users = current_user.objects_within_territory("users")
-  end
-
-  def edit_territory
-    @ferrets = current_user.objects_within_territory("ferrets")
   end
 
   def followings
@@ -68,24 +60,6 @@ class UsersController < ApplicationController
 
   def search
     @users = User.search(params[:search])
-  end
-
-  def update_territory
-    user = User.find(params[:id])
-    if user.update(territory_param)
-      redirect_to territory_user_path(user)
-    else
-      flash[:notice] = "ERROR"
-      render 'territory'
-    end
-  end
-
-  def settings
-
-  end
-
-  def ferrets
-    @ferrets = current_user.ferrets
   end
 
   private
@@ -104,10 +78,6 @@ class UsersController < ApplicationController
                                    :introduction,
                                    :latitude,
                                    :longitude)
-    end
-
-    def territory_param
-      params.require(:user).permit(:territory)
     end
 
     def correct_user
