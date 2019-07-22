@@ -1,28 +1,42 @@
-<div class="territory">
-  <div class="territory--my-territory">
-    <div id="territoryCenter">
-      中心：<%= display_address(user) %>
-    </div>
-    <div id="territoryRadius">
-      範囲：<%= user.territory %> km
-    </div>
-    <div class="territory--input">
-      <%= form_with model: user,
-                    url: my_update_territory_path,
-                    method: :patch,
-                    local: true do |form| %>
-        <%= form.select :territory, [["半径5km", 5], ["半径10km", 10], ["半径15km", 15], ["半径20km", 20]]  %>
-        <%= form.submit "変更" %>
-      <% end %>
-    </div>
+<div class="territory col-md-8 offset-md-2">
+  <div class="territory--match">
+    <% unless ferrets.blank? %>
+      <p>あなたの設定エリア範囲内には、
+        <%= link_to "#{ferrets.size}匹のフェレット", territory_ferrets_path %>
+        がいます！</p>
+    <% else %>
+      <p>
+        あなたの設定エリア範囲内には、フェレットが見つかりませんでした。<br>範囲を広げてみましょう！
+      </p>
+    <% end %>
   </div>
-  <input type="hidden" id="center" value="<%= user.postal_address %>">
-  <input type="hidden" id="radius" value="<%= user.territory %>">
+  <div class="territory--input">
+    <%= form_with model: current_user,
+                  url: my_update_territory_path,
+                  method: :patch,
+                  local: true do |form| %>
+      <%= form.select :territory,
+                      [["半径5km", 5], ["半径10km", 10], ["半径15km", 15], ["半径20km", 20]],
+                      {},
+                      {class:"form-control select"}  %>
+      <%= form.submit "変更", class:"btn btn-success" %>
+    <% end %>
+  </div>
 
   <!-- google mapnの表示領域 -->
   <div class="territory--map" id="map"></div>
 
-  <div class="territory--match">
-    <p>あなたのなわばり範囲内には、<%= ferrets.size %>匹のフェレットがいます。</p>
+  <div class="territoey--current">
+    <div id="territoryCenter">
+      中心：<%= display_address(current_user) %>
+    </div>
+    <div id="territoryRadius">
+      現在の範囲：<%= current_user.territory %> km
+    </div>
   </div>
+
+  <input type="hidden" id="center" value="<%= current_user.postal_address %>">
+  <input type="hidden" id="radius" value="<%= current_user.territory %>">
+
+
 </div>

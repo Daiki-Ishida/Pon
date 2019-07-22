@@ -1,3 +1,17 @@
+.territory--match{
+  text-align: center;
+}
+
+.territory--input{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .territory--map{
   height: 400px;
+}
+
+.territoey--current{
+  display: flex;
+  justify-content: space-around;
 }

@@ -33,6 +33,6 @@ class MyController < ApplicationController
 
   private
     def territory_param
-      params.require(:my).permit(:territory)
+      params.require(:user).permit(:territory)
     end
 end

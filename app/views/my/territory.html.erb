@@ -1,8 +1,3 @@
-<%= render "components/page/page", title:"縄張りの設定" do %>
-  <%= render partial: "components/territory/territory",
-             locals: {
-               user: current_user,
-               ferrets: @ferrets
-             }
-  %>
+<%= render "components/page/page", title:"エリアの設定" do %>
+  <%= render "components/territory/territory", ferrets: @ferrets %>
 <% end %>
