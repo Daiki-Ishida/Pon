@@ -43,6 +43,18 @@ class FerretsController < ApplicationController
     redirect_to ferrets_path
   end
 
+  def territory
+    @ferrets = current_user.objects_within_territory("ferrets")
+  end
+
+  def followings
+    @ferrets = current_user.followings_objects("ferrets")
+  end
+
+  def search
+    @ferrets = current_user.search(params[:search])
+  end
+
   private
 
     def ferret_params

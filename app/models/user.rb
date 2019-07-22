@@ -70,7 +70,7 @@ class User < ApplicationRecord
   end
 
   # 自身がフォロー中のユーザーのフェレットまたはポストを返す。
-  def folliowngs_objects(objects)
+  def followings_objects(objects)
     array = []
     self.followings.each do |following|
       if objects = "ferrets"

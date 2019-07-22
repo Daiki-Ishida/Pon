@@ -7,4 +7,9 @@ class Ferret < ApplicationRecord
   validates :birth_date, presence: true
   validates :gender, presence: true
   validates :user_id, presence: true
+
+  def self.search(search)
+    return Ferret.all unless search
+    Ferret.where(['name LIKE ?', "%#{search}%"])
+  end
 end
