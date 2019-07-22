@@ -1,52 +1,8 @@
-.home{
-
+.home--nav{
+  background-color: #FFF;
 }
 
-.home--top-wrapper{
-  background-color: whitesmoke;
-}
-
-.home--navigation{
-  display: flex;
-  justify-content: center;
-  height:50px;
-  border-bottom: solid 1px #4ec4d3;
-}
-
-/* ユーザー/フェレット切り替え用のボタン */
-
-.home--link-btn{
-  width: 10%;
-  height: 30px;
-  margin-top: 10px;
-  margin-left: 5%;
-  margin-right: 5%;
-  text-align: center;
-  font-weight: bold;
-  text-decoration: none;
-  display: inline-block;
-  color: #26a69b;
-  padding:5px 10px;
-  border-radius: 20px;
-  font-family: 'Avenir','Arial';
-  transition: .2s;
-}
-
-.home--link-btn:hover {
-  color: #FA5C65;
-  text-decoration: none;
-}
-
-/* 絞り込みや検索を配置する部分 */
-
-.home--seach-window{
-  display: flex;
-  justify-content: flex-end;
-}
-
-/* ユーザー・フェレットのカードを収納するメイン部分 */
-
-.home--main-content{
+.home--main{
   padding-top: 15px;
   padding-bottom: 15px;
   margin-top: 20px;

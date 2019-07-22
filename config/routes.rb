@@ -14,11 +14,20 @@ Rails.application.routes.draw do
       get :ferrets
       get :rooms
       get :territory
+      get :edit_territory
       get :settings
+      get :followings
+      get :search
     end
   end
 
-  resources :ferrets
+  resources :ferrets do
+    collection do
+      get :territory
+      get :followings
+      get :search
+    end
+  end
 
   resources :posts do
     resource :likes, only: [:create, :destroy]

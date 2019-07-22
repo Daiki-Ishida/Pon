@@ -1,1 +1,3 @@
-<%= render "components/home/home", objects: @users %>
+<%= render "components/home/home", title: "ユーザー一覧", type: "users" do %>
+  <%= render partial: "components/card/card", collection: @users, as: :object %>
+<% end %>

@@ -55,6 +55,10 @@ class UsersController < ApplicationController
   end
 
   def territory
+    @users = current_user.objects_within_territory("user")
+  end
+
+  def edit_territory
     @ferrets = current_user.objects_within_territory("ferrets")
   end
 

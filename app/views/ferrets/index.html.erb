@@ -1,1 +1,3 @@
-<%= render "components/home/home", objects: @ferrets %>
+<%= render "components/home/home", title: "フェレット一覧", type: "ferrets" do %>
+  <%= render partial: "components/card/card", collection: @ferrets, as: :object %>
+<% end %>

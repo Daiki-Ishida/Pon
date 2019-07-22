@@ -1,0 +1,24 @@
+<div class="home-nav">
+  <div class="home-nav--top">
+    <%= link_to "フェレット", ferrets_path, class:"home-nav--top-links" %>
+    <%= link_to "ユーザー", users_path, class:"home-nav--top-links" %>
+    <%= link_to "投稿", posts_path, class:"home-nav--top-links" %>
+  </div>
+  <div class="home-nav--bottom">
+    <%= link_to "全て", nav_links(type)[:index], class:"home-nav--bottom-links" %>
+    <%= link_to "なわばり", nav_links(type)[:territory], class:"home-nav--bottom-links" %>
+    <%= link_to "フォロー", nav_links(type)[:follow], class:"home-nav--bottom-links" %>
+    <div class="home-nav--search">
+      <%= form_with url: nav_links(type)[:search],
+                    enforce_utf8: false,
+                    method: 'get',
+                    class: "home-nav--search-form",
+                    local: true do |form| %>
+        <%= form.text_field :search, placeholder:"検索", class:"home-nav--search-input" %>
+        <%= button_tag type: 'submit', class:'home-nav--search-btn' do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

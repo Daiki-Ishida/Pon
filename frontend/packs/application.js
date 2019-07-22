@@ -24,9 +24,7 @@ import "components/footer/footer";
 import "components/top/top";
 // 2.一覧系以外のページのベース
 import "components/page/page";
-// 3.フェレット・ユーザー一覧のベース
+// 3.一覧のベース
 import "components/home/home";
-// 4.投稿一覧のベース
-import "components/posts/posts";
 // 4.レポート一覧のベース
 import "components/reports/reports"

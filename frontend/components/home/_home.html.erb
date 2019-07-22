@@ -1,18 +1,13 @@
 <div class="home">
-  <div class="home--top-wrapper">
-    <div class="home--navigation">
-      <%= link_to "フェレット", ferrets_path, class:"home--link-btn" %>
-      <%= link_to "ユーザー", users_path, class:"home--link-btn" %>
-    </div>
-    <div class="home--seach-window container">
-      <a href="#">絞り込み</a>
-      <a href="#">検索</a>
-    </div>
+  <div class="home--nav">
+    <%= render "components/home-nav/home-nav", type: type %>
   </div>
-
-  <div class="home--main-content container">
-    <div class="home--cards">
-      <%= render partial: "components/card/card", collection: objects, as: :object %>
+  <div class="home--main">
+    <div class="container">
+      <h1><%= title %></h1>
+      <div class="home--cards">
+        <%= yield %>
+      </div>
     </div>
   </div>
 </div>
