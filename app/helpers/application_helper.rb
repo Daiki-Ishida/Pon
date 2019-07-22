@@ -105,6 +105,22 @@ module ApplicationHelper
     return hash
   end
 
+  def display_notification(notification)
+    action_user = notification.action_user
+    user = link_to(display_name(action_user), user_path(action_user), class:"notification--user")
+    post = link_to("あなたの投稿", post_path(notification.post),  class:"notification--action")
+    case notification.action
+      when "like"
+        "#{user}が#{post}にいいね！しました。"
+      when "comment"
+        "#{user}が#{post}にコメントしました。"
+      when "message"
+        room = notification.message.room
+        message = link_to("メッセージ", room_path(room), class:"notification--action")
+        "#{user}から#{message}が届きました。"
+    end
+  end
+
   private
     # 人間かフェレットかチェック。
     def model_checker(object)

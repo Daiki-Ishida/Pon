@@ -21,3 +21,4 @@ import "../my-ferrets/my-ferrets";
 import "../my-rooms/my-rooms";
 import "../territory/territory";
 import "../settings/settings";
+import "../notifications/notifications";

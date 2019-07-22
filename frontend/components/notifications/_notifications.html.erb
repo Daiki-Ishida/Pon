@@ -1,0 +1,16 @@
+<div class="notifications col-md-8 offset-md-2">
+  <% unless notifications.blank? %>
+    <% notifications.each do |notification| %>
+      <div class="notification">
+        <%= link_to image_tag(notification.action_user.image, size:"80x80", class:"image-icon" ),
+                    user_path(notification.action_user),
+                    class:"noticication--icon" %>
+        <div class="notification--content">
+          <%== display_notification(notification) %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>通知はありません</p>
+  <% end %>
+</div>

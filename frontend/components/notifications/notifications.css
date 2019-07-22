@@ -1,0 +1,23 @@
+.notification{
+  display: flex;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.noticication--icon{
+  margin-right: 20px;
+}
+
+.notification--content{
+  line-height: 80px;
+}
+
+.notification--user{
+  font-weight: bold;
+  color: #4ba9a1;
+}
+
+.notification--action{
+  font-weight: bold;
+  color: #be4847;
+}
