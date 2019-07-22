@@ -11,7 +11,9 @@
       <div class="header--toolbar">
         <% if logged_in? %>
           <div class="header--tool">
-            <i class="material-icons header--pets">pets</i>
+            <%= link_to ferrets_users_path do %>
+              <i class="material-icons header--pets">pets</i>
+            <% end %>
           </div>
           <div class="header--tool">
             <i class="material-icons header--search">search</i>

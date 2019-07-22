@@ -1,0 +1,48 @@
+.my-ferrets--link{
+  width: 300px;
+  height: 100px;
+  display: inline-block;
+  text-decoration: none;
+  background: #FFF;
+  font-size: 36px;
+  color: #4ba9a1;
+  border-bottom: solid 4px #627295;
+  border-radius: 10px;
+  position: absolute;
+  top: 40%;
+  left: 20%;
+}
+
+.my-ferret--icon{
+  margin-right: 20px;
+}
+
+.my-ferret{
+  display: flex;
+}
+
+.my-ferret--name{
+  font-size: 24px;
+}
+
+.my-ferret--info{
+  flex-grow: 10;
+}
+
+.my-ferret--edit button{
+  color: #4ba9a1;
+}
+
+.my-ferret--edit button:hover{
+  color: #FFF;
+  background-color: #4ba9a1;
+}
+
+.my-ferret--delete button{
+  color: #be4847;
+}
+
+.my-ferret--delete button:hover{
+  color: #FFF;
+  background-color: #be4847;
+}

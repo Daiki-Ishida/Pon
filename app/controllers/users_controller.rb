@@ -69,6 +69,11 @@ class UsersController < ApplicationController
   end
 
   def settings
+
+  end
+
+  def ferrets
+    @ferrets = current_user.ferrets
   end
 
   private

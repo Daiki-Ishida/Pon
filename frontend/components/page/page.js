@@ -17,6 +17,7 @@ import "../report/report"
 
 // その他
 import "../follow-list/follow-list";
+import "../my-ferrets/my-ferrets";
 import "../my-rooms/my-rooms";
 import "../territory/territory";
 import "../settings/settings";
