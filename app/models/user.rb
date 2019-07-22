@@ -69,14 +69,25 @@ class User < ApplicationRecord
     return array
   end
 
-  # 自身がフォロー中のユーザーのポストを返す。
-  def folliowngs_posts
+  # 自身がフォロー中のユーザーのフェレットまたはポストを返す。
+  def folliowngs_objects(objects)
     array = []
     self.followings.each do |following|
-      following.posts.each do |post|
-        array << post
+      if objects = "ferrets"
+        following.ferrets.each do |ferret|
+          array << ferret
+        end
+      elsif objects = "posts"
+        following.posts.each do |post|
+          array << post
+        end
       end
     end
     return array
+  end
+
+  def self.search(search)
+    return User.all unless search
+    User.where(['name LIKE ?', "%#{search}%"])
   end
 end

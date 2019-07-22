@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
   end
 
-  def followings
+  def followings_users
     user = User.find(params[:id])
     @followings = user.followings
   end
@@ -60,6 +60,14 @@ class UsersController < ApplicationController
 
   def edit_territory
     @ferrets = current_user.objects_within_territory("ferrets")
+  end
+
+  def followings
+    @users = current_user.followings
+  end
+
+  def search
+    @users = User.search(params[:search])
   end
 
   def update_territory

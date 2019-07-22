@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   end
 
   def following
-    @posts = current_user.followings_posts
+    @posts = current_user.followings_objects("posts")
   end
 
   def search
