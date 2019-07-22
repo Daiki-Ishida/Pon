@@ -1,0 +1,22 @@
+<div class="settings col-md-8 offset-md-2">
+  <div class="settings--setting">
+    <%= link_to edit_user_path(user), class:"settings--user-edit" do %>
+      <i class="fas fa-chevron-circle-right"></i> ユーザー情報の編集
+    <% end %>
+  </div>
+  <div class="settings--setting">
+    <%= link_to new_ferret_path, class:"settings--ferret-new" do %>
+      <i class="fas fa-chevron-circle-right"></i> フェレットの登録
+    <% end %>
+  </div>
+  <div class="settings--setting">
+    <%= link_to ferrets_users_path, class:"settings--ferret-edit" do %>
+      <i class="fas fa-chevron-circle-right"></i> フェレット情報の編集
+    <% end %>
+  </div>
+  <div class="settings--setting">
+    <%= link_to territory_users_path, class:"settings--territory" do %>
+      <i class="fas fa-chevron-circle-right"></i> なわばりの設定
+    <% end %>
+  </div>
+</div>

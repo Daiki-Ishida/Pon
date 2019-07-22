@@ -33,7 +33,9 @@
             <i class="material-icons header--help">help_outline</i>
           </div>
           <div class="header--tool">
+            <%= link_to settings_users_path do %>
               <i class="material-icons header--settings">settings</i>
+            <% end %>
           </div>
           <div class="header--tool">
             <%= link_to logout_path, method: :delete do %>

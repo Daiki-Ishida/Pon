@@ -1,0 +1,8 @@
+.settings--setting{
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.settings--setting a:hover{
+  color: #e96b6b;
+}

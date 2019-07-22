@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root to: 'pages#top'
+  # get  '/about',   to: 'pages#about'
+  # get  '/help',   to: 'pages#help'
+  # get  '/faq',   to: 'pages#faq'
+
 
   resources :users do
     member do
@@ -7,8 +11,10 @@ Rails.application.routes.draw do
       patch :update_territory
     end
     collection do
+      get :ferrets
       get :rooms
       get :territory
+      get :settings
     end
   end
 

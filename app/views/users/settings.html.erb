@@ -1,0 +1,7 @@
+<%= render "components/page/page", title:"各種設定" do %>
+  <%= render partial: "components/settings/settings",
+             locals: {
+               user: current_user,
+             }
+  %>
+<% end %>

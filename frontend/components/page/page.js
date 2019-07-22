@@ -19,3 +19,4 @@ import "../report/report"
 import "../follow-list/follow-list";
 import "../my-rooms/my-rooms";
 import "../territory/territory";
+import "../settings/settings";
