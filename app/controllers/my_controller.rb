@@ -11,9 +11,10 @@ class MyController < ApplicationController
 
   def update_territory
     if current_user.update(territory_param)
+      flash[:info] = "エリアを変更しました！"
       redirect_to my_territory_path
     else
-      flash[:notice] = "ERROR"
+      flash[:danger] = "入力内容に誤りがあります。"
       render 'territory'
     end
   end

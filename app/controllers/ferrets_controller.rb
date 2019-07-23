@@ -14,8 +14,10 @@ class FerretsController < ApplicationController
     @ferret = Ferret.new(ferret_params)
     @ferret.user_id = current_user.id
     if @ferret.save
-      redirect_to ferrets_path
+      flash[:info] = "新しくフェレットを登録しました！"
+      redirect_to ferret_path(ferret)
     else
+      flash[:warning] = "入力内容に誤りがあります。"
       render 'new'
     end
   end
@@ -33,9 +35,10 @@ class FerretsController < ApplicationController
   def update
     ferret = Ferret.find(params[:id])
     if ferret.update(ferret_params)
-      flash[:notice] = "更新完了"
+      flash[:info] = "フェレットの登録内容を更新しました。"
       redirect_to ferret_path(ferret)
     else
+      flash[:warning] = "入力内容に誤りがあります。"
       render 'edit'
     end
   end
@@ -43,6 +46,7 @@ class FerretsController < ApplicationController
   def destroy
     ferret = Ferret.find(params[:id])
     ferret.destroy
+    flash[:warning] = "フェレットの登録を削除しました。"
     redirect_to ferrets_path
   end
 
@@ -72,7 +76,7 @@ class FerretsController < ApplicationController
     def correct_owner?
       ferret = Ferret.find(params[:id])
       unless current_user == ferret.user
-        flash[:warning] = "権限がありません。"
+        flash[:danger] = "権限がありません。"
         redirect_to ferrets_path
       end
     end

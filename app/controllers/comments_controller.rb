@@ -18,10 +18,11 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      flash[:success] = "編集完了しました"
+      flash[:info] = "コメントの内容を編集しました。"
       redirect_to post_path(@comment.post)
     else
-     render 'edit'
+      flash[:warning] = "入力内容に誤りがあります。"
+      render 'edit'
     end
   end
 
@@ -41,7 +42,7 @@ class CommentsController < ApplicationController
     def correct_commented?
       comment = Comment.find(params[:id])
       unless current_user == comment.user
-        flash[:warning] = "権限がありません。"
+        flash[:danger] = "権限がありません。"
         redirect_to ferrets_path
       end
     end

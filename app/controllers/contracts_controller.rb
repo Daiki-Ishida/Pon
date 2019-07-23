@@ -13,11 +13,12 @@ class ContractsController < ApplicationController
       memo: request.memo
     )
     if contract.save
+      flash[:info] = "リクエストを承認しました！"
       message = request.send_notice(request.sitter, "approved", contract_url(contract))
       request.destroy!
       redirect_to room_path(message.room)
     else
-      flash[:warning] = "ERROR!"
+      flash[:danger] = "エラーが発生しました。お手数ですが、運営までお問い合わせください。"
       redirect_to edit_request_path(request)
     end
   end
@@ -30,7 +31,7 @@ class ContractsController < ApplicationController
     def concerned_user?
       contract = Contract.find(params[:id])
       unless current_user == contract.owner || contact.sitter
-        flash[:warning] = "権限がありません。"
+        flash[:danger] = "権限がありません。"
         redirect_to ferrets_path
       end
     end

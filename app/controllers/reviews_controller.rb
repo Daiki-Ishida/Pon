@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     contract = Contract.find(params[:contract_id])
     review = contract.build_review(review_params)
     if review.save
-      flash[:seccess] = "レビューしました！"
+      flash[:info] = "レビューしました！"
       message = review.send_notice(current_user, "create", nil)
       redirect_to room_path(message.room)
     else
@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
     def correct_reviewer?
       contract = Contract.find(params[:contract_id])
       unless current_user == contract.owner
-        flash[:warning] = "権限がありません。"
+        flash[:danger] = "権限がありません。"
         redirect_to ferrets_path
       end
     end

@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
     if room.save
       redirect_to room_path(room)
     else
-      flash[:warning] = "ERROR!"
+      flash[:danger] = "エラーが発生しました。"
       redirect_to root_path
     end
   end

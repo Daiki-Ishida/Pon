@@ -10,8 +10,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.territory = 15
     if @user.save
+      flash[:info] = "ご登録ありがとうございます！さっそくフェレットを登録してみましょう！"
       redirect_to ferrets_path
     else
+      flash[:warning] = "入力内容に誤りがあります。"
       render 'new'
     end
   end
@@ -28,9 +30,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update(user_params)
-      redirect_to user_path(user)
+    if current_user.update(user_params)
+      redirect_to user_path(current_user)
     else
       render 'edit'
     end

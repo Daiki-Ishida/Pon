@@ -13,12 +13,12 @@ class RequestsController < ApplicationController
     request = Request.new(request_params)
     request.owner_id = current_user.id
     if request.save
-      flash[:success] = "依頼を提出しました。"
+      flash[:info] = "依頼を提出しました！"
       content = request.create_content("create", request_url(request))
       message = Message.send_notice(request, content)
       redirect_to room_path(message.room)
     else
-      flash[:error] = "入力に誤りがあります。"
+      flash[:warning] = "入力に誤りがあります。"
       redirect_to root_path
     end
   end
@@ -38,11 +38,11 @@ class RequestsController < ApplicationController
   def update
     request = Request.find(params[:id])
     if request.update(request_params)
-      flash[:success] = "依頼を更新しました。"
+      flash[:info] = "依頼を更新しました。"
       message = request.send_notice(current_user, "update", request_url(request))
       redirect_to room_path(message.room)
     else
-      flash[:error] = "入力に誤りがあります。"
+      flash[:warning] = "入力に誤りがあります。"
       render 'edit'
     end
   end
@@ -50,11 +50,11 @@ class RequestsController < ApplicationController
   def destroy
     request = Request.find(params[:id])
     if request.destroy
-      flash[:success] = "依頼を取り下げました"
+      flash[:info] = "依頼を取り下げました"
       message = request.send_notice(current_user, "withdraw", nil)
       redirect_to room_path(message.room)
     else
-      flash[:error] = "ERROR!"
+      flash[:warning] = "ERROR!"
       redirect_to request_path(request)
     end
   end

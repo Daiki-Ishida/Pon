@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
       message.create_notification(current_user, room)
       redirect_to room_path(room)
     else
-      flash[:warning] = "入力内容に誤りがあります。"
+      flash[:warning] = "エラーが発生しました。"
       redirect_to room_path(message.room)
     end
   end
@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
     def correct_room?
       room = Room.find(params[:id])
       unless current_user == room.owner || current_user == room.guest
-        flash[:warning] = "権限がありません。"
+        flash[:danger] = "権限がありません。"
         redirect_to ferrets_path
       end
     end

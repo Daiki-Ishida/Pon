@@ -9,9 +9,10 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "投稿しました！！"
+      flash[:info] = "新しく投稿しました！"
       redirect_to post_path(@post)
     else
+      flash[:warning] = "入力内容に誤りがあります。"
       render 'new'
     end
   end
@@ -42,11 +43,21 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    post = Post.find(params[:id])
+    if post.update(post_params)
+      flash[:info] = "投稿内容を更新しました。"
+      redirect_to post_path(post)
+    else
+      flash[:warning] = "入力内容に誤りがあります。"
+      render 'edit'
+    end
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    post = Post.find(params[:id])
+    post.destroy
+    flash[:warning] = "投稿を削除しました。"
+    redirect_to my_posts_path
   end
 
   private

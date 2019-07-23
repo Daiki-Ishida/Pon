@@ -11,7 +11,7 @@ class ReportsController < ApplicationController
     contract = Contract.find(params[:contract_id])
     report = contract.reports.build(report_params)
     if report.save
-      flash[:seccess] = "レポートを提出しました！"
+      flash[:info] = "レポートを提出しました！"
       message = report.send_notice(current_user, "create", contract_report_url(report.contract, report))
       redirect_to room_path(message.room)
     else
