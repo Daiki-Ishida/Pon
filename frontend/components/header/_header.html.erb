@@ -1,11 +1,13 @@
 <header>
   <div class="header container">
     <div class="header-left">
-      <%= link_to root_path do %>
-        <div class="header--logo">
-          <%= image_tag "/images/logo.png", size:"180x50" %>
-        </div>
-      <% end %>
+      <div class="header--logo">
+        <% if logged_in? %>
+          <%= link_to image_tag("/images/logo.png", size:"180x50"), ferrets_path %>
+        <% else %>
+          <%= link_to image_tag("/images/logo.png", size:"180x50"), root_path %>
+        <% end %>
+      </div>
     </div>
     <div class="header-right">
       <div class="header--toolbar">
@@ -16,11 +18,8 @@
             <% end %>
           </div>
           <div class="header--tool">
-            <%= link_to my_notifications_path do %>
-              <i class="material-icons header--search">notification_important</i>
-              <% if unread_notifications.any? %>
-                <i class="fas fa-circle header--noticications-circle"></i>
-              <% end %>
+            <%= link_to users_path do %>
+              <i class="material-icons header--search">search</i>
             <% end %>
           </div>
           <div class="header--tool">
@@ -31,6 +30,9 @@
           <div class="header--tool">
             <%= link_to my_notifications_path do %>
               <i class="material-icons header--timeline">schedule</i>
+              <% if unread_notifications.any? %>
+                <i class="fas fa-circle header--noticications-circle"></i>
+              <% end %>
             <% end %>
           </div>
           <div class="header--tool">
@@ -62,25 +64,37 @@
           </div>
         <% else %>
           <div class="header--tool">
-            <i class="material-icons header--pets">pets</i>
+            <%= link_to ferrets_path do %>
+              <i class="material-icons header--pets">pets</i>
+            <% end %>
           </div>
           <div class="header--tool">
-            <i class="material-icons header--search">search</i>
+            <%= link_to user_path do %>
+              <i class="material-icons header--search">search</i>
+            <% end %>
           </div>
           <div class="header--tool">
+            <%= link_to login_path do %>
               <i class="material-icons header--message">mail_outline</i>
+            <% end %>
           </div>
           <div class="header--tool">
-            <i class="material-icons header--timeline">schedule</i>
+            <%= link_to login_path do %>
+              <i class="material-icons header--timeline">schedule</i>
+            <% end %>
           </div>
           <div class="header--tool">
-            <i class="material-icons header--territory">place</i>
+            <%= link_to login_path do %>
+              <i class="material-icons header--territory">place</i>
+            <% end %>
           </div>
           <div class="header--tool">
             <i class="material-icons header--help">help_outline</i>
           </div>
           <div class="header--tool">
+            <%= link_to login_path do %>
               <i class="material-icons header--settings">settings</i>
+            <% end %>
           </div>
           <div class="header--tool">
             <!-- link_to "LINE Login", user_line_omniauth_authorize_path -->
