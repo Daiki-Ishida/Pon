@@ -1,11 +1,11 @@
 <div class="user">
   <div class="col-md-8 offset-md-2">
     <div class="user--top">
-      <div class="show--image">
+      <div class="user--image">
         <% if user.image.attached? %>
-          <%= image_tag user.image, size:"300x200", class:"image-square" %>
+          <%= image_tag user.image, size:"350x350", class:"image-square" %>
         <% else %>
-          <%= image_tag "/images/no_image.jpg", size:"200x200", class:"image-square" %>
+          <%= image_tag "/images/no_image.jpg", size:"350x350", class:"image-square" %>
         <% end %>
       </div>
       <div class="user--actions">
@@ -30,13 +30,11 @@
     </div>
 
     <div class="user--info">
-      <div class="show--info">
-        <div class="row show--name">
-          <h2><%= user.name %></h2>
-        </div>
-        <div class="row show--info-items">
-          <%= display_basic_info(user) %>
-        </div>
+      <div class="user--name">
+        <h2><%= user.name %></h2>
+      </div>
+      <div class="user--info-items">
+        <%= display_basic_info(user) %>
       </div>
     </div>
 

@@ -1,7 +1,7 @@
 <div class="ferret">
   <div class="col-md-8 offset-md-2">
     <div class="ferret--top">
-      <div class="show--image">
+      <div class="ferret--image">
         <% if ferret.image.attached? %>
           <%= image_tag ferret.image, size:"350x350", class:"image-square" %>
         <% else %>
@@ -32,12 +32,17 @@
     </div>
 
     <div class="ferret--info">
-      <div class="row show--name">
+      <div class="ferret--name">
         <h2><%= ferret.name %></h2>
       </div>
-      <div class="row show--info-items">
+      <div class="ferret--details">
         <%= display_basic_info(ferret) %>
       </div>
+    </div>
+
+    <div class="ferret--introduction">
+      <h5>紹介</h5>
+      <p><%= ferret.introduction %></p>
     </div>
 
     <div class="ferret--character">
@@ -51,12 +56,12 @@
         <div class="ferret--owner-icon">
           <%= link_to user_path(ferret.user_id) do %>
             <% if ferret.user.image.attached? %>
-              <%= image_tag ferret.user.image, size:"80x80", class:"image-icon" %>
+              <%= image_tag ferret.user.image, size:"100x100", class:"image-icon" %>
             <% else %>
-              <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
+              <%= image_tag "/images/no_image.jpg", size:"100x100", class:"image-icon" %>
             <% end %>
             <p class="ferret--family-name">
-              <%= display_name(ferret.user) %>
+              <%= ferret.user.name %>
             </p>
           <% end %>
         </div>
@@ -69,9 +74,9 @@
               <div class="ferret--sibling-icon">
                 <%= link_to ferret_path(s) do %>
                   <% if s.image.attached? %>
-                    <%= image_tag s.image, size:"80x80", class:"image-icon" %>
+                    <%= image_tag s.image, size:"100x80", class:"image-icon" %>
                   <% else %>
-                    <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
+                    <%= image_tag "/images/no_image.jpg", size:"100x100", class:"image-icon" %>
                   <% end %>
                   <p class="ferret--family-name">
                     <%= display_name(s) %>
@@ -95,16 +100,21 @@
             <p class="ferret--period">期間：<%= display_period(contract) %></p>
             <p>お世話したしてくれたユーザー</p>
             <div class="ferret--contract-sitter">
-              <%= link_to user_path(contract.sitter) do %>
-                <% if contract.sitter.image.attached? %>
-                  <%= image_tag contract.sitter.image, size:"100x100", class:"image-icon" %>
-                <% else %>
-                  <%= image_tag "/images/no_image.jpg", size:"100x100", class:"image-icon" %>
+              <div class="ferret--contract-sitter-icon">
+                <%= link_to user_path(contract.sitter) do %>
+                  <% if contract.sitter.image.attached? %>
+                    <%= image_tag contract.sitter.image, size:"100x100", class:"image-icon" %>
+                  <% else %>
+                    <%= image_tag "/images/no_image.jpg", size:"100x100", class:"image-icon" %>
+                  <% end %>
                 <% end %>
-                <p class="ferret--contract-sitter-name">
-                  <%= contract.sitter.name %>
-                </p>
-              <% end %>
+              </div>
+              <div class="ferret--contract-sitter-info">
+                <%= link_to user_path(contract.sitter) do %>
+                  <%= contract.sitter.name %><br>
+                <% end %>
+                <%= display_basic_info(contract.sitter) %>
+              </div>
             </div>
           </div>
         <% end %>

@@ -1,1 +1,0 @@
-import "./show-top.css";

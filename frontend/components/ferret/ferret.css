@@ -44,12 +44,9 @@
   color: #FFF;
 }
 
+
 .ferret--family{
   display: flex;
-}
-
-.ferret--family-name{
-  font-size: 10px;
 }
 
 .ferret--owner-icon,
@@ -72,4 +69,20 @@
 
 .ferret--sibling-icon{
   width: 20%;
+}
+
+.ferret--contract-sitter{
+  display: flex;
+}
+
+.ferret--contract-sitter-icon{
+  margin-right: 20px;
+}
+
+.ferret--contract-sitter-info{
+  margin-top: 20px;
+}
+
+.ferret--posts h5{
+  margin: 0 15px;
 }
