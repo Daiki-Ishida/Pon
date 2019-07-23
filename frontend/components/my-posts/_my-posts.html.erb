@@ -1,0 +1,12 @@
+<div class="my-posts">
+  <% if posts.blank? %>
+    <div class="my-posts--notice">
+      <p>まだ投稿がありません。</p>
+    </div>
+    <div class="my-posts--link">
+      <%= link_to "投稿してみよう！", new_post_path, class: "link-btn" %>
+    </div>
+  <% else %>
+    <%= render partial: "components/post-overview/post-overview", collection: posts, as: "post" %>
+  <% end %>
+</div>

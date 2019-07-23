@@ -1,0 +1,8 @@
+.my-page--item{
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.my-page--item a:hover{
+  color: #e96b6b;
+}
