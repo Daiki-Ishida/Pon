@@ -1,4 +1,6 @@
 class MyController < ApplicationController
+  beofre_aciton :logged_in_user
+  
   def territory
     @ferrets = current_user.objects_within_territory("ferrets")
   end

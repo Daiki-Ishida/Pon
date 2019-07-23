@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   before_action :room_exist?, only: [:create]
-  before_action :correct_room, only: [:show]
+  before_action :correct_room?, only: [:show]
+  before_action :logged_in_user
 
   def create
     room = Room.new(room_param)
@@ -30,10 +31,11 @@ class RoomsController < ApplicationController
       end
     end
 
-    def correct_room
+    def correct_room?
       room = Room.find(params[:id])
       unless current_user == room.owner || current_user == room.guest
-        redirect_to root_path
-      end 
+        flash[:warning] = "権限がありません。"
+        redirect_to ferrets_path
+      end
     end
 end

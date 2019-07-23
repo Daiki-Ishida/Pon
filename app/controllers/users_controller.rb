@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :correct_user, only: [:edit]
-
+  before_action :correct_user, only: [:edit, :update]
+  beofre_aciton :logged_in_user, only:[:edit, :update, :destroy, :territory, :followings]
 
   def new
     @user = User.new
@@ -37,7 +37,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
   end
 
   def following_users
@@ -82,6 +81,7 @@ class UsersController < ApplicationController
 
     def correct_user
       user = User.find(params[:id])
+      flash[:warning] = "権限がありません。"
       redirect_to root_path unless user == current_user
     end
 end

@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  beofre_aciton :logged_in_user
+  before_action :correct_commented?
+
   def create
     comment = Comment.new(comment_params)
     comment.user_id = current_user.id
@@ -35,4 +38,11 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:content, :post_id)
     end
 
+    def correct_commented?
+      comment = Comment.find(params[:id])
+      unless current_user == comment.user
+        flash[:warning] = "権限がありません。"
+        redirect_to ferrets_path
+      end
+    end
 end

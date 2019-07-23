@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
-  before_action :is_correct_issuer?, except: [:index, :show]
+  before_action :correct_issuer?, except: [:index, :show]
+  beofre_aciton :logged_in_user
 
   def new
     contract = Contract.find(params[:contract_id])
@@ -45,11 +46,11 @@ class ReportsController < ApplicationController
       params.require(:report).permit(:date, :content, :image)
     end
 
-    def is_correct_issuer?
+    def correct_issuer?
       contract = Contract.find(params[:contract_id])
       unless current_user == contract.sitter
         flash[:warning] = "権限がありません。"
-        redirect_to root_path
+        redirect_to ferrets_path
       end
     end
 end

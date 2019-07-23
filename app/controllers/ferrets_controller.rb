@@ -1,10 +1,13 @@
 class FerretsController < ApplicationController
+  before_aciton :logged_in_user, except: [:index, :show, :search]
+  before_action :correct_owner?, only: [:edit, :update, :destroy]
+
   def index
     @ferrets = Ferret.all
   end
 
   def new
-    @ferret = Ferret.new
+    @ferret = current_user.ferrets.build
   end
 
   def create
@@ -52,7 +55,7 @@ class FerretsController < ApplicationController
   end
 
   def search
-    @ferrets = current_user.search(params[:search])
+    @ferrets = Ferret.search(params[:search])
   end
 
   private
@@ -66,16 +69,11 @@ class FerretsController < ApplicationController
                                      :birth_date)
     end
 
-    # フェレットから親を先頭に家族の画像、名前を取得。
-    # 回りくどい書き方のようにも見える。余裕があれば、他の方法がないか検討。
-     # def family(ferret)
-     #   owner = ferret.user
-     #   siblings = owner.ferrets.where.not(id: ferret.id)
-     #   fer_arr = siblings.each_with_object([]) do |s, array|
-     #     array << {image: s.image, name: display_name(s), path: ferret_path(s)}
-     #   end
-     #   own_arr = [{image: parent.image, name: display_name(owner)}]
-     #   family_members = fer_arr.unshift(own_arr).flatten
-     #   return family_members
-     # end
+    def correct_owner?
+      ferret = Ferret.find(params[:id])
+      unless current_user == ferret.user
+        flash[:warning] = "権限がありません。"
+        redirect_to ferrets_path
+      end
+    end
 end

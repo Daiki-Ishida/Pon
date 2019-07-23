@@ -1,5 +1,6 @@
 class ContractsController < ApplicationController
-
+  before_action :logged_in_user
+  before_action :concerned_user?
 
   def create
     request = Request.find(params[:request_id])
@@ -24,4 +25,13 @@ class ContractsController < ApplicationController
   def show
     @contract = Contract.find(params[:id])
   end
+
+  private
+    def concerned_user?
+      contract = Contract.find(params[:id])
+      unless current_user == contract.owner || contact.sitter
+        flash[:warning] = "権限がありません。"
+        redirect_to ferrets_path
+      end
+    end
 end

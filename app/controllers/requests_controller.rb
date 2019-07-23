@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   before_action :has_ferrets?, except: [:show]
   before_action :has_request?, only: [:new, :create]
+  beofre_aciton :logged_in_user
 
 
   def new

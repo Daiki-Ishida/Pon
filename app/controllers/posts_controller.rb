@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
+  before_action :correct_post?, only: [:edit, :update, :destroy]
+  beofre_aciton :logged_in_user, except: [:index, :show, :search]
+
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "投稿しました！！"
       redirect_to post_path(@post)
@@ -51,5 +53,13 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:title, :content, :image)
+    end
+
+    def correct_post?
+      post = Post.find(params[:id])
+      unless current_user == post.user
+        flash[:warning] = "権限がありません。"
+        redirect_to ferrets_path
+      end
     end
 end
