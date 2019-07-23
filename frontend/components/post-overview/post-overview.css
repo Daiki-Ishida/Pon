@@ -1,10 +1,15 @@
-.post--image{
+.post-overview{
+  width: 100%;
+}
+
+.post-overview--image{
   object-fit: fill;
   width: 100%;
   height: auto;
 }
 
-.post--head{
+.post-overview--head{
+  height: 30%;
   display: flex;
   justify-content: space-between;
   line-height: 50px;
@@ -12,18 +17,27 @@
   padding-bottom: 0;
 }
 
-.post--user{
+.post-overview--user{
   flex-grow: 10;
 }
 
-.post--user-info{
+.post-overview--user-info{
   display: flex;
 }
 
-.post--user-name{
+.post-overview--user-name{
   margin-left: 10px;
 }
 
-.post--like{
+.post-overview--like{
   margin-right: 20px;
+}
+
+.post-overview--body{
+  height: 70%;
+}
+
+.post-overview--content{
+  height: 70%;
+  overflow: auto;
 }

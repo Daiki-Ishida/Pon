@@ -1,45 +1,47 @@
-<div class="post card mb-3">
+<div class="post-overview card mb-3">
   <div class="row no-gutters">
     <div class="col-md-4">
       <%= link_to post_path(post) do %>
         <% if post.image.attached? %>
-          <%= image_tag post.image, class:"post--image" %>
+          <%= image_tag post.image, class:"post-overview--image" %>
         <% else %>
-          <%= image_tag "/images/no_image.jpg", class:"post--image" %>
+          <%= image_tag "/images/no_image.jpg", class:"post-overview--image" %>
         <% end %>
       <% end %>
     </div>
     <div class="col-md-8">
-      <div class="post--head">
-        <div class="post--user">
+      <div class="post-overview--head">
+        <div class="post-overview--user">
           <%= link_to user_path(post.user) do %>
-          <div class="post--user-info">
-            <div class="post--user-icon">
+          <div class="post-overview--user-info">
+            <div class="post-overview--user-icon">
               <% if post.user.image.attached? %>
                 <%= image_tag post.user.image, size:"50x50", class:"image-icon" %>
               <% else %>
                 <%= image_tag "/images/no_image.jpg", size:"50x50", class:"image-icon" %>
               <% end %>
             </div>
-            <div class="post--user-name">
+            <div class="post-overview--user-name">
               <%= display_name(post.user) %>
             </div>
           </div>
           <% end %>
         </div>
 
-        <div class="post--like">
+        <div class="post-overview--like">
           <%= render "components/like/like", post: post %>
         </div>
-        <div class="post--comment">
-          <span>
-            <i class="far fa-comments"></i>
-          </span>
-          <%= post.comments.count %>コメント
+        <div class="post-overview--comment">
+          <%= link_to post_path(post) do %>
+            <span>
+              <i class="far fa-comments"></i>
+            </span>
+            <%= post.comments.count %>コメント
+          <% end %>
         </div>
       </div>
-      <div class="card-body">
-        <p class="card-text">
+      <div class="card-body post-overview--body">
+        <p class="card-text post-overview--content">
           <%= post.content %>
         </p>
         <p class="card-text">
