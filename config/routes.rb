@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   end
 
   namespace :my do
+    get :page
     get :ferrets
+    get :posts
     get :rooms
     get :territory
     patch :update_territory

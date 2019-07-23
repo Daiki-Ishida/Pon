@@ -1,6 +1,10 @@
 class MyController < ApplicationController
   before_action :logged_in_user
 
+  def page
+
+  end
+
   def territory
     @ferrets = current_user.objects_within_territory("ferrets")
   end
@@ -24,6 +28,10 @@ class MyController < ApplicationController
 
   def ferrets
     @ferrets = current_user.ferrets
+  end
+
+  def posts
+    @posts = current_user.posts
   end
 
   def notifications

@@ -1,0 +1,52 @@
+<div class="my-page col-md-8 offset-md-2">
+  <div class="my-page--item">
+    <%= link_to user_path(current_user), class:"my-page--links" do %>
+      <i class="fas fa-chevron-circle-right"></i> 自分の情報を確認する
+    <% end %>
+  </div>
+  <div class="my-page--item">
+    <%= link_to edit_user_path(current_user), class:"my-page--links" do %>
+      <i class="fas fa-chevron-circle-right"></i> 自分の情報を編集する
+    <% end %>
+  </div>
+  <div class="my-page--item">
+    <%= link_to new_ferret_path, class:"my-page--links" do %>
+      <i class="fas fa-chevron-circle-right"></i> 新しくフェレットを登録する
+    <% end %>
+  </div>
+  <div class="my-page--item">
+    <%= link_to my_ferrets_path, class:"my-page--links" do %>
+      <i class="fas fa-chevron-circle-right"></i> 自分のフェレットを確認する
+    <% end %>
+  </div>
+  <div class="my-page--item">
+    <%= link_to new_post_path, class:"my-page--links" do %>
+      <i class="fas fa-chevron-circle-right"></i> 新しく投稿する
+    <% end %>
+  </div>
+  <div class="my-page--item">
+    <%= link_to my_posts_path, class:"my-page--links" do %>
+      <i class="fas fa-chevron-circle-right"></i> 自分の投稿を確認する
+    <% end %>
+  </div>
+  <div class="my-page--item">
+    <%= link_to my_rooms_path, class:"my-page--links" do %>
+      <i class="fas fa-chevron-circle-right"></i> メッセージ一覧を確認する
+    <% end %>
+  </div>
+  <div class="my-page--item">
+    <%= link_to my_notificatios_path, class:"my-page--links" do %>
+      <i class="fas fa-chevron-circle-right"></i> 通知を確認する
+    <% end %>
+  </div>
+  <div class="my-page--item">
+    <%= link_to my_settings_path, class:"my-page--links" do %>
+      <i class="fas fa-chevron-circle-right"></i> 各種設定
+    <% end %>
+  </div>
+  <div class="my-page--item">
+    <%= link_to logout_path, method: :delete, class:"my-page--links" do %>
+      <i class="fas fa-chevron-circle-right"></i> ログアウト
+    <% end %>
+  </div>
+</div>
