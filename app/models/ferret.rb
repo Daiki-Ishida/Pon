@@ -12,4 +12,8 @@ class Ferret < ApplicationRecord
     return Ferret.all unless search
     Ferret.where(['name LIKE ?', "%#{search}%"])
   end
+
+  def owned_by?(user)
+    self.user == user
+  end
 end

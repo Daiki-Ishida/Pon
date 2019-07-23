@@ -73,7 +73,7 @@
       <h5>お世話の履歴</h5>
       <% if user.has_contracts_as_sitter? %>
         <div class="user--review">
-          <p>平均評価：<span id="averageStar" data-score="<%= user.average_rate %>"></span></p>
+          <div id="averageStar" data-score="<%= user.average_rate %>"></div>
         </div>
         <% user.contracts_as_sitter.each.with_index(1) do |contract, i| %>
           <div class="user--record">
@@ -102,10 +102,7 @@
         <p>まだお世話の履歴はありません。</p>
       <% end %>
     </div>
-
   </div>
-
-
 
   <div class="user--posts">
     <div class="col-md-8 offset-md-2">

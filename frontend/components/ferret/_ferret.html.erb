@@ -1,57 +1,102 @@
-<% if my_ferret?(ferret) %>
-  <%= render "components/edit-btn/edit-btn", path: edit_ferret_path(ferret)  %>
-  <%= render "components/delete-btn/delete-btn", path: ferret_path(ferret)  %>
-<% end %>
-
-<div class="f-show col-md-8 offset-md-2">
-  <div class="f-show--top">
-    <%= render "components/show-top/show-top", object: ferret %>
-  </div>
-
-  <div class="f-show--character">
-      <h5>性格</h5>
-      <p><%= ferret.character %></p>
-  </div>
-
-  <div class="f-show--family">
-    <div class="f-show--owner">
-      <h5>親</h5>
-      <div class="f-show--owner-icon">
-        <%= link_to user_path(ferret.user_id) do %>
-          <% if ferret.user.image.attached? %>
-            <%= image_tag ferret.user.image, size:"80x80", class:"image-icon" %>
+<div class="ferret">
+  <div class="col-md-8 offset-md-2">
+    <div class="ferret--top">
+      <div class="show--image">
+        <% if ferret.image.attached? %>
+          <%= image_tag ferret.image, size:"350x350", class:"image-square" %>
+        <% else %>
+          <%= image_tag "/images/no_image.jpg", size:"350x350", class:"image-square" %>
+        <% end %>
+      </div>
+      <div class="ferret--actions">
+        <% if logged_in? %>
+          <% if ferret.owned_by?(current_user) %>
+            <div class="ferret--links">
+              <div class="ferret--edit">
+                <%= render "components/edit-btn/edit-btn", path: edit_ferret_path(ferret)  %>
+              </div>
+              <div class="ferret--delete">
+                <%= render "components/delete-btn/delete-btn", path: ferret_path(ferret)  %>
+              </div>
+            </div>
           <% else %>
-            <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
+            <div class="ferret--message">
+              <%= link_to "飼い主にメッセージを送る", rooms_path(guest_id: ferret.user.id), method: :post, class:"link-btn" %>
+            </div>
+            <div class="ferret--follow">
+              <%= render "components/follow/follow", user: ferret.user %>
+            </div>
           <% end %>
-          <p class="f-show--family-name">
-            <%= display_name(ferret.user) %>
-          </p>
         <% end %>
       </div>
     </div>
-    <div class="f-show--siblings">
-      <h5>兄弟・姉妹</h5>
-      <div class="f-show--sibling">
-        <% siblings.each do |s| %>
-        <div class="f-show--sibling-icon">
-          <%= link_to ferret_path(s) do %>
-            <% if s.image.attached? %>
-              <%= image_tag s.image, size:"80x80", class:"image-icon" %>
+
+    <div class="ferret--info">
+      <div class="row show--name">
+        <h2><%= ferret.name %></h2>
+      </div>
+      <div class="row show--info-items">
+        <%= display_basic_info(ferret) %>
+      </div>
+    </div>
+
+    <div class="ferret--character">
+      <h5>性格</h5>
+      <p><%= ferret.character %></p>
+    </div>
+
+    <div class="ferret--family">
+      <div class="ferret--owner">
+        <h5>親</h5>
+        <div class="ferret--owner-icon">
+          <%= link_to user_path(ferret.user_id) do %>
+            <% if ferret.user.image.attached? %>
+              <%= image_tag ferret.user.image, size:"80x80", class:"image-icon" %>
             <% else %>
               <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
             <% end %>
-            <p class="f-show--family-name">
-              <%= display_name(s) %>
+            <p class="ferret--family-name">
+              <%= display_name(ferret.user) %>
             </p>
           <% end %>
         </div>
-        <% end %>
+      </div>
+      <div class="ferret--siblings">
+        <h5>兄弟・姉妹</h5>
+        <div class="ferret--sibling">
+          <% unless siblings.empty? %>
+            <% siblings.each do |s| %>
+              <div class="ferret--sibling-icon">
+                <%= link_to ferret_path(s) do %>
+                  <% if s.image.attached? %>
+                    <%= image_tag s.image, size:"80x80", class:"image-icon" %>
+                  <% else %>
+                    <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
+                  <% end %>
+                  <p class="ferret--family-name">
+                    <%= display_name(s) %>
+                  </p>
+                <% end %>
+              </div>
+            <% end %>
+          <% else %>
+            <p>兄弟は登録されていません。</p>
+          <% end %>
+        </div>
       </div>
     </div>
+
+    <div class="ferret--record">
+      <h5>お世話の経験</h5>
+      世話の経験を書く。
+    </div>
+
   </div>
-
-
-  <div class="show--post">
-    <p>TO BE CREATED</p>
+  <div class="ferret--posts">
+    <div class="col-md-8 offset-md-2">
+      <h5>親の投稿</h5>
+    </div>
+    <%= render partial:"components/post-overview/post-overview",
+               collection: ferret.user.posts, as: "post" %>
   </div>
 </div>

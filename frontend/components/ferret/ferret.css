@@ -1,38 +1,75 @@
-.f-show > div {
-  border-bottom: solid 1px rgba(51,51,51,.24);
-  padding: 0 15px;
+.ferret > div > div{
+  padding: 15px;
 }
 
-.f-show--character h5{
-  margin-right: 15px;
+.ferret h5{
+  border-bottom: solid 3px #78B7F0;
 }
 
-.f-show--family{
+.ferret--top{
+  display: flex;
+  justify-content: space-between;
+}
+
+.ferret--actions{
+  text-align: center;
+  height: 200px;
+}
+
+.ferret--links{
   display: flex;
 }
 
-.f-show--family-name{
+.ferret--message, .ferret--links{
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.ferret--edit button{
+  width: 100px;
+  height: 50px;
+  background-color: #4ba9a1;
+  color: #FFF;
+}
+
+.ferret--delete button{
+  width: 100px;
+  height: 50px;
+  background-color: #be4847;
+  color: #FFF;
+}
+
+.ferret--edit button:hover,
+.ferret--delete button:hover{
+  color: #FFF;
+}
+
+.ferret--family{
+  display: flex;
+}
+
+.ferret--family-name{
   font-size: 10px;
 }
 
-.f-show--owner-icon,
-.f-show--sibling-icon{
+.ferret--owner-icon,
+.ferret--sibling-icon{
   text-align: center;
 }
 
-.f-show--owner{
+.ferret--owner{
   width: 20%;
 }
 
-.f-show--siblings{
+.ferret--siblings{
   width: 80%;
 }
 
-.f-show--sibling{
+.ferret--sibling{
   display: flex;
   overflow: scroll;
 }
 
-.f-show--sibling-icon{
+.ferret--sibling-icon{
   width: 20%;
 }
