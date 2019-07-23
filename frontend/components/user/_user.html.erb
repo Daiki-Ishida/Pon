@@ -1,27 +1,24 @@
-<!-- ユーザー編集ボタン -->
-<% if current_user?(user) %>
-  <%= render "components/edit-btn/edit-btn", path: edit_user_path(user)  %>
-<% end %>
-
-<!-- フォローボタン -->
-<div class="user--follow">
-  <div class="user--follow-btn">
-    <% if logged_in? %>
-      <%= render "components/follow/follow", user: user %>
-    <% end %>
-  </div>
-  <div class="user-follow-stats">
-    <%= render "components/follow-stats/follow-stats", user: user %>
-  </div>
-</div>
-
-<div class="user--room">
-  <%= link_to "メッセージを送る", rooms_path(guest_id: user.id), method: :post %>
-</div>
-
-
 <div class="user col-md-8 offset-md-2">
   <div class="user--top">
+    <div class="user--actions">
+      <% if current_user?(user) %>
+        <div class="user--edit">
+          <%= render "components/edit-btn/edit-btn", path: edit_user_path(user)  %>
+        </div>
+      <% else %>
+        <% if logged_in? %>
+          <div class="user--follow">
+            <%= render "components/follow/follow", user: user %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="user-follow-stats">
+        <%= render "components/follow-stats/follow-stats", user: user %>
+      </div>
+      <div class="user--message">
+        <%= link_to "メッセージを送る", rooms_path(guest_id: user.id), method: :post, class:"link-btn" %>
+      </div>
+    </div>
     <%= render "components/show-top/show-top", object: user %>
   </div>
 
@@ -29,7 +26,7 @@
     <h5>家族</h5>
     <div class="user--family-members">
       <% if user.ferrets.empty? %>
-        <p>現在はフェレットを飼っていません。</p>
+        <p>フェレットは登録されていません。</p>
       <% else %>
         <% user.ferrets.each do |ferret| %>
           <div class="user--family-icon">

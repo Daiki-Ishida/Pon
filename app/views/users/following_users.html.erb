@@ -1,7 +1,3 @@
-<%= render "components/page/page" do %>
-  <%= render partial: "components/follow-list/follow-list",
-             locals: {
-               users: @followings,
-             }
-  %>
+<%= render "components/page/page", title:"#{display_name(@user)}がフォロー中のユーザー" do %>
+  <%= render "components/follow-list/follow-list", users: @followings %>
 <% end %>

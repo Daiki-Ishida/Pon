@@ -1,6 +1,10 @@
 module ApplicationHelper
   require "uri"
 
+  def display_basic_info(object)
+    display_address(object)+ " | " + display_gender(object) + " | " + display_age(object)
+  end
+
   # 人間なら「さん」、フェレットオスなら「くん」、メスなら「ちゃん」を返す。
   def display_name(object)
     model = model_checker(object)
@@ -86,17 +90,18 @@ module ApplicationHelper
 
   def nav_links(type)
     hash = {}
-    if type == "users"
+    case type
+    when "users"
       hash[:index] = users_path
       hash[:territory] = territory_users_path
       hash[:follow] = followings_users_path
       hash[:search] = search_users_path
-    elsif type == "ferrets"
+    when "ferrets"
       hash[:index] = ferrets_path
       hash[:territory] = territory_ferrets_path
       hash[:follow] = followings_ferrets_path
       hash[:search] = search_ferrets_path
-    elsif type == "posts"
+    when "posts"
       hash[:index] = posts_path
       hash[:territory] = territory_posts_path
       hash[:follow] = followings_posts_path

@@ -1,15 +1,24 @@
-<div class="follow-list">
+<div class="follow-list col-md-8 offset-md-2">
   <% users.each do |user| %>
     <div class="follow-list--user">
       <div class="follow-list--user-image">
-        <% if user.image.attached? %>
-          <%= image_tag user.image, size:"80x80", class:"image-icon" %>
-        <% else %>
-          <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
+        <%= link_to user_path(user) do %>
+          <% if user.image.attached? %>
+            <%= image_tag user.image, size:"80x80", class:"image-icon" %>
+          <% else %>
+            <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
+          <% end %>
         <% end %>
       </div>
-      <div class="follow-list--user-name">
-        <%= display_name(user) %>
+      <div class="follow-list--user-details">
+        <div class="follow-list--user-name">
+          <%= link_to user_path(user) do %>
+            <%= user.name %>
+          <% end %>
+        </div>
+        <div class="follow-list--user-info">
+          <%= display_basic_info(user) %>
+        </div>
       </div>
       <div class="follow-list--follow-btn">
         <% unless current_user?(user) %>

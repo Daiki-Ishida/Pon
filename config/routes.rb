@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :followings, to: 'following_users'
+      get :followings, to: 'users#following_users'
       get :followers
     end
     collection do

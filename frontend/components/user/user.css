@@ -3,6 +3,22 @@
   padding: 0 15px;
 }
 
+.user--edit, .user--follow{
+  margin-bottom: 10px;
+}
+
+.user--edit button{
+  background-color: #4ba9a1;
+  color: #FFF;
+}
+
+.user--edit button:hover{
+  color: #FFF;
+}
+
+
+
+
 .user--family-name{
   font-size: 10px;
 }

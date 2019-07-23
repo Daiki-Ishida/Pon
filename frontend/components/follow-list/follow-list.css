@@ -2,13 +2,17 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
-  line-height: 80px;
+  line-height: 40px;
 }
 
 .follow-list--user-image{
   margin-right: 20px;
 }
 
-.follow-list--user-name{
+.follow-list--user-details{
   flex-grow: 10;
+}
+
+.follow-list--follow-btn{
+  line-height: 60px;
 }
