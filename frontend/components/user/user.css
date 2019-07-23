@@ -3,11 +3,24 @@
   padding: 0 15px;
 }
 
-.user--edit, .user--follow{
-  margin-bottom: 10px;
+.user--top{
+  display: flex;
+  justify-content: space-between;
+}
+
+.user--actions{
+  text-align: center;
+  height: 200px;
+}
+
+.user--message, .user--edit{
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 
 .user--edit button{
+  width: 200px;
+  height: 50px;
   background-color: #4ba9a1;
   color: #FFF;
 }
@@ -16,11 +29,8 @@
   color: #FFF;
 }
 
-
-
-
-.user--family-name{
-  font-size: 10px;
+.user--follow{
+  margin-bottom: 20px;
 }
 
 .user--family-members{

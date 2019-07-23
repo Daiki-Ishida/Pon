@@ -6,4 +6,11 @@
   object-fit: cover;
 }
 
+
+.image-square{
+  border-radius: 5px;
+  border: 1px solid black;
+  object-fit: cover;
+}
+
 /************************* アイコンの設定END *************************/

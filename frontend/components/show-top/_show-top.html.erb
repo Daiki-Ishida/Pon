@@ -11,16 +11,10 @@
 
   <div class="show--info">
     <div class="row show--name">
-      <h2><%= display_name(object) %></h2>
+      <h2><%= object.name %></h2>
     </div>
     <div class="row show--info-items">
-      <p>
-        <%= display_address(object) %>
-        <span>|</span>
-        <%= display_gender(object) %>
-        <span>|</span>
-        <%= display_age(object) %>
-      </p>
+      <%= display_basic_info(object) %>
     </div>
   </div>
 
