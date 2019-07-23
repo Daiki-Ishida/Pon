@@ -1,6 +1,9 @@
-.user > div {
-  border-bottom: solid 1px rgba(51,51,51,.24);
-  padding: 0 15px;
+.user > div > div {
+  padding:15px;
+}
+
+.user h5{
+  border-bottom: solid 3px #78B7F0;
 }
 
 .user--top{
@@ -33,16 +36,12 @@
   margin-bottom: 20px;
 }
 
-.user--family-members{
+.user--ferrets{
   display:flex;
-}
-
-.user--family-icon{
-  width: 20%;
-  text-align: center;
   overflow: scroll;
 }
 
-.user--posts h5{
-  padding: 0 15px;
+.user--ferret-icon{
+  width: 20%;
+  text-align: center;
 }

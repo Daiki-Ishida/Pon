@@ -1,5 +1,5 @@
-<div class="user col-md-8 offset-md-2">
-  <div class="">
+<div class="user">
+  <div class="col-md-8 offset-md-2">
     <div class="user--top">
       <div class="show--image">
         <% if user.image.attached? %>
@@ -28,6 +28,7 @@
         </div>
       </div>
     </div>
+
     <div class="user--info">
       <div class="show--info">
         <div class="row show--name">
@@ -38,40 +39,79 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="user--introduction">
-    <p><%= user.introduction %></p>
-  </div>
+    <div class="user--introduction">
+      <h5>自己紹介</h5>
+      <p><%= user.introduction %></p>
+    </div>
 
-  <div class="user--family">
-    <h5>家族</h5>
-    <div class="user--family-members">
-      <% if user.ferrets.empty? %>
-        <p>フェレットは登録されていません。</p>
-      <% else %>
-        <% user.ferrets.each do |ferret| %>
-          <div class="user--family-icon">
-            <%= link_to ferret_path(ferret) do %>
-              <% if ferret.image.attached? %>
-                <%= image_tag ferret.image, size:"80x80", class:"image-icon" %>
-              <% else %>
-                <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
+    <div class="user--family">
+      <h5>家族</h5>
+      <div class="user--ferrets">
+        <% if user.ferrets.empty? %>
+          <p>フェレットは登録されていません。</p>
+        <% else %>
+          <% user.ferrets.each do |ferret| %>
+            <div class="user--ferret-icon">
+              <%= link_to ferret_path(ferret) do %>
+                <% if ferret.image.attached? %>
+                  <%= image_tag ferret.image, size:"100x100", class:"image-icon" %>
+                <% else %>
+                  <%= image_tag "/images/no_image.jpg", size:"100x100", class:"image-icon" %>
+                <% end %>
+                <p class="user--ferret-name">
+                  <%= ferret.name %>
+                </p>
               <% end %>
-              <p class="user--family-name">
-                <%= ferret.name %>
-              </p>
-            <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="user--records">
+      <h5>お世話の履歴</h5>
+      <% if user.has_contracts_as_sitter? %>
+        <div class="user--review">
+          <p>平均評価：<span id="averageStar" data-score="<%= user.average_rate %>"></span></p>
+        </div>
+        <% user.contracts_as_sitter.each.with_index(1) do |contract, i| %>
+          <div class="user--record">
+            <p>お世話記録その<%= i %></p>
+            <p class="user--period">期間：<%= display_period(contract) %></p>
+            <p>お世話したフェレット</p>
+            <div class="user--ferrets">
+              <% contract.owner.ferrets.each do |ferret| %>
+                <div class="user--ferret-icon">
+                  <%= link_to ferret_path(ferret) do %>
+                    <% if ferret.image.attached? %>
+                      <%= image_tag ferret.image, size:"100x100", class:"image-icon" %>
+                    <% else %>
+                      <%= image_tag "/images/no_image.jpg", size:"100x100", class:"image-icon" %>
+                    <% end %>
+                    <p class="user--ferret-name">
+                      <%= ferret.name %>
+                    </p>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
           </div>
         <% end %>
+      <% else %>
+        <p>まだお世話の履歴はありません。</p>
       <% end %>
     </div>
+
   </div>
-</div>
-<div class="user--posts">
-  <div class="col-md-8 offset-md-2">
-    <h5>投稿</h5>
+
+
+
+  <div class="user--posts">
+    <div class="col-md-8 offset-md-2">
+      <h5>投稿</h5>
+    </div>
+    <%= render partial:"components/post-overview/post-overview",
+               collection: user.posts, as: "post" %>
   </div>
-  <%= render partial:"components/post-overview/post-overview",
-             collection: user.posts, as: "post" %>
 </div>

@@ -67,9 +67,11 @@ module ApplicationHelper
   end
 
   # Request or Contractの期間を返す
-  def display_period(object)
-    diff = object.end_at.day - object.start_at.day
-    return "#{diff}泊#{diff + 1}日"
+  def display_period(contract)
+    from = contract.start_at.strftime("%Y-%m-%d")
+    to = contract.end_at.strftime("%Y-%m-%d")
+    diff = contract.end_at.day - contract.start_at.day
+    return "#{from}から#{to}までの#{diff}泊#{diff + 1}日"
   end
 
   def current_user

@@ -95,4 +95,25 @@ class User < ApplicationRecord
     return User.all unless search
     User.where(['name LIKE ?', "%#{search}%"])
   end
+
+  def has_contracts_as_sitter?
+    Contract.where(sitter_id: self.id).present?
+  end
+
+  def contracts_as_sitter
+    if self.has_contracts_as_sitter?
+      contracts = Contract.where(sitter_id: self.id)
+    end
+  end
+
+  def average_rate
+    sum = 0
+    self.contracts_as_sitter.each do |contract|
+      sum += contract.review.rate
+    end
+    count = self.contracts_as_sitter.count
+    average = sum / count
+    return average
+  end
+
 end
