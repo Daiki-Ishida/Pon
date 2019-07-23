@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :correct_room?
-  beofre_aciton :logged_in_user
+  before_aciton :logged_in_user
 
   def create
     room = Room.find(params[:room_id])

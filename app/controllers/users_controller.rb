@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
-  beofre_aciton :logged_in_user, only:[:edit, :update, :destroy, :territory, :followings]
+  before_aciton :logged_in_user, only:[:edit, :update, :destroy, :territory, :followings]
 
   def new
     @user = User.new

@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   before_action :correct_issuer?, except: [:index, :show]
-  beofre_aciton :logged_in_user
+  before_aciton :logged_in_user
 
   def new
     contract = Contract.find(params[:contract_id])

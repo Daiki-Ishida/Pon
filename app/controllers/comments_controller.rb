@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  beofre_aciton :logged_in_user
+  before_aciton :logged_in_user
   before_action :correct_commented?
 
   def create
