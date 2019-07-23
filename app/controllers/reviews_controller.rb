@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :correct_reviewer?
-  before_aciton :logged_in_user
+  before_action :logged_in_user
 
   def new
     contract = Contract.find(params[:contract_id])

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :correct_post?, only: [:edit, :update, :destroy]
-  before_aciton :logged_in_user, except: [:index, :show, :search]
+  before_action :logged_in_user, except: [:index, :show, :search]
 
   def new
     @post = current_user.posts.build

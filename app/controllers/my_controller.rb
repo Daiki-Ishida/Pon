@@ -1,5 +1,5 @@
 class MyController < ApplicationController
-  before_aciton :logged_in_user
+  before_action :logged_in_user
 
   def territory
     @ferrets = current_user.objects_within_territory("ferrets")
