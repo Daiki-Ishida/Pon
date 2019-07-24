@@ -10,7 +10,7 @@
     <%= link_to "フォロー", nav_links(type)[:follow], class:"home-nav--bottom-links" %>
     <button type="button" name="button" id="sortBtn">絞り込み</button>
     <div class="home-nav--sort-modal" id="modal">
-      <%= render "components/sort-menu/sort-menu" %>
+      <%= render "components/sort-menu/sort-menu", sort: sort %>
     </div>
     <div class="home-nav--search">
       <%= form_with url: nav_links(type)[:search],

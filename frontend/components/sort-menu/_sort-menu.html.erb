@@ -26,6 +26,7 @@
       <%= form.select :distance,
                       [["こだわらない", nil], ["2km", 2], ["4km", 4],["6km", 6],["8km", 8],["10km", 10]]
       %>
+      <%= form.hidden_field :sort, value: sort %>
       <%= form.submit "決定", class:"" %>
       <button type="button" name="button" id="sortCloseBtn">閉じる</button>
     <% end %>

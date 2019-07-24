@@ -109,6 +109,16 @@ class User < ApplicationRecord
     User.where(['name LIKE ?', "%#{search}%"])
   end
 
+  def self.sorted_by(sort, current_user)
+    return User.all unless sort
+    case  sort
+      when "territory"
+        current_user.objects_within_territory("users")
+      when "followings"
+        current_user.followings
+    end
+  end
+
   def has_contracts_as_owner?
     Contract.where(owner_id: self.id).present?
   end

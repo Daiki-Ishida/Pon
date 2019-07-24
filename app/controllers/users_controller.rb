@@ -49,18 +49,21 @@ class UsersController < ApplicationController
   def index
     @users = User.page(params[:page]).per(12).order(created_at: :desc)
     @title = "ユーザー一覧"
+    @sort = ""
   end
 
   def territory
     array = current_user.objects_within_territory("users")
     @users = Kaminari.paginate_array(array).page(params[:page]).per(12)
     @title = "ユーザー一覧 - マイエリア"
+    @sort = "territory"
     render 'index'
   end
 
   def followings
     @users = current_user.followings.page(params[:page]).per(12).order(created_at: :desc)
     @title = "ユーザー一覧 - フォロー中"
+    @sort = "followings"
     render 'index'
   end
 
@@ -80,20 +83,30 @@ class UsersController < ApplicationController
     # 要リファクタリング
     status = params[:status]
     gender = params[:gender]
-    distance = params[:distance].to_i
-    @users = User.all
-    if distance.present?
-      @users = current_user.other_users_within(distance)
-      @users = @users.select{|user| user[:status] == status} if status.present?
-      @users = @users.select{|user| user[:gender] == gender} if gender.present?
+    distance = params[:distance]
+    sort = params[:sort]
+    @users = User.sorted_by(sort, current_user)
+    if @users.kind_of?(Array)
+      @users = current_user.other_users_within(distance.to_i) if distance.present?
+      @users = @users.select{|user| user[:status] == status.to_i} if status.present?
+      @users = @users.select{|user| user[:gender] == gender.to_i} if gender.present?
       array = @users.reverse
       @users = Kaminari.paginate_array(array).page(params[:page]).per(12)
     else
-      @users = @users.where(status: status) if status.present?
-      @users = @users.where(gender: gender) if gender.present?
-      @users = @users.page(params[:page]).per(12).order(created_at: :desc)
+      if distance.present?
+        @users = current_user.other_users_within(distance.to_i)
+        @users = @users.select{|user| user[:status] == status.to_i} if status.present?
+        @users = @users.select{|user| user[:gender] == gender.to_i} if gender.present?
+        array = @users.reverse
+        @users = Kaminari.paginate_array(array).page(params[:page]).per(12)
+      else
+        @users = @users.where(status: status) if status.present?
+        @users = @users.where(gender: gender) if gender.present?
+        @users = @users.page(params[:page]).per(12).order(created_at: :desc)
+      end
     end
     @title = "ユーザー一覧"
+    @sort = sort
     render 'index'
   end
 

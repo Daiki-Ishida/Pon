@@ -1,6 +1,7 @@
 <%= render "components/home/home",
            title: @title,
            type: "users",
+           sort: @sort,
            objects: @users do %>
   <%= render partial: "components/card/card", collection: @users, as: :object %>
 <% end %>
