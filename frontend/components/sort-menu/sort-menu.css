@@ -1,4 +1,42 @@
 .sort-menu{
-  background-color: white;
-  margin: 40% auto;
+  background-color: #FFF;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-radius: 15px;
+  margin: 10% auto;
+}
+
+.sort-menu--title{
+  text-align: center;
+  border-bottom: solid 3px #78B7F0;
+  margin-bottom: 20px;
+}
+
+.sort-menu--item{
+  margin-bottom: 50px;
+}
+
+.sort-menu--item h5{
+  margin-bottom: 10px;
+}
+
+.sort-menu--actions{
+  display: flex;
+  justify-content: space-around;
+}
+
+.sort-item--submit-btn,
+.sort-item--close-btn{
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  color: #FFF;
+}
+
+.sort-item--submit-btn{
+  background-color: #4ba9a1;
+}
+
+.sort-item--close-btn{
+  background-color: #e96b6b;
 }

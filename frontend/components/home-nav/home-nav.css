@@ -42,6 +42,18 @@
   color: #26a69b !important;
 }
 
+.home-nav--sort-btn{
+  width: 150px;
+  height: 25px;
+  border: none;
+  background-color: #FFF;
+  color: #26a69b
+}
+
+.home-nav--sort-btn:focus{
+  outline: none;
+}
+
 .home-nav--sort-modal{
   display: none;
   position: fixed;

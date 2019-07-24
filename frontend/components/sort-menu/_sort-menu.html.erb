@@ -1,30 +1,87 @@
 <div class="sort-menu container">
   <div class="col-md-8 offset-md-2">
+    <h3 class="sort-menu--title">絞り込み</h3>
     <%= form_with url: nav_links(type)[:sort],
                   enforce_utf8: false,
                   method: 'get',
                   class: "sort-menu-form",
                   local: true do |form| %>
 
-      <h5>募集状況</h5>
-      <%= form.radio_button :status, "", class:"" %>
-      <label class="">こだわらない</label>
-      <%= form.radio_button :status, 1, class:"" %>
-      <label class="">預かりたい</label>
-      <%= form.radio_button :status, 2, class:"" %>
-      <label class="">預けたい</label>
+      <% if type == "users" %>
+        <div class="sort-menu--item">
+          <h5>募集状況</h5>
+          <%= form.radio_button :status, "", class:"" %>
+          <label class="">こだわらない</label>
+          <%= form.radio_button :status, 1, class:"" %>
+          <label class="">預かりたい</label>
+          <%= form.radio_button :status, 2, class:"" %>
+          <label class="">預けたい</label>
+        </div>
 
-      <h5>飼い主の性別</h5>
-      <%= form.radio_button :gender, "", class:"" %>
-      <label class="">こだわらない</label>
-      <%= form.radio_button :gender, 1, class:"" %>
-      <label class="">男性</label>
-      <%= form.radio_button :gender, 2, class:"" %>
-      <label class="">女性</label>
+        <div class="sort-menu--item">
+          <h5>ユーザーの性別</h5>
+          <%= form.radio_button :gender, "", class:"" %>
+          <label class="">こだわらない</label>
+          <%= form.radio_button :gender, 1, class:"" %>
+          <label class="">男性</label>
+          <%= form.radio_button :gender, 2, class:"" %>
+          <label class="">女性</label>
+        </div>
+
+        <div class="sort-menu--item">
+          <h5>お世話の経験</h5>
+          <%= form.radio_button :record, "", class:"" %>
+          <label class="">こだわらない</label>
+          <%= form.radio_button :record, 1, class:"" %>
+          <label class="">あり</label>
+          <%= form.radio_button :record, 0, class:"" %>
+          <label class="">なし</label>
+        </div>
+
+      <% elsif type == "ferrets" %>
+        <div class="sort-menu--item">
+          <h5>親の募集状況</h5>
+          <%= form.radio_button :status, "", class:"" %>
+          <label class="">こだわらない</label>
+          <%= form.radio_button :status, 1, class:"" %>
+          <label class="">預かりたい</label>
+          <%= form.radio_button :status, 2, class:"" %>
+          <label class="">預けたい</label>
+        </div>
+
+        <div class="sort-menu--item">
+          <h5>親の性別</h5>
+          <%= form.radio_button :gender, "", class:"" %>
+          <label class="">こだわらない</label>
+          <%= form.radio_button :gender, 1, class:"" %>
+          <label class="">男性</label>
+          <%= form.radio_button :gender, 2, class:"" %>
+          <label class="">女性</label>
+        </div>
+
+        <div class="sort-menu--item">
+          <h5>年齢</h5>
+          <%= form.select :age, [["こだわらない", 0],["1才未満", 1],["1才〜３才", 2],["４才以上", 3]] %>
+        </div>
+
+      <% elsif type == "posts" %>
+        <div class="sort-menu--item">
+          <h5>投稿者の募集状況</h5>
+          <%= form.radio_button :status, "", class:"" %>
+          <label class="">こだわらない</label>
+          <%= form.radio_button :status, 1, class:"" %>
+          <label class="">預かりたい</label>
+          <%= form.radio_button :status, 2, class:"" %>
+          <label class="">預けたい</label>
+        </div>
+      <% end %>
 
       <%= form.hidden_field :sort, value: sort %>
-      <%= form.submit "決定", class:"" %>
-      <button type="button" name="button" id="sortCloseBtn">閉じる</button>
+
+      <div class="sort-menu--actions">
+        <%= form.submit "決定", class:"sort-item--submit-btn" %>
+        <button type="button" name="button" class="sort-item--close-btn" id="sortCloseBtn">閉じる</button>
+      </div>
     <% end %>
   </div>
 </div>
