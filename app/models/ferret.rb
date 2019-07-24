@@ -26,4 +26,14 @@ class Ferret < ApplicationRecord
     end
     return array
   end
+
+  def self.sorted_by(sort, user)
+    return Ferret.all if sort.empty?
+    case  sort
+      when "territory"
+        user.objects_within_territory("ferrets")
+      when "followings"
+        user.followings_objects("ferrets")
+    end
+  end
 end

@@ -110,7 +110,7 @@ class User < ApplicationRecord
   end
 
   def self.sorted_by(sort, current_user)
-    return User.all unless sort
+    return User.all if sort.empty?
     case  sort
       when "territory"
         current_user.objects_within_territory("users")

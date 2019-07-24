@@ -38,5 +38,14 @@ class Post < ApplicationRecord
     return array
   end
 
+  def self.sorted_by(sort, user)
+    return Post.all if sort.empty?
+    case  sort
+      when "territory"
+        user.objects_within_territory("posts")
+      when "followings"
+        user.followings_objects("posts")
+    end
+  end
 
 end

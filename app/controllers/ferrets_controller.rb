@@ -49,12 +49,14 @@ class FerretsController < ApplicationController
   def index
     @ferrets = Ferret.page(params[:page]).per(12).order(created_at: :desc)
     @title = "フェレット一覧"
+    @sort = ""
   end
 
   def territory
     array = current_user.objects_within_territory("ferrets").reverse
     @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
     @title = "フェレット一覧 - マイエリア"
+    @sort = "territory"
     render 'index'
   end
 
@@ -62,21 +64,42 @@ class FerretsController < ApplicationController
     array = current_user.followings_objects("ferrets").reverse
     @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
     @title = "フェレット一覧 - フォロー中"
-    render 'index'
-  end
-
-  def hiring
-    array = Ferret.on_hiring
-    @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    @title = "フェレット一覧"
+    @sort = "followings"
     render 'index'
   end
 
   def search
     @ferrets = Ferret.search(params[:search]).page(params[:page]).per(12).order(created_at: :desc)
     @title = "フェレット一覧 - #{params[:search]}の検索結果"
+    @sort = ""
     render 'index'
   end
+
+  def sort
+    status = params[:status]
+    gender = params[:gender]
+    sort = params[:sort]
+    @ferrets = Ferret.sorted_by(sort, current_user)
+    if @ferrets.kind_of?(Array)
+      @ferrets = @ferrets.select{|ferret| ferret.user[:status] == status.to_i} if status.present?
+      @ferrets = @ferrets.select{|ferret| ferret.user[:gender] == gender.to_i} if gender.present?
+      array = @ferrets.reverse
+      @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
+    else
+      @ferrets = @ferrets.each do |ferret|
+        array = []
+        array << ferret.user
+      end
+      @ferrets = @ferrets.select{|ferret| ferret.user[:status] == status.to_i} if status.present?
+      @ferrets = @ferrets.select{|ferret| ferret.user[:gender] == gender.to_i} if gender.present?
+      array = @ferrets.reverse
+      @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
+    end
+    @title = "フェレット一覧"
+    @sort = sort
+    render 'index'
+  end
+
 
   private
 

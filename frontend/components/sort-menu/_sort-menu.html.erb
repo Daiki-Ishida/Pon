@@ -1,6 +1,6 @@
 <div class="sort-menu container">
   <div class="col-md-8 offset-md-2">
-    <%= form_with url: sort_users_path,
+    <%= form_with url: nav_links(type)[:sort],
                   enforce_utf8: false,
                   method: 'get',
                   class: "sort-menu-form",
@@ -22,10 +22,6 @@
       <%= form.radio_button :gender, 2, class:"" %>
       <label class="">女性</label>
 
-      <h5>距離</h5>
-      <%= form.select :distance,
-                      [["こだわらない", nil], ["2km", 2], ["4km", 4],["6km", 6],["8km", 8],["10km", 10]]
-      %>
       <%= form.hidden_field :sort, value: sort %>
       <%= form.submit "決定", class:"" %>
       <button type="button" name="button" id="sortCloseBtn">閉じる</button>

@@ -67,12 +67,6 @@ class UsersController < ApplicationController
     render 'index'
   end
 
-  def hiring
-    @users = User.where(status: 2).page(params[:page]).per(12).order(created_at: :desc)
-    @title = "ユーザー一覧 - お仕事募集中"
-    render 'index'
-  end
-
   def search
     @users = User.search(params[:search]).page(params[:page]).per(12).order(created_at: :desc)
     @title = "ユーザー一覧 - #{params[:search]} の検索結果"
@@ -80,30 +74,19 @@ class UsersController < ApplicationController
   end
 
   def sort
-    # 要リファクタリング
     status = params[:status]
     gender = params[:gender]
-    distance = params[:distance]
     sort = params[:sort]
     @users = User.sorted_by(sort, current_user)
     if @users.kind_of?(Array)
-      @users = current_user.other_users_within(distance.to_i) if distance.present?
       @users = @users.select{|user| user[:status] == status.to_i} if status.present?
       @users = @users.select{|user| user[:gender] == gender.to_i} if gender.present?
       array = @users.reverse
       @users = Kaminari.paginate_array(array).page(params[:page]).per(12)
     else
-      if distance.present?
-        @users = current_user.other_users_within(distance.to_i)
-        @users = @users.select{|user| user[:status] == status.to_i} if status.present?
-        @users = @users.select{|user| user[:gender] == gender.to_i} if gender.present?
-        array = @users.reverse
-        @users = Kaminari.paginate_array(array).page(params[:page]).per(12)
-      else
-        @users = @users.where(status: status) if status.present?
-        @users = @users.where(gender: gender) if gender.present?
-        @users = @users.page(params[:page]).per(12).order(created_at: :desc)
-      end
+      @users = @users.where(status: status) if status.present?
+      @users = @users.where(gender: gender) if gender.present?
+      @users = @users.page(params[:page]).per(12).order(created_at: :desc)
     end
     @title = "ユーザー一覧"
     @sort = sort
