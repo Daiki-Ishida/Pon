@@ -3,7 +3,7 @@ class FerretsController < ApplicationController
   before_action :correct_owner?, only: [:edit, :update, :destroy]
 
   def index
-    @ferrets = Ferret.all
+    @ferrets = Ferret.page(params[:page]).per(12).order(created_at: :desc)
   end
 
   def new
@@ -51,15 +51,17 @@ class FerretsController < ApplicationController
   end
 
   def territory
-    @ferrets = current_user.objects_within_territory("ferrets")
+    array = current_user.objects_within_territory("ferrets")
+    @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
   end
 
   def followings
-    @ferrets = current_user.followings_objects("ferrets")
+    array = current_user.followings_objects("ferrets")
+    @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
   end
 
   def search
-    @ferrets = Ferret.search(params[:search])
+    @ferrets = Ferret.search(params[:search]).page(params[:page]).per(12).order(created_at: :desc)
   end
 
   private

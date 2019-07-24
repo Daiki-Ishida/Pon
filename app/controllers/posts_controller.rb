@@ -18,19 +18,21 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(12).order(created_at: :desc)
   end
 
   def territory
-    @posts = current_user.objects_within_territory("posts")
+    array = current_user.objects_within_territory("posts")
+    @posts = Kaminari.paginate_array(array).page(params[:page]).per(12)
   end
 
   def following
-    @posts = current_user.followings_objects("posts")
+    array = current_user.followings_objects("posts")
+    @posts = Kaminari.paginate_array(array).page(params[:page]).per(12)
   end
 
   def search
-    @posts = Post.search(params[:search])
+    @posts = Post.search(params[:search]).page(params[:page]).per(12).order(created_at: :desc)
   end
 
   def show

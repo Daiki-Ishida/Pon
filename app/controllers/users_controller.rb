@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(12).order(created_at: :desc)
   end
 
   def show
@@ -51,15 +51,16 @@ class UsersController < ApplicationController
   end
 
   def territory
-    @users = current_user.objects_within_territory("users")
+    array = current_user.objects_within_territory("users")
+    @users = Kaminari.paginate_array(array).page(params[:page]).per(12)
   end
 
   def followings
-    @users = current_user.followings
+    @users = current_user.followings.page(params[:page]).per(12).order(created_at: :desc)
   end
 
   def search
-    @users = User.search(params[:search])
+    @users = User.search(params[:search]).page(params[:page]).per(12).order(created_at: :desc)
   end
 
   private
