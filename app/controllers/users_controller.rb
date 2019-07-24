@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
   def territory
     array = current_user.objects_within_territory("users")
-    @users = Kaminari.paginate_array(array).page(params[:page]).per(12)
+    @users = Kaminari.paginate_array(array).page(params[:page]).per(12).order(created_at: :desc)
   end
 
   def followings

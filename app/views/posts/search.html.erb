@@ -1,1 +1,3 @@
-<%= render "components/posts/posts", posts: @posts %>
+<%= render "components/home/home", title: "#{params[:search]} の検索結果", type: "posts", objects: @posts do %>
+  <%= render partial: "components/post-overview/post-overview", collection: @posts, as: "post" %>
+<% end %>

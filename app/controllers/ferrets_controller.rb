@@ -3,7 +3,7 @@ class FerretsController < ApplicationController
   before_action :correct_owner?, only: [:edit, :update, :destroy]
 
   def index
-    @ferrets = Ferret.page(params[:page]).per(12).order(created_at: :desc)
+    @ferrets = Ferret.page(params[:page]).per(12)
   end
 
   def new
