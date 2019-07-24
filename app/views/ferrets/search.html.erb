@@ -1,6 +1,0 @@
-<%= render "components/home/home",
-           title: "#{params[:search]} の検索結果",
-           type: "ferrets",
-           objects: @ferrets do %>
-  <%= render partial: "components/card/card", collection: @ferrets, as: :object %>
-<% end %>

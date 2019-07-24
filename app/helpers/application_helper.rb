@@ -97,16 +97,19 @@ module ApplicationHelper
       hash[:index] = users_path
       hash[:territory] = territory_users_path
       hash[:follow] = followings_users_path
+      hash[:hiring] = hiring_users_path
       hash[:search] = search_users_path
     when "ferrets"
       hash[:index] = ferrets_path
       hash[:territory] = territory_ferrets_path
       hash[:follow] = followings_ferrets_path
+      hash[:hiring] = hiring_ferrets_path
       hash[:search] = search_ferrets_path
     when "posts"
       hash[:index] = posts_path
       hash[:territory] = territory_posts_path
       hash[:follow] = followings_posts_path
+      hash[:hiring] = hiring_posts_path
       hash[:search] = search_posts_path
     end
     return hash

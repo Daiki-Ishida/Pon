@@ -2,18 +2,14 @@ class FerretsController < ApplicationController
   before_action :logged_in_user, except: [:index, :show, :search]
   before_action :correct_owner?, only: [:edit, :update, :destroy]
 
-  def index
-    @ferrets = Ferret.page(params[:page]).per(12).order(created_at: :desc)
-  end
-
   def new
     @ferret = current_user.ferrets.build
   end
 
   def create
-    @ferret = Ferret.new(ferret_params)
-    @ferret.user_id = current_user.id
-    if @ferret.save
+    ferret = Ferret.new(ferret_params)
+    ferret.user_id = current_user.id
+    if ferret.save
       flash[:info] = "新しくフェレットを登録しました！"
       redirect_to ferret_path(ferret)
     else
@@ -50,18 +46,36 @@ class FerretsController < ApplicationController
     redirect_to ferrets_path
   end
 
+  def index
+    @ferrets = Ferret.page(params[:page]).per(12).order(created_at: :desc)
+    @title = "フェレット一覧"
+  end
+
   def territory
-    array = current_user.objects_within_territory("ferrets")
+    array = current_user.objects_within_territory("ferrets").reverse
     @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
+    @title = "フェレット一覧 - マイエリア"
+    render 'index'
   end
 
   def followings
-    array = current_user.followings_objects("ferrets")
+    array = current_user.followings_objects("ferrets").reverse
     @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
+    @title = "フェレット一覧 - フォロー中"
+    render 'index'
+  end
+
+  def hiring
+    array = Ferret.on_hiring
+    @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
+    @title = "フェレット一覧"
+    render 'index'
   end
 
   def search
     @ferrets = Ferret.search(params[:search]).page(params[:page]).per(12).order(created_at: :desc)
+    @title = "フェレット一覧 - #{params[:search]}の検索結果"
+    render 'index'
   end
 
   private

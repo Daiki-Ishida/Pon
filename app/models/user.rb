@@ -96,6 +96,10 @@ class User < ApplicationRecord
     User.where(['name LIKE ?', "%#{search}%"])
   end
 
+  def sort(sorted_by)
+
+  end
+
   def has_contracts_as_owner?
     Contract.where(owner_id: self.id).present?
   end

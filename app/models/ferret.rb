@@ -16,4 +16,14 @@ class Ferret < ApplicationRecord
   def owned_by?(user)
     self.user == user
   end
+
+  def self.on_hiring
+    array = []
+    User.where(status: 2).each do |user|
+      user.ferrets.each do |ferret|
+        array << ferret
+      end
+    end
+    return array
+  end
 end

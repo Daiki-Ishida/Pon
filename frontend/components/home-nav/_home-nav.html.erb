@@ -8,6 +8,7 @@
     <%= link_to "全て", nav_links(type)[:index], class:"home-nav--bottom-links" %>
     <%= link_to "エリア", nav_links(type)[:territory], class:"home-nav--bottom-links" %>
     <%= link_to "フォロー", nav_links(type)[:follow], class:"home-nav--bottom-links" %>
+    <%= link_to "募集中", nav_links(type)[:hiring], class:"home-nav--bottom-links" %>
     <div class="home-nav--search">
       <%= form_with url: nav_links(type)[:search],
                     enforce_utf8: false,

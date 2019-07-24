@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     collection do
       get :territory
       get :followings
+      get :hiring
       get :search
     end
   end
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
     collection do
       get :territory
       get :followings
+      get :hiring
       get :search
     end
   end
@@ -42,6 +44,7 @@ Rails.application.routes.draw do
     collection do
       get :territory
       get :followings
+      get :hiring
       get :search
     end
   end

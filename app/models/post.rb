@@ -27,4 +27,16 @@ class Post < ApplicationRecord
     )
     notification.save if notification.valid?
   end
+
+  def self.on_hiring
+    array = []
+    User.where(status: 1).each do |user|
+      user.posts.each do |post|
+        array << post
+      end
+    end
+    return array
+  end
+
+
 end
