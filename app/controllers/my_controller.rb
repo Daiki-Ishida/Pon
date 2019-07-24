@@ -20,7 +20,10 @@ class MyController < ApplicationController
   end
 
   def rooms
-    @rooms = Room.where(guest_id: current_user.id).or(Room.where(owner_id: current_user.id))
+    @rooms = Room.where(guest_id: current_user.id)
+                 .or(Room.where(owner_id: current_user.id))
+                 .page(params[:page])
+                 .order(created_at: :desc)
   end
 
   def settings
@@ -28,15 +31,15 @@ class MyController < ApplicationController
   end
 
   def ferrets
-    @ferrets = current_user.ferrets
+    @ferrets = current_user.ferrets.page(params[:page]).order(created_at: :desc)
   end
 
   def posts
-    @posts = current_user.posts
+    @posts = current_user.posts.page(params[:page]).per(12).order(created_at: :desc)
   end
 
   def notifications
-    @notifications = current_user.passive_notifications
+    @notifications = current_user.passive_notifications.page(params[:page]).order(created_at: :desc)
     @notifications.where(checked: false).each do |notification|
       notification.update_attributes(checked: true)
     end
