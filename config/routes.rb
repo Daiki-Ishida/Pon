@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :followings
       get :hiring
       get :search
+      get :sort
     end
   end
 

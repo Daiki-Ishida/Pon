@@ -1,11 +1,33 @@
 <div class="sort-menu container">
   <div class="col-md-8 offset-md-2">
-    募集状況
-    預けたい/預かりたい
-    性別
-    男性/女性
-    距離
-    X km以内
-    <button type="button" name="button" id="sortCloseBtn">閉じる</button>
+    <%= form_with url: sort_users_path,
+                  enforce_utf8: false,
+                  method: 'get',
+                  class: "sort-menu-form",
+                  local: true do |form| %>
+
+      <h5>募集状況</h5>
+      <%= form.radio_button :status, "", class:"" %>
+      <label class="">こだわらない</label>
+      <%= form.radio_button :status, 1, class:"" %>
+      <label class="">預かりたい</label>
+      <%= form.radio_button :status, 2, class:"" %>
+      <label class="">預けたい</label>
+
+      <h5>飼い主の性別</h5>
+      <%= form.radio_button :gender, "", class:"" %>
+      <label class="">こだわらない</label>
+      <%= form.radio_button :gender, 1, class:"" %>
+      <label class="">男性</label>
+      <%= form.radio_button :gender, 2, class:"" %>
+      <label class="">女性</label>
+
+      <h5>距離</h5>
+      <%= form.select :distance,
+                      [["こだわらない", nil], ["2km", 2], ["4km", 4],["6km", 6],["8km", 8],["10km", 10]]
+      %>
+      <%= form.submit "決定", class:"" %>
+      <button type="button" name="button" id="sortCloseBtn">閉じる</button>
+    <% end %>
   </div>
 </div>

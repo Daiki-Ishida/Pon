@@ -50,6 +50,19 @@ class User < ApplicationRecord
     User.where.not(id: self.id)
   end
 
+  def other_users_within(input)
+    array = []
+    self.other_users.each do |other_user|
+      lat = other_user.latitude
+      lng = other_user.longitude
+      distance = self.distance_to([lat,lng], units: :kms)
+      if distance <= input
+        array << other_user
+      end
+    end
+    return array
+  end
+
   # 自身指定の縄張りの範囲内の任意のオブジェクト（第一引数）を返す。
   def objects_within_territory(objects)
     array = []
@@ -94,10 +107,6 @@ class User < ApplicationRecord
   def self.search(search)
     return User.all unless search
     User.where(['name LIKE ?', "%#{search}%"])
-  end
-
-  def sort(sorted_by)
-
   end
 
   def has_contracts_as_owner?
