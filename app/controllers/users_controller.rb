@@ -76,18 +76,16 @@ class UsersController < ApplicationController
   def sort
     status = params[:status]
     gender = params[:gender]
+    record = params[:record]
     sort = params[:sort]
     @users = User.sorted_by(sort, current_user)
-    if @users.kind_of?(Array)
-      @users = @users.select{|user| user[:status] == status.to_i} if status.present?
-      @users = @users.select{|user| user[:gender] == gender.to_i} if gender.present?
-      array = @users.reverse
-      @users = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    else
-      @users = @users.where(status: status) if status.present?
-      @users = @users.where(gender: gender) if gender.present?
-      @users = @users.page(params[:page]).per(12).order(created_at: :desc)
-    end
+    # もういっそ全部配列にしてしまうおう
+    @users = @users.to_a unless @users.kind_of?(Array)
+    @users = @users.select{|user| user[:status] == status.to_i} if status.present?
+    @users = @users.select{|user| user[:gender] == gender.to_i} if gender.present?
+    @users = @users.select{|user| user.contracts_as_sitter&.size.to_i >= record.to_i} if record.present?
+    array = @users.reverse
+    @users = Kaminari.paginate_array(array).page(params[:page]).per(12)
     @title = "ユーザー一覧"
     @sort = sort
     render 'index'

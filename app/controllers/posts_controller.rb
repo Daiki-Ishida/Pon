@@ -48,24 +48,12 @@ class PostsController < ApplicationController
 
   def sort
     status = params[:status]
-    gender = params[:gender]
     sort = params[:sort]
     @posts = Posts.sorted_by(sort, current_user)
-    if @posts.kind_of?(Array)
-      @posts = @posts.select{|post| post.user[:status] == status.to_i} if status.present?
-      @posts = @posts.select{|ferret| post.user[:gender] == gender.to_i} if gender.present?
-      array = @posts.reverse
-      @posts = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    else
-      @posts = @posts.each do |post|
-        array = []
-        array << post.user
-      end
-      @posts = @posts.select{|post| post.user[:status] == status.to_i} if status.present?
-      @posts = @posts.select{|post| post.user[:gender] == gender.to_i} if gender.present?
-      array = @posts.reverse
-      @posts = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    end
+    @posts.to_a @posts.kind_of?(Array)
+    @posts = @posts.select{|post| post.user[:status] == status.to_i} if status.present?
+    array = @posts.reverse
+    @posts = Kaminari.paginate_array(array).page(params[:page]).per(12)
     @title = "投稿一覧"
     @sort = sort
     render 'index'

@@ -78,23 +78,25 @@ class FerretsController < ApplicationController
   def sort
     status = params[:status]
     gender = params[:gender]
+    range = params[:range]
+    today = Date.today.strftime('%Y%m%d').to_i
     sort = params[:sort]
     @ferrets = Ferret.sorted_by(sort, current_user)
-    if @ferrets.kind_of?(Array)
-      @ferrets = @ferrets.select{|ferret| ferret.user[:status] == status.to_i} if status.present?
-      @ferrets = @ferrets.select{|ferret| ferret.user[:gender] == gender.to_i} if gender.present?
-      array = @ferrets.reverse
-      @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    else
-      @ferrets = @ferrets.each do |ferret|
-        array = []
-        array << ferret.user
+    @ferrets = @ferrets.to_a unless @ferrets.kind_of?(Array)
+    @ferrets = @ferrets.select{|ferret| ferret.user[:status] == status.to_i} if status.present?
+    @ferrets = @ferrets.select{|ferret| ferret.user[:gender] == gender.to_i} if gender.present?
+    if range.present?
+      case range
+      when "1才未満"
+        @ferrets = @ferrets.select{|ferret| (today - ferret.birth_date.strftime('%Y%m%d').to_i) / 10000 < 1}
+      when "1才〜３才"
+        @ferrets = @ferrets.select{|ferret| 1 <= (today - ferret.birth_date.strftime('%Y%m%d').to_i) && (today - ferret.birth_date.strftime('%Y%m%d').to_i) / 10000 < 4}
+      when "４才以上"
+        @ferrets = @ferrets.select{|ferret| (today - ferret.birth_date.strftime('%Y%m%d').to_i) / 10000 >= 4}
       end
-      @ferrets = @ferrets.select{|ferret| ferret.user[:status] == status.to_i} if status.present?
-      @ferrets = @ferrets.select{|ferret| ferret.user[:gender] == gender.to_i} if gender.present?
-      array = @ferrets.reverse
-      @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
     end
+    array = @ferrets.reverse
+    @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
     @title = "フェレット一覧"
     @sort = sort
     render 'index'
