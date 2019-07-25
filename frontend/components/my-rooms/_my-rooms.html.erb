@@ -17,11 +17,9 @@
       </div>
       <div class="my-rooms--content">
         <%= link_to room_path(room) do %>
-          <p><%= room.messages.last.content %></p>
+          <%= room.messages.last.content %>
+          <small class="text-muted"><%= " (#{time_ago_in_words(room.messages.last.created_at)}前)" %></small>
         <% end %>
-      </div>
-      <div class="my-rooms--date">
-        <%= display_time(room.messages.last.created_at) %>
       </div>
     </div>
   <% end %>

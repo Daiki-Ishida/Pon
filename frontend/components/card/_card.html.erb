@@ -1,20 +1,28 @@
 <div class="card--"> <!-- Bootstrap回避 -->
   <div class="card--image">
-    <% if object.image.attached? %>
-      <%= image_tag object.image %>
-    <% else %>
-      <%= image_tag "/images/no_image.jpg" %>
+    <% if type == "users" %>
+      <%= link_to user_path(object) do %>
+        <% if object.image.attached? %>
+          <%= image_tag object.image %>
+        <% else %>
+          <%= image_tag "/images/no_image.jpg" %>
+        <% end %>
+      <% end %>
+    <% elsif type == "ferrets" %>
+      <%= link_to ferret_path(object) do %>
+        <% if object.image.attached? %>
+          <%= image_tag object.image %>
+        <% else %>
+          <%= image_tag "/images/no_image.jpg" %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
   <div class="card--body">
     <h5 class="card--title"><%= object.name %></h5>
     <div class="card--info">
       <p>
-        <%= display_address(object) %>
-        <span>|</span>
-        <%= display_gender(object) %>
-        <span>|</span>
-        <%= display_age(object) %>
+        <%= display_basic_info(object) %>
       </p>
     </div>
     <div class="card--intro">
@@ -22,14 +30,14 @@
     </div>
   </div>
   <div class="card--actions">
-    <% if object.model_name.name == "User" %>
+    <% if type == "users" %>
       <div class="card--action">
         <%= link_to "詳細", user_path(object) %>
       </div>
       <div class="card--action">
         <%= render "components/follow/follow", user: object %>
       </div>
-    <% elsif object.model_name.name == "Ferret" %>
+    <% elsif type == "ferrets" %>
       <div class="card--action">
         <%= link_to "詳細", ferret_path(object) %>
       </div>

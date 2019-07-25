@@ -1,15 +1,17 @@
 .message{
   display: flex;
-  border-radius: 20px;
+  border-radius: 5px;
   margin-bottom: 15px;
+  padding: 10px;
+  background-color: #FFF;
 }
 
-.my-message:hover{
-  background-color: #85e9be;
+.my-message{
+  border: solid 2px #85e9be;
 }
 
-.your-message:hover{
-  background-color: #ffdaf4;
+.your-message{
+  border: solid 2px #e96b6b;
 }
 
 .message--icon{
@@ -21,7 +23,7 @@
 }
 
 .your-icon{
-  border: 2px solid #ffdaf4 !important;
+  border: 2px solid #e96b6b !important;
 }
 
 .message--name{

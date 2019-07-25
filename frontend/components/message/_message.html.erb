@@ -19,6 +19,6 @@
       <p class="message--name"><%= message.sender.name %></p>
     <% end %>
     <small class="text-muted"><%= display_time(message.created_at) %></small>
-    <p class="message--content"><%= simple_format(text_url_to_link(h(message.content)), {}, sanitize: false) %></p>
+    <%= simple_format(text_url_to_link(h(message.content)), {}, sanitize: false) %>
   </div>
 </div>

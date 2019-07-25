@@ -3,5 +3,8 @@
            type: "ferrets",
            sort: @sort,
            objects: @ferrets do %>
-  <%= render partial: "components/card/card", collection: @ferrets, as: :object %>
+  <%= render partial: "components/card/card",
+             collection: @ferrets,
+             locals: {type: "ferrets"},
+             as: :object %>
 <% end %>

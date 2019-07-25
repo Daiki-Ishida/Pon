@@ -8,6 +8,10 @@
   margin-top: 20px;
 }
 
+.home--main h1{
+  color: #FFF;
+}
+
 .home--cards{
   width:100%;
   display: flex;
