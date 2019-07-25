@@ -69,6 +69,35 @@
       </div>
 
       <div class="user-form--group form-row">
+        <div class="form col-md-5">
+          <%= form.label "メールアドレス", class:"label" %>
+          <span class="asterisk">＊</span>
+          <span class="notice"><small class="text-muted">公開されません</small></span>
+          <%= form.email_field :email, placeholder: "メールアドレス", class:"form-control input" %>
+          <span class="bar"></span>
+        </div>
+      </div>
+
+      <div class="user-form--group form-row">
+        <div class="form col-md-5">
+          <%= form.label "パスワード", class:"label" %>
+          <span class="asterisk">＊</span>
+          <%= form.password_field :password, placeholder: "パスワード", class:"form-control input" %>
+          <span class="bar"></span>
+        </div>
+      </div>
+
+      <div class="user-form--group form-row">
+        <div class="form col-md-5">
+          <%= form.label "パスワード(確認)", class:"label" %>
+          <span class="asterisk">＊</span>
+          <%= form.password_field :password_confirmation, placeholder: "パスワード(確認)", class:"form-control input" %>
+          <span class="bar"></span>
+        </div>
+      </div>
+
+
+      <div class="user-form--group form-row">
         <div class="form">
           <%= form.label :生年月日, class:"label" %>
           <span class="asterisk">＊</span>

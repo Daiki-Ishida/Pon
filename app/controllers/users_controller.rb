@@ -105,7 +105,11 @@ class UsersController < ApplicationController
                                    :postal_address,
                                    :introduction,
                                    :latitude,
-                                   :longitude)
+                                   :longitude,
+                                   :email,
+                                   :password,
+                                   :password_confirmation
+                                 )
     end
 
     def correct_user
