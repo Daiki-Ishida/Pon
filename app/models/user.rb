@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  attr_accessor :remember_token, :activation_token
+  
   has_many :ferrets, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -40,12 +42,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  geocoded_by :postal_address
-  after_validation :geocode, if: :postal_address_changed?
-  acts_as_mappable :default_units => :kms,
-                   :lat_column_name => :latitude,
-                   :lng_column_name => :longitude
-
+  # before_create :create_activation_digest
 
   # 対象のユーザーをフォローしていればtrueを返す。
   def follows?(other_user)
@@ -155,5 +152,15 @@ class User < ApplicationRecord
     average = sum / count
     return average
   end
+
+  def self.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  private
+    def create_activation_digest
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
 
 end

@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # メール認証のためのpathra
+  resources :account_activations, only: [:edit]
+
   namespace :my do
     get :page
     get :ferrets

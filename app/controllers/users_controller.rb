@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:info] = "ご登録ありがとうございます！さっそくフェレットを登録してみましょう！"
-      redirect_to ferrets_path
+      redirect_to my_page_path
     else
       flash[:warning] = "入力内容に誤りがあります。"
       render 'new'
