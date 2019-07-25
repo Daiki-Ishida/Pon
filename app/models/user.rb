@@ -98,11 +98,11 @@ class User < ApplicationRecord
   def followings_objects(objects)
     array = []
     self.followings.each do |following|
-      if objects = "ferrets"
+      if objects == "ferrets"
         following.ferrets.each do |ferret|
           array << ferret
         end
-      elsif objects = "posts"
+      elsif objects == "posts"
         following.posts.each do |post|
           array << post
         end
