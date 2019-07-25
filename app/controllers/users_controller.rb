@@ -9,7 +9,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:info] = "ご登録ありがとうございます！さっそくフェレットを登録してみましょう！"
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "ご入力頂いたメールアドレスにメールを送付しました。
+                      本登録手続きをお願いいたします！"
       redirect_to my_page_path
     else
       flash[:warning] = "入力内容に誤りがあります。"

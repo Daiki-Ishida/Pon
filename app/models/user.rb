@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token
-  
+
   has_many :ferrets, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -153,14 +153,27 @@ class User < ApplicationRecord
     return average
   end
 
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
   def self.new_token
     SecureRandom.urlsafe_base64
+  end
+
+  def authenticated?(activation_token)
+    BCrypt::Password.new(self.activation_digest).is_password?(activation_token)
+  end
+
+  def activate
+    self.update_attributes(activated: true, activated_at: Time.zone.now )
   end
 
   private
     def create_activation_digest
       self.activation_token  = User.new_token
-      self.activation_digest = User.digest(activation_token)
+      self.activation_digest = User.digest(self.activation_token)
     end
 
 end
