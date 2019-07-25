@@ -1,8 +1,66 @@
+.my-page{
+  display: flex;
+  justify-content: space-around;
+}
+
 .my-page--item{
   padding: 10px;
-  margin-bottom: 20px;
 }
 
 .my-page--item a:hover{
   color: #e96b6b;
+}
+
+.my-page--user{
+  padding: 10px;
+}
+
+.my-page--user-info{
+  display: flex;
+}
+
+.my-page--image{
+  margin-bottom: 30px;
+  margin-right: 20px;
+}
+
+.my-page--hiring-owner,
+.my-page--hiring-sitter,
+.my-page--remove-status{
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 10px;
+  display: inline-block;
+  text-align: center;
+}
+
+.my-page--hiring-owner{
+  color:#4ba9a1 !important;
+  border: 2px solid #4ba9a1;
+}
+
+.my-page--hiring-owner:hover{
+  color:#FFF !important;
+  background-color:#4ba9a1;
+}
+
+.my-page--hiring-sitter{
+  color:#52b9d1 !important;
+  border: 2px solid #52b9d1;
+}
+
+.my-page--hiring-sitter:hover{
+  color:#FFF !important;
+  background-color:#52b9d1;
+}
+
+.my-page--remove-status{
+  color:#e96b6b !important;
+  border: 2px solid #e96b6b;
+}
+
+.my-page--remove-status:hover{
+  color:#FFF !important;
+  background-color:#e96b6b;
 }

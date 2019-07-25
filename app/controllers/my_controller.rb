@@ -45,6 +45,23 @@ class MyController < ApplicationController
     end
   end
 
+  def update_status
+    if current_user.update_attributes(status: params[:status])
+      if params[:status] == 1
+        notice = "お世話係に立候補中になりました！"
+      elsif params[:status] == 2
+        notice = "お世話係募集中になりました！"
+      elsif params[:status] == nil
+        notice = "設定を解除しました。"
+      end
+      flash[:info] = notice
+      redirect_to my_page_path
+    else
+      flash[:warning] = "エラーが発生しました。"
+      render 'page'
+    end
+  end
+
   private
     def territory_param
       params.require(:user).permit(:territory)

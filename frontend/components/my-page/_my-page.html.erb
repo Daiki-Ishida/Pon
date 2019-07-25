@@ -1,52 +1,141 @@
-<div class="my-page col-md-8 offset-md-2">
-  <div class="my-page--item">
-    <%= link_to user_path(current_user), class:"my-page--links" do %>
-      <i class="fas fa-chevron-circle-right"></i> 自分の情報を確認する
-    <% end %>
+<div class="my-page">
+  <div class="my-page--menu col-md-4">
+    <div class="my-page--item">
+      <%= link_to user_path(current_user), class:"my-page--links" do %>
+        <i class="fas fa-chevron-circle-right"></i> 自分の情報を確認する
+      <% end %>
+    </div>
+    <div class="my-page--item">
+      <%= link_to edit_user_path(current_user), class:"my-page--links" do %>
+        <i class="fas fa-chevron-circle-right"></i> 自分の情報を編集する
+      <% end %>
+    </div>
+    <div class="my-page--item">
+      <%= link_to new_ferret_path, class:"my-page--links" do %>
+        <i class="fas fa-chevron-circle-right"></i> 新しくフェレットを登録する
+      <% end %>
+    </div>
+    <div class="my-page--item">
+      <%= link_to my_ferrets_path, class:"my-page--links" do %>
+        <i class="fas fa-chevron-circle-right"></i> 自分のフェレットを確認する
+      <% end %>
+    </div>
+    <div class="my-page--item">
+      <%= link_to new_post_path, class:"my-page--links" do %>
+        <i class="fas fa-chevron-circle-right"></i> 新しく投稿する
+      <% end %>
+    </div>
+    <div class="my-page--item">
+      <%= link_to my_posts_path, class:"my-page--links" do %>
+        <i class="fas fa-chevron-circle-right"></i> 自分の投稿を確認する
+      <% end %>
+    </div>
+    <div class="my-page--item">
+      <%= link_to my_rooms_path, class:"my-page--links" do %>
+        <i class="fas fa-chevron-circle-right"></i> メッセージ一覧を確認する
+      <% end %>
+    </div>
+    <div class="my-page--item">
+      <%= link_to my_notifications_path, class:"my-page--links" do %>
+        <i class="fas fa-chevron-circle-right"></i> 通知を確認する
+      <% end %>
+    </div>
+    <div class="my-page--item">
+      <%= link_to my_settings_path, class:"my-page--links" do %>
+        <i class="fas fa-chevron-circle-right"></i> 各種設定
+      <% end %>
+    </div>
+    <div class="my-page--item">
+      <%= link_to logout_path, method: :delete, class:"my-page--links" do %>
+        <i class="fas fa-chevron-circle-right"></i> ログアウト
+      <% end %>
+    </div>
   </div>
-  <div class="my-page--item">
-    <%= link_to edit_user_path(current_user), class:"my-page--links" do %>
-      <i class="fas fa-chevron-circle-right"></i> 自分の情報を編集する
-    <% end %>
+
+  <div class="my-page--user col-md-8">
+    <h5>ご登録情報</h5>
+    <div class="my-page--user-info">
+      <div class="my-page--image">
+        <% if current_user.image.attached? %>
+          <%= image_tag current_user.image, size:"200x200", class:"image-square" %>
+        <% else %>
+          <%= image_tag "/images/no_image.jpg", size:"200x200", class:"image-square" %>
+        <% end %>
+      </div>
+      <div class="my-page--details">
+        <div class="my-page--user-detail">
+          <ul>
+            <li><%= current_user.kanji_lastname %> <%= current_user.kanji_firstname %></li>
+            <li><%= current_user.name %></li>
+            <li><%= current_user.birth_date %></li>
+            <li><%= display_gender(current_user) %></li>
+            <li><%= current_user.postal_address %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="my-page--user-activity">
+      <div class="my-page--user-activity--details">
+        <h5>ご利用状況</h5>
+        <ul>
+          <li>登録フェレット数：<%= current_user.ferrets.size %> 匹</li>
+          <li>投稿数：<%= current_user.posts.size %> 回</li>
+          <li>お世話回数：<%= current_user.contracts_as_sitter&.size.to_i %> 回</li>
+          <li>お世話された回数：<%= current_user.contracts_as_owner&.size.to_i %> 回</li>
+        </ul>
+      </div>
+      <div class="my-page--user-status">
+        <h5>ステータス</h5>
+        <small class="text-muted">
+          ステータスを設定すると他のユーザーに対して誰かにお世話をお願いしたい<br>
+          またはお世話に立候補したいことを意思表示できます。
+        </small>
+        <% if current_user.status == nil %>
+          <p class="my-page--user-status-current">
+            現在の状態：設定なし
+          </p>
+          <div class="my-page--user-status-change">
+            <%= link_to "お世話係に立候補する",
+                        my_update_status_path(params: {status: 1}),
+                        method: :patch,
+                        class:"my-page--hiring-owner" %>
+            <%= link_to "お世話係を募集する",
+                        my_update_status_path(params: {status: 2}),
+                        method: :patch,
+                        class:"my-page--hiring-sitter" %>
+          </div>
+        <% elsif current_user.status == 1 %>
+          <p class="my-page--user-status-current">
+            現在の状態：お世話係に立候補中
+          </p>
+          <div class="my-page--user-status-change">
+            <%= link_to "設定を外す",
+                        my_update_status_path(params: {status: nil}),
+                        method: :patch,
+                        class:"my-page--remove-status" %>
+            <%= link_to "お世話係を募集する",
+                        my_update_status_path(params: {status: 2}),
+                        method: :patch,
+                        class:"my-page--hiring-owner" %>
+          </div>
+        <% elsif current_user.status == 2 %>
+          <p class="my-page--user-status-current">
+            現在の状態：お世話係を募集中
+          </p>
+          <div class="my-page--user-status-change">
+            <%= link_to "設定を外す",
+                        my_update_status_path(params: {status: nil}),
+                        method: :patch,
+                        class:"my-page--remove-status" %>
+            <%= link_to "お世話係に立候補する",
+                        my_update_status_path(params: {status: 1}),
+                        method: :patch,
+                        class:"my-page--hiring-owner" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="my-page--item">
-    <%= link_to new_ferret_path, class:"my-page--links" do %>
-      <i class="fas fa-chevron-circle-right"></i> 新しくフェレットを登録する
-    <% end %>
-  </div>
-  <div class="my-page--item">
-    <%= link_to my_ferrets_path, class:"my-page--links" do %>
-      <i class="fas fa-chevron-circle-right"></i> 自分のフェレットを確認する
-    <% end %>
-  </div>
-  <div class="my-page--item">
-    <%= link_to new_post_path, class:"my-page--links" do %>
-      <i class="fas fa-chevron-circle-right"></i> 新しく投稿する
-    <% end %>
-  </div>
-  <div class="my-page--item">
-    <%= link_to my_posts_path, class:"my-page--links" do %>
-      <i class="fas fa-chevron-circle-right"></i> 自分の投稿を確認する
-    <% end %>
-  </div>
-  <div class="my-page--item">
-    <%= link_to my_rooms_path, class:"my-page--links" do %>
-      <i class="fas fa-chevron-circle-right"></i> メッセージ一覧を確認する
-    <% end %>
-  </div>
-  <div class="my-page--item">
-    <%= link_to my_notifications_path, class:"my-page--links" do %>
-      <i class="fas fa-chevron-circle-right"></i> 通知を確認する
-    <% end %>
-  </div>
-  <div class="my-page--item">
-    <%= link_to my_settings_path, class:"my-page--links" do %>
-      <i class="fas fa-chevron-circle-right"></i> 各種設定
-    <% end %>
-  </div>
-  <div class="my-page--item">
-    <%= link_to logout_path, method: :delete, class:"my-page--links" do %>
-      <i class="fas fa-chevron-circle-right"></i> ログアウト
-    <% end %>
-  </div>
+
+
 </div>

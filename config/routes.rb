@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     get :followings
     get :settings
     get :notifications
+    patch :update_status
   end
 
   resources :ferrets do
