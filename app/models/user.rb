@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification',
                                    foreign_key: :notified_user_id,
                                    dependent: :destroy
+
+  has_secure_password
   has_one_attached :image
 
   # 性別/画像/自己紹介は無しでも登録できる。
@@ -32,6 +34,11 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
   validates :postal_code, presence: true, length: { is: 7 }
   validates :postal_address, presence: true
+  validates :email, presence: true,
+                    length: { maximum: 255 },
+                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
+                    uniqueness: { case_sensitive: false }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   geocoded_by :postal_address
   after_validation :geocode, if: :postal_address_changed?

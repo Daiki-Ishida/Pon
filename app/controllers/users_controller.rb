@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.territory = 15
     if @user.save
       flash[:info] = "ご登録ありがとうございます！さっそくフェレットを登録してみましょう！"
       redirect_to ferrets_path
