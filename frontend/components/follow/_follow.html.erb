@@ -1,9 +1,11 @@
-<% unless current_user?(user) %>
-  <div class="follow" id="follow_<%= user.id %>">
-    <% if current_user.follows?(user) %>
-      <%= render "components/unfollow-btn/unfollow-btn", user: user %>
-    <% else %>
-      <%= render "components/follow-btn/follow-btn", user: user %>
-    <% end %>
-  </div>
+<% if logged_in? %>
+  <% unless current_user?(user) %>
+    <div class="follow" id="follow_<%= user.id %>">
+      <% if current_user.follows?(user) %>
+        <%= render "components/unfollow-btn/unfollow-btn", user: user %>
+      <% else %>
+        <%= render "components/follow-btn/follow-btn", user: user %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>

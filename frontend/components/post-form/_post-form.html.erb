@@ -7,7 +7,7 @@
   </div>
 
   <div class="col-md-8 offset-md-2">
-    <%= form_with url:posts_path, model: post do |form| %>
+    <%= form_with url:posts_path, model: post, local: true do |form| %>
       <div class="post-form--group form-row">
         <div class="form col-md-12">
           <div class="img-label">

@@ -47,9 +47,9 @@ class MyController < ApplicationController
 
   def update_status
     if current_user.update_attributes(status: params[:status])
-      if params[:status] == 1
+      if params[:status].to_i == 1
         notice = "お世話係に立候補中になりました！"
-      elsif params[:status] == 2
+      elsif params[:status].to_i == 2
         notice = "お世話係募集中になりました！"
       elsif params[:status] == nil
         notice = "設定を解除しました。"
