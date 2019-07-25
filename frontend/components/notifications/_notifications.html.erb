@@ -7,6 +7,7 @@
                     class:"noticication--icon" %>
         <div class="notification--content">
           <%== display_notification(notification) %>
+          <small class="text-muted"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></small>
         </div>
       </div>
     <% end %>

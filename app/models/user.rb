@@ -44,6 +44,11 @@ class User < ApplicationRecord
 
   before_create :create_activation_digest
 
+  geocoded_by :postal_address
+  acts_as_mappable :default_units => :kms,
+                   :lat_column_name => :latitude,
+                   :lng_column_name => :longitude
+
   # 対象のユーザーをフォローしていればtrueを返す。
   def follows?(other_user)
     followings.include?(other_user)
