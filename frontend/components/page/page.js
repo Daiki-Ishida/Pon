@@ -7,6 +7,7 @@ import "../post-form/post-form";
 import "../request-form/request-form";
 import "../report-form/report-form";
 import "../review-form/review-form";
+import "../login-form/login-form";
 
 // showから
 import "../user/user";

@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
 
+  def new
+
+  end
+
   def create
     user = User.find_by(email: params[:email].downcase)
     if user && user.authenticate(params[:password])
@@ -18,5 +22,5 @@ class SessionsController < ApplicationController
     flash[:danger] = "ログアウトしました。"
     redirect_to root_path
   end
-  
+
 end
