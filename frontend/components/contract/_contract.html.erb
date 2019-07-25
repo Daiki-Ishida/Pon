@@ -1,9 +1,4 @@
 <div class="contract">
-
-  <div class="col-md-8 offset-2 contract--title">
-    <h2>依頼内容</h2>
-  </div>
-
   <div class="col-md-8 offset-2 contract--content">
     <div class="contract--user contract-row">
       <h5>飼い主</h5>
@@ -17,11 +12,7 @@
           </div>
           <div class="contract--user-details">
             <p>
-              <%= display_address(contract.owner) %>
-              <span>|</span>
-              <%= display_gender(contract.owner) %>
-              <span>|</span>
-              <%= display_age(contract.owner) %>
+              <%= display_basic_info(contract.owner) %>
             </p>
           </div>
         </div>
@@ -40,11 +31,7 @@
           </div>
           <div class="contract--user-details">
             <p>
-              <%= display_address(contract.sitter) %>
-              <span>|</span>
-              <%= display_gender(contract.sitter) %>
-              <span>|</span>
-              <%= display_age(contract.sitter) %>
+              <%= display_basic_info(contract.sitter) %>
             </p>
           </div>
         </div>
@@ -78,7 +65,6 @@
 
     <div class="contract--period contract-row">
       <h5>期間</h5>
-      <p><%= contract.start_at %>〜<%= contract.end_at %></p>
       <p><%= display_period(contract) %></p>
     </div>
 
@@ -88,7 +74,7 @@
     </div>
 
     <div class="contract--memo contract-row">
-      <h5>備考・お願い</h5>
+      <h5>メモ・お願い</h5>
       <p><%= contract.memo %></p>
     </div>
 

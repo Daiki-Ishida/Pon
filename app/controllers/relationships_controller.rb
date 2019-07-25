@@ -16,7 +16,6 @@ class RelationshipsController < ApplicationController
   end
 
   private
-
     def follow_params
         params.require(:relationship).permit(:followed_id).merge(follower_id: current_user.id)
     end

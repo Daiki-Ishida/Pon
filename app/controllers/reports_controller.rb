@@ -13,6 +13,7 @@ class ReportsController < ApplicationController
     if report.save
       flash[:info] = "レポートを提出しました！"
       message = report.send_notice(current_user, "create", contract_report_url(report.contract, report))
+      message.create_notification(current_user, message.room)
       redirect_to room_path(message.room)
     else
       flash[:warning] = "入力内容に誤りがあります。"

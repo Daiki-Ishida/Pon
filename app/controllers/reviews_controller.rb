@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
     if review.save
       flash[:info] = "レビューしました！"
       message = review.send_notice(current_user, "create", nil)
+      message.create_notification(current_user, message.room)
       redirect_to room_path(message.room)
     else
       flash[:warning] = "入力内容に誤りがあります。"

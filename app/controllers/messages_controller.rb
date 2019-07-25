@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
     end
 
     def correct_room?
-      room = Room.find(params[:id])
+      room = Room.find(params[:room_id])
       unless current_user == room.owner || current_user == room.guest
         flash[:danger] = "権限がありません。"
         redirect_to ferrets_path

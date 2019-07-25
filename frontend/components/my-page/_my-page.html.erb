@@ -80,7 +80,7 @@
         <ul>
           <li>登録フェレット数：<%= current_user.ferrets.size %> 匹</li>
           <li>投稿数：<%= current_user.posts.size %> 回</li>
-          <li>お世話回数：<%= current_user.contracts_as_sitter&.size.to_i %> 回</li>
+          <li>お世話した回数：<%= current_user.contracts_as_sitter&.size.to_i %> 回</li>
           <li>お世話された回数：<%= current_user.contracts_as_owner&.size.to_i %> 回</li>
         </ul>
       </div>

@@ -7,7 +7,7 @@
   <div class="room--message-form">
     <%= render "components/message-form/message-form", room: room %>
   </div>
-  <div class="message-form--request">
+  <div class="room--request">
     <%= link_to "正式依頼を出す",
                 new_request_path(params: {user_id: room.opponent(current_user).id}),
                 class:"link-btn" %>

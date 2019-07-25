@@ -67,7 +67,7 @@ Rails.application.routes.draw do
 
   resources :contracts, except: [:create] do
     resources :reports
-    resources :reviews
+    resources :reviews, only: [:new, :create]
   end
 
   get    '/login',   to: 'sessions#new'

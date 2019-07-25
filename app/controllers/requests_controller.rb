@@ -14,8 +14,8 @@ class RequestsController < ApplicationController
     request.owner_id = current_user.id
     if request.save
       flash[:info] = "依頼を提出しました！"
-      content = request.create_content("create", request_url(request))
-      message = Message.send_notice(request, content)
+      message = request.send_notice(current_user, "create", request_url(request))
+      message.create_notification(current_user, message.room)
       redirect_to room_path(message.room)
     else
       flash[:warning] = "入力に誤りがあります。"

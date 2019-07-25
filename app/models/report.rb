@@ -1,4 +1,4 @@
-Pclass Report < ApplicationRecord
+class Report < ApplicationRecord
   belongs_to :contract
 
   has_one_attached :image

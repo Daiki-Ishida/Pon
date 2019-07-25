@@ -1,9 +1,4 @@
 <div class="request">
-
-  <div class="col-md-8 offset-2 request--title">
-    <h2>依頼内容</h2>
-  </div>
-
   <div class="col-md-8 offset-2 request--content">
     <div class="request--user request-row">
       <h5>飼い主</h5>
@@ -17,11 +12,7 @@
           </div>
           <div class="request--user-details">
             <p>
-              <%= display_address(request.owner) %>
-              <span>|</span>
-              <%= display_gender(request.owner) %>
-              <span>|</span>
-              <%= display_age(request.owner) %>
+              <%= display_basic_info(request.owner) %>
             </p>
           </div>
         </div>
@@ -40,11 +31,7 @@
           </div>
           <div class="request--user-details">
             <p>
-              <%= display_address(request.sitter) %>
-              <span>|</span>
-              <%= display_gender(request.sitter) %>
-              <span>|</span>
-              <%= display_age(request.sitter) %>
+              <%= display_basic_info(request.sitter) %>
             </p>
           </div>
         </div>
@@ -78,7 +65,6 @@
 
     <div class="request--period request-row">
       <h5>期間</h5>
-      <p><%= request.start_at %>〜<%= request.end_at %></p>
       <p><%= display_period(request) %></p>
     </div>
 
@@ -88,7 +74,7 @@
     </div>
 
     <div class="request--memo request-row">
-      <h5>備考・お願い</h5>
+      <h5>メモ</h5>
       <p><%= request.memo %></p>
     </div>
 
