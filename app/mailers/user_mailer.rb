@@ -6,8 +6,8 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.account_activation.subject
   #
   def account_activation
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+    @user = User.first
+    @user.activation_token = User.new_token
+    mail to: @user.email, subject: "PON：アカウントの有効化"
   end
 end

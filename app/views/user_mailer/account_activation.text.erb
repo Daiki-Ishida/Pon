@@ -1,3 +1,19 @@
-User#account_activation
+<%= @user.name %>　さん
 
-<%= @greeting %>, find me in app/views/user_mailer/account_activation.text.erb
+当サービスをご利用頂き、ありがとうございます。
+
+仮登録が完了しましたのでお知らせいたします。
+下記ページより本登録を行ってください。（リンクの有効期限：１時間）
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+本メールにお心あたりが無い場合、どなたかがメールアドレスを誤って入力されたものと思われます。
+お手数ですが、下記にお問い合わせください。
+
+http:xxxxxxxxxxxxxxxxxxxxxx
+tel: 000-0000-0000
+
+※このメールに返信されましても、お答えする事は出来ませんのでご了承願います。
