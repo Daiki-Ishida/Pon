@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :followers, through: 'passive_relationships', source: 'follower'
   has_many :messages
   has_many :rooms
-  has_many :requests, dependent: :destroy
+  has_many :requests
   has_many :contracts
   has_many :active_notifications, class_name: 'Notification',
                                   foreign_key: :action_user_id,
@@ -42,7 +42,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  # before_create :create_activation_digest
+  before_create :create_activation_digest
 
   # 対象のユーザーをフォローしていればtrueを返す。
   def follows?(other_user)
