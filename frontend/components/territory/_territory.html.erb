@@ -1,12 +1,12 @@
 <div class="territory col-md-8 offset-md-2">
   <div class="territory--match">
     <% unless ferrets.blank? %>
-      <p>あなたの設定エリア範囲内には、
+      <p>マイエリア範囲内には、
         <%= link_to "#{ferrets.size}匹のフェレット", territory_ferrets_path %>
         がいます！</p>
     <% else %>
       <p>
-        あなたの設定エリア範囲内には、フェレットが見つかりませんでした。<br>範囲を広げてみましょう！
+        マイエリア範囲内には、フェレットが見つかりませんでした。<br>範囲を広げてみましょう！
       </p>
     <% end %>
   </div>

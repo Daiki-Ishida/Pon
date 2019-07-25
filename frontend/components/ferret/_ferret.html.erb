@@ -70,16 +70,16 @@
         <h5>兄弟・姉妹</h5>
         <div class="ferret--sibling">
           <% unless siblings.empty? %>
-            <% siblings.each do |s| %>
+            <% siblings.each do |sibling| %>
               <div class="ferret--sibling-icon">
-                <%= link_to ferret_path(s) do %>
-                  <% if s.image.attached? %>
-                    <%= image_tag s.image, size:"100x80", class:"image-icon" %>
+                <%= link_to ferret_path(sibling) do %>
+                  <% if sibling.image.attached? %>
+                    <%= image_tag sibling.image, size:"100x100", class:"image-icon" %>
                   <% else %>
                     <%= image_tag "/images/no_image.jpg", size:"100x100", class:"image-icon" %>
                   <% end %>
                   <p class="ferret--family-name">
-                    <%= display_name(s) %>
+                    <%= sibling.name %>
                   </p>
                 <% end %>
               </div>
@@ -128,7 +128,13 @@
     <div class="col-md-8 offset-md-2">
       <h5>親の投稿</h5>
     </div>
-    <%= render partial:"components/post-overview/post-overview",
-               collection: ferret.user.posts, as: "post" %>
+    <% unless ferret.user.posts.empty? %>
+      <%= render partial:"components/post-overview/post-overview",
+                 collection: ferret.user.posts, as: "post" %>
+    <% else %>
+      <div class="col-md-8 offset-md-2">
+        <p>まだ投稿がありません。</p>
+      </div>
+    <% end %>
   </div>
 </div>

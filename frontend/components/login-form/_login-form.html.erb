@@ -8,7 +8,11 @@
       <%= form.label "パスワード", class:"label" %>
       <%= form.password_field :password, placeholder: "パスワード", class:"form-control input" %>
 
-      <%= form.submit "ログイン", class: "btn btn-primary" %>
+      <div class="row submit form">
+        <div class="mx-auto">
+          <%= form.submit "ログイン", class: "btn btn-primary" %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
