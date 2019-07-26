@@ -7,6 +7,34 @@
   margin-bottom: 20px;
 }
 
+.territory--range-input{
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #4ba9a1;
+  height: 5px;
+  width: 200px;
+  border-radius: 6px;
+}
+
+.territory--range-input:focus,
+.territory--range-input:active{
+  outline: none;
+}
+
+.territory--range-input::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: block;
+  border: 2px solid #4ba9a1;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+
 .territory--map{
   height: 400px;
 }

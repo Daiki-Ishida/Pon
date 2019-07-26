@@ -15,10 +15,8 @@
                   url: my_update_territory_path,
                   method: :patch,
                   local: true do |form| %>
-      <%= form.select :territory,
-                      [["半径5km", 5], ["半径10km", 10], ["半径15km", 15], ["半径20km", 20]],
-                      {},
-                      {class:"form-control select"}  %>
+      <%= form.range_field :territory, in: 1..30, step: 1, class:"territory--range-input", id:"territoryRange" %>
+      <p><span id="rangeDisplay"></span>km</p>
       <%= form.submit "変更", class:"btn btn-success" %>
     <% end %>
   </div>
