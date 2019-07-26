@@ -49,28 +49,24 @@ class UsersController < ApplicationController
 
   def index
     @users = User.page(params[:page]).per(12).order(created_at: :desc)
-    @title = "ユーザー一覧"
     @sort = ""
   end
 
   def territory
     array = current_user.objects_within_territory("users")
     @users = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    @title = "ユーザー一覧 - マイエリア"
     @sort = "territory"
     render 'index'
   end
 
   def followings
     @users = current_user.followings.page(params[:page]).per(12).order(created_at: :desc)
-    @title = "ユーザー一覧 - フォロー中"
     @sort = "followings"
     render 'index'
   end
 
   def search
     @users = User.search(params[:search]).page(params[:page]).per(12).order(created_at: :desc)
-    @title = "ユーザー一覧 - #{params[:search]} の検索結果"
     render 'index'
   end
 
@@ -87,7 +83,6 @@ class UsersController < ApplicationController
     @users = @users.select{|user| user.contracts_as_sitter&.size.to_i >= record.to_i} if record.present?
     array = @users.reverse
     @users = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    @title = "ユーザー一覧"
     @sort = sort
     render 'index'
   end

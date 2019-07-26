@@ -1,8 +1,4 @@
-<%= render "components/home/home",
-           title: @title,
-           type: "users",
-           sort: @sort,
-           objects: @users do %>
+<%= render "components/home/home", type: "users", sort: @sort, objects: @users do %>
   <%= render partial: "components/card/card",
              collection: @users,
              locals: {type: "users"},

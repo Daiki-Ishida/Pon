@@ -19,14 +19,12 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).per(12).order(created_at: :desc)
-    @title = "投稿一覧"
     @sort = ""
   end
 
   def territory
     array = current_user.objects_within_territory("posts").reverse
     @posts = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    @title = "投稿一覧 - マイエリア"
     @sort = "territory"
     render 'index'
   end
@@ -34,14 +32,12 @@ class PostsController < ApplicationController
   def followings
     array = current_user.followings_objects("posts").reverse
     @posts = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    @title = "投稿一覧 - フォロー中"
     @sort = "followings"
     render 'index'
   end
 
   def search
     @posts = Post.search(params[:search]).page(params[:page]).per(12).order(created_at: :desc)
-    @title = "投稿一覧 - #{params[:search]}の検索結果"
     @sort = ""
     render 'index'
   end
@@ -54,7 +50,6 @@ class PostsController < ApplicationController
     @posts = @posts.select{|post| post.user[:status] == status.to_i} if status.present?
     array = @posts.reverse
     @posts = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    @title = "投稿一覧"
     @sort = sort
     render 'index'
   end

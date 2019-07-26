@@ -48,14 +48,12 @@ class FerretsController < ApplicationController
 
   def index
     @ferrets = Ferret.page(params[:page]).per(12).order(created_at: :desc)
-    @title = "フェレット一覧"
     @sort = ""
   end
 
   def territory
     array = current_user.objects_within_territory("ferrets").reverse
     @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    @title = "フェレット一覧 - マイエリア"
     @sort = "territory"
     render 'index'
   end
@@ -63,14 +61,12 @@ class FerretsController < ApplicationController
   def followings
     array = current_user.followings_objects("ferrets").reverse
     @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    @title = "フェレット一覧 - フォロー中"
     @sort = "followings"
     render 'index'
   end
 
   def search
     @ferrets = Ferret.search(params[:search]).page(params[:page]).per(12).order(created_at: :desc)
-    @title = "フェレット一覧 - #{params[:search]}の検索結果"
     @sort = ""
     render 'index'
   end
@@ -97,7 +93,6 @@ class FerretsController < ApplicationController
     end
     array = @ferrets.reverse
     @ferrets = Kaminari.paginate_array(array).page(params[:page]).per(12)
-    @title = "フェレット一覧"
     @sort = sort
     render 'index'
   end
