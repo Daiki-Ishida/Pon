@@ -41,3 +41,22 @@ two:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
+
+three:
+  kanji_lastname: 本田
+  kanji_firstname: 翼
+  kana_lastname: ホンダ
+  kana_firstname: ツバサ
+  name: ばっさー
+  postal_code: 1500021
+  postal_address: 東京都渋谷区恵比寿西２−３−３ 武田第2ビル
+  introduction: よろしくお願いします
+  gender: 2
+  birth_date: 1992-02-19
+  latitude: 35.20
+  longitude: 139.90
+  territory: 5
+  email: honda@honda.com
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>

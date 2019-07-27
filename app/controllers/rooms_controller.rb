@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
+  before_action :logged_in_user
   before_action :room_exist?, only: [:create]
   before_action :correct_room?, only: [:show]
-  before_action :logged_in_user
 
   def create
     room = Room.new(room_param)
