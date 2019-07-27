@@ -1,5 +1,5 @@
 class FerretsController < ApplicationController
-  before_action :logged_in_user, except: [:index, :show, :search]
+  before_action :logged_in_user, except: [:index, :show, :search, :sort]
   before_action :correct_owner?, only: [:edit, :update, :destroy]
 
   def new
