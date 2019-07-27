@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
+  before_action :logged_in_user, except: [:index, :show, :search, :sort]
   before_action :correct_post?, only: [:edit, :update, :destroy]
-  before_action :logged_in_user, except: [:index, :show, :search]
 
   def new
     @post = current_user.posts.build
@@ -15,6 +15,33 @@ class PostsController < ApplicationController
       flash[:warning] = "入力内容に誤りがあります。"
       render 'new'
     end
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @comments = @post.comments.includes(:user)
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    post = Post.find(params[:id])
+    if post.update(post_params)
+      flash[:info] = "投稿内容を更新しました。"
+      redirect_to post_path(post)
+    else
+      flash[:warning] = "入力内容に誤りがあります。"
+      render 'edit'
+    end
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    flash[:warning] = "投稿を削除しました。"
+    redirect_to my_posts_path
   end
 
   def index
@@ -45,40 +72,13 @@ class PostsController < ApplicationController
   def sort
     status = params[:status]
     sort = params[:sort]
-    @posts = Posts.sorted_by(sort, current_user)
-    @posts.to_a @posts.kind_of?(Array)
+    @posts = Post.sorted_by(sort, current_user)
+    @posts.to_a unless @posts.kind_of?(Array)
     @posts = @posts.select{|post| post.user[:status] == status.to_i} if status.present?
     array = @posts.reverse
     @posts = Kaminari.paginate_array(array).page(params[:page]).per(12)
     @sort = sort
     render 'index'
-  end
-
-  def show
-    @post = Post.find(params[:id])
-    @comments = @post.comments.includes(:user)
-  end
-
-  def edit
-    @post = Post.find(params[:id])
-  end
-
-  def update
-    post = Post.find(params[:id])
-    if post.update(post_params)
-      flash[:info] = "投稿内容を更新しました。"
-      redirect_to post_path(post)
-    else
-      flash[:warning] = "入力内容に誤りがあります。"
-      render 'edit'
-    end
-  end
-
-  def destroy
-    post = Post.find(params[:id])
-    post.destroy
-    flash[:warning] = "投稿を削除しました。"
-    redirect_to my_posts_path
   end
 
   private

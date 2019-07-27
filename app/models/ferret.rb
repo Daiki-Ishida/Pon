@@ -17,19 +17,9 @@ class Ferret < ApplicationRecord
     self.user == user
   end
 
-  def self.on_hiring
-    array = []
-    User.where(status: 2).each do |user|
-      user.ferrets.each do |ferret|
-        array << ferret
-      end
-    end
-    return array
-  end
-
   def self.sorted_by(sort, user)
     return Ferret.all if sort.empty?
-    case  sort
+    case sort
       when "territory"
         user.objects_within_territory("ferrets")
       when "followings"

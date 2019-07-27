@@ -50,7 +50,7 @@ class FerretsControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@wrong_owner)
     get edit_ferret_path(@ferret)
     assert_not flash.empty?
-    assert_redirected_to ferrets_path
+    assert_redirected_to ferrets_url
   end
 
   test "should redirect update when logged in as wrong owner" do
@@ -110,9 +110,7 @@ class FerretsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get sort" do
-    get sort_ferrets_path, params: {status: 1, gender: 2, range: "1才〜３才", sort:"" }
+    get sort_ferrets_path, params: {status: 1, gender: 2, range: "1才〜３才", sort: "" }
     assert_response :success
   end
-
-
 end
