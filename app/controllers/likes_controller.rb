@@ -15,5 +15,4 @@ class LikesController < ApplicationController
     like.destroy!
     render partial: "components/like/like", locals: {post: post}
   end
-
 end
