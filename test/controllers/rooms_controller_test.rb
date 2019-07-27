@@ -5,8 +5,8 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
     @other_user = users(:two)
     @other_user_2 = users(:three)
-    @room = Room.create!(owner_id: @user.id, guest_id: @other_user.id)
-    @other_room = Room.create!(owner_id: @other_user.id, guest_id: @other_user_2.id)
+    @room = rooms(:one)
+    @other_room = rooms(:two)
   end
 
   test "should redirect create when not logged in" do
