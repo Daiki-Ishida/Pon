@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :correct_reviewer?
   before_action :logged_in_user
+  before_action :owner_in_contract_only
 
   def new
     contract = Contract.find(params[:contract_id])
@@ -24,13 +24,5 @@ class ReviewsController < ApplicationController
   private
     def review_params
       params.require(:review).permit(:rate, :comment)
-    end
-
-    def correct_reviewer?
-      contract = Contract.find(params[:contract_id])
-      unless current_user == contract.owner
-        flash[:danger] = "権限がありません。"
-        redirect_to ferrets_path
-      end
     end
 end

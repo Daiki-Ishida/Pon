@@ -1,6 +1,9 @@
 class ReportsController < ApplicationController
-  before_action :correct_issuer?, except: [:index, :show]
   before_action :logged_in_user
+  before_action ->{
+    contract_concerned_user(params[:contract_id])
+    }
+  before_action :sitter_in_contract_only, except: [:index, :show]
 
   def new
     contract = Contract.find(params[:contract_id])
@@ -35,7 +38,16 @@ class ReportsController < ApplicationController
   end
 
   def update
-
+    @report = Report.find(params[:id])
+    if @report.update(report_params)
+      flash[:info] = "レポートを修正しました！"
+      message = report.send_notice(current_user, "update", contract_report_url(@report.contract, @report))
+      message.create_notification(current_user, message.room)
+      redirect_to room_path(message.room)
+    else
+      flash[:danger] = "入力内容に誤りがあります。"
+      render 'edit'
+    end
   end
 
   def destroy
@@ -45,13 +57,5 @@ class ReportsController < ApplicationController
   private
     def report_params
       params.require(:report).permit(:date, :content, :image)
-    end
-
-    def correct_issuer?
-      contract = Contract.find(params[:contract_id])
-      unless current_user == contract.sitter
-        flash[:warning] = "権限がありません。"
-        redirect_to ferrets_path
-      end
     end
 end

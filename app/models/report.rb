@@ -25,7 +25,7 @@ class Report < ApplicationRecord
                   #{contract.owner.name}さんは次のリンクからご確認をお願いします！
                   #{url}"
     when "update"
-      content = "#{contract.sitter.name}さんが依頼を編集しました!
+      content = "#{contract.sitter.name}さんがレポートを編集しました!
                  #{contract.owner.name}さんは次のリンクからご確認をお願いします！
                  #{url}"
     end

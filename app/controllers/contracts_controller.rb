@@ -1,7 +1,7 @@
 class ContractsController < ApplicationController
   before_action :logged_in_user
-  before_action :authorized_user?, only: [:create]
-  before_action :concerned_user?, only: [:show]
+  before_action :authorized_user, only: [:create]
+  before_action ->{ contract_concerned_user(params[:id]) }, only: [:show]
 
 
   def create
@@ -32,15 +32,7 @@ class ContractsController < ApplicationController
   end
 
   private
-    def concerned_user?
-      contract = Contract.find(params[:id])
-      unless current_user == contract.owner || current_user == contract.sitter
-        flash[:danger] = "権限がありません。"
-        redirect_to ferrets_path
-      end
-    end
-
-    def authorized_user?
+    def authorized_user
       request = Request.find(params[:request_id])
       unless current_user == request.sitter
         flash[:danger] = "権限がありません。"

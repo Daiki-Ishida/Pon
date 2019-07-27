@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
   before_action :logged_in_user
   before_action :has_ferrets?, except: [:show]
   before_action :has_request?, only: [:new, :create]
-  before_action :concerned_person?, except: [:new, :create]
+  before_action :request_concerned_user, except: [:new, :create]
 
   def new
     @request = Request.new
@@ -75,7 +75,7 @@ class RequestsController < ApplicationController
       end
     end
 
-    def concerned_person?
+    def request_concerned_user
       request = Request.find(params[:id])
       unless current_user == request.owner || current_user == request.sitter
         flash[:danger] = "権限がありません。"
