@@ -4,7 +4,7 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {
+one:
   kanji_lastname: 山田
   kanji_firstname: 花子
   kana_lastname: ヤマダ
@@ -14,7 +14,7 @@ one: {
   postal_address: 東京都千代田区千代田１−１
   introduction: テストユーザーです。こんにちは。
   gender: 2
-  birth_date: 19990101
+  birth_date: 1991-05-23
   latitude: 35.68
   longitude: 139.75
   territory: 15
@@ -22,9 +22,8 @@ one: {
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
-  }
 
-two: {
+two:
   kanji_lastname: 春日
   kanji_firstname: 俊明
   kana_lastname: カスガ
@@ -34,7 +33,7 @@ two: {
   postal_address: 東京都杉並区阿佐谷南１丁目２５
   introduction: 本物の春日ですよ？
   gender: 1
-  birth_date: 197702019
+  birth_date: 1976-02-19
   latitude: 35.70
   longitude: 139.64
   territory: 20
@@ -42,4 +41,3 @@ two: {
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
-  }
