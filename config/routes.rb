@@ -62,7 +62,7 @@ Rails.application.routes.draw do
     resource :messages, only: [:create]
   end
 
-  resources :requests do
+  resources :requests, except: [:index] do
     resource :contracts, only: [:create]
   end
 

@@ -34,7 +34,7 @@ class ContractsController < ApplicationController
   private
     def concerned_user?
       contract = Contract.find(params[:id])
-      unless current_user == contract.owner || contract.sitter
+      unless current_user == contract.owner || current_user == contract.sitter
         flash[:danger] = "権限がありません。"
         redirect_to ferrets_path
       end

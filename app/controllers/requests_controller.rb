@@ -1,8 +1,8 @@
 class RequestsController < ApplicationController
+  before_action :logged_in_user
   before_action :has_ferrets?, except: [:show]
   before_action :has_request?, only: [:new, :create]
-  before_action :logged_in_user
-
+  before_action :concerned_person?, except: [:new, :create]
 
   def new
     @request = Request.new
@@ -25,10 +25,6 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
-  end
-
-  def index
-
   end
 
   def edit
@@ -76,6 +72,14 @@ class RequestsController < ApplicationController
       if request.present?
         flash[:warning] = "正式依頼は同時に１つしか提示できません。正式依頼を出し直す場合は、お手数ですが、一度依頼を取り下げてください。"
         redirect_to edit_request_path(request)
+      end
+    end
+
+    def concerned_person?
+      request = Request.find(params[:id])
+      unless current_user == request.owner || current_user == request.sitter
+        flash[:danger] = "権限がありません。"
+        redirect_to ferrets_path
       end
     end
 end

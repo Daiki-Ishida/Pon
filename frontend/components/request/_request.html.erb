@@ -4,7 +4,11 @@
       <h5>飼い主</h5>
       <div class="request--list">
         <div class="request--user-image">
-          <%= link_to image_tag(request.owner.image, size:"100x100", class:"image-icon"), user_path(request.owner) %>
+          <% if request.owner.image.attached? %>
+            <%= link_to image_tag(request.owner.image, size:"100x100", class:"image-icon"), user_path(request.owner) %>
+          <% else %>
+            <%= image_tag "/images/no_image.jpg", size:"100x100", class:"image-icon" %>
+          <% end %>
         </div>
         <div class="request--user-info">
           <div class="request--user-name">
@@ -23,7 +27,11 @@
       <h5>お世話係</h5>
       <div class="request--list">
         <div class="request--user-image">
-          <%= link_to image_tag(request.sitter.image, size:"100x100", class:"image-icon"), user_path(request.sitter) %>
+          <% if request.sitter.image.attached? %>
+            <%= link_to image_tag(request.sitter.image, size:"100x100", class:"image-icon"), user_path(request.sitter) %>
+          <% else %>
+            <%= image_tag "/images/no_image.jpg", size:"100x100", class:"image-icon" %>
+          <% end %>
         </div>
         <div class="request--user-info">
           <div class="request--user-name">
@@ -43,7 +51,11 @@
       <% request.owner.ferrets.each do |ferret| %>
       <div class="request--list">
         <div class="request--ferret-image">
-          <%= link_to image_tag(ferret.image, size:"100x100", class:"image-icon"), ferret_path(ferret) %>
+          <% if ferret.image.attached? %>
+            <%= link_to image_tag(ferret.image, size:"100x100", class:"image-icon"), ferret_path(ferret) %>
+          <% else %>
+            <%= image_tag "/images/no_image.jpg", size:"100x100", class:"image-icon" %>
+          <% end %>
         </div>
         <div class="request--ferret-info">
           <div class="request--ferret-name">
