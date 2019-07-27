@@ -1,7 +1,7 @@
 <div class="top">
   <div class="top--header">
     <div class="top--header-left">
-      <div class="header--logo">
+      <div class="top--header-logo">
         <% if logged_in? %>
           <%= link_to image_tag("/images/top-logo.png", size:"180x50"), ferrets_path %>
         <% else %>
@@ -41,16 +41,18 @@
           <div class="top--message">
             <h2>さっそく始めてみよう！</h2>
           </div>
-          <%= link_to new_user_path do %>
-            <button type="button" name="button" class="top--signup">
-              早速登録する
-            </button>
-          <% end %>
-          <%= link_to login_path do %>
-            <button type="button" name="button" class="top--login">
-              登録済みの方はこちら
-            </button>
-          <% end %>
+          <div class="top--actions">
+            <%= link_to new_user_path do %>
+              <button type="button" name="button" class="top--signup">
+                早速登録する
+              </button>
+            <% end %>
+            <%= link_to login_path do %>
+              <button type="button" name="button" class="top--login">
+                登録済みの方はこちら
+              </button>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
