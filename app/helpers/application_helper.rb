@@ -66,10 +66,9 @@ module ApplicationHelper
     time.strftime("%Y-%m-%d %H:%M")
   end
 
-  # Request or Contractの期間を返す
   def display_period(contract)
-    from = contract.start_at.strftime("%Y-%m-%d")
-    to = contract.end_at.strftime("%Y-%m-%d")
+    from = contract.start_at.strftime("%Y年%m月%d日")
+    to = contract.end_at.strftime("%Y年%m月%d日")
     diff = contract.end_at.day - contract.start_at.day
     return "#{from}から#{to}までの#{diff}泊#{diff + 1}日"
   end

@@ -1,0 +1,64 @@
+<div class="my-contracts col-md-8 offset-md-2">
+  <div class="my-contracts--as-sitter">
+    <h5>お世話した経験</h5>
+    <% if contracts_as_sitter.blank? %>
+      <p>まだ記録がありません。</p>
+    <% else %>
+      <% contracts_as_sitter.each.with_index(1) do |contract, i| %>
+        <div class="my-contracts--record">
+          <%= link_to "お世話記録 その#{i}", contract_path(contract) %>
+          <%= display_period(contract) %>
+          <div class="my-contracts--ferrets">
+            <% contract.owner.ferrets.each do |ferret| %>
+              <div class="my-contracts--ferret">
+                <%= link_to ferret_path(ferret) do %>
+                  <% if ferret.image.attached? %>
+                    <%= image_tag ferret.image, size:"80x80", class:"image-icon" %>
+                  <% else %>
+                    <%= image_tag "/images/no_image.jpg", size:"80x80", class:"image-icon" %>
+                  <% end %>
+                  <div class="my-contracts--ferret-name">
+                    <%= ferret.name %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="my-contracts--as-owner">
+    <h5>お世話された経験</h5>
+    <% if contracts_as_owner.blank? %>
+      <p>まだ記録がありません。</p>
+    <% else %>
+      <% contracts_as_owner.each.with_index(1) do |contract, i| %>
+        <div class="my-contracts--record">
+          <%= link_to "お世話記録 その#{i}", contract_path(contract) %>
+          <p>お世話記録その<%= i %></p>
+          <p class="my-contracts--period">期間：<%= display_period(contract) %></p>
+          <p>お世話したしてくれたユーザー</p>
+          <div class="my-contracts--sitter">
+            <div class="my-contracts--sitter-icon">
+              <%= link_to user_path(contract.sitter) do %>
+                <% if contract.sitter.image.attached? %>
+                  <%= image_tag contract.sitter.image, size:"100x100", class:"image-icon" %>
+                <% else %>
+                  <%= image_tag "/images/no_image.jpg", size:"100x100", class:"image-icon" %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="my-contracts--sitter-info">
+              <%= link_to user_path(contract.sitter) do %>
+                <%= contract.sitter.name %><br>
+              <% end %>
+              <%= display_basic_info(contract.sitter) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

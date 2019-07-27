@@ -80,7 +80,7 @@ class UsersController < ApplicationController
     @users = @users.to_a unless @users.kind_of?(Array)
     @users = @users.select{|user| user[:status] == status.to_i} if status.present?
     @users = @users.select{|user| user[:gender] == gender.to_i} if gender.present?
-    @users = @users.select{|user| user.contracts_as_sitter&.size.to_i >= record.to_i} if record.present?
+    @users = @users.select{|user| user.contracts_as_sitter.size.to_i >= record.to_i} if record.present?
     array = @users.reverse
     @users = Kaminari.paginate_array(array).page(params[:page]).per(12)
     @sort = sort

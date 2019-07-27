@@ -21,6 +21,7 @@ import "../follow-list/follow-list";
 import "../my-page/my-page";
 import "../my-ferrets/my-ferrets";
 import "../my-rooms/my-rooms";
+import "../my-contracts/my-contracts";
 import "../territory/territory";
 import "../settings/settings";
 import "../notifications/notifications";

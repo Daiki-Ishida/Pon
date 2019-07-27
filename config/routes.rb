@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get :followings
     get :settings
     get :notifications
+    get :contracts
     patch :update_status
   end
 

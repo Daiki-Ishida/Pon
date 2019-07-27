@@ -45,6 +45,11 @@ class MyController < ApplicationController
     end
   end
 
+  def contracts
+    @contracts_as_sitter = current_user.contracts_as_sitter.page(params[:page]).per(5).order(created_at: :desc)
+    @contracts_as_owner = current_user.contracts_as_owner.page(params[:page]).per(5).order(created_at: :desc)
+  end
+
   def update_status
     if current_user.update_attributes(status: params[:status])
       if params[:status].to_i == 1

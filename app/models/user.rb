@@ -133,9 +133,7 @@ class User < ApplicationRecord
   end
 
   def contracts_as_owner
-    if self.has_contracts_as_owner?
-      contracts = Contract.where(owner_id: self.id)
-    end
+    Contract.where(owner_id: self.id)
   end
 
   def has_contracts_as_sitter?
@@ -143,9 +141,7 @@ class User < ApplicationRecord
   end
 
   def contracts_as_sitter
-    if self.has_contracts_as_sitter?
-      contracts = Contract.where(sitter_id: self.id)
-    end
+    Contract.where(sitter_id: self.id)
   end
 
   def average_rate

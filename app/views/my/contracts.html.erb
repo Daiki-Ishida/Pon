@@ -1,0 +1,6 @@
+<%= render "components/page/page", title: "お世話の履歴" do %>
+  <%= render "components/my-contracts/my-contracts",
+             contracts_as_sitter: @contracts_as_sitter,
+             contracts_as_owner: @contracts_as_owner
+  %>
+<% end %>

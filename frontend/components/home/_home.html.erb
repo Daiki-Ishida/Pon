@@ -6,6 +6,9 @@
     <div class="container">
       <div class="home--cards">
         <%= yield %>
+        <% if objects.blank? %>
+          <p class="home--no-data">該当するデータが見つかりませんでした。</p>
+        <% end %>
       </div>
       <div class="home--pagination">
         <%= paginate objects %>
