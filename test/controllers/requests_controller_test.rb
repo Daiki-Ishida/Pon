@@ -116,6 +116,4 @@ class RequestsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to ferrets_url
   end
 
-
-
 end

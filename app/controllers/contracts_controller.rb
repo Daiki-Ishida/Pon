@@ -11,7 +11,7 @@ class ContractsController < ApplicationController
       sitter_id: request.sitter_id,
       fee: request.fee,
       start_at: request.start_at,
-      end_at: request.start_at,
+      end_at: request.end_at,
       memo: request.memo
     )
     if contract.save
