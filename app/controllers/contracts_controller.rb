@@ -19,6 +19,7 @@ class ContractsController < ApplicationController
       message = request.send_notice(request.sitter, "approved", contract_url(contract))
       message.create_notification(current_user, message.room)
       request.destroy!
+      contract.owner.status = nil
       redirect_to room_path(message.room)
     else
       flash[:danger] = "エラーが発生しました。お手数ですが、運営までお問い合わせください。"

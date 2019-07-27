@@ -7,6 +7,10 @@
   padding: 10px;
 }
 
+.my-page--item a{
+  color: #4ba9a1;
+}
+
 .my-page--item a:hover{
   color: #e96b6b;
 }

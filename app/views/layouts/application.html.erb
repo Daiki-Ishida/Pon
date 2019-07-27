@@ -11,14 +11,12 @@
   </head>
 
   <body>
-    <%= render "components/header/header" %>
     <% flash.each do |type, message| %>
       <div class="alert alert-<%= type %>">
         <%= message %>
       </div>
     <% end %>
     <%= yield %>
-    <%= render "components/footer/footer" %>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GMAP_KEY'] %>"></script>
     <%= javascript_pack_tag 'application' %>
   </body>

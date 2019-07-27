@@ -1,6 +1,52 @@
+.top--header{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255,0,0,0);
+}
+
+.top--header-left{
+  float: left;
+}
+
+.top--header-right{
+  float: right;
+}
+
+.top--header-signup,
+.top--header-login{
+  width: 150px;
+  height: 30px;
+  background-color: rgba(255,0,0,0);
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.top--header-signup{
+  color: #be4847;
+  border: solid 1px #be4847;
+}
+
+.top--header-signup:hover{
+  background-color: #be4847;
+  color: #FFF;
+}
+
+.top--header-login{
+  color: #21467d;
+  border: solid 1px #21467d;
+}
+
+.top--header-login:hover{
+  background-color: #21467d;
+  color: #FFF;
+}
+
 .swiper-container{
   width: 100%;
-  height: calc(100vh - 60px);
+  height: 100vh;
 }
 
 .swiper-wrapper div:nth-child(5){
@@ -12,18 +58,26 @@
 }
 
 .swiper-pagination{
-  top: 110px !important;
-  width: 150px;
-  padding: 10px;
-  border-radius: 10px;
+  display: flex;
+  top: calc(100% - 25px) !important;
+  right: 0 !important;
+  width: 100%;
   background-color: #FFF;
-  opacity: 0.6;
 }
 
 .swiper-pagination-bullet{
   width: 100%;
-  height: auto;
-  border-radius: 5px;
+  height: 25px;
+  border-radius: 0;
+  background-color: #4ba9a1;
+  color: #FFF;
+  opacity: 0.8;
+}
+
+.swiper-pagination-bullet-active{
+  opacity: 1;
+  color: #FFF;
+  background-color: #e96b6b;
 }
 
 .top--last{

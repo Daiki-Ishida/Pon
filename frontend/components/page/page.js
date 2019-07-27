@@ -1,5 +1,8 @@
 import "./page.css";
 
+import "../header/header";
+import "../footer/footer";
+
 // newおよびeditから
 import "../user-form/user-form";
 import "../ferret-form/ferret-form";

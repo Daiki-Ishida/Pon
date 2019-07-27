@@ -15,10 +15,6 @@ import "components/edit-btn/edit-btn";
 import "components/delete-btn/delete-btn";
 import "components/follow/follow";
 
-// ヘッダー・フッター
-import "components/header/header";
-import "components/footer/footer";
-
 // 以下各ページのベースになるページ
 // 1.ランディングページのベース
 import "components/top/top";
@@ -26,5 +22,3 @@ import "components/top/top";
 import "components/page/page";
 // 3.一覧のベース
 import "components/home/home";
-// 4.レポート一覧のベース
-import "components/reports/reports"

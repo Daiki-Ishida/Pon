@@ -1,1 +1,3 @@
-<%= render "components/reports/reports", reports: @reports %>
+<%= render "components/page/page", title:"レポート一覧" do %>
+  <%= render "components/reports/reports", reports: @reports %>
+<% end %>

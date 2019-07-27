@@ -1,34 +1,59 @@
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <%= render "components/catch/catch" %>
-    </div>
-    <div class="swiper-slide">
-      <%= render "components/description/description" %>
-    </div>
-    <div class="swiper-slide">
-      <%= render "components/owner-steps/owner-steps" %>
-    </div>
-    <div class="swiper-slide">
-      <%= render "components/sitter-steps/sitter-steps" %>
-    </div>
-    <div class="swiper-slide">
-      <div class="top--last">
-        <div class="top--message">
-          <h2>さっそく始めてみよう！</h2>
-        </div>
-        <%= link_to new_user_path do %>
-          <button type="button" name="button" class="top--signup">
-            早速登録する
-          </button>
-        <% end %>
-        <%= link_to login_path do %>
-          <button type="button" name="button" class="top--login">
-            登録済みの方はこちら
-          </button>
+<div class="top">
+  <div class="top--header">
+    <div class="top--header-left">
+      <div class="header--logo">
+        <% if logged_in? %>
+          <%= link_to image_tag("/images/top-logo.png", size:"180x50"), ferrets_path %>
+        <% else %>
+          <%= link_to image_tag("/images/top-logo.png", size:"180x50"), root_path %>
         <% end %>
       </div>
     </div>
+    <div class="top--header-right">
+      <%= link_to new_user_path do %>
+        <button type="button" name="button" class="top--header-signup">
+          新規登録
+        </button>
+      <% end %>
+      <%= link_to login_path do %>
+        <button type="button" name="button" class="top--header-login">
+          ログイン
+        </button>
+      <% end %>
+    </div>
   </div>
-  <div class="swiper-pagination"></div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <%= render "components/catch/catch" %>
+      </div>
+      <div class="swiper-slide">
+        <%= render "components/description/description" %>
+      </div>
+      <div class="swiper-slide">
+        <%= render "components/owner-steps/owner-steps" %>
+      </div>
+      <div class="swiper-slide">
+        <%= render "components/sitter-steps/sitter-steps" %>
+      </div>
+      <div class="swiper-slide">
+        <div class="top--last">
+          <div class="top--message">
+            <h2>さっそく始めてみよう！</h2>
+          </div>
+          <%= link_to new_user_path do %>
+            <button type="button" name="button" class="top--signup">
+              早速登録する
+            </button>
+          <% end %>
+          <%= link_to login_path do %>
+            <button type="button" name="button" class="top--login">
+              登録済みの方はこちら
+            </button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
 </div>
