@@ -16,4 +16,14 @@
 .step--content{
   padding:5px;
   height: auto;
+  overflow: auto;
+}
+
+.step--content h5{
+  text-align: center;
+  padding: 10px;
+}
+
+.step--content p{
+  padding: 10px;
 }
