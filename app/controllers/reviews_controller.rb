@@ -1,5 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :logged_in_user
+  before_action ->{
+    contract_concerned_user(params[:contract_id])
+    }
   before_action :owner_in_contract_only
 
   def new

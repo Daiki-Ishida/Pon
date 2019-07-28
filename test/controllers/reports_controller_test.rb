@@ -8,7 +8,7 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
     @contract = contracts(:one)
     @other_contract = contracts(:two)
     @report = reports(:one)
-    @other_reports = reports(:two)
+    @other_report = reports(:two)
   end
 
   test "should redirect new when not logged in" do
@@ -39,8 +39,17 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  test "should redirect create when unauthorized user" do
+  test "should redirect create when unconcerned user" do
     log_in_as(@other_user_2)
+    assert_no_difference 'Report.count' do
+      post contract_reports_path(@contract), params: { report: {content: "テスト",
+                                                                date: "2019-07-28" } }
+    end
+    assert_redirected_to ferrets_url
+  end
+
+  test "should redirect create when unauthorize user" do
+    log_in_as(@user)
     assert_no_difference 'Report.count' do
       post contract_reports_path(@contract), params: { report: {content: "テスト",
                                                                 date: "2019-07-28" } }
