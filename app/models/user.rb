@@ -28,6 +28,7 @@ class User < ApplicationRecord
   has_one_attached :image
 
   # 性別/画像/自己紹介は無しでも登録できる。
+  # kanjiとなっているが、ひらがな・カタカナも通す。カラム名は修正すべき。
   validates :kanji_lastname, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   validates :kanji_firstname, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   validates :kana_lastname, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }

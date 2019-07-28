@@ -1,6 +1,6 @@
 import "./message-form.css";
 
-import {resizeForm} from "../../lib/resize-form";
+import { resizeForm } from "../../lib/resize-form";
 
 const messageFormContent = document.getElementById('messageFormContent');
 if(messageFormContent){
