@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       UserMailer.account_activation(@user).deliver_now
       flash[:info] = "ご入力頂いたメールアドレスにメールを送付しました。
                       本登録手続きをお願いいたします！"
-      redirect_to my_page_path
+      redirect_to ferrets_path
     else
       flash[:warning] = "入力内容に誤りがあります。"
       render 'new'

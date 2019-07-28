@@ -25,7 +25,8 @@ gem 'webpacker', github: 'rails/webpacker'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :production do
-  gem 'pg'
+  gem 'json'
+  gem 'mysql2'
 end
 
 group :development, :test do
