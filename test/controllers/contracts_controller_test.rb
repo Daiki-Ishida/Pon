@@ -11,13 +11,15 @@ class ContractsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect create when not logged in" do
-    post request_contracts_path(@request)
+    assert_no_difference 'Contract.count' do
+      post request_contracts_path(@request)
+    end
     assert_not flash.empty?
     assert_redirected_to login_url
   end
 
   # Request.findがActionDispatch::Requestなるものを参照してしまっている？
-  
+
   # test "should not create contract by unauthorized person" do
   #   log_in_as(@user)
   #   post request_contracts_path(@request)
