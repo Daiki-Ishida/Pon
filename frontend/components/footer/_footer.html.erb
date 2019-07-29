@@ -15,18 +15,20 @@
         <div class="footer--sitemap col-md-6">
           <ul>
             <% if logged_in? %>
-              <li><a href="#">預かりたい</a></li>
-              <li><a href="#">メッセージ</a></li>
-              <li><a href="#">縄張り</a></li>
-              <li><a href="#">タイムライン</a></li>
+              <li><%= link_to "マイフェレット", my_ferrets_path %></li>
+              <li><%= link_to "ユーザー一覧", users_path %></li>
+              <li><%= link_to "メッセージ一覧", my_rooms_path %></li>
               <li><a href="#">ヘルプ</a></li>
-              <li><a href="#">各種設定</a></li>
-              <li><a href="#">マイページ</a></li>
+              <li><%= link_to "通知一覧", my_notifications_path %></li>
+              <li><%= link_to "マイエリア", my_territory_path %></li>
+              <li><%= link_to "各種設定", my_settings_path %></li>
+              <li><%= link_to "マイページ", my_page_path %></li>
             <% else %>
-              <li><a href="#">新規登録</a></li>
-              <li><a href="#">ログイン</a></li>
-              <li><a href="#">フェレット一覧</a></li>
-              <li><a href="#">ユーザー一覧</a></li>
+              <li><%= link_to "新規登録", new_user_path %></li>
+              <li><%= link_to "ログイン", login_path %></li>
+              <li><%= link_to "ユーザー一覧", users_path %></li>
+              <li><%= link_to "フェレット一覧", ferrets_path %></li>
+              <li><%= link_to "投稿一覧", posts_path %></li>
             <% end %>
           </ul>
         </div>
