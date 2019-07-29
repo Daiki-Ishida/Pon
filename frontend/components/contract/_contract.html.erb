@@ -4,7 +4,11 @@
       <h5>飼い主</h5>
       <div class="contract--list">
         <div class="contract--user-image">
-          <%= link_to image_tag(contract.owner.image, size:"100x100", class:"image-icon"), user_path(contract.owner) %>
+          <% if contract.owner.image.attached? %>
+            <%= link_to image_tag(contract.owner.image, size:"100x100", class:"image-icon"), user_path(contract.owner) %>
+          <% else %>
+            <%= link_to image_tag("/images/no_image.jpg", size:"100x100", class:"image-icon"), user_path(contract.owner) %>
+          <% end %>
         </div>
         <div class="contract--user-info">
           <div class="contract--user-name">
@@ -23,7 +27,11 @@
       <h5>お世話係</h5>
       <div class="contract--list">
         <div class="contract--user-image">
-          <%= link_to image_tag(contract.sitter.image, size:"100x100", class:"image-icon"), user_path(contract.sitter) %>
+          <% if contract.sitter.image.attached? %>
+            <%= link_to image_tag(contract.sitter.image, size:"100x100", class:"image-icon"), user_path(contract.sitter) %>
+          <% else %>
+            <%= link_to image_tag("/images/no_image.jpg", size:"100x100", class:"image-icon"), user_path(contract.sitter) %>
+          <% end %>
         </div>
         <div class="contract--user-info">
           <div class="contract--user-name">
@@ -43,7 +51,11 @@
       <% contract.owner.ferrets.each do |ferret| %>
       <div class="contract--list">
         <div class="contract--ferret-image">
-          <%= link_to image_tag(ferret.image, size:"100x100", class:"image-icon"), ferret_path(ferret) %>
+          <% if ferret.image.attached? %>
+            <%= link_to image_tag(ferret.image, size:"100x100", class:"image-icon"), ferret_path(ferret) %>
+          <% else %>
+            <%= link_to image_tag("/images/no_image.jpg", size:"100x100", class:"image-icon"), ferret_path(ferret) %>
+          <% end %>
         </div>
         <div class="contract--ferret-info">
           <div class="contract--ferret-name">

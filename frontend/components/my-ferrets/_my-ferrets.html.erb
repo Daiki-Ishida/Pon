@@ -10,7 +10,11 @@
     <% ferrets.each do |ferret| %>
       <div class="my-ferret">
         <div class="my-ferret--icon">
-          <%= link_to image_tag(ferret.image, size:"100x100", class:"image-icon") %>
+          <% if ferret.image.attached? %>
+            <%= link_to image_tag(ferret.image, size:"100x100", class:"image-icon") %>
+          <% else %>
+            <%= link_to image_tag("/images/no_image.jpg", size:"100x100", class:"image-icon") %>
+          <% end %>
         </div>
         <div class="my-ferret--info">
           <p class="my-ferret--name"><%= ferret.name %></p>

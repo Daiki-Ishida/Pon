@@ -2,9 +2,15 @@
   <% unless notifications.blank? %>
     <% notifications.each do |notification| %>
       <div class="notification">
-        <%= link_to image_tag(notification.action_user.image, size:"80x80", class:"image-icon" ),
-                    user_path(notification.action_user),
-                    class:"noticication--icon" %>
+        <% if notification.action_user.image.attached? %>
+          <%= link_to image_tag(notification.action_user.image, size:"80x80", class:"image-icon" ),
+                      user_path(notification.action_user),
+                      class:"noticication--icon" %>
+        <% else %>
+          <%= link_to image_tag("/images/no_image.jpg", size:"80x80", class:"image-icon" ),
+                      user_path(notification.action_user),
+                      class:"noticication--icon" %>
+        <% end %>
         <div class="notification--content">
           <%== display_notification(notification) %>
           <small class="text-muted"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></small>
