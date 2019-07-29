@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user
-  before_action :correct_commented?
+  before_action :correct_commented?, except: [:create]
 
   def create
     comment = Comment.new(comment_params)

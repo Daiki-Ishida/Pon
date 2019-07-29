@@ -3,6 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = users(:one)
+    @other_user = users(:two)
   end
 
   test "should be valid" do
@@ -151,6 +152,44 @@ class UserTest < ActiveSupport::TestCase
   test "associated ferrets should be destroyed" do
     # @userはferrets(:one)を持っている。
     assert_difference 'Ferret.count', -1 do
+      @user.destroy
+    end
+  end
+
+  test "associated posts should be destroyed" do
+    # @userはposts(:one)を持っている。
+    assert_difference 'Post.count', -1 do
+      @user.destroy
+    end
+  end
+
+  test "associated comments should be destroyed" do
+    # @userはcomments(:one), (:two)を持っている。
+    # さらにcomments(:three)が@userが作ったpost(:one)と
+    # 紐づいている。よって3つ消えるべき。
+    assert_difference 'Comment.count', -3 do
+      @user.destroy
+    end
+  end
+
+  test "associated likes should be destroyed" do
+    assert_difference 'Like.count', -2 do
+      @user.destroy
+    end
+  end
+
+  test "associated active relationship should be destroyed" do
+    assert_difference 'Relationship.count', -1 do
+      @user.destroy
+    end
+  end
+
+  test "associated passive relationship should be destroyed" do
+    Relationship.create!(
+      follower_id: @other_user.id,
+      followed_id: @user.id
+    )
+    assert_difference 'Relationship.count', -2 do
       @user.destroy
     end
   end

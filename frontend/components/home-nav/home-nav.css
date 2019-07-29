@@ -5,6 +5,10 @@
   border-bottom: solid 1px #4ec4d3;
 }
 
+.home-nav--top a{
+  color: #26a69b;
+}
+
 .home-nav--top .ferrets:nth-child(1),
 .home-nav--top .users:nth-child(2),
 .home-nav--top .posts:nth-child(3){
@@ -58,9 +62,11 @@
 .home-nav--sort-btn{
   width: 150px;
   height: 25px;
-  border: none;
+  margin-right: 15px;
+  border-radius: 3px;
+  border: solid 1px #f2a33a;
   background-color: #FFF;
-  color: #21467d
+  color: #f2a33a;
 }
 
 .home-nav--sort-btn:focus{

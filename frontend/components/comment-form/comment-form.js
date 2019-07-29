@@ -1,6 +1,8 @@
 import "./comment-form.css";
 
 import { async } from '../../lib/async';
+import { resizeForm } from "../../lib/resize-form";
+
 
 const submitComment = (e)=>{
   e.preventDefault();
@@ -21,4 +23,9 @@ const submitComment = (e)=>{
 const sendBtn = document.getElementById('commentBtn');
 if(sendBtn){
   sendBtn.addEventListener('click', submitComment);
+}
+
+const commentContent = document.getElementById('commentContent');
+if(commentContent){
+  commentContent.addEventListener('input', resizeForm);
 }

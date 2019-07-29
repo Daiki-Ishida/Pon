@@ -1,4 +1,13 @@
-<%= form_with url: comments_path, model: post.comments, id:"commentForm", data:{id: post.id} do |form| %>
-  <%= form.text_field :content, placeholder: "コメント", id:"commentContent" %>
-  <%= form.submit "コメントする", id:"commentBtn" %>
-<% end %>
+<div class="comment-form">
+  <%= form_with url: comments_path,
+                model: post.comments,
+                class: "comment-form--form",
+                id:"commentForm",
+                data:{id: post.id} do |form| %>
+    <%= form.text_area :content,
+                       placeholder: "コメント",
+                       class: "comment-form--content",
+                       id: "commentContent" %>
+    <%= form.submit "コメントする", class: "comment-form--btn", id:"commentBtn" %>
+  <% end %>
+</div>

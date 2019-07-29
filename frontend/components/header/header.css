@@ -116,17 +116,43 @@ i.material-icons:hover {
   background-color: #af88b9;
 }
 
-.header--login, .header--logout{
+.header--logout{
   color: #d59acb;
 }
 
-.header--login:hover, .header--logout:hover{
+
+.header--logout:hover{
   background-color: #d59acb;
 }
 
-.header--signup:hover{
-  background-color: #007bff;
+.header--signup,
+.header--login{
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+  margin-top: 10px;
 }
+
+.header--signup{
+  color: #be4847;
+  border: solid 1px #be4847;
+}
+
+.header--signup:hover{
+  background-color: #be4847;
+  color: #FFF;
+}
+
+.header--login{
+  color: #21467d;
+  border: solid 1px #21467d;
+}
+
+.header--login:hover{
+  background-color: #21467d;
+  color: #FFF;
+}
+
 
 
 /************ 　　　　　　　　　 ************/
