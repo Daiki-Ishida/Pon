@@ -1,6 +1,6 @@
 class CreateUsers < ActiveRecord::Migration[5.2]
   def change
-    create_table :users do |t|
+    create_table :users, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.string :kanji_lastname
       t.string :kanji_firstname
       t.string :kana_lastname
