@@ -1,24 +1,26 @@
-# README
+# 'PON' フェレットの飼い主のマッチングアプリケーション
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このアプリは
 
-Things you may want to cover:
+## フェレットとは
 
-* Ruby version
+https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A7%E3%83%AC%E3%83%83%E3%83%88
 
-* System dependencies
+フェレットいわゆるイタチの仲間であり、まだまだマイナーであるもののペットとして飼育している人も多い動物です。
 
-* Configuration
+## アプリの趣旨
 
-* Database creation
+フェレットには以下のような特徴があります。
 
-* Database initialization
+*　大きな声を出さない。
+*　散歩の必要性がない。
+*　１日の大半は寝ている（２０時間くらい寝る時もある）。
+*　餌は、適量を皿に入れておけば、必要な分だけ勝手に食べる（ある程度は放置できる）。
 
-* How to run the test suite
+このようなことから、都市部、一人暮らしでも比較的飼育しやすいとも言えます。また、一般的なペットショップでも販売されています。しかし、その一方でペットとしては依然としてマイナーな存在で、イヌやネコなどと比較するとペットホテルや病院の数が圧倒的に少ないのが実情です。
 
-* Services (job queues, cache servers, search engines, etc.)
+例えば一人暮らしでフェレットを飼育し、出張などの長期間の外出の必要性が生じた場合に、預けられる知人が近所にいないと遠くのペットホテルまでフェレットを預けに行かなければいけない可能性もあります。
 
-* Deployment instructions
+そのような状況で、フェレットを飼っている人どうしがフェレットとの生活において協力しあえるような場を提供すべく、本アプリを作成しました。
 
-* ...
+##
