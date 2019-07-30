@@ -4,8 +4,25 @@ class UserTest < ActiveSupport::TestCase
   def setup
     @user = users(:one)
     @other_user = users(:two)
+    @far_user = User.create!(
+          kanji_lastname: "山田",
+          kanji_firstname: "花子",
+          kana_lastname: "ヤマダ",
+          kana_firstname: "ハナコ",
+          name: "テストユーザー",
+          postal_code: 1234567,
+          postal_address: "東京都千代田区千代田１−１",
+          introduction: "テストユーザーです。こんにちは。",
+          gender: 2,
+          birth_date: "1991-05-23",
+          latitude: 50,
+          longitude: 100,
+          territory: 15,
+          email: "text@testtest.com",
+          password_digest: User.digest('password')
+        )
   end
-
+  
   test "should be valid" do
     assert @user.valid?
   end
@@ -193,6 +210,73 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy
     end
   end
+
+  test "should not include the user in other other" do
+    assert_not @user.other_users.include?(@user)
+  end
+
+  test "should only include users within designated length" do
+    assert_not @user.other_users_within(15).include?(@far_user)
+    @far_user.update!(
+      latitude: @user.latitude,
+      longitude: @user.longitude
+    )
+    assert @user.other_users_within(15).include?(@far_user)
+  end
+
+  test "should only include users within territory" do
+    assert_not @user.objects_within_territory("users").include?(@far_user)
+    @far_user.update!(
+      latitude: @user.latitude,
+      longitude: @user.longitude
+    )
+    assert @user.objects_within_territory("users").include?(@far_user)
+  end
+
+  test "should only include ferrets within territory" do
+    far_ferret = @far_user.ferrets.build(
+      name: "テスト",
+      character: "テスト",
+      introduction: "テスト",
+      birth_date: "2017-08-09",
+      gender: 2
+    )
+    assert_not @user.objects_within_territory("ferrets").include?(far_ferret)
+    @far_user.update!(
+      latitude: @user.latitude,
+      longitude: @user.longitude
+    )
+    assert @user.objects_within_territory("ferrets").include?(far_ferret)
+  end
+
+  test "should only include posts within territory" do
+    far_post = @far_user.posts.build(
+      content: "テスト"
+    )
+    assert_not @user.objects_within_territory("posts").include?(far_post)
+    @far_user.update!(
+      latitude: @user.latitude,
+      longitude: @user.longitude
+    )
+    assert @user.objects_within_territory("posts").include?(far_post)
+  end
+
+  test "should only include following ferrets" do
+    ferret = ferrets(:two) # @other_userのフェレット
+    assert @user.followings_objects("ferrets").include?(ferret)
+    relationship = relationships(:one)
+    relationship.destroy
+    assert_not @user.reload.followings_objects("ferrets").include?(ferret)
+  end
+
+  test "should only include following posts" do
+    post = posts(:two) # @other_userの投稿
+    assert @user.followings_objects("posts").include?(post)
+    relationship = relationships(:one)
+    relationship.destroy
+    assert_not @user.reload.followings_objects("posts").include?(post)
+  end
+
 
 
 end

@@ -1,3 +1,6 @@
+require 'net/http'
+require 'uri'
+
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token
 
@@ -36,7 +39,10 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 1..16 }
   validates :birth_date, presence: true
   validates :postal_code, presence: true, length: { is: 7 }
-  validates :postal_address, presence: true
+  validates :postal_address, presence: true,
+                             format: {
+                               with: /\A(...??[都道府県])((?:旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?郡(?:玉村|大町|.+?)[町村]|.+?市.+?区|.+?[市区町村]).+\z/
+                             }
   validates :email, presence: true,
                     length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
@@ -170,6 +176,15 @@ class User < ApplicationRecord
 
   def activate
     self.update_attributes(activated: true, activated_at: Time.zone.now )
+  end
+
+  def geocode
+    uri = "https://maps.googleapis.com/maps/api/geocode/json?address=#{self.postal_address.gsub(" ", "")}&key=AIzaSyAUeNObsa7KDP7KEKC7Qp5hgkpxTri0CEQ"
+    url = URI.escape(uri)
+    response = Net::HTTP.get(URI.parse(url))
+    response = JSON.parse(response)
+    self.latitude = response["results"][0]["geometry"]["location"]["lat"]
+    self.longitude = response["results"][0]["geometry"]["location"]["lng"]
   end
 
   private

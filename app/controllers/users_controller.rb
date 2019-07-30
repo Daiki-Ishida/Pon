@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.geocode
     if @user.save
       UserMailer.account_activation(@user).deliver_now
       flash[:info] = "ご入力頂いたメールアドレスにメールを送付しました。
