@@ -1,7 +1,26 @@
 require 'test_helper'
 
 class FerretTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  def setup
+    @user = users(:one)
+    @other_user = users(:two)
+    @ferret = ferrets(:one)
+    @other_ferret = ferrets(:two)
+  end
+
+  test "should return all ferrets when search window is empty" do
+    search = nil
+    assert Ferret.search(search) == Ferret.all
+  end
+
+  test "should include proper ferrets whene searched" do
+    search = "ぽん"
+    assert Ferret.search(search).include?(@ferret)
+    assert_not Ferret.search(search).include?(@other_ferret)
+  end
+
+  test "should find parent" do
+    assert @ferret.owned_by?(@user)
+  end
 end

@@ -338,13 +338,4 @@ class UserTest < ActiveSupport::TestCase
     assert @other_user.contracts_as_sitter.include?(contract)
     assert_not @other_user.contracts_as_sitter.include?(other_contract)
   end
-
-  
-
-
-
-
-
-
-
 end
