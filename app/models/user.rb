@@ -179,7 +179,7 @@ class User < ApplicationRecord
   end
 
   def geocode
-    uri = "https://maps.googleapis.com/maps/api/geocode/json?address=#{self.postal_address.gsub(" ", "")}&key=#{ENV['GMAP_KEY']}"
+    uri = "https://maps.googleapis.com/maps/api/geocode/json?address=#{self.postal_address.gsub(" ", "")}&key=#{ENV['GEOCODE_KEY']}"
     url = URI.escape(uri)
     response = Net::HTTP.get(URI.parse(url))
     response = JSON.parse(response)

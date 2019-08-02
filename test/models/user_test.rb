@@ -22,7 +22,7 @@ class UserTest < ActiveSupport::TestCase
           password_digest: User.digest('password')
         )
   end
-  
+
   test "should be valid" do
     assert @user.valid?
   end
@@ -276,6 +276,74 @@ class UserTest < ActiveSupport::TestCase
     relationship.destroy
     assert_not @user.reload.followings_objects("posts").include?(post)
   end
+
+  # searchメソッドのテスト
+  test "should return all users when search window is empty" do
+    search = nil
+    assert User.search(search) == User.all
+  end
+
+  test "should include proper user whene searched" do
+    search = "テスト"
+    assert User.search(search).include?(@user)
+  end
+
+  # sorted_byメソッドのテスト
+  test "should return all users when not sorted" do
+    sort = ""
+    assert User.sorted_by(sort, @user) == User.all
+  end
+
+  test "should return users within territory when sort item is territory" do
+    sort = "territory"
+    assert_not User.sorted_by(sort, @user).include?(@far_user)
+    @far_user.update!(
+      latitude: @user.latitude,
+      longitude: @user.longitude
+    )
+    assert User.sorted_by(sort, @user).include?(@far_user)
+  end
+
+  test "should return following users when sort item is followings" do
+    sort = "followings"
+    assert_not User.sorted_by(sort, @user).include?(@far_user)
+    Relationship.create!(followed_id: @far_user.id, follower_id: @user.id)
+    assert User.sorted_by(sort, @user).include?(@far_user)
+  end
+
+  # has_contracts_as_owner?メソッド
+  test "should return boolean depending on whether user has contract as owner" do
+    assert @user.has_contracts_as_owner?
+    assert_not @far_user.has_contracts_as_owner?
+  end
+
+  # contracts_as_ownerメソッド
+  test "should return users contracts as owner" do
+    contract = contracts(:one)
+    other_contract = contracts(:two)
+    assert @user.contracts_as_owner.include?(contract)
+    assert_not @user.contracts_as_owner.include?(other_contract)
+  end
+
+  # has_contracts_as_sitter?メソット
+  test "should return boolean depending on whether user has contract as sitter" do
+    assert_not @user.has_contracts_as_sitter?
+    assert @other_user.has_contracts_as_sitter?
+  end
+
+  # contracts_as_sitterメソット
+  test "should return users contracts as sitter" do
+    contract = contracts(:one)
+    other_contract = contracts(:two)
+    assert @other_user.contracts_as_sitter.include?(contract)
+    assert_not @other_user.contracts_as_sitter.include?(other_contract)
+  end
+
+  
+
+
+
+
 
 
 

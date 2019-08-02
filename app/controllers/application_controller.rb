@@ -10,6 +10,13 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def already_logged_in
+      if logged_in?
+        flash[:warning] = "すでにログインしています。"
+        redirect_to my_page_url
+      end
+    end
+
     def contract_concerned_user(id)
       contract = Contract.find(id)
       unless current_user == contract.owner || current_user == contract.sitter

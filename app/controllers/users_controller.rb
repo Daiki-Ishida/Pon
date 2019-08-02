@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :already_logged_in, only:[:new, :create]
   before_action :logged_in_user, only:[:edit, :update, :destroy, :territory, :followings]
   before_action :correct_user, only: [:edit, :update]
 
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.geocode
     if @user.update(user_params)
       redirect_to user_path(@user)
     else

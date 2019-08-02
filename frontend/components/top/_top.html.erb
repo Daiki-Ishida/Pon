@@ -42,17 +42,15 @@
             <h2>さっそく始めてみよう！</h2>
           </div>
           <div class="top--actions">
-            <% unless logged_in? %>
-              <%= link_to new_user_path do %>
-                <button type="button" name="button" class="top--signup">
-                  早速登録する
-                </button>
-              <% end %>
-              <%= link_to login_path do %>
-                <button type="button" name="button" class="top--login">
-                  登録済みの方はこちら
-                </button>
-              <% end %>
+            <%= link_to new_user_path do %>
+              <button type="button" name="button" class="top--signup">
+                早速登録する
+              </button>
+            <% end %>
+            <%= link_to login_path do %>
+              <button type="button" name="button" class="top--login">
+                登録済みの方はこちら
+              </button>
             <% end %>
           </div>
         </div>
