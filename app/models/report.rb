@@ -4,6 +4,8 @@ class Report < ApplicationRecord
   has_one_attached :image
 
   validates :content, presence: true
+  validates :date, presence: true
+  validates :contract_id, presence: true
 
 # 要リファクタリング
   def send_notice(sender, type, url)
