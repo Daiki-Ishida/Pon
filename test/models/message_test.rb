@@ -21,7 +21,7 @@ class MessageTest < ActiveSupport::TestCase
     assert_not @message.valid?
   end
 
-  # create_notification(user, action)メソッド
+  # create_notificationメソッド
   test "should create notification" do
     assert_difference 'Notification.count', 1 do
       @message.create_notification(@user, @room)
