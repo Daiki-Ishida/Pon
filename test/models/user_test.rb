@@ -37,11 +37,6 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test "kanji_firstname should be present" do
-    @user.kanji_firstname = "     "
-    assert_not @user.valid?
-  end
-
   test "kanji_firstname should not be written in Alphabet" do
     @user.kanji_firstname = "ABC"
     assert_not @user.valid?

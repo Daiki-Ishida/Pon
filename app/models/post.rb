@@ -9,6 +9,7 @@ class Post < ApplicationRecord
 
   # validates :title, presence: true
   validates :content, presence: true
+  validates :user_id, presence: true
 
   def likes?(user)
     likes.where(user_id: user.id).exists?

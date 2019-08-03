@@ -46,6 +46,16 @@ class PostTest < ActiveSupport::TestCase
     assert_not Post.search(search).include?(@post)
   end
 
+  test "content should be present" do
+    @post.content = "     "
+    assert_not @post.valid?
+  end
+
+  test "user_id should be present" do
+    @post.user_id = nil
+    assert_not @post.valid? 
+  end
+
   # create_notification(user, action)メソッド
   test "should create notification" do
     assert_difference 'Notification.count', 1 do

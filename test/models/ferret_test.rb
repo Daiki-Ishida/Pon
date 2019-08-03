@@ -9,6 +9,26 @@ class FerretTest < ActiveSupport::TestCase
     @other_ferret = ferrets(:two)
   end
 
+  test "name should be present" do
+    @ferret.name = "     "
+    assert_not @ferret.valid?
+  end
+
+  test "birth_date should be present" do
+    @ferret.birth_date = "     "
+    assert_not @ferret.valid?
+  end
+
+  test "gender should be present" do
+    @ferret.gender = nil
+    assert_not @ferret.valid?
+  end
+
+  test "user_id should be present" do
+    @ferret.user_id = nil
+    assert_not @ferret.valid?
+  end
+
   test "should return all ferrets when search window is empty" do
     search = nil
     assert Ferret.search(search) == Ferret.all
