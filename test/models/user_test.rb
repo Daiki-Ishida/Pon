@@ -283,7 +283,7 @@ class UserTest < ActiveSupport::TestCase
     assert User.search(search) == User.all
   end
 
-  test "should include proper user whene searched" do
+  test "should include proper user when searched" do
     search = "テスト"
     assert User.search(search).include?(@user)
   end
