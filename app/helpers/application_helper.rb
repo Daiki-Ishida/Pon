@@ -9,7 +9,7 @@ module ApplicationHelper
   def display_name(object)
     model = model_checker(object)
     if model == "user"
-      "#{object.name}さん"
+      "#{object.name} さん"
     elsif model == "ferret"
       if object.gender == 1
         "#{object.name} くん"
@@ -71,12 +71,6 @@ module ApplicationHelper
     to = contract.end_at.strftime("%Y年%m月%d日")
     diff = contract.end_at.day - contract.start_at.day
     return "#{from}から#{to}までの#{diff}泊#{diff + 1}日"
-  end
-
-  def current_user
-    if session[:user_id]
-      current_user ||= User.find_by(id: session[:user_id])
-    end
   end
 
   # 文字列中にURLがあればリンクにする。
