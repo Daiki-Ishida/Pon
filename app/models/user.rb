@@ -178,6 +178,7 @@ class User < ApplicationRecord
     self.update_attributes(activated: true, activated_at: Time.zone.now )
   end
 
+  # before create と before updateに置くか
   def geocode
     uri = "https://maps.googleapis.com/maps/api/geocode/json?address=#{self.postal_address.gsub(" ", "")}&key=#{ENV['GEOCODE_KEY']}"
     url = URI.escape(uri)

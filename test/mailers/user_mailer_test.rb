@@ -1,12 +1,19 @@
 require 'test_helper'
 
 class UserMailerTest < ActionMailer::TestCase
-  # test "account_activation" do
-  #   mail = UserMailer.account_activation
-  #   assert_equal "Account activation", mail.subject
-  #   assert_equal ["to@example.org"], mail.to
-  #   assert_equal ["from@example.com"], mail.from
-  #   assert_match "Hi", mail.body.encoded
-  # end
+  def setup
+    @user = users(:one)
+  end
 
+  test "account_activation" do
+    binding.pry
+    mail = UserMailer.account_activation(@user)
+    @user.activation_token = User.new_token
+    assert_equal "PON：アカウントの有効化", mail.subject
+    assert_equal [@user.email], mail.to
+    # 日本語メールはエンコードがいまいちうまくいかないっぽい
+    # assert_equal ["from@example.com"], mail.from
+    # assert_match [@user.name], mail.body.encoded
+    # assert_match [@user.activation_token], mail.body.encoded
+  end
 end
