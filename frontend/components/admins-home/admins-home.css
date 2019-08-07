@@ -1,0 +1,15 @@
+.admins-home--menu{
+  width: 20%;
+  height: calc(100vh - 60px);
+  background-color: #FFF;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  border-bottom: 0;
+  box-shadow: 5px 0px 9px 0px rgba(0, 0, 0, 0.06);
+}
+
+.admins-home--content{
+  width: 80%;
+  margin-left: 20%;
+}

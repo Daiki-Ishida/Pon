@@ -1,0 +1,29 @@
+<div class="admins-header">
+  <div class="admins-header--left">
+    <div class="admins-header--logo">
+      <%= link_to image_tag("/images/top-logo.png", size:"180x50"), admins_top_path %>
+    </div>
+  </div>
+  <div class="admins-header--right">
+    <div class="admins-header--search-form">
+      <%= form_with url: admins_logout_path,
+                    enforce_utf8: false,
+                    method: 'get',
+                    class: "admins-header--search-form",
+                    local: true do |form| %>
+        <%= form.text_field :search, placeholder:"検索", class:"admins-header--search-input" %>
+        <%= button_tag type: 'submit', class:'admins-header--search-btn' do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="admins-header--action">
+      <%= link_to admins_logout_path, method: :delete do %>
+        <button type="button" name="button" class="admins-header--logout">
+          ログアウト
+        </button>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="admins-header--space"></div>
