@@ -4,6 +4,14 @@ Rails.application.routes.draw do
   # get  '/help',   to: 'pages#help'
   # get  '/faq',   to: 'pages#faq'
 
+  namespace :admins do
+    get '/top', to: 'pages#top'
+    resources :users, only: [:index, :edit, :update, :delete]
+    resources :ferrets, only: [:index, :edit, :update, :delete]
+    resources :posts, only: [:index, :edit, :update, :delete]
+    resources :contracts, only: [:index, :edit, :update, :delete]
+  end
+
 
   resources :users do
     member do
@@ -18,7 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # メール認証のためのpathra
+  # メール認証のためのpath
   resources :account_activations, only: [:edit]
 
   namespace :my do
