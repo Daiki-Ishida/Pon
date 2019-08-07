@@ -1,0 +1,40 @@
+<div class="admins-top">
+  <div class="admins-top--stats">
+    <div class="admins-top--stats-item">
+      <%= render partial: "components/admins-stats/admins-stats",
+                 locals:{
+                   icon: "user.jpg",
+                   item: "ユーザー",
+                   count: User.count,
+                 }
+      %>
+    </div>
+    <div class="admins-top--stats-item">
+      <%= render partial: "components/admins-stats/admins-stats",
+                 locals:{
+                   icon: "ferret.png",
+                   item: "フェレット",
+                   count: Ferret.count
+                 }
+      %>
+    </div>
+    <div class="admins-top--stats-item">
+      <%= render partial: "components/admins-stats/admins-stats",
+                 locals:{
+                   icon: "report.png",
+                   item: "投稿",
+                   count: Post.count,
+                 }
+      %>
+    </div>
+    <div class="admins-top--stats-item">
+      <%= render partial: "components/admins-stats/admins-stats",
+                 locals:{
+                   icon: "request.png",
+                   item: "お世話数",
+                   count: Contract.count
+                 }
+      %>
+    </div>
+  </div>
+</div>

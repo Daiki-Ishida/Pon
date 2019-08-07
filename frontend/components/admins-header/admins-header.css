@@ -57,19 +57,22 @@
   left: 550px;
 }
 
-.admins-header--logout{
+.admins-header--logout,
+.admins-header--login{
   width: 150px;
   height: 30px;
-  background-color: rgba(255,0,0,0);
-  color: #be4847;
-  border: solid 2px #be4847;
   border-radius: 20px;
   margin-top: 13px;
   margin-right: 20px;
 }
 
-.admins-header--logout:hover{
+.admins-header--logout{
   background-color: #be4847;
+  color: #FFF;
+}
+
+.admins-header--login{
+  background-color: #f2a33a;
   color: #FFF;
 }
 

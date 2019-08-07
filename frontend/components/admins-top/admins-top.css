@@ -1,0 +1,10 @@
+.admins-top--stats{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.admins-top--stats-item{
+  width: 45%;
+  margin-bottom: 20px;
+}
