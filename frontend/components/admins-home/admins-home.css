@@ -9,6 +9,25 @@
   box-shadow: 5px 0px 9px 0px rgba(0, 0, 0, 0.06);
 }
 
+.admins-home--menu ul{
+  margin-top: 20px;
+}
+
+.admins-home--menu li{
+  padding-left: 10%;
+  padding-bottom: 20px;
+  color: #e96b6b;
+  font-weight: bold;
+}
+
+.admins-home--menu li a{
+  color: #4ba9a1;
+}
+
+.admins-home--menu li a:hover{
+  color: #e96b6b;
+}
+
 .admins-home--content{
   width: 80%;
   padding-top: 20px;

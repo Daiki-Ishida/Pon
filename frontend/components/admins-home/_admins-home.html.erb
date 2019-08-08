@@ -1,7 +1,23 @@
 <%= render "components/admins-header/admins-header" %>
 <div class="admins-home">
   <div class="admins-home--menu">
-    めぬー
+    <ul>
+      <li>
+        <%= link_to_unless_current "トップ", admins_top_path %>
+      </li>
+      <li>
+        <%= link_to_unless_current "ユーザー一覧", admins_users_path %>
+      </li>
+      <li>
+        <%= link_to_unless_current "フェレット一覧", admins_ferrets_path %>
+      </li>
+      <li>
+        <%= link_to_unless_current "投稿一覧", admins_posts_path %>
+      </li>
+      <li>
+        <%= link_to_unless_current "お世話一覧", admins_contracts_path %>
+      </li>
+    </ul>
   </div>
   <div class="admins-home--content">
     <div class="container">
