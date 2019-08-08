@@ -1,0 +1,1 @@
+import "./admins-table.css";

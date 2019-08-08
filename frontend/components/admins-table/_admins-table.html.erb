@@ -1,0 +1,56 @@
+<table class="admins-table table table-hover">
+  <thead>
+      <th></th>
+      <th>ID</th>
+      <th>名前</th>
+      <th>性別</th>
+      <th>年齢</th>
+      <th>住所</th>
+      <th>メールアドレス</th>
+      <th></th>
+      <th></th>
+    </thead>
+  <tbody>
+    <% objects.each do |object| %>
+      <tr>
+        <td>
+          <% if object.image.attached? %>
+            <%= image_tag object.image, size:"50x50", class: "image-square" %>
+          <% else %>
+            <%= image_tag "/images/no_image.jpg", size:"50x50", class:".image-square" %>
+          <% end %>
+        </td>
+        <td><%= object.id %></td>
+        <td><%= object.name %></td>
+        <td><%= display_gender(object) %></td>
+        <td><%= display_age(object) %></td>
+        <td><%= display_address(object) %></td>
+        <td>
+          <% if type == "ユーザー" %>
+            <%= object.email %>
+          <% elsif type == "フェレット" %>
+            <%= object.user.email %>
+          <% end %>
+        </td>
+        <td class="admins-table--detail">
+          <% if type == "ユーザー" %>
+            <%= link_to admins_user_path(object) do %>
+              <button class="btn"><span><i class="far fa-user"></i></span>詳細</button>
+            <% end %>
+          <% elsif type == "フェレット" %>
+            <%= link_to admins_ferret_path(object) do %>
+              <button class="btn"><span><i class="fas fa-paw"></i></span>詳細</button>
+            <% end %>
+          <% end %>
+        </td>
+        <td class="admins-table--edit">
+          <% if type == "ユーザー" %>
+            <%= render "components/edit-btn/edit-btn", path: edit_admins_user_path(object) %>
+          <% elsif type == "フェレット" %>
+            <%= render "components/edit-btn/edit-btn", path: edit_admins_ferret_path(object) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
