@@ -1,0 +1,5 @@
+<%= render "components/admins-home/admins-home" do %>
+  <div class="container">
+    <%= render partial: "components/post-overview/post-overview", collection: @posts, as: "post" %>
+  </div>
+<% end %>

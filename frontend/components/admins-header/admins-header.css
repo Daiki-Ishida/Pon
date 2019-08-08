@@ -1,15 +1,18 @@
 .admins-header{
-  height: 60px;
   width: 100%;
   position: fixed;
   z-index: 10;
+}
+
+.admins-header--content{
+  height: 60px;
+  background-color: #FFF;
   display: flex;
 }
 
 .admins-header--left{
   width: 20%;
   min-width: 180px;
-  background-color: #FFF;
 }
 
 .admins-header--logo{
@@ -18,7 +21,6 @@
 
 .admins-header--right{
   width: 80%;
-  background-color: #52b9d1;
   display: flex;
   justify-content: space-between;
 }
@@ -37,7 +39,7 @@
   height: 30px;
   padding:0 10px;
   border-radius:4px;
-  border: none;
+  border: solid 2px #4ba9a1;
   outline:0;
   background: #FFF;
   position: absolute;
@@ -51,7 +53,7 @@
   background: #3975a3;
   color:#fff;
   border:none;
-  border-radius:4px;
+  border-radius: 0 4px 4px 0;
   position: absolute;
   top: 0;
   left: 550px;

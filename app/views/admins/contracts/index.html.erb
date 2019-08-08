@@ -1,0 +1,5 @@
+<%= render "components/admins-home/admins-home" do %>
+  <div class="container">
+    <%= render partial: "components/contract-overview/contract-overview", collection: @contracts, as: "contract" %>
+  </div>
+<% end %>

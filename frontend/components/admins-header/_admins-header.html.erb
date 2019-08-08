@@ -1,41 +1,44 @@
 <div class="admins-header">
-  <div class="admins-header--left">
-    <div class="admins-header--logo">
-      <% if logged_in_as_admin? %>
-        <%= link_to image_tag("/images/top-logo.png", size:"180x50"), admins_top_path %>
-      <% else %>
-        <%= link_to image_tag("/images/top-logo.png", size:"180x50"), admins_login_path %>
-      <% end %>
+  <div class="admins-header--content">
+    <div class="admins-header--left">
+      <div class="admins-header--logo">
+        <% if logged_in_as_admin? %>
+          <%= link_to image_tag("/images/top-logo.png", size:"180x50"), admins_top_path %>
+        <% else %>
+          <%= link_to image_tag("/images/top-logo.png", size:"180x50"), admins_login_path %>
+        <% end %>
+      </div>
+    </div>
+    <div class="admins-header--right">
+      <div class="admins-header--search-form">
+        <%= form_with url: admins_logout_path,
+                      enforce_utf8: false,
+                      method: 'get',
+                      class: "admins-header--search-form",
+                      local: true do |form| %>
+          <%= form.text_field :search, placeholder:"検索", class:"admins-header--search-input" %>
+          <%= button_tag type: 'submit', class:'admins-header--search-btn' do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="admins-header--action">
+        <% if logged_in_as_admin? %>
+          <%= link_to admins_logout_path, method: :delete do %>
+            <button type="button" name="button" class="admins-header--logout">
+              ログアウト
+            </button>
+          <% end %>
+        <% else %>
+          <%= link_to admins_login_path do %>
+            <button type="button" name="button" class="admins-header--login">
+              ログイン
+            </button>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="admins-header--right">
-    <div class="admins-header--search-form">
-      <%= form_with url: admins_logout_path,
-                    enforce_utf8: false,
-                    method: 'get',
-                    class: "admins-header--search-form",
-                    local: true do |form| %>
-        <%= form.text_field :search, placeholder:"検索", class:"admins-header--search-input" %>
-        <%= button_tag type: 'submit', class:'admins-header--search-btn' do %>
-          <i class="fas fa-search"></i>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="admins-header--action">
-      <% if logged_in_as_admin? %>
-        <%= link_to admins_logout_path, method: :delete do %>
-          <button type="button" name="button" class="admins-header--logout">
-            ログアウト
-          </button>
-        <% end %>
-      <% else %>
-        <%= link_to admins_login_path do %>
-          <button type="button" name="button" class="admins-header--login">
-            ログイン
-          </button>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+  <%= render "components/colorful-border/colorful-border" %>
 </div>
 <div class="admins-header--space"></div>

@@ -1,0 +1,74 @@
+<div class="contract-overview">
+  <div class="contract-overview--users col-md-5">
+    <div class="contract-overview--owner">
+      <h5>飼い主</h5>
+      <div class="contract-overview--owner-info">
+        <div class="contract-overview--owner-icon">
+          <% if contract.owner.image.attached? %>
+            <%= image_tag contract.owner.image, size:"50x50", class:"image-icon" %>
+          <% else %>
+            <%= image_tag "/images/no_image.jpg", size:"50x50", class:"image-icon" %>
+          <% end %>
+        </div>
+        <div class="contract-overview--owner-details">
+          <%= contract.owner.name %><br>
+          <%= display_basic_info(contract.owner) %>
+        </div>
+      </div>
+    </div>
+    <div class="contract-overview--sitter">
+      <h5>お世話係</h5>
+      <div class="contract-overview--sitter-info">
+        <div class="contract-overview--sitter-icon">
+          <% if contract.sitter.image.attached? %>
+            <%= image_tag contract.sitter.image, size:"50x50", class:"image-icon" %>
+          <% else %>
+            <%= image_tag "/images/no_image.jpg", size:"50x50", class:"image-icon" %>
+          <% end %>
+        </div>
+        <div class="contract-overview--sitter-details">
+          <%= contract.sitter.name %><br>
+          <%= display_basic_info(contract.sitter) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contract-overview--details col-md-7">
+    <div class="contract-overview--ferrets">
+      <h5>フェレット</h5>
+      <div class="contract-overview--ferrets-info">
+        <% contract.owner.ferrets.each do |ferret| %>
+          <div class="contract-overview--ferret">
+            <%= link_to ferret_path(ferret) do %>
+              <% if ferret.image.attached? %>
+                <%= image_tag ferret.image, size:"50x50", class:"image-icon" %>
+              <% else %>
+                <%= image_tag "/images/no_image.jpg", size:"50x50", class:"image-icon" %>
+              <% end %>
+              <p class="contract-overview--ferret-name">
+                <%= ferret.name %>
+              </p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="contract-overview--content">
+      <h5>お世話概要</h5>
+      <table class="table table-sm">
+        <thead>
+          <th>開始</th>
+          <th>終了</th>
+          <th>謝礼</th>
+          <th>レビュー</th>
+        </thead>
+        <tbody>
+          <td><%= contract.start_at %></td>
+          <td><%= contract.end_at %></td>
+          <td><%= contract.fee %>円</td>
+          <td><%= contract.review.rate %></td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
