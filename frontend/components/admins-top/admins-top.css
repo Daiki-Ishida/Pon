@@ -1,3 +1,8 @@
+.admins-top--contact{
+  width: 95%;
+  margin: 20px auto;
+}
+
 .admins-top--stats{
   display: flex;
   justify-content: space-around;

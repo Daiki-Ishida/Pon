@@ -5,6 +5,14 @@
   box-shadow: 0 1px 5px -1px rgba(0, 0, 0, 0.15);
 }
 
+.admins-stats:hover{
+  transform: translateY(-5px);
+}
+
+.admins-stats:active{
+  transform: translateY(5px);
+}
+
 .admins-stats--icon img{
   width: 120px;
   height: 120px;
@@ -16,7 +24,22 @@
   padding-left: 20px;
 }
 
+.admins-stats--data-item{
+  color: #4ba9a1;
+}
+
 .admins-stats--data-count{
   font-size: 36px;
   font-weight: bold;
+  color: #5eadf8;
+}
+
+.admins-stats--unchecked-contact{
+  color: #be4847;
+  line-height: 120px;
+  margin-left: 15px;
+}
+
+.admins-stats--unchecked-contact p{
+  margin-bottom: 0;
 }
