@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :logged_in_user
+  before_action :activated_account
   before_action :correct_room?
 
   def create

@@ -1,5 +1,6 @@
 class MyController < ApplicationController
   before_action :logged_in_user
+  before_action :activated_account
 
   def page
 

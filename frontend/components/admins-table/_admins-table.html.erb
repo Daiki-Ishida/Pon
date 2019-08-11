@@ -43,9 +43,16 @@
             <% end %>
           <% end %>
         </td>
-        <td class="admins-table--edit">
+        <!--
+        管理人と言えどもユーザーの個人情報の閲覧・編集は原則不可。
+        メールアドレスはユーザーを一意に特定する目的で閲覧可能。
+        アカウントの無効化は可能。
+        -->
+        <td class="admins-table--invalid">
           <% if type == "ユーザー" %>
-            <%= render "components/edit-btn/edit-btn", path: edit_admins_user_path(object) %>
+            <%= link_to edit_admins_user_path(object) do %>
+              <button class="btn"><span><i class="fas fa-user-slash"></i></span>強制退会</button>
+            <% end %>
           <% elsif type == "フェレット" %>
             <%= render "components/edit-btn/edit-btn", path: edit_admins_ferret_path(object) %>
           <% end %>

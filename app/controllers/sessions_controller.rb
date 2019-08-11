@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         flash[:info] = "ログインしました！"
         redirect_to my_page_path
       else
-        flash[:warning] = "アカウントが有効ではありません。メールをご確認頂き、本登録をお願いいたします。"
+        flash[:warning] = "アカウントが有効ではありません。"
         redirect_to root_path
       end
     else

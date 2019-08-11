@@ -17,6 +17,13 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def activated_account
+      if current_user.activated == false
+        flash[:warning] = "アカウントが有効ではありません。"
+        redirect_to root_path
+      end
+    end
+
     def contract_concerned_user(id)
       contract = Contract.find(id)
       unless current_user == contract.owner || current_user == contract.sitter

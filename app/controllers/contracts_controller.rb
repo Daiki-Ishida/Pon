@@ -1,5 +1,6 @@
 class ContractsController < ApplicationController
   before_action :logged_in_user
+  before_action :activated_account
   before_action :authorized_user, only: [:create]
   before_action ->{ contract_concerned_user(params[:id]) }, only: [:show]
 

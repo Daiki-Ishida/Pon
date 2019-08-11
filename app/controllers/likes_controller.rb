@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
   before_action :logged_in_user
+  before_action :activated_account
 
   def create
     post = Post.find(params[:post_id])

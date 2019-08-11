@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   before_action :logged_in_user
+  before_action :activated_account
   before_action :has_ferrets?, except: [:show]
   before_action :has_request?, only: [:new, :create]
   before_action :request_concerned_user, except: [:new, :create]

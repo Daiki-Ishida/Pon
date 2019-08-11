@@ -1,3 +1,4 @@
 <%= render "components/admins-home/admins-home" do %>
+  <%= render "components/edit-btn/edit-btn", path: edit_admins_user_path(@user) %>
   <%= render "components/user/user", user: @user %>
 <% end %>

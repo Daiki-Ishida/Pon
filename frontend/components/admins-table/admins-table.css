@@ -3,21 +3,21 @@
 }
 
 .admins-table--detail button{
-  color: #e96b6b;
-  border: solid 2px #e96b6b;
+  color: #4ba9a1;
+  border: solid 2px #4ba9a1;
 }
 
 .admins-table--detail button:hover{
   color: #FFF;
-  background-color: #e96b6b;
+  background-color: #4ba9a1;
 }
 
-.admins-table--edit button{
-  color: #f2a33a;
-  border: solid 2px #f2a33a;
+.admins-table--invalid button{
+  color: #e96b6b;
+  border: solid 2px #e96b6b;
 }
 
-.admins-table--edit button:hover{
+.admins-table--invalid button:hover{
   color: #FFF;
-  background-color: #f2a33a;
+  background-color: #e96b6b;
 }

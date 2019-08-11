@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :logged_in_user
+  before_action :activated_account
   before_action ->{
     contract_concerned_user(params[:contract_id])
     }

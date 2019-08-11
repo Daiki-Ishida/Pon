@@ -1,5 +1,7 @@
 class RelationshipsController < ApplicationController
   before_action :logged_in_user
+  before_action :activated_account
+
 
   def create
     follow = Relationship.new(follow_params)
