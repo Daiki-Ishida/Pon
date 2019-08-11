@@ -5,6 +5,7 @@
                  icon:"mail.png",
                  item: "問い合わせ",
                  count: 123,
+                 extra_data: "問い合わせ機能実装後、未読の問い合わせがあればここにnoticeを入れる。",
                  path: root_path
                }
      %>
@@ -16,6 +17,7 @@
                    icon: "user.jpg",
                    item: "ユーザー",
                    count: User.count,
+                   extra_data: "無効なユーザー：#{User.where(activated: false).count}",
                    path: admins_users_path
                  }
       %>
@@ -26,6 +28,7 @@
                    icon: "ferret.png",
                    item: "フェレット",
                    count: Ferret.count,
+                   extra_data: "",
                    path: admins_ferrets_path
                  }
       %>
@@ -36,6 +39,7 @@
                    icon: "report.png",
                    item: "投稿",
                    count: Post.count,
+                   extra_data: "総いいね数：#{Like.count}",
                    path: admins_posts_path
                  }
       %>
@@ -46,6 +50,7 @@
                    icon: "request.png",
                    item: "お世話数",
                    count: Contract.count,
+                   extra_data: "",
                    path: admins_contracts_path
                  }
       %>

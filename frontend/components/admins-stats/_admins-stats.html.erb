@@ -11,10 +11,16 @@
         <%= count %>
       </div>
     </div>
-    <% if item == "問い合わせ" %>
-      <div class="admins-stats--unchecked-contact">
-        <p>問い合わせ機能実装後、未読の問い合わせがあればここにnoticeを入れる。</p>
-      </div>
-    <% end %>
+    <div class="admins-stats--extra-data">
+      <% if item == "問い合わせ" %>
+        <div class="admins-stats--unchecked-contact">
+          <p><%= extra_data %></p>
+        </div>
+      <% else %>
+        <div class="admins-stats--extra-data-content">
+          <small><%= extra_data %></small>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

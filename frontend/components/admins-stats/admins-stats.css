@@ -34,12 +34,19 @@
   color: #5eadf8;
 }
 
-.admins-stats--unchecked-contact{
-  color: #be4847;
+.admins-stats--extra-data{
   line-height: 120px;
   margin-left: 15px;
 }
 
-.admins-stats--unchecked-contact p{
+.admins-stats--extra-data p{
   margin-bottom: 0;
+}
+
+.admins-stats--unchecked-contact{
+  color: #be4847;
+}
+
+.admins-stats--extra-data-content{
+  color: #444444;
 }
