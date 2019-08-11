@@ -43,4 +43,16 @@ class FerretTest < ActiveSupport::TestCase
   test "should find parent" do
     assert @ferret.owned_by?(@user)
   end
+
+  test "siblings should return siblings of the ferret" do
+    brother = @user.ferrets.create!(
+      name: "弟",
+      character: "甘えん坊",
+      introduction: "テストだよ",
+      birth_date: "2017-08-10",
+      gender: 1
+    )
+    assert @ferret.siblings.include?(brother)
+    assert_not @ferret.siblings.include?(@other_ferret)
+  end
 end

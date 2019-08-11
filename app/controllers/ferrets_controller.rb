@@ -20,8 +20,6 @@ class FerretsController < ApplicationController
 
   def show
     @ferret = Ferret.find(params[:id])
-    # 自身を除いた兄弟を得る。
-    @siblings = Ferret.where(user_id: @ferret.user_id).where.not(id: @ferret.id)
   end
 
   def edit

@@ -17,6 +17,10 @@ class Ferret < ApplicationRecord
     self.user == user
   end
 
+  def siblings
+    self.user.ferrets.where.not(id: self.id)
+  end
+
   def self.sorted_by(sort, user)
     return Ferret.all if sort.empty?
     case sort

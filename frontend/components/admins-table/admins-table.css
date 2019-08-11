@@ -1,10 +1,9 @@
 .admins-table td{
-  color: #FFF;
   line-height: 50px;
 }
 
 .admins-table--detail button{
-  color: #FFF;
+  color: #e96b6b;
   border: solid 2px #e96b6b;
 }
 
@@ -14,7 +13,7 @@
 }
 
 .admins-table--edit button{
-  color: #FFF;
+  color: #f2a33a;
   border: solid 2px #f2a33a;
 }
 
