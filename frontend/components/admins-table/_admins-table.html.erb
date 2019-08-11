@@ -48,10 +48,18 @@
         メールアドレスはユーザーを一意に特定する目的で閲覧可能。
         アカウントの無効化は可能。
         -->
-        <td class="admins-table--invalid">
+        <td class="admins-table--actions">
           <% if type == "ユーザー" %>
-            <%= link_to edit_admins_user_path(object) do %>
-              <button class="btn"><span><i class="fas fa-user-slash"></i></span>強制退会</button>
+            <% if object.activated == true %>
+              <div class="admins-table--invalid">
+                <%= link_to edit_admins_user_path(object) do %>
+                  <button class="btn"><span><i class="fas fa-user-slash"></i></span>無効化する</button>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="admins-table--registered">
+                <button class="btn">無効</button>
+              </div>
             <% end %>
           <% elsif type == "フェレット" %>
             <%= render "components/edit-btn/edit-btn", path: edit_admins_ferret_path(object) %>

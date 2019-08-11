@@ -178,6 +178,13 @@ class User < ApplicationRecord
     self.update_attributes(activated: true, activated_at: Time.zone.now )
   end
 
+  def inactivate
+    self.update_attributes(activated: false)
+    self.ferrets.destroy_all
+    self.posts.destroy_all
+    Request.where(owner_id: self.id).destroy_all
+  end
+
   # before create と before updateに置くか
   def geocode
     uri = "https://maps.googleapis.com/maps/api/geocode/json?address=#{self.postal_address.gsub(" ", "")}&key=#{ENV['GEOCODE_KEY']}"

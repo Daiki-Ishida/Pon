@@ -21,3 +21,20 @@
   color: #FFF;
   background-color: #e96b6b;
 }
+
+.admins-table--registered button{
+  color: #99aab5;
+  border: solid 2px #99aab5;
+  cursor: default;
+}
+
+.admins-table--registered button:hover{
+  color: #99aab5;
+  border: solid 2px #99aab5;
+  cursor: default;
+}
+
+.admins-table--registered button:focus{
+  outline: none;
+  box-shadow: none;
+}

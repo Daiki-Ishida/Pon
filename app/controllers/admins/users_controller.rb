@@ -13,7 +13,7 @@ class Admins::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(activated: false)
+    if @user.inactivate
       flash[:info] = "#{@user.name}（ID: #{@user.id}）を強制退会させました。"
       redirect_to admins_users_path
     else
