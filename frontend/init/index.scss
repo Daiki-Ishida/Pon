@@ -46,9 +46,15 @@ li {
 }
 
 .alert{
-  margin-top: 67px !important;
-  margin-bottom: 0 !important;
+  width: 100%;
+  position: fixed;
+  top: 67px;
   text-align: center;
+  display: block;
+}
+
+.alert-close{
+  cursor: pointer;
 }
 /************* 初期設定の無効化 *************/
 

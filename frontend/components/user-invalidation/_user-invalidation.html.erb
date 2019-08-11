@@ -1,0 +1,25 @@
+<div class="user-invalidation">
+  <h3>本当に以下のユーザーを強制退会させてよろしいですか？</h3>
+  <small class="text-muted">
+    退会させるとユーザーが登録したフェレットおよび投稿が削除されます。
+    ただし、お世話の履歴は残ります。
+  </small>
+  <ul>
+    <li>ID: <%= user.id %></li>
+    <li>名前: <%= user.name %></li>
+    <li>住所: <%= display_address(user) %></li>
+    <li>メールアドレス: <%= user.email %></li>
+  </ul>
+  <div class="user-invalidation--actions">
+    <div class="user-invalidation--cancel">
+      <%= link_to admins_user_path(user) do %>
+        <button class="btn"><span><i class="fas fa-user-slash"></i></span>戻る</button>
+      <% end %>
+    </div>
+    <div class="user-invalidation--proceed">
+      <%= link_to admins_user_path(user), method: :patch do %>
+        <button class="btn"><span><i class="fas fa-user-slash"></i></span>強制退会</button>
+      <% end %>
+    </div>
+  </div>
+</div>

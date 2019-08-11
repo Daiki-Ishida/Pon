@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     end
 
     def activated_account
-      if current_user.activated == false
+      if !current_user.activated?
         flash[:warning] = "アカウントが有効ではありません。"
         redirect_to root_path
       end
