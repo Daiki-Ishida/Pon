@@ -1,19 +1,31 @@
 <div class="user-invalidation">
-  <h3>本当に以下のユーザーを強制退会させてよろしいですか？</h3>
-  <small class="text-muted">
-    退会させるとユーザーが登録したフェレットおよび投稿が削除されます。
-    ただし、お世話の履歴は残ります。
-  </small>
-  <ul>
-    <li>ID: <%= user.id %></li>
-    <li>名前: <%= user.name %></li>
-    <li>住所: <%= display_address(user) %></li>
-    <li>メールアドレス: <%= user.email %></li>
-  </ul>
+  <div class="user-invalidation--confirm">
+    <h3>本当に以下のユーザーを強制退会させてよろしいですか？</h3>
+    <small class="text-muted">
+      退会させるとユーザーが登録したフェレットおよび投稿が削除されます。
+      ただし、お世話の履歴は残ります。
+    </small>
+  </div>
+  <div class="user-invalidation--user">
+    <h5>ユーザー情報</h5>
+    <div class="user-invalidation--user-info">
+      <% if user.image.attached? %>
+        <%= image_tag user.image, size:"200x200", class:"image-square" %>
+      <% else %>
+        <%= image_tag "/images/no_image.jpg", size:"200x200", class:"image-square" %>
+      <% end %>
+      <ul>
+        <li>ID: <%= user.id %></li>
+        <li><%= user.name %></li>
+        <li><%= display_address(user) %></li>
+        <li><%= user.email %></li>
+      </ul>
+    </div>
+  </div>
   <div class="user-invalidation--actions">
     <div class="user-invalidation--cancel">
       <%= link_to admins_user_path(user) do %>
-        <button class="btn"><span><i class="fas fa-user-slash"></i></span>戻る</button>
+        <button class="btn"><span><i class="fas fa-arrow-left"></i></span>戻る</button>
       <% end %>
     </div>
     <div class="user-invalidation--proceed">

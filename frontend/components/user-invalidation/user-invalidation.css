@@ -1,0 +1,56 @@
+.user-invalidation{
+  padding: 100px;
+  text-align: center;
+  background-color: #FFF;
+  border-radius: 20px;
+}
+
+.user-invalidation--confirm,
+.user-invalidation--user{
+  margin-bottom: 70px;
+}
+
+.user-invalidation--user h5{
+  margin-bottom: 20px;
+}
+
+.user-invalidation--user-info{
+  display: flex;
+  justify-content: center;
+}
+
+.user-invalidation--user-info ul{
+  display: inline-block;
+  text-align: left;
+  margin-left: 40px;
+}
+
+.user-invalidation--actions{
+  display: flex;
+  justify-content: center;
+}
+
+.user-invalidation--cancel,
+.user-invalidation--proceed{
+  margin: 0 10px;
+}
+
+.user-invalidation--cancel button{
+  color: #4ba9a1;
+  border: solid 2px #4ba9a1;
+}
+
+.user-invalidation--cancel button:hover{
+  color: #FFF;
+  background-color: #4ba9a1;
+}
+
+.user-invalidation--proceed button{
+  color: #e96b6b;
+  border: solid 2px #e96b6b;
+}
+
+.user-invalidation--proceed button:hover{
+  color: #FFF;
+  background-color: #e96b6b;
+}

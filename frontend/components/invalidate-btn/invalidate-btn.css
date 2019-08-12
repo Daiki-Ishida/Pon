@@ -1,0 +1,9 @@
+.invalidate-btn button{
+  color: #e96b6b;
+  border: solid 2px #e96b6b;
+}
+
+.invalidate-btn button:hover{
+  color: #FFF;
+  background-color: #e96b6b;
+}
