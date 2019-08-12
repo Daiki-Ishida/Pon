@@ -50,17 +50,7 @@
         -->
         <td class="admins-table--actions">
           <% if type == "ユーザー" %>
-            <% if object.activated == true %>
-              <div class="admins-table--invalid">
-                <%= link_to edit_admins_user_path(object) do %>
-                  <button class="btn"><span><i class="fas fa-user-slash"></i></span>無効化する</button>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="admins-table--registered">
-                <button class="btn">無効</button>
-              </div>
-            <% end %>
+            <%= render "components/validate-btn/validate-btn", user: object %>
           <% end %>
         </td>
       </tr>

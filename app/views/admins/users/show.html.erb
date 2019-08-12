@@ -1,3 +1,4 @@
 <%= render "components/admins-home/admins-home" do %>
+  <%= render "components/validate-btn/validate-btn", user: @user %>
   <%= render "components/user/user", user: @user %>
 <% end %>

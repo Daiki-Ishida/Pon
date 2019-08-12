@@ -1,0 +1,14 @@
+<div class="validate-btn">
+  <% if user.activated == true %>
+    <div class="validate-btn--invalid">
+      <%= link_to edit_admins_user_path(user) do %>
+        <button class="btn"><span><i class="fas fa-user-slash"></i></span>無効化する</button>
+      <% end %>
+    </div>
+  <% else %>
+  <!-- 後々有効化ボタンに変更予定 -->
+    <div class="validate-btn--valid">
+      <button class="btn">無効</button>
+    </div>
+  <% end %>
+</div>

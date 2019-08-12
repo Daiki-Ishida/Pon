@@ -1,8 +1,8 @@
 <div class="user-invalidation">
   <div class="user-invalidation--confirm">
-    <h3>本当に以下のユーザーを強制退会させてよろしいですか？</h3>
+    <h3>本当に以下のユーザーを無効化してよろしいですか？</h3>
     <small class="text-muted">
-      退会させるとユーザーが登録したフェレットおよび投稿が削除されます。
+      無効化するとユーザーが登録したフェレットおよび投稿が削除されます。
       ただし、お世話の履歴は残ります。
     </small>
   </div>
@@ -30,7 +30,7 @@
     </div>
     <div class="user-invalidation--proceed">
       <%= link_to admins_user_path(user), method: :patch do %>
-        <button class="btn"><span><i class="fas fa-user-slash"></i></span>強制退会</button>
+        <button class="btn"><span><i class="fas fa-user-slash"></i></span>無効化</button>
       <% end %>
     </div>
   </div>

@@ -1,0 +1,26 @@
+.validate-btn--invalid button{
+  color: #e96b6b;
+  border: solid 2px #e96b6b;
+}
+
+.validate-btn--invalid button:hover{
+  color: #FFF;
+  background-color: #e96b6b;
+}
+
+.validate-btn--valid button{
+  color: #99aab5;
+  border: solid 2px #99aab5;
+  cursor: default;
+}
+
+.validate-btn--valid button:hover{
+  color: #99aab5;
+  border: solid 2px #99aab5;
+  cursor: default;
+}
+
+.validate-btn--valid button:focus{
+  outline: none;
+  box-shadow: none;
+}
