@@ -44,20 +44,7 @@
   flex-grow: 10;
 }
 
-.my-ferret--edit button{
-  color: #4ba9a1;
-}
-
-.my-ferret--edit button:hover{
-  color: #FFF;
-  background-color: #4ba9a1;
-}
-
-.my-ferret--delete button{
-  color: #be4847;
-}
-
-.my-ferret--delete button:hover{
-  color: #FFF;
-  background-color: #be4847;
+.my-ferret--actions{
+  line-height: 100px;
+  display: flex;
 }

@@ -25,22 +25,13 @@
   margin-bottom: 50px;
 }
 
-.ferret--edit button{
-  width: 100px;
-  height: 50px;
-  background-color: #4ba9a1;
-  color: #FFF;
-}
-
+.ferret--edit button,
 .ferret--delete button{
   width: 100px;
   height: 50px;
-  background-color: #be4847;
-  color: #FFF;
 }
 
-.ferret--edit button:hover,
-.ferret--delete button:hover{
+.ferret--edit button:hover{
   color: #FFF;
 }
 

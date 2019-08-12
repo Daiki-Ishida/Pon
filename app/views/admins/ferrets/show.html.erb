@@ -1,3 +1,4 @@
-<%= render "components/admins-home/admins-home" do %>
+<%= render "components/admins-home/admins-home", title: "フェレット詳細" do %>
+  <%= render "components/delete-btn/delete-btn", path: "admins_ferret_path" %>
   <%= render "components/ferret/ferret", ferret: @ferret %>
 <% end %>

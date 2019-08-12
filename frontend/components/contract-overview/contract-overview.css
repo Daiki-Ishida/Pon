@@ -4,6 +4,9 @@
   border-radius: 10px;
   padding: 30px;
   border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.contract-overview--content{
   display: flex;
 }
 
@@ -27,4 +30,14 @@
 
 .contract-overview--ferret{
   margin-right: 30px;
+}
+
+.contract-overview--action button{
+  color: #4ba9a1;
+  border: solid 1px #4ba9a1;
+}
+
+.contract-overview--action button:hover{
+  color: #FFF;
+  background-color: #4ba9a1;
 }

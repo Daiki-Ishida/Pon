@@ -1,0 +1,9 @@
+.edit-btn button{
+  color: #4ba9a1;
+  border: solid 1px #4ba9a1;
+}
+
+.edit-btn button:hover{
+  color: #FFF;
+  background-color: #4ba9a1;
+}

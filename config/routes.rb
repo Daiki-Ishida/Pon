@@ -10,9 +10,9 @@ Rails.application.routes.draw do
     post   '/login',   to: 'sessions#create'
     delete '/logout',  to: 'sessions#destroy'
     resources :users, only: [:index, :show, :edit, :update]
-    resources :ferrets, only: [:index, :show, :edit, :update, :delete]
-    resources :posts, only: [:index, :edit, :update, :delete]
-    resources :contracts, only: [:index, :show, :edit, :update, :delete]
+    resources :ferrets, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :edit, :destroy]
+    resources :contracts, only: [:index, :show, :destroy]
   end
 
 

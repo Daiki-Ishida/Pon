@@ -13,6 +13,7 @@
 
 .contract--list{
   display: flex;
+  margin-bottom: 10px;
 }
 
 .contract--user-image, .contract--ferret-image{

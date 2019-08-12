@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         redirect_to my_page_path
       else
         flash[:warning] = "アカウントが有効ではありません。"
-        redirect_to root_path
+        redirect_to login_path
       end
     else
       flash[:danger] = "メールアドレスまたはパスワードが誤っています。"

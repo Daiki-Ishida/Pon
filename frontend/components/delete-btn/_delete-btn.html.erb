@@ -1,3 +1,5 @@
-<%= link_to "#{path}", method: :delete, data: { confirm: "本当に削除しますか？" } do %>
-  <button class="btn"><span><i class="far fa-trash-alt"></i></span>削除</button>
-<% end %>
+<div class="delete-btn">
+  <%= link_to "#{path}", method: :delete, data: { confirm: "本当に削除しますか？" } do %>
+    <button class="btn"><span><i class="far fa-trash-alt"></i></span> 削除</button>
+  <% end %>
+</div>

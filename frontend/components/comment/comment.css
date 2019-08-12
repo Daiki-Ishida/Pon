@@ -9,8 +9,8 @@
 
 .comment--config{
   line-height: 50px;
+  display: flex;
 }
-
 
 .comment--content{
   background: #e2e2e2;
