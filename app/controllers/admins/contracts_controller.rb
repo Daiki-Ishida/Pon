@@ -1,4 +1,6 @@
 class Admins::ContractsController < ApplicationController
+  before_action :logged_in_admin
+  
   def index
     @contracts = Contract.page(params[:page]).order(created_at: :desc)
   end

@@ -1,6 +1,6 @@
 class Admins::SessionsController < ApplicationController
-  include Admins::SessionsHelper
-  
+  before_action :logged_in_admin, only:[:destroy]
+
   def create
     admin = Admin.find_by(email: params[:email].downcase)
     if admin && admin.authenticate(params[:password])

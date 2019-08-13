@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   prepend_view_path Rails.root.join("frontend")
   include SessionsHelper
+  include Admins::SessionsHelper
 
   private
     def logged_in_user
@@ -44,6 +45,13 @@ class ApplicationController < ActionController::Base
       contract = Contract.find(params[:contract_id])
       unless current_user == contract.sitter
         flash[:danger] = "権限がありません。"
+        redirect_to ferrets_path
+      end
+    end
+
+    def logged_in_admin
+      unless logged_in_as_admin?
+        flash[:warning] = "権限がありません。"
         redirect_to ferrets_path
       end
     end
