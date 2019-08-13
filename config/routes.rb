@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :ferrets, only: [:index, :show, :destroy]
     resources :posts, only: [:index, :edit, :destroy]
     resources :contracts, only: [:index, :show, :destroy]
+    resources :contacts, only: [:index, :show, :edit, :update, :destroy]
   end
 
 
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
     get :notifications
     get :contracts
     patch :update_status
+    get :contracts
   end
 
   resources :ferrets do
@@ -82,13 +84,10 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
+  resources :contacts, except: [:index, :destroy]
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-
-  # LINEログイン
-  # devise_for :users, controllers: {
-  #   omniauth_callbacks: "omniauth_callbacks"
-  # }
 
 end

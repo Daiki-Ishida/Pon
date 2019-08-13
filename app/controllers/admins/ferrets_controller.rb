@@ -1,6 +1,6 @@
 class Admins::FerretsController < ApplicationController
   before_action :logged_in_admin
-  
+
   def index
     @ferrets = Ferret.page(params[:page]).per(120).order(created_at: :desc)
   end
