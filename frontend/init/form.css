@@ -23,6 +23,10 @@
   box-shadow: none;
 }
 
+textarea.form-control{
+  height: 40.5px;
+}
+
 .textarea{
   resize: none;
   outline: none;

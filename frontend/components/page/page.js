@@ -11,6 +11,7 @@ import "../request-form/request-form";
 import "../report-form/report-form";
 import "../review-form/review-form";
 import "../login-form/login-form";
+import "../contact-form/contact-form";
 
 // showから
 import "../user/user";
