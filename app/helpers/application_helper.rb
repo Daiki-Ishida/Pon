@@ -129,6 +129,19 @@ module ApplicationHelper
     notifications = current_user.passive_notifications.where(checked: false)
   end
 
+  def display_subject(contact)
+    subject = ""
+    case contact.subject
+    when 1
+      subject = "当アプリのご利用方法"
+    when 2
+      subject = "会員登録・ログイン・パスワード忘れ"
+    when 3
+      subject = "その他"
+    end
+    return subject
+  end
+
   private
     # 人間かフェレットかチェック。
     def model_checker(object)

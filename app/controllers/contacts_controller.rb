@@ -6,6 +6,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
+      ContactMailer.contact(@contact).deliver_now
       flash[:info] = "お問い合わせを受け付けました。"
       redirect_to ferrets_path
     else
