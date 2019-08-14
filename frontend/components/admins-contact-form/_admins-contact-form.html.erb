@@ -6,8 +6,7 @@
   </div>
 
   <div class="col-md-8 offset-md-2">
-    <%= form_with model: contact, local: true do |form| %>
-
+    <%= form_with model: contact, url: admins_contact_path(contact), method: :patch, local: true do |form| %>
       <div class="admins-contact-form--group form-row">
         <div class="form col-md-12">
           <%= form.label "返答", class:"label" %>

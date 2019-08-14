@@ -7,6 +7,10 @@
   margin-bottom: 50px;
 }
 
+.contact-overview--resolved{
+  color: #52b9d1;
+}
+
 .contact-overview--unresolved{
   color: #be4847;
 }
@@ -15,11 +19,11 @@
   border-bottom: 2px solid #dee2e6;
 }
 
-.contact-overview--reply{
+.contact-overview--reply-btn{
   font-size: 16px;
   margin-left: 20px;
 }
 
-.contact-overview--reply a{
+.contact-overview--reply-btn a{
   color: #4ba9a1;
 }

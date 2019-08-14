@@ -13,7 +13,7 @@ class Admins::ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
       flash[:info] = "問い合わせに返答しました"
-      redirect_to admins_top_path
+      redirect_to admins_contacts_path
     else
       render 'edit'
     end

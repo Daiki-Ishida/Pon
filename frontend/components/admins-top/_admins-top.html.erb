@@ -4,9 +4,9 @@
                locals:{
                  icon:"mail.png",
                  item: "問い合わせ",
-                 count: 123,
-                 extra_data: "問い合わせ機能実装後、未読の問い合わせがあればここにnoticeを入れる。",
-                 path: root_path
+                 count: Contact.count,
+                 extra_data: "未対応の問い合わせ：#{Contact.where(resolved: false).count}",
+                 path: admins_contacts_path
                }
      %>
   </div>

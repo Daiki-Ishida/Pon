@@ -1,33 +1,39 @@
 <div class="contact-overview">
-  <div class="contact-overview--content">
-    <h5>
-      問い合わせ
-      <span class="contact-overview--reply">
-        <%= link_to edit_admins_contact_path(contact) do %>
-          <span><i class="fas fa-reply"></i> 返信</span>
-        <% end %>
-      </span>
-    </h5>
+  <h5>
+    問い合わせ
+    <span class="contact-overview--reply-btn">
+      <%= link_to edit_admins_contact_path(contact) do %>
+        <span><i class="fas fa-reply"></i> 返信</span>
+      <% end %>
+    </span>
+  </h5>
 
-    <table class="table table-sm">
-      <thead>
-        <th>メールアドレス</th>
-        <th>日時</th>
-        <th>カテゴリ</th>
-        <th>ステータス</th>
-      </thead>
-      <tbody>
-        <td><%= contact.email %></td>
-        <td><%= display_time(contact.created_at) %></td>
-        <td><%= display_subject(contact) %></td>
-        <% if contact.resolved == true %>
-          <td>解決済み</td>
-        <% elsif contact.resolved == false %>
-          <td class="contact-overview--unresolved">要対応</td>
-        <% end %>
-      </tbody>
-    </table>
+  <table class="table table-sm">
+    <thead>
+      <th>メールアドレス</th>
+      <th>日時</th>
+      <th>カテゴリ</th>
+      <th>ステータス</th>
+    </thead>
+    <tbody>
+      <td><%= contact.email %></td>
+      <td><%= display_time(contact.created_at) %></td>
+      <td><%= display_subject(contact) %></td>
+      <% if contact.resolved == true %>
+        <td class="contact-overview--resolved">解決済み</td>
+      <% elsif contact.resolved == false %>
+        <td class="contact-overview--unresolved">要対応</td>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="contact-overview--content">
     <h6>本文</h6>
     <p><%= simple_format(contact.content) %></p>
   </div>
+  <% if contact.reply %>
+    <div class="contact-overview--reply">
+      <h6>回答</h6>
+      <p><%= simple_format(contact.reply) %></p>
+    </div>
+  <% end %>
 </div>
