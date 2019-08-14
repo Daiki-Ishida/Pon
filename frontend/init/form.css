@@ -86,17 +86,17 @@ textarea.form-control{
 }
 /************************* 日付入力欄END *************************/
 
-/************************* 性別入力欄START *************************/
+/************************* ラジオボタンSTART *************************/
 .radio{
   display: none;
 }
 
-.gender{
+.radio-btn{
   display: flex;
   justify-content: space-around;
 }
 
-.gender-btn{
+.radio-switch{
   display: block;
   text-align: center;
   border-radius: 3px;
@@ -104,26 +104,26 @@ textarea.form-control{
   margin-right: 10px;
 }
 
-.male{
+.radio-blue{
   border:1px solid #52b9d1;
   color: #52b9d1;
 }
 
-.female{
+.radio-red{
   border:1px solid #e96b6b;
   color: #e96b6b;
 }
 
-.male:hover, .radio:checked + .male{
+.radio-blue:hover, .radio:checked + .radio-blue{
   color: #FFF;
   background-color: #52b9d1;
 }
 
-.female:hover, .radio:checked + .female{
+.radio-red:hover, .radio:checked + .radio-red{
   color: #FFF;
   background-color: #e96b6b;
 }
-/************************* 性別入力欄END *************************/
+/************************* ラジオボタンEND *************************/
 
 /************************* 星START *************************/
 .star-on-png:before{

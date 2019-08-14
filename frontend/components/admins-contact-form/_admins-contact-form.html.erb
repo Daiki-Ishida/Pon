@@ -1,0 +1,41 @@
+<div class="admins-contact-form">
+  <div class="row">
+    <div class="col-md-8  offset-md-2">
+      <%= render "components/error-messages/error-messages", object: contact %>
+    </div>
+  </div>
+
+  <div class="col-md-8 offset-md-2">
+    <%= form_with model: contact, local: true do |form| %>
+
+      <div class="admins-contact-form--group form-row">
+        <div class="form col-md-12">
+          <%= form.label "返答", class:"label" %>
+          <%= form.text_area :reply,
+                              placeholder: "返答内容を入力",
+                              class:"form-control input textarea",
+                              id: "textArea" %>
+          <span class="bar"></span>
+        </div>
+      </div>
+
+      <div class="admins-contact-form--group form-row">
+        <div class="form col-md-5">
+          <%= form.label "ステータス", class:"label" %>
+          <div class="radio-btn">
+            <%= form.radio_button :resolved, true, id:"resolved", class:"radio" %>
+            <label class="col-auto radio-switch radio-blue" for="resolved">解決済みにする</label>
+            <%= form.radio_button :resolved, false, id:"unresolved", class:"radio" %>
+            <label class="col-auto radio-switch radio-red" for="unresolved">引き続き対応する</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row submit form">
+        <div class="mx-auto">
+          <%= form.submit "送信", class:"btn btn-success" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

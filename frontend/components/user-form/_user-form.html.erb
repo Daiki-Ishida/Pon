@@ -125,11 +125,11 @@
         <div class="form col-md-5">
           <%= form.label :性別, class:"label" %>
           <span class="asterisk">＊</span>
-          <div class="gender">
+          <div class="radio-btn">
             <%= form.radio_button :gender, 1, id:"male", class:"radio" %>
-            <label class="col-auto gender-btn male" for="male">男性</label>
+            <label class="col-auto radio-switch radio-blue" for="male">男性</label>
             <%= form.radio_button :gender, 2, id:"female", class:"radio" %>
-            <label class="col-auto gender-btn female" for="female">女性</label>
+            <label class="col-auto radio-switch radio-red" for="female">女性</label>
           </div>
         </div>
       </div>

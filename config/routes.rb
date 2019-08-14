@@ -45,7 +45,6 @@ Rails.application.routes.draw do
     get :notifications
     get :contracts
     patch :update_status
-    get :contracts
   end
 
   resources :ferrets do
