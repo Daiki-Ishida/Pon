@@ -7,4 +7,9 @@ class ContactMailerPreview < ActionMailer::Preview
     ContactMailer.contact(contact)
   end
 
+  def reply
+    contact = Contact.first
+    ContactMailer.reply(contact)
+  end
+
 end

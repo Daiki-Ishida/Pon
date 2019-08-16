@@ -1,3 +1,4 @@
 <%= render "components/admins-home/admins-home" do %>
   <%= render partial: "components/contact-overview/contact-overview", collection: @contacts, as: "contact" %>
+  <%= paginate @contacts %>
 <% end %>
