@@ -9,7 +9,7 @@
     "popper.js": "^1.15.0",
     "rails-ujs": "^5.2.3",
     "raty-js": "^2.9.0",
-    "swiper": "^4.5.0"
+    "swiper": "^6.5.1"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.7.2"
